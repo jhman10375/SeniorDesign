@@ -3,10 +3,10 @@
 
 ## Contact Information
 
-###Email
+Email
 alvaraji@mail.uc.edu
 
-###Phone
+Phone
 (504)559-7899
 
 ## Co-op Work Experience
