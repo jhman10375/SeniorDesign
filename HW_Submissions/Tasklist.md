@@ -1,7 +1,7 @@
 # Tasks
 
 ## Task 1.
-Create mobile/web specific components for scoreboard, navigation, player cards, school recognition \n
+Create mobile/web specific components for scoreboard, navigation, player cards, school recognition \ 
 Responsible: Jordan Herman
 
 ## Task 2.
