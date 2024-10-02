@@ -30,4 +30,7 @@ This is a page that includes various definitions used accross CSP.
 | LM      | League Manager      |
 | LP      | League Participant  |
 
-[Back To Top](#project-dictionary)
+## Quick Links
+
+[Back To Top](#project-dictionary) \
+[Back to ReadMe](/README.md)

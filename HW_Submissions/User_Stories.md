@@ -2,7 +2,7 @@
 
 This is a page that includes User Stories for CSP.
 
-## Quick Links
+## Reference Links
 
 - [Project Dictionary](Project_Dictionary.md)
 
@@ -30,3 +30,8 @@ This is a page that includes User Stories for CSP.
 | 19  | As a draft participant, I want to be able to add players I want to MT to build MT for the league                                                                       |
 | 20  | As a draft participant, I want to add players to a queue when it is not my turn to pick so I know who is left from my desired team and actively available in the draft |
 | 21  | As a draft participant, I want to view my team as I am selecting players so I know who I have selected and make goals for the remainder of my selections               |
+
+## Quick Links
+
+[Back To Top](#user-stories) \
+[Back to ReadMe](/README.md)

@@ -1,0 +1,19 @@
+@if (isMobile) {
+  <div class="flex align-items-center justify-content-between mt-2 mb-2">
+    <div
+      class="flex align-items-center justify-content-start text-primary"
+      [routerLink]="['/home']"
+    >
+      <i class="pi pi-angle-left"></i>
+      <span>Home</span>
+    </div>
+    <span class="text-xl" [routerLink]="['/league', activeLeague.ID]">
+      {{ activeLeague.Name }}
+    </span>
+    <span class="text-green" (click)="navigateTo('standings')">
+      <i class="pi pi-chart-line"></i> Rankings</span
+    >
+  </div>
+}
+
+<router-outlet></router-outlet>

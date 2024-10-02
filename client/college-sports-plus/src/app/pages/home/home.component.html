@@ -1,0 +1,92 @@
+@if (isMobile) {
+  <div class="m-2">
+    <mobile-scoreboard [hasDifferentContent]="true">
+      <div class="flex flex-column">
+        <span class="mt-2 mb-2">Welcome to College Sports +</span>
+        <span class="mt-2 mb-2">Checkout your leagues here</span>
+        <div
+          class="flex flex-row flex-align-center justify-content-between mt-2 mb-2"
+        >
+          <span class="pi-spin material-icons" style="width: 24px; color: brown"
+            >sports_football</span
+          >
+          <span
+            class="pi-spin material-icons"
+            style="width: 24px; color: orange"
+            >sports_basketball</span
+          >
+          <span class="pi-spin material-icons" style="width: 24px"
+            >sports_baseball</span
+          >
+          <span class="pi-spin material-icons" style="width: 24px"
+            >sports_soccer</span
+          >
+        </div>
+      </div>
+    </mobile-scoreboard>
+  </div>
+  <div class="flex flex-row"
+    ><span class="material-icons" style="width: 24px; color: brown"
+      >sports_football</span
+    >
+    <span>Football</span></div
+  >
+  @for (league of leagueList | async; track league) {
+    @if (league.Sport == SportEnum.Football) {
+      <div class="m-2">
+        <mobile-scoreboard
+          [routerLink]="['/league', league.ID]"
+          [leagueInformationScoreboard]="true"
+          [league]="league"
+        ></mobile-scoreboard>
+      </div>
+    }
+  }
+  <div class="flex flex-row"
+    ><span class="material-icons" style="width: 24px; color: orange"
+      >sports_basketball</span
+    >
+    <span>Basketball</span></div
+  >
+  @for (league of leagueList | async; track league) {
+    @if (league.Sport == SportEnum.Basketball) {
+      <div class="m-2">
+        <mobile-scoreboard
+          [routerLink]="['/league', league.ID]"
+          [leagueInformationScoreboard]="true"
+          [league]="league"
+        ></mobile-scoreboard>
+      </div>
+    }
+  }
+  <div class="flex flex-row"
+    ><span class="material-icons" style="width: 24px">sports_baseball</span>
+    <span>Baseball</span></div
+  >
+  @for (league of leagueList | async; track league) {
+    @if (league.Sport == SportEnum.Baseball) {
+      <div class="m-2">
+        <mobile-scoreboard
+          [routerLink]="['/league', league.ID]"
+          [leagueInformationScoreboard]="true"
+          [league]="league"
+        ></mobile-scoreboard>
+      </div>
+    }
+  }
+  <div class="flex flex-row"
+    ><span class="material-icons" style="width: 24px">sports_soccer</span>
+    <span>Soccer</span></div
+  >
+  @for (league of leagueList | async; track league) {
+    @if (league.Sport == SportEnum.Soccer) {
+      <div class="m-2">
+        <mobile-scoreboard
+          [routerLink]="['/league', league.ID]"
+          [leagueInformationScoreboard]="true"
+          [league]="league"
+        ></mobile-scoreboard>
+      </div>
+    }
+  }
+}

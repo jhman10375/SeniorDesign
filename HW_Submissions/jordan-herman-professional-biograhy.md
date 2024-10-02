@@ -25,3 +25,8 @@ Personal Website (last updated Fall 2022): [jordanherman.netlify.app](https://jo
 ## Intended Project
 
 I would like to work on a web application preferably with angular or angular & ionic as the framework. The intent of the project would be to build a useful application to solve a problem faced by others.
+
+## Quick Links
+
+[Back To Top](#professional-biography---jordan-herman) \
+[Back to ReadMe](/README.md)

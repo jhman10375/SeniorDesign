@@ -1,0 +1,12 @@
+<div class="h-8rem border-1 surface-border p-2">
+  @if (hasDifferentContent) {
+    <ng-content></ng-content>
+  } @else if (leagueInformationScoreboard) {
+    <mobile-league-information-scoreboard
+      [league]="league"
+    ></mobile-league-information-scoreboard>
+  } @else if (gameScoreboard) {
+  } @else {
+    <span>No Content Found</span>
+  }
+</div>

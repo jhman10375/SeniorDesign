@@ -1,0 +1,18 @@
+<div class="app-header">
+  <h1 class="m-0 text-center">College Sports +</h1>
+</div>
+@if (!isMobile) {
+  <div class="app-nav-bar">
+    <web-nav-bar></web-nav-bar>
+  </div>
+}
+
+<div class="app-router-outlet">
+  <router-outlet></router-outlet>
+</div>
+
+@if (isMobile) {
+  <div class="app-nav-bar border-top-1 surface-border">
+    <mobile-nav-bar></mobile-nav-bar>
+  </div>
+}
