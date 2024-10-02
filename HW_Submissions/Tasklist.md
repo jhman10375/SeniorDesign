@@ -8,6 +8,10 @@ Responsible: Jordan Herman
 Define pages, routes, and subroutes/navigation plans <br />
 Responsible: Jordan Herman
 
+## Task 3.
+Create Forgot Password page <br />
+Responsible: Jordan Herman
+
 ## Task 4.
 Create login page <br />
 Responsible: Jordan Herman
