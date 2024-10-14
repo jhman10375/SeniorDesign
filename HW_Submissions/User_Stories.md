@@ -15,7 +15,7 @@ This is a page that includes User Stories for CSP.
 | 3   | As a user of CSP, I want to be able to reset my password for the application so I can use the CSP if I forget my password                                              |
 | 4   | As a user of CSP, I want to be able to manage my account so I can make my account reflect my needs                                                                     |
 | 5   | As a User of CSP, I want view my leagues so I can see information for each league individually, make changes, or leave my leagues                                      |
-| 7   | As a User of CSP, I want to manage my team in a specific league so I can play the game competiively with my friends                                                    |
+| 7   | As a User of CSP, I want to manage my team in a specific league so I can play the game competitively with my friends                                                    |
 | 8   | As a LP, I want to view available players in a specific league so I can trade or drop my players for available players when I want or if a player is injured           |
 | 9   | As a LP, I want to view current rankings/standings in a specific league so I can know how I am doing and if there are changes I need to make for my team to succeed    |
 | 10  | As a LP, I want to view previous, current, and future matches of a league to better understand historic and future data for MT management                              |
