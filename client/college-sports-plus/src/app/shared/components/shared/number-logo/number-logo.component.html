@@ -1,0 +1,23 @@
+<div class="container">
+  @if (player) {
+    <div
+      class="bar longer-bar"
+      [style.background-color]="player.School.PrimaryColor"
+    ></div>
+    <div
+      class="bar shorter-bar"
+      [style.background-color]="player.School.SecondaryColor"
+    ></div>
+    <span class="numbers">#{{ player.Number }}</span>
+  }
+  @if (school) {
+    <div
+      class="bar longer-bar"
+      [style.background-color]="school.PrimaryColor"
+    ></div>
+    <div
+      class="bar shorter-bar"
+      [style.background-color]="school.SecondaryColor"
+    ></div>
+  }
+</div>

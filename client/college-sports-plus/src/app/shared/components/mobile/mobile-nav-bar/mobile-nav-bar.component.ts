@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
-import { GeneralService } from '../../../services/general-service.service';
+import { GeneralService } from '../../../services/bl/general-service.service';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   selector: 'mobile-nav-bar',
   templateUrl: 'mobile-nav-bar.component.html',
 })

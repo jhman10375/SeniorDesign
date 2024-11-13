@@ -1,0 +1,31 @@
+<div class="flex flex-row h-full">
+  <div class="flex flex-column p-1 half-width">
+    <div
+      class="flex flex-row align-items-center justify-content-between mb-1 h-full"
+    >
+      <div class="flex flex-column" style="height: 100%; width: 100%">
+        <div
+          style="height: 50%"
+          class="border-round-top"
+          [style.background-color]="player?.School?.PrimaryColor"
+        ></div
+        ><div
+          style="height: 50%"
+          class="border-round-bottom"
+          [style.background-color]="player?.School?.SecondaryColor"
+        ></div>
+      </div>
+    </div>
+    <div class="flex flex-row align-items-center justify-content-between mb-1">
+      <span class="width-half text-xs">Owner:</span>
+      <span class="width-half text-xs"> {{ player?.Name }}</span>
+    </div>
+  </div>
+  <div class="flex flex-column half-width">
+    <span class="width-75 text-right text-xl"> {{ player?.TeamName }}</span>
+    <!-- <div class="flex flex-row align-items-center justify-content-between mb-1">
+        <span class="width-half text-xs">Current Ranking:</span>
+        <span class="width-half text-xs"> {{ league.CurrentRanking }}</span>
+      </div> -->
+  </div>
+</div>

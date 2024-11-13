@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,13 +7,20 @@ import { Observable } from 'rxjs';
 import { MobileScoreBoardComponent } from '../../shared/components/mobile/mobile-scoreboard/mobile-scoreboard.component';
 import { SportEnum } from '../../shared/enums/sport.enum';
 import { LeagueScorboardModel } from '../../shared/models/league-scoreboard.model';
-import { GeneralService } from '../../shared/services/general-service.service';
-import { LeagueService } from '../../shared/services/league.service';
+import { AthleteService } from '../../shared/services/bl/athlete.service';
+import { GeneralService } from '../../shared/services/bl/general-service.service';
+import { LeagueService } from '../../shared/services/bl/league.service';
+import { FastAPIService } from '../../shared/services/fastAPI/fast-api.service';
 
 @Component({
   standalone: true,
-  imports: [MobileScoreBoardComponent, RouterLink, CommonModule],
-  providers: [LeagueService],
+  imports: [
+    MobileScoreBoardComponent,
+    RouterLink,
+    CommonModule,
+    HttpClientModule,
+  ],
+  providers: [LeagueService, AthleteService, FastAPIService],
   selector: 'home',
   templateUrl: 'home.component.html',
 })
@@ -23,10 +31,15 @@ export class HomeComponent implements OnInit {
 
   leagueList: Observable<Array<LeagueScorboardModel>>;
 
-  constructor(private leagueService: LeagueService) {
+  constructor(
+    private leagueService: LeagueService,
+    private fastAPIService: FastAPIService
+  ) {
     this.isMobile = GeneralService.isMobile();
 
     this.leagueList = this.leagueService.leagueScoreboard;
+
+    this.fastAPIService.getData();
   }
   ngOnInit() {}
 }

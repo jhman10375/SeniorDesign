@@ -20,7 +20,9 @@ This is a project repository for a college fantasy-like sports application
 1. [Design Diagrams](/HW_Submissions/Design%20Diagrams.docx)
 2. [Milestones, Timelines, Effort Matrixes](/HW_Submissions/milestone_list.md)
 3. [User Stories](/HW_Submissions/User_Stories.md)
-4. [Project Dictionary](/HW_Submissions/Project_Dictionary.md)
+4. [Task List](/HW_Submissions/Tasklist.md)
+5. [Constraint Paper](/HW_Submissions/Constraint_Essay.md)
+6. [Project Dictionary](/HW_Submissions/Project_Dictionary.md)
 
 ## Contract
 

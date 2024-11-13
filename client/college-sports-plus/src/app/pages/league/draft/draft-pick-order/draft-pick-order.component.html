@@ -1,0 +1,41 @@
+<mobile-scoreboard [hasDifferentContent]="true">
+  @if (!endDraft) {
+    <div class="flex flex-row h-85 w-full">
+      <div class="flex flex-column surface-border w-30 border-1 m-1 p-1">
+        @if (selectionTime) {
+          <span class="text-3xl">{{ selectionTimeDisplay }}</span>
+        }
+        <span class="text-l">Round: {{ currentRound() + 1 }}</span>
+      </div>
+      <div class="flex flex-row h-full w-full overflow-auto">
+        @for (p of draftOrder; track p) {
+          <div
+            class="border-1 w-25 m-1 p-1 text-xl"
+            [ngClass]="
+              !p.CurrentlyPicking ? 'surface-border' : 'border-primary'
+            "
+          >
+            {{ p.Player.Name }}
+          </div>
+        }
+      </div>
+    </div>
+
+    <span class="ml-1" (click)="overlayPanel.toggle($event)">Pick Order</span>
+    <p-overlayPanel #overlayPanel>
+      <div class="h-full w-full p-2 m-2">
+        <div class="flex flex-column">
+          @for (p of pickOrder; track p) {
+            <div> {{ p.SortOrder.SortOrder + 1 }} {{ p.Player.Name }} </div>
+          }
+        </div>
+      </div>
+    </p-overlayPanel>
+  } @else {
+    <div
+      class="flex flex-row justify-content-around align-items-center h-full w-full"
+    >
+      <span class="text-4xl">Draft Complete</span>
+    </div>
+  }
+</mobile-scoreboard>

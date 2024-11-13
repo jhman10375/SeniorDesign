@@ -1,0 +1,16 @@
+@if (isMobile) {
+  <mobile-scoreboard [hasDifferentContent]="true">
+    <span class="text-xl">Rankings</span>
+  </mobile-scoreboard>
+  @if (currentLeague) {
+    <div class="border-1 surface-border border-round p-2 mt-2">
+      @for (player of currentLeague.Players; track player) {
+        <div
+          class="m-2 flex flex-row justify-content-between pl-1 pr-1 pb-1 border-bottom-1 surface-border"
+        >
+          <span>{{ player.Name }}</span>
+        </div>
+      }
+    </div>
+  }
+}

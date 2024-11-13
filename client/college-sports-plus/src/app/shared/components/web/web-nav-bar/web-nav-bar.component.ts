@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { GeneralService } from '../../../services/general-service.service';
+import { GeneralService } from '../../../services/bl/general-service.service';
 
 @Component({
   standalone: true,

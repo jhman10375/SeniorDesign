@@ -12,25 +12,43 @@
           >
           <span
             class="pi-spin material-icons"
-            style="width: 24px; color: orange"
+            style="width: 24px; color: #f88158"
             >sports_basketball</span
           >
           <span class="pi-spin material-icons" style="width: 24px"
             >sports_baseball</span
           >
-          <span class="pi-spin material-icons" style="width: 24px"
+          <span class="pi-spin material-icons text-primary" style="width: 24px"
             >sports_soccer</span
           >
         </div>
       </div>
     </mobile-scoreboard>
   </div>
-  <div class="flex flex-row"
-    ><span class="material-icons" style="width: 24px; color: brown"
-      >sports_football</span
-    >
-    <span>Football</span></div
-  >
+  <div class="flex flex-row justify-content-between">
+    <div class="flex flex-row"
+      ><span class="material-icons" style="width: 24px; color: brown"
+        >sports_football</span
+      >
+      <span>Football</span>
+    </div>
+    <div class="flex flex-row">
+      <i
+        class="pi pi-plus"
+        style="width: 24px; color: brown"
+        [routerLink]="['/create-league']"
+        [queryParams]="{ lt: SportEnum.Football }"
+        queryParamsHandling="merge"
+      ></i>
+      <i
+        class="pi pi-search"
+        style="width: 24px; color: brown"
+        [routerLink]="['/league-search']"
+        [queryParams]="{ lt: SportEnum.Football }"
+        queryParamsHandling="merge"
+      ></i>
+    </div>
+  </div>
   @for (league of leagueList | async; track league) {
     @if (league.Sport == SportEnum.Football) {
       <div class="m-2">
@@ -42,12 +60,30 @@
       </div>
     }
   }
-  <div class="flex flex-row"
-    ><span class="material-icons" style="width: 24px; color: orange"
-      >sports_basketball</span
+  <div class="flex flex-row justify-content-between">
+    <div class="flex flex-row"
+      ><span class="material-icons" style="width: 24px; color: #f88158"
+        >sports_basketball</span
+      >
+      <span>Basketball</span></div
     >
-    <span>Basketball</span></div
-  >
+    <div class="flex flex-row">
+      <i
+        class="pi pi-plus"
+        style="width: 24px; color: #f88158"
+        [routerLink]="['/create-league']"
+        [queryParams]="{ lt: SportEnum.Basketball }"
+        queryParamsHandling="merge"
+      ></i>
+      <i
+        class="pi pi-search"
+        style="width: 24px; color: #f88158"
+        [routerLink]="['/league-search']"
+        [queryParams]="{ lt: SportEnum.Basketball }"
+        queryParamsHandling="merge"
+      ></i>
+    </div>
+  </div>
   @for (league of leagueList | async; track league) {
     @if (league.Sport == SportEnum.Basketball) {
       <div class="m-2">
@@ -59,10 +95,28 @@
       </div>
     }
   }
-  <div class="flex flex-row"
-    ><span class="material-icons" style="width: 24px">sports_baseball</span>
-    <span>Baseball</span></div
-  >
+  <div class="flex flex-row justify-content-between">
+    <div class="flex flex-row"
+      ><span class="material-icons" style="width: 24px">sports_baseball</span>
+      <span>Baseball</span></div
+    >
+    <div class="flex flex-row">
+      <i
+        class="pi pi-plus"
+        style="width: 24px"
+        [routerLink]="['/create-league']"
+        [queryParams]="{ lt: SportEnum.Baseball }"
+        queryParamsHandling="merge"
+      ></i>
+      <i
+        class="pi pi-search"
+        style="width: 24px"
+        [routerLink]="['/league-search']"
+        [queryParams]="{ lt: SportEnum.Baseball }"
+        queryParamsHandling="merge"
+      ></i>
+    </div>
+  </div>
   @for (league of leagueList | async; track league) {
     @if (league.Sport == SportEnum.Baseball) {
       <div class="m-2">
@@ -74,10 +128,30 @@
       </div>
     }
   }
-  <div class="flex flex-row"
-    ><span class="material-icons" style="width: 24px">sports_soccer</span>
-    <span>Soccer</span></div
-  >
+  <div class="flex flex-row justify-content-between">
+    <div class="flex flex-row"
+      ><span class="material-icons text-primary" style="width: 24px"
+        >sports_soccer</span
+      >
+      <span>Soccer</span></div
+    >
+    <div class="flex flex-row">
+      <i
+        class="pi pi-plus text-primary"
+        style="width: 24px"
+        [routerLink]="['/create-league']"
+        [queryParams]="{ lt: SportEnum.Soccer }"
+        queryParamsHandling="merge"
+      ></i>
+      <i
+        class="pi pi-search text-primary"
+        style="width: 24px"
+        [routerLink]="['/league-search']"
+        [queryParams]="{ lt: SportEnum.Soccer }"
+        queryParamsHandling="merge"
+      ></i>
+    </div>
+  </div>
   @for (league of leagueList | async; track league) {
     @if (league.Sport == SportEnum.Soccer) {
       <div class="m-2">
