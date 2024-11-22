@@ -24,6 +24,7 @@ This is a project repository for a college fantasy-like sports application
 5. [Constraint Paper](/HW_Submissions/Constraint_Essay.md)
 6. [Project Dictionary](/HW_Submissions/Project_Dictionary.md)
 7. [Fall Desgin Presentation](/HW_Submissions/Fall_Design_Presentation.pdf)
+8. [Budget](/HW_Submissions/budget.md)
 
 ## Contract
 
