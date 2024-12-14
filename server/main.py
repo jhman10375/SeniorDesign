@@ -1,8 +1,14 @@
 from fastapi import FastAPI
 import requests
+from datetime import datetime
 import numpy as np
 import pandas as pd
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+token = os.getenv("CFBD_TOKEN")
 
 app = FastAPI()
 
@@ -14,47 +20,48 @@ async def root():
 @app.get("/teams/{team_name}")
 async def get_schedule(team_name):
 
-    url = "https://api.sportradar.com/ncaafb/trial/v7/en/games/current_season/schedule.json?api_key=hOKicjx5XighZ0TJTE4aRkEiJ7N4y1zlFjQJQJMg"
+    url = f"https://api.collegefootballdata.com/games?year=2024&seasonType=regular&team={team_name}"
 
-    headers = {"accept": "application/json"}
+    headers = {"Authorization": f"Bearer {token}"}
 
-    response = requests.get(url, headers=headers)
+    games_response = requests.get(url, headers=headers)
 
-    schedule_json = json.loads(response.text)
+    games_json = json.loads(games_response.text)
 
-    df_weeks = pd.json_normalize(schedule_json['weeks'])
+    games_df = pd.json_normalize(games_json)
 
-    team_to_search = team_name
-
-    df = pd.DataFrame({"hometeam":[],
-                    "awayteam":[]})
-
-    for week in df_weeks["games"]:
-        df_games = pd.json_normalize(week)
-        df_games= df_games.rename(columns={"home.name": "hometeam", "away.name": "awayteam"})
-        df_current = df_games.query('hometeam == "' + team_to_search + '" or awayteam == "' + team_to_search + '"')
-        if len(df_current) > 0:
-            df = pd.concat([df, df_current[["home.id", "hometeam", "awayteam", "scheduled"]]])
-
-    return df.to_dict('records')
+    return games_df[["home_id", "home_team", "away_team", "start_date"]].to_dict()
 
 
 @app.get("/teams/{team_id}/players")
-async def get_playes(team_id, player_type = "None"):
-    url = "https://api.sportradar.com/ncaafb/trial/v7/en/teams/" + team_id +"/full_roster.json?api_key=hOKicjx5XighZ0TJTE4aRkEiJ7N4y1zlFjQJQJMg"
+async def get_playes(team_name, player_type = "None"):
+    
+    url = f"https://api.collegefootballdata.com/roster?team={team_name}&year={datetime.now().year}"
 
-    headers = {"accept": "application/json"}
+    headers = {"Authorization": f"Bearer {token}"}
 
     response = requests.get(url, headers=headers)
 
     roster_json = json.loads(response.text)
 
-    roster = pd.json_normalize(roster_json["players"])
+    roster_df = pd.json_normalize(roster_json)
 
-    roster = roster.drop(columns=['name_suffix'])
+    roster_df.drop(['team', 'height', 'weight', 
+                    'home_city', 'home_state', 'home_country', 'home_latitude', 
+                    'home_longitude', 'home_county_fips', 'recruit_ids', 'year', 'jersey', 'id'], axis=1, inplace=True)
+    
+    roster_df["name"] = roster_df["first_name"] + " " + roster_df["last_name"]
 
-    if player_type == "None":
-        return roster.to_dict('records')
+    roster_df.drop(['first_name', 'last_name'], axis=1, inplace=True)
+
+    if player_type != "None":
+
+        roster_df = roster_df.query(f'position == "{player_type}"')
+
+        roster_df.drop('position', axis=1, inplace=True)
+
+        roster_df.reset_index(drop=True, inplace=True)
+
+        return roster_df.to_dict()
     else:
-        return roster.query('position == "'+ player_type + '"').to_dict('records')
-
+        return roster_df.to_dict()
