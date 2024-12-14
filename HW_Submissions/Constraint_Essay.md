@@ -1,0 +1,12 @@
+# Constraint Essay
+
+This is a page that contains an essay on some of the contraints for CS+.
+
+The first constraint of note is a security constraint. When using 3rd Party libraries for a project, like FastAPI, Pandas, and even the SportsRadar API (to some extent), there always exist some security concerns, since the source code of these libraries cannot be accessed by the development team. Thankfully, all of the libraries used for this project, so far, have been industry standard libraries that the team have developed with before while on co-op, which somewhat mitigates risks. That being said, CS+ should still be careful when adding additional libraries, and keep an eye out for any data leak news from any of the libraries currently in use. Another constraint is a legal constraint, regarding the NCAA (National Collegiate Athletics Association) and their rules for games regarding collegiate sports. The NCAA is very particular about which games are allowed to operate with team likeness, player names, etc, and because of this, CS+ needs to make sure it is compliant with all rules. One of these rules is that fantasy sports cannot include monetary wagers, so playing for money will be against CS+ terms of service.
+
+Our intended product creates a new social experience for college athletics in which fans have an opportunity to play a game based on the failure and success of college athletes. Often included in professional athletic fantasy games is the opportunity for gambling and financially beneficial competitions, which we are potentially inviting with a new layer of the fantasy game industry. In regards to society, we are directly impacting college athletics and the exposure of players across the NCAA which will impact NIL opportunity, career opportunities for athletes, and program awareness for less-known schools. Considering diversity and cultural awareness, this application is targeted for athletic communities in the United States including fans, athletes, and athletic administrators. CS+ has no restrictions on the players you use or the people you play the game with and encourages the use of community and social groups for building leagues. CS+ is being built with an intense focus on accessibility including using light and dark themes, text size controls, and cross-platform support.
+
+## Quick Links
+
+[Back To Top](#constraint-essay) \
+[Back to ReadMe](/README.md)

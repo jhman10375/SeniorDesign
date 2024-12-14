@@ -1,0 +1,45 @@
+<div class="" [style]="{ height: '100%' }">
+  <div
+    class="flex flex-row mb-1 align-items-center justify-content-between border-bottom-1 surface-border"
+  >
+    <span>Filters:</span>
+    <span>Position</span>
+    <span>General</span>
+  </div>
+  <div
+    class="flex flex-row mb-2 align-items-center justify-content-between border-bottom-1 surface-border"
+  >
+    <span>Pick</span>
+    <span>Remove</span>
+    <span>Name</span>
+    <span>Number</span>
+    <span>School</span>
+  </div>
+
+  @for (athlete of athletes; track athlete) {
+    <div
+      class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
+    >
+      @if (currentlyPicking) {
+        <span
+          class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+          (click)="addToRoster(athlete)"
+          >Pick</span
+        >
+      } @else {
+        <span
+          class="grid-item text-xs text-primary border-1 p-1 border-primary border-round p-disabled"
+          >Pick</span
+        >
+      }
+      <span
+        class="grid-item text-xs text-red-400 border-1 p-1 border-red-400 border-round"
+        (click)="removeFromQueue(athlete)"
+        >Remove</span
+      >
+      <span class="text-xs">{{ athlete.Name }}</span>
+      <span class="text-xs">{{ athlete.Number }}</span>
+      <span class="text-xs">{{ athlete.School.Name }}</span>
+    </div>
+  }
+</div>

@@ -1,7 +1,11 @@
 .width-half {
-  max-width: 50%;
+  max-width: 50% !important;
 }
 
 .width-75 {
-  max-width: 75%;
+  max-width: 75% !important;
+}
+
+.scoreboard-background {
+  background-color: var(--gray-100) !important;
 }

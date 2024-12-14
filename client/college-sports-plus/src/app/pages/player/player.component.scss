@@ -1,0 +1,18 @@
+@media screen and (orientation: portrait) {
+  //   .header-number-logo-width {
+  //     max-width: 30%;
+  //   }
+
+  .header-title-width {
+    max-width: 65%;
+  }
+}
+@media screen and (orientation: landscape) {
+  .header-number-logo-width {
+    max-width: 15%;
+  }
+
+  .header-title-width {
+    max-width: 85%;
+  }
+}

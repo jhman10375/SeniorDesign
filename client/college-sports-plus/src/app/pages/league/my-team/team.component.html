@@ -1,0 +1,19 @@
+@if (isMobile) {
+  @if (checkIfAtParentRoute()) {
+    <mobile-scoreboard [teamScoreboard]="true" [player]="player?.player">
+    </mobile-scoreboard>
+
+    @for (athlete of player?.athletes; track athlete) {
+      <div
+        (click)="navigateTo(athlete.AthleteID)"
+        class="m-2 flex flex-row justify-content-between pl-1 pr-1 pb-1 border-bottom-1 surface-border"
+      >
+        <span>{{ athlete.Name }}</span>
+        <span>{{ athlete.Number }}</span>
+        <span>{{ athlete.School.Name }}</span>
+      </div>
+    }
+  }
+
+  <router-outlet></router-outlet>
+}
