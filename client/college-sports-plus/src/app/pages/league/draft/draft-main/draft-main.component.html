@@ -1,40 +1,58 @@
-<div class="" [style]="{ height: '100%' }">
-  <div
-    class="flex flex-row mb-1 align-items-center justify-content-between border-bottom-1 surface-border"
-  >
-    <span>Filters:</span>
-    <span>Position</span>
-    <span>General</span>
-  </div>
-  <div
-    class="flex flex-row mb-2 align-items-center justify-content-between border-bottom-1 surface-border"
-  >
-    <span>Select</span>
-    <span>Name</span>
-    <span>Number</span>
-    <span>School</span>
+<div class="scrollable-container" [style]="{ height: '100%' }">
+  <div class="header">
+    <div
+      class="flex flex-row mb-1 align-items-center justify-content-between border-bottom-1 surface-border"
+    >
+      <span class="header-item">Filters:</span>
+      <span class="header-item">Position</span>
+      <span class="header-item">General</span>
+    </div>
+    <div
+      class="flex flex-row mb-2 align-items-center justify-content-between border-bottom-1 surface-border"
+    >
+      @if (!endDraft) {
+        <span class="header-item">Select</span>
+      }
+      <span class="header-item">Name</span>
+      <span class="header-item">Number</span>
+      <span class="header-item">School</span>
+    </div>
   </div>
 
-  @for (athlete of athletes; track athlete) {
-    <div
-      class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
-    >
-      @if (currentlyPicking) {
-        <span
-          class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
-          (click)="addToRoster(athlete)"
-          >Pick</span
-        >
-      } @else {
-        <span
-          class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
-          (click)="addToQueue(athlete)"
-          >Reserve</span
-        >
-      }
-      <span class="text-xs">{{ athlete.Name }}</span>
-      <span class="text-xs">{{ athlete.Number }}</span>
-      <span class="text-xs">{{ athlete.School.Name }}</span>
-    </div>
-  }
+  <div class="body">
+    @for (athlete of athletes; track athlete) {
+      <div
+        class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
+      >
+        @if (!endDraft) {
+          <div class="data-cell">
+            @if (currentlyPicking) {
+              <span
+                class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                (click)="addToRoster(athlete)"
+                >Pick</span
+              >
+            } @else {
+              @if (inQueue(athlete)) {
+                <span
+                  class="grid-item text-xs text-primary border-1 p-1 border-primary border-round p-disabled"
+                  >Reserved</span
+                >
+              } @else {
+                <span
+                  class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                  (click)="addToQueue(athlete)"
+                  >Reserve</span
+                >
+              }
+            }
+          </div>
+        }
+
+        <div class="data-cell">{{ athlete.Athlete.Name }}</div>
+        <div class="data-cell">{{ athlete.Athlete.Number }}</div>
+        <div class="data-cell">{{ athlete.Athlete.School.Name }}</div>
+      </div>
+    }
+  </div>
 </div>

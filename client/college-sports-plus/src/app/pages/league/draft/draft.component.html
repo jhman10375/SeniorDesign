@@ -1,66 +1,97 @@
 @if (isMobile) {
-  <div class="grid-container w-full">
-    <div class="grid-header max-w-full">
-      <draft-nav (navigate)="navigateToRoute($event)"></draft-nav>
-      <draft-pick-order
-        [selectionTime]="activeLeague?.Settings?.DraftSelectionTime ?? 0"
-        [draftOrder]="(draftOrder | async) ?? []"
-        [pickOrder]="(pickOrder | async) ?? []"
-        [pickUpdated]="(pickUpdated | async) ?? false"
-        [currentPick]="currentPick | async"
-        [pickMade]="pickMade | async"
-        [endDraft]="(endDraft | async) ?? false"
-        (timerEnd)="updateCurrentPick()"
-      ></draft-pick-order>
+  @if (!draftStarted) {
+    <draft-otp
+      [isLeagueManager]="activeLeague?.Manager?.ID == activeUser?.ID"
+      [draftKey]="draftKey"
+      [displayWaitingRoom]="inWaitingRoom()"
+      [connectedUsers]="connectedUsers"
+      [webSocketError]="webSocketError()"
+      (createDraft)="onCreateDraft()"
+      (joinDraft)="onJoinDraft($event)"
+      (enterDraft)="onEnterDraft()"
+    ></draft-otp>
+  } @else {
+    <div class="grid-container w-full">
+      <div class="grid-header max-w-full">
+        <draft-nav
+          [currentNav]="(viewablePage | async) ?? DraftNavEnum.Main"
+          (navigate)="navigateToRoute($event)"
+        ></draft-nav>
+        <draft-pick-order
+          [selectionTime]="
+            activeLeague?.Settings?.DraftSettingsModel?.DraftSelectionTime ?? 0
+          "
+          [draftOrder]="(draftOrder | async) ?? []"
+          [pickOrder]="(pickOrder | async) ?? []"
+          [pickUpdated]="(pickUpdated | async) ?? false"
+          [currentPick]="currentPick | async"
+          [pickMade]="pickMade | async"
+          [endDraft]="(endDraft | async) ?? false"
+          (timerEnd)="onUpdateCurrentPick()"
+        ></draft-pick-order>
+      </div>
+      <div class="grid-content max-w-full surface-border border-round border-1">
+        @switch (viewablePage | async) {
+          @case (DraftNavEnum.Main) {
+            <div class="pb-2 pl-2 pr-2">
+              <draft-main
+                [athletes]="(athletes$ | async) ?? []"
+                [queue]="(queue$ | async) ?? []"
+                [currentlyPicking]="
+                  (currentPick | async)?.Player?.ID
+                    ? (currentPick | async)?.Player?.ID == activeUser?.ID
+                      ? true
+                      : false
+                    : false
+                "
+                [endDraft]="(endDraft | async) ?? false"
+                (addToQueueEmitter)="onAddToQueue($event)"
+                (addToRosterEmitter)="onAddToRoster($event)"
+              ></draft-main
+            ></div>
+          }
+          @case (DraftNavEnum.Player) {
+            <div class="p-2"> <draft-player></draft-player></div>
+          }
+          @case (DraftNavEnum.Queue) {
+            <div class="pb-2 pl-2 pr-2">
+              <draft-queue
+                [athletes]="(queue$ | async) ?? []"
+                [currentlyPicking]="
+                  (currentPick | async)?.Player?.ID
+                    ? (currentPick | async)?.Player?.ID == activeUser?.ID
+                      ? true
+                      : false
+                    : false
+                "
+                [endDraft]="(endDraft | async) ?? false"
+                (addToRosterEmitter)="onAddToRoster($event)"
+                (removeFromRosterEmitter)="onRemoveFromQueue($event)"
+              ></draft-queue
+            ></div>
+          }
+          @case (DraftNavEnum.MySelections) {
+            <div class="pb-2 pl-2 pr-2">
+              <draft-my-selections
+                [athletes]="(myTeam | async) ?? []"
+              ></draft-my-selections
+            ></div>
+          }
+          @case (DraftNavEnum.Selections) {
+            <draft-selections
+              [selections]="(leagueAthlete$ | async) ?? []"
+              [numberOfRounds]="numberOfRounds"
+            ></draft-selections>
+          }
+          @case (DraftNavEnum.None) {
+            <div class="p-2"> <draft-main></draft-main></div>
+          }
+          @default {
+            <div class="p-2"> <draft-main></draft-main></div>
+            <draft-main></draft-main>
+          }
+        }
+      </div>
     </div>
-    <div
-      class="grid-content max-w-full surface-border border-round border-1 p-2"
-    >
-      @switch (viewablePage | async) {
-        @case (DraftNavEnum.Main) {
-          <draft-main
-            [athletes]="(athletes | async) ?? []"
-            [currentlyPicking]="
-              (currentPick | async)?.Player?.ID
-                ? (currentPick | async)?.Player?.ID == activeUser?.ID
-                  ? true
-                  : false
-                : false
-            "
-            (addToQueueEmitter)="addToQueue($event)"
-            (addToRosterEmitter)="addToRoster($event)"
-          ></draft-main>
-        }
-        @case (DraftNavEnum.Player) {
-          <draft-player></draft-player>
-        }
-        @case (DraftNavEnum.Queue) {
-          <draft-queue
-            [athletes]="(queue | async) ?? []"
-            [currentlyPicking]="
-              (currentPick | async)?.Player?.ID
-                ? (currentPick | async)?.Player?.ID == activeUser?.ID
-                  ? true
-                  : false
-                : false
-            "
-            (addToRosterEmitter)="addToRoster($event)"
-            (removeFromRosterEmitter)="removeFromQueue($event)"
-          ></draft-queue>
-        }
-        @case (DraftNavEnum.MySelections) {
-          <draft-my-selections></draft-my-selections>
-        }
-        @case (DraftNavEnum.Selections) {
-          <draft-selections></draft-selections>
-        }
-        @case (DraftNavEnum.None) {
-          <draft-main></draft-main>
-        }
-        @default {
-          <draft-main></draft-main>
-        }
-      }
-    </div>
-  </div>
+  }
 }

@@ -1,31 +1,36 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DragDropModule } from 'primeng/dragdrop';
+import { OrderListModule } from 'primeng/orderlist';
 
-import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.model';
+import { DraftPlayerModel } from '../models/draft-player.model';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [OrderListModule, DragDropModule],
   selector: 'draft-queue',
+  styleUrls: ['draft-queue.component.scss'],
   templateUrl: 'draft-queue.component.html',
 })
 export class DraftQueueComponent implements OnInit {
-  @Input() athletes: Array<LeagueAthleteModel> = [];
+  @Input() athletes: Array<DraftPlayerModel> = [];
 
   @Input() currentlyPicking: boolean = false;
 
-  @Output() addToRosterEmitter = new EventEmitter<LeagueAthleteModel>();
+  @Input() endDraft: boolean = false;
 
-  @Output() removeFromRosterEmitter = new EventEmitter<LeagueAthleteModel>();
+  @Output() addToRosterEmitter = new EventEmitter<DraftPlayerModel>();
+
+  @Output() removeFromRosterEmitter = new EventEmitter<DraftPlayerModel>();
 
   constructor() {}
 
   ngOnInit() {}
 
-  addToRoster(athlete: LeagueAthleteModel): void {
+  addToRoster(athlete: DraftPlayerModel): void {
     this.addToRosterEmitter.emit(athlete);
   }
 
-  removeFromQueue(athlete: LeagueAthleteModel): void {
+  removeFromQueue(athlete: DraftPlayerModel): void {
     this.removeFromRosterEmitter.emit(athlete);
   }
 }

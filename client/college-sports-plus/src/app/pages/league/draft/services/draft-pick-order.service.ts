@@ -1,33 +1,27 @@
 import { Injectable } from '@angular/core';
-import { cloneDeep } from 'lodash';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { DraftPickOrderTypeEnum } from '../../../../shared/enums/draft-pick-order-type.enum';
 import { DraftOrderModel } from '../../../../shared/models/draft-order.model';
-import { DraftSortOrderModel } from '../../../../shared/models/draft-sort-order.model';
-import { LeagueModel } from '../../../../shared/models/league.model';
 
 @Injectable()
 export class DraftPickOrderService {
-  currentPick: Observable<DraftOrderModel>;
+  currentPick: Observable<DraftOrderModel>; // Keep
 
   endDraft: Observable<boolean>;
 
   pickUpdated: Observable<boolean>;
 
-  draftOrder: Observable<Array<DraftOrderModel>>;
+  draftOrder: Observable<Array<DraftOrderModel>>; // Keep
 
-  pickOrder: Observable<Array<DraftOrderModel>>;
+  pickOrder: Observable<Array<DraftOrderModel>>; // Keep
 
-  numberOfRounds: number = 10; // TODO: Update this to calculate by league settings based on number of players per team
-
-  private _currentPick = new BehaviorSubject<DraftOrderModel>(
+  private _currentPick = new BehaviorSubject<DraftOrderModel>( // Keep
     new DraftOrderModel()
   );
 
-  private _draftOrder = new BehaviorSubject<Array<DraftOrderModel>>([]);
+  private _draftOrder = new BehaviorSubject<Array<DraftOrderModel>>([]); // Keep
 
-  private _pickOrder = new BehaviorSubject<Array<DraftOrderModel>>([]);
+  private _pickOrder = new BehaviorSubject<Array<DraftOrderModel>>([]); // Keep
 
   private _endDraft = new BehaviorSubject<boolean>(false);
 
@@ -35,203 +29,31 @@ export class DraftPickOrderService {
 
   constructor() {
     this.currentPick = this._currentPick.asObservable();
-    this.draftOrder = this._draftOrder.asObservable();
-    this.pickOrder = this._pickOrder.asObservable();
-    this.endDraft = this._endDraft.asObservable();
-    this.pickUpdated = this._pickUpdated.asObservable();
+    this.draftOrder = this._draftOrder.asObservable(); // Keep
+    this.pickOrder = this._pickOrder.asObservable(); // Keep
+    this.endDraft = this._endDraft.asObservable(); // Keep
+    this.pickUpdated = this._pickUpdated.asObservable(); // Keep
   }
 
-  setPickOrder(league: LeagueModel): void {
-    let pickOrder: Array<DraftOrderModel> = [];
-    league.Players.forEach((player) => {
-      const pickOrderModel: DraftOrderModel = new DraftOrderModel();
-      pickOrderModel.Player = player;
-      pickOrderModel.CurrentlyPicking = player.DraftPickSortOrder == 0;
-      pickOrderModel.SortOrder = new DraftSortOrderModel();
-      pickOrderModel.SortOrder.SortOrder = player.DraftPickSortOrder;
-      pickOrderModel.SortOrder.Round = 0;
-      pickOrder.push(pickOrderModel);
-    });
-    let pickOrderClone: Array<DraftOrderModel> = [];
-    let shuffledIndices: Array<number> = [];
-    switch (league.Settings.DraftPickOrderType) {
-      case DraftPickOrderTypeEnum.AlphabeticalSequence:
-        pickOrder.sort((a, b) => {
-          return a.Player.Name.localeCompare(b.Player.Name, 'en', {
-            sensitivity: 'base',
-          });
-        });
-        for (let i = 0; i < pickOrder.length; i++) {
-          pickOrder[i].SortOrder.SortOrder = i;
-          pickOrder[i].Player.DraftPickSortOrder = i;
-        }
-
-        pickOrder.sort((a, b) => a.SortOrder.SortOrder - b.SortOrder.SortOrder);
-        this._pickOrder.next(pickOrder);
-        pickOrderClone = [];
-
-        for (
-          let currentRound = 0;
-          currentRound < this.numberOfRounds;
-          currentRound++
-        ) {
-          for (let i = 0; i < pickOrder.length; i++) {
-            const selector: DraftOrderModel = new DraftOrderModel();
-            selector.CurrentlyPicking = pickOrder[i].CurrentlyPicking;
-            selector.Player = pickOrder[i].Player;
-            selector.SortOrder = new DraftSortOrderModel();
-            selector.SortOrder.SortOrder = i;
-            selector.SortOrder.Round = currentRound;
-
-            pickOrderClone.push(selector);
-          }
-        }
-        break;
-      case DraftPickOrderTypeEnum.AlphabeticalSnake:
-        pickOrder.sort((a, b) => {
-          return a.Player.Name.localeCompare(b.Player.Name, 'en', {
-            sensitivity: 'base',
-          });
-        });
-        for (let i = 0; i < pickOrder.length; i++) {
-          pickOrder[i].SortOrder.SortOrder = i;
-          pickOrder[i].Player.DraftPickSortOrder = i;
-        }
-
-        pickOrder.sort((a, b) => a.SortOrder.SortOrder - b.SortOrder.SortOrder);
-        this._pickOrder.next(pickOrder);
-        pickOrderClone = [];
-
-        for (
-          let currentRound = 0;
-          currentRound < this.numberOfRounds;
-          currentRound++
-        ) {
-          const isReverseOrder = currentRound % 2 === 0;
-
-          if (isReverseOrder) {
-            for (let i = 0; i < pickOrder.length; i++) {
-              const selector: DraftOrderModel = new DraftOrderModel();
-              selector.CurrentlyPicking = pickOrder[i].CurrentlyPicking;
-              selector.Player = pickOrder[i].Player;
-              selector.SortOrder = new DraftSortOrderModel();
-              selector.SortOrder.SortOrder = i;
-              selector.SortOrder.Round = currentRound;
-
-              pickOrderClone.push(selector);
-            }
-          } else {
-            for (let i = pickOrder.length - 1; i >= 0; i--) {
-              const selector: DraftOrderModel = new DraftOrderModel();
-              selector.CurrentlyPicking = pickOrder[i].CurrentlyPicking;
-              selector.Player = pickOrder[i].Player;
-              selector.SortOrder = new DraftSortOrderModel();
-              selector.SortOrder.SortOrder = i;
-              selector.SortOrder.Round = currentRound;
-
-              pickOrderClone.push(selector);
-            }
-          }
-        }
-        break;
-      case DraftPickOrderTypeEnum.RandomSequence:
-        shuffledIndices = [...Array(pickOrder.length).keys()].sort(
-          () => 0.5 - Math.random()
-        );
-        shuffledIndices.forEach((index, i) => {
-          pickOrder[index].SortOrder.SortOrder = i;
-        });
-
-        pickOrder.sort((a, b) => a.SortOrder.SortOrder - b.SortOrder.SortOrder);
-        this._pickOrder.next(pickOrder);
-        pickOrderClone = [];
-
-        for (
-          let currentRound = 0;
-          currentRound < this.numberOfRounds;
-          currentRound++
-        ) {
-          for (let i = 0; i < pickOrder.length; i++) {
-            const selector: DraftOrderModel = new DraftOrderModel();
-            selector.CurrentlyPicking = pickOrder[i].CurrentlyPicking;
-            selector.Player = pickOrder[i].Player;
-            selector.SortOrder = new DraftSortOrderModel();
-            selector.SortOrder.SortOrder = i;
-            selector.SortOrder.Round = currentRound;
-
-            pickOrderClone.push(selector);
-          }
-        }
-        break;
-      case DraftPickOrderTypeEnum.RandomSnake:
-        shuffledIndices = [...Array(pickOrder.length).keys()].sort(
-          () => 0.5 - Math.random()
-        );
-        shuffledIndices.forEach((index, i) => {
-          pickOrder[index].SortOrder.SortOrder = i;
-        });
-
-        pickOrder.sort((a, b) => a.SortOrder.SortOrder - b.SortOrder.SortOrder);
-        this._pickOrder.next(pickOrder);
-        pickOrderClone = [];
-
-        for (
-          let currentRound = 0;
-          currentRound < this.numberOfRounds;
-          currentRound++
-        ) {
-          const isReverseOrder = currentRound % 2 === 1;
-
-          if (isReverseOrder) {
-            for (let i = 0; i < pickOrder.length; i++) {
-              const selector: DraftOrderModel = new DraftOrderModel();
-              selector.CurrentlyPicking = pickOrder[i].CurrentlyPicking;
-              selector.Player = pickOrder[i].Player;
-              selector.SortOrder = new DraftSortOrderModel();
-              selector.SortOrder.SortOrder = i;
-              selector.SortOrder.Round = currentRound;
-
-              pickOrderClone.push(selector);
-            }
-          } else {
-            for (let i = pickOrder.length - 1; i >= 0; i--) {
-              const selector: DraftOrderModel = new DraftOrderModel();
-              selector.CurrentlyPicking = pickOrder[i].CurrentlyPicking;
-              selector.Player = pickOrder[i].Player;
-              selector.SortOrder = new DraftSortOrderModel();
-              selector.SortOrder.SortOrder = i;
-              selector.SortOrder.Round = currentRound;
-
-              pickOrderClone.push(selector);
-            }
-          }
-        }
-        break;
-    }
-    pickOrderClone[0].CurrentlyPicking = true;
-    this._currentPick.next(pickOrderClone[0]);
-    this._draftOrder.next(pickOrderClone);
-    this._pickUpdated.next(true);
+  stopDraft(): void {
+    this._endDraft.next(true);
   }
 
-  updateCurrentPick(): void {
-    const pickOrder: Array<DraftOrderModel> = this._draftOrder.value;
-    const pickOrderUpdated: Array<DraftOrderModel> = [];
+  setPickOrder(pickOrder: Array<DraftOrderModel>): void {
+    const x = pickOrder.filter(
+      (obj, index, self) =>
+        index === self.findIndex((o) => o.Player.ID === obj.Player.ID)
+    );
+    const y = x.sort(
+      (a, b) => a.Player.DraftPickSortOrder - b.Player.DraftPickSortOrder
+    );
+    this._pickOrder.next(y);
+  }
 
-    for (let i = 1; i < pickOrder.length; i++) {
-      pickOrderUpdated.push(pickOrder[i]);
-    }
-
-    if (pickOrderUpdated.length == 0) {
-      this._endDraft.next(true);
-    } else {
-      pickOrderUpdated[0].CurrentlyPicking = true;
-    }
-
-    const pick = cloneDeep(pickOrderUpdated[0]);
-
-    this._currentPick.next(pick);
-    this._draftOrder.next(pickOrderUpdated);
+  createDraftOrder(draftOrder: Array<DraftOrderModel>): void {
+    draftOrder[0].CurrentlyPicking = true;
+    this._currentPick.next(draftOrder[0]);
+    this._draftOrder.next(draftOrder);
     this._pickUpdated.next(true);
   }
 }

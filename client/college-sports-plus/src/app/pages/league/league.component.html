@@ -1,103 +1,107 @@
 @if (isMobile) {
-  @if (activeLeague) {
-    <div
-      class="flex align-items-center justify-content-between mt-2 mb-2 border-bottom-1 surface-border"
-    >
-      @if (checkIfAtParentRoute()) {
+  <div class="root-container">
+    @if (activeLeague) {
+      <div class="header">
         <div
-          class="flex align-items-center justify-content-start text-primary"
-          [routerLink]="['/home']"
+          class="flex align-items-center justify-content-between border-bottom-1 surface-border"
         >
-          <i class="pi pi-angle-left"></i>
-          <span>Home</span>
-        </div>
-      } @else {
-        <div
-          class="flex align-items-center justify-content-start text-primary"
-          (click)="goBack()"
-        >
-          <i class="pi pi-angle-left"></i>
-          <span>Back</span>
-        </div>
-      }
+          @if (checkIfAtParentRoute()) {
+            <div
+              class="flex align-items-center justify-content-start text-primary"
+              [routerLink]="['/home']"
+            >
+              <i class="pi pi-angle-left"></i>
+              <span>Home</span>
+            </div>
+          } @else {
+            <div
+              class="flex align-items-center justify-content-start text-primary"
+              (click)="goBack()"
+            >
+              <i class="pi pi-angle-left"></i>
+              <span>Back</span>
+            </div>
+          }
 
-      <span class="text-xl" [routerLink]="['/league', activeLeague.ID]">
-        {{ activeLeague.Name }}
-      </span>
-      @if (hasDraftOccurred) {
-        <span class="text-green" (click)="navigateTo('standings')">
-          <i class="pi pi-chart-line"></i> Rankings</span
-        >
-      } @else {
-        <span (click)="navigateTo('')"> Help</span>
-      }
-    </div>
+          <span class="text-xl" [routerLink]="['/league', activeLeague.ID]">
+            {{ activeLeague.Name }}
+          </span>
+          @if (hasDraftOccurred) {
+            <span class="text-green" (click)="navigateTo('standings')">
+              <i class="pi pi-chart-line"></i> Rankings</span
+            >
+          } @else {
+            <span (click)="navigateTo('')"> Help</span>
+          }
+        </div>
+      </div>
 
-    <div class="subroute ml-1 mr-1">
-      @if (checkIfAtParentRoute()) {
-        @if (!hasDraftOccurred) {
+      <div class="body ml-1 mr-1">
+        @if (checkIfAtParentRoute()) {
+          @if (!hasDraftOccurred) {
+            <div
+              class="mt-2 mb-2 p-2 border-1 surface-border"
+              (click)="navigateTo('draft')"
+            >
+              <span class="text-xl">Draft</span>
+            </div>
+          }
           <div
             class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('draft')"
+            (click)="navigateTo('team', '0')"
           >
-            <span class="text-xl">Draft</span>
+            <span class="text-xl">My Team: {{ myTeam?.TeamName }}</span>
           </div>
-        }
-        <div
-          class="mt-2 mb-2 p-2 border-1 surface-border"
-          (click)="navigateTo('team', '0')"
-        >
-          <span class="text-xl">My Team: {{ myTeam?.TeamName }}</span>
-        </div>
-        <div
-          class="mt-2 mb-2 p-2 border-1 surface-border"
-          (click)="navigateTo('current-games')"
-        >
-          <span class="text-xl">Current Games</span> </div
-        ><div
-          class="mt-2 mb-2 p-2 border-1 surface-border"
-          (click)="navigateTo('history')"
-        >
-          <span class="text-xl">Game History</span>
-        </div>
-        <div
-          class="mt-2 mb-2 p-2 border-1 surface-border"
-          (click)="navigateTo('league-settings')"
-        >
-          <span class="text-xl">League Settings</span>
-        </div>
-        @if (hasDraftOccurred) {
           <div
             class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('draft')"
+            (click)="navigateTo('current-games')"
           >
-            <span class="text-xl">Draft Results</span>
+            <span class="text-xl">Current Games</span> </div
+          ><div
+            class="mt-2 mb-2 p-2 border-1 surface-border"
+            (click)="navigateTo('history')"
+          >
+            <span class="text-xl">Game History</span>
           </div>
-        }
-        @if (hasDraftOccurred) {
-          <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
-            <span class="text-xl">High Scoring Players</span>
-            <span (click)="navigateTo('player')">Player info 1</span>
-            <span (click)="navigateTo('player')">Player info 2</span>
-            <span (click)="navigateTo('player')">Player info 3</span>
+          <div
+            class="mt-2 mb-2 p-2 border-1 surface-border"
+            (click)="navigateTo('league-settings')"
+          >
+            <span class="text-xl">League Settings</span>
           </div>
-          <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
-            <span class="text-xl">Low Scoring Players</span>
-            <div>
-              <span (click)="navigateTo('player', '0')">Player info 1</span>
+          @if (hasDraftOccurred) {
+            <div
+              class="mt-2 mb-2 p-2 border-1 surface-border"
+              (click)="navigateTo('draft')"
+            >
+              <span class="text-xl">Draft Results</span>
             </div>
-            <div>
-              <span (click)="navigateTo('player', '1')">Player info 2</span>
-            </div>
-            <div>
+          }
+          @if (hasDraftOccurred) {
+            <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
+              <span class="text-xl">High Scoring Players</span>
+              <span (click)="navigateTo('player')">Player info 1</span>
+              <span (click)="navigateTo('player')">Player info 2</span>
               <span (click)="navigateTo('player')">Player info 3</span>
             </div>
-          </div>
+            <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
+              <span class="text-xl">Low Scoring Players</span>
+              <div>
+                <span (click)="navigateTo('player', '0')">Player info 1</span>
+              </div>
+              <div>
+                <span (click)="navigateTo('player', '1')">Player info 2</span>
+              </div>
+              <div>
+                <span (click)="navigateTo('player')">Player info 3</span>
+              </div>
+            </div>
+          }
         }
-      }
-      <router-outlet></router-outlet>
-    </div>
-  } @else {
-    <h2>No League Found</h2>
-  }
+        <router-outlet></router-outlet>
+      </div>
+    } @else {
+      <h2>No League Found</h2>
+    }
+  </div>
 }

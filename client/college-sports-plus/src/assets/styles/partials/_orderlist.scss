@@ -1,0 +1,22 @@
+draft-queue {
+  .p-orderlist-controls {
+    display: none;
+  }
+
+  .p-orderlist-list-container {
+    background: none;
+    border: none;
+  }
+
+  .p-orderlist {
+    padding: 0;
+
+    .p-orderlist-list {
+      padding: 0;
+
+      .p-orderlist-item {
+        padding: 0;
+      }
+    }
+  }
+}

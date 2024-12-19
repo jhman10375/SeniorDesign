@@ -1,1 +1,23 @@
-<h2>My Selections</h2>
+<div class="scrollable-container" [style]="{ height: '100%' }">
+  <div class="header">
+    <div
+      class="flex flex-row mb-2 align-items-center justify-content-between border-bottom-1 surface-border"
+    >
+      <span class="header-item">Name</span>
+      <span class="header-item">Number</span>
+      <span class="header-item">School</span>
+    </div>
+  </div>
+
+  <div class="body">
+    @for (athlete of athletes; track athlete) {
+      <div
+        class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
+      >
+        <div class="data-cell">{{ athlete.Name }}</div>
+        <div class="data-cell">{{ athlete.Number }}</div>
+        <div class="data-cell">{{ athlete.School.Name }}</div>
+      </div>
+    }
+  </div>
+</div>

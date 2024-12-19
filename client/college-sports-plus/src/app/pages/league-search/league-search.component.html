@@ -1,3 +1,47 @@
-@for (league of leagues | async; track league) {
-  {{ league.Name }}
-}
+<div class="scrollable-container" [style]="{ height: '100%' }">
+  <div class="header w-full pb-2 mb-2 border-bottom-1 surface-border">
+    <div class="flex flex-row w-full">
+      <div
+        [style]="
+          searchText && searchText.length > 0
+            ? 'width: 83.3333%'
+            : 'width: 100%'
+        "
+        [ngClass]="searchText && searchText.length > 0 ? 'mr-2' : ''"
+      >
+        <p-iconField iconPosition="left">
+          <p-inputIcon styleClass="pi pi-search" />
+          <input
+            #mySearchBox
+            type="text"
+            class="w-full"
+            pInputText
+            [ngModel]="searchText"
+            (ngModelChange)="filterLeagues($event)"
+            placeholder="Search"
+          />
+        </p-iconField>
+      </div>
+      @if (searchText && searchText.length > 0) {
+        <p-button
+          [severity]="'danger'"
+          class="ml-2"
+          icon="pi pi-times"
+          (onClick)="onClearFilter()"
+        ></p-button>
+      }
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="flex flex-column">
+      @for (league of leagues | async; track league) {
+        <div
+          class="flex flex-row justify-content-between align-items-center mb-2"
+        >
+          {{ league.Name }}
+        </div>
+      }
+    </div>
+  </div>
+</div>

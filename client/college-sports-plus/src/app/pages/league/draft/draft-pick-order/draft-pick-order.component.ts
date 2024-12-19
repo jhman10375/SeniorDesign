@@ -24,7 +24,6 @@ import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.mod
 export class DraftPickOrderComponent implements OnInit, OnDestroy {
   @Input() set selectionTime(v: number | undefined) {
     this._selectionTime = v;
-    // this.resetSelectionTime();
   }
 
   get selectionTime() {
@@ -35,12 +34,13 @@ export class DraftPickOrderComponent implements OnInit, OnDestroy {
 
   @Input() draftOrder: Array<DraftOrderModel> = [];
 
-  @Input() pickOrder: Array<DraftOrderModel> = [];
+  @Input() pickOrder: Array<DraftOrderModel>;
 
   @Input() set pickMade(v: LeagueAthleteModel | null) {
     if (v != null && v.AthleteID) {
       clearInterval(this.intervalID);
       this.updateDisplayTime(this.selectionTime ?? 0);
+      this.startSelectionTime();
     }
   }
 
@@ -60,7 +60,6 @@ export class DraftPickOrderComponent implements OnInit, OnDestroy {
 
   @Input() set pickUpdated(v: boolean) {
     if (v && v == true && !this.timerRunning) {
-      // this.startSelectionTime();
     }
   }
 

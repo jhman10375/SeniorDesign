@@ -1,1 +1,22 @@
-<h2>League Picks</h2>
+<table class="scrollable-table h-full">
+  <thead>
+    <tr>
+      <th></th>
+      @for (i of numOfRounds; track i) {
+        <th class="text-xl font-normal">Round {{ i }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (team of selections; track team) {
+      <tr>
+        <td>{{ team.Name }}</td>
+        @for (player of team.Players; track player) {
+          <td>
+            <span class="text-base">{{ player.Name }}</span></td
+          >
+        }
+      </tr>
+    }
+  </tbody>
+</table>

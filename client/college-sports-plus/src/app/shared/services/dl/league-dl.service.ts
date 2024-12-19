@@ -66,7 +66,10 @@ export class LeagueDLService {
       if (manager) {
         l.Manager = manager;
       }
-      l.Settings = this.leagueSettingsDLService.getSettingsModel(lDL.ID);
+      l.Settings = this.leagueSettingsDLService.getSettingsModel(
+        lDL.ID,
+        lDL.LeagueType
+      );
       l.Players = this.playerDLService.getLeague(lDL.PlayerIDs);
       //Will probably have an error since l is not really defined here at all
       l.Athletes = this.athleteDLService.initializeLeagueAthletes(l);

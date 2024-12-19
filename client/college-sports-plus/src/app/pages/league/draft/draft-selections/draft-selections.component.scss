@@ -1,0 +1,25 @@
+.scrollable-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+.scrollable-table th,
+.scrollable-table td {
+  border: 1px solid var(--300-surface);
+  padding: 8px;
+}
+
+.scrollable-table th,
+.scrollable-table th:first-child,
+.scrollable-table td {
+  border-right: 1px solid var(--surface-border);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.scrollable-table th:first-child,
+.scrollable-table td:first-child {
+  position: sticky;
+  left: 0;
+  background-color: var(--surface-b);
+}

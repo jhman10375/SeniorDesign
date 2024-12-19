@@ -1,6 +1,6 @@
-import { DraftPickOrderTypeEnum } from '../enums/draft-pick-order-type.enum';
+import { DraftPickOrderTypeEnum } from '../../enums/draft-pick-order-type.enum';
 
-export class LeagueSettingsModel {
+export class DraftSettingsModel {
   DraftPickOrderType: DraftPickOrderTypeEnum;
   DraftSelectionTime: number;
 

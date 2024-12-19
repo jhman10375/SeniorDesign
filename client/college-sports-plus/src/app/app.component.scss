@@ -1,12 +1,45 @@
-.app-header {
-  height: 5%;
+:root {
+  --vh: 1vh;
 }
 
-.app-router-outlet {
-  height: 90vh;
-  overflow-y: auto;
+.root-container {
+  display: flex;
+  flex-direction: column;
+  // height: calc(var(--vh, 1vh) * 100); // Use dynamically calculated height
+  height: calc(100vh - 16px); // Full viewport height
 }
 
-.app-nav-bar {
-  height: 5%;
+@supports (height: 100dvh) {
+  .root-container {
+    height: calc(100dvh - 16px);
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .header {
+    flex: 0 0 5%; // Fixed to 10% of the height
+  }
+
+  .body {
+    flex: 1 0 90%; // Takes up the remaining 80% of the height
+    overflow: auto; // Enables scrolling if content overflows
+  }
+
+  .nav {
+    flex: 0 0 5%; // Fixed to 10% of the height
+  }
+}
+@media screen and (orientation: landscape) {
+  .header {
+    flex: 0 0 10%; // Fixed to 10% of the height
+  }
+
+  .body {
+    flex: 1 0 80%; // Takes up the remaining 80% of the height
+    overflow: auto; // Enables scrolling if content overflows
+  }
+
+  .nav {
+    flex: 0 0 10%; // Fixed to 10% of the height
+  }
 }
