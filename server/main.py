@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from api.routes.draft import router as draft_router
+
 import requests
 from datetime import datetime
 import numpy as np
@@ -11,7 +14,13 @@ load_dotenv()
 token = os.getenv("CFBD_TOKEN")
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
@@ -65,3 +74,14 @@ async def get_playes(team_name, player_type = "None"):
         return roster_df.to_dict()
     else:
         return roster_df.to_dict()
+    
+
+@app.get("/status")
+async def get_status():
+    return({
+        'status': 'connected',
+        'api': f"{token}",
+        'hello': 'hello'
+    })
+
+app.include_router(draft_router)
