@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import json
 import os
+from classes import *
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,8 +27,8 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/teams/{team_name}")
-async def get_schedule(team_name):
+@app.get("/teams/{team_name}", tags=["Team Info"])
+async def get_schedule(team_name: str) -> list[fbGame]:
 
     url = f"https://api.collegefootballdata.com/games?year=2024&seasonType=regular&team={team_name}"
 
@@ -39,11 +40,14 @@ async def get_schedule(team_name):
 
     games_df = pd.json_normalize(games_json)
 
-    return games_df[["home_id", "home_team", "away_team", "start_date"]].to_dict()
+    games_list = [fbGame(game_id=game.id, home_id=game.home_id, home_team=game.home_team, 
+                         away_team=game.away_team, start_date=game.start_date) for game in games_df.itertuples()]
+
+    return games_list
 
 
-@app.get("/teams/{team_id}/players")
-async def get_playes(team_name, player_type = "None"):
+@app.get("/teams/{team_name}/players", tags=["Team Info"])
+async def get_playes(team_name : str, player_type = "None") -> list[playerInfo]:
     
     url = f"https://api.collegefootballdata.com/roster?team={team_name}&year={datetime.now().year}"
 
@@ -57,7 +61,7 @@ async def get_playes(team_name, player_type = "None"):
 
     roster_df.drop(['team', 'height', 'weight', 
                     'home_city', 'home_state', 'home_country', 'home_latitude', 
-                    'home_longitude', 'home_county_fips', 'recruit_ids', 'year', 'jersey', 'id'], axis=1, inplace=True)
+                    'home_longitude', 'home_county_fips', 'recruit_ids'], axis=1, inplace=True)
     
     roster_df["name"] = roster_df["first_name"] + " " + roster_df["last_name"]
 
@@ -67,13 +71,13 @@ async def get_playes(team_name, player_type = "None"):
 
         roster_df = roster_df.query(f'position == "{player_type}"')
 
-        roster_df.drop('position', axis=1, inplace=True)
-
         roster_df.reset_index(drop=True, inplace=True)
+    
+    values = {"jersey": -1, "position": "No Position Listed", "year": 0}
+    roster_df = roster_df.fillna(values)
 
-        return roster_df.to_dict()
-    else:
-        return roster_df.to_dict()
+    return [playerInfo(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_year=player.year) for player in roster_df.itertuples()]
     
 
 @app.get("/status")
@@ -84,4 +88,4 @@ async def get_status():
         'hello': 'hello'
     })
 
-app.include_router(draft_router)
+app.include_router(draft_router, tags=["Draft"])
