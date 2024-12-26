@@ -32,7 +32,38 @@ class playerInfo(BaseModel):
     team_alt_color : str
     team_logos : str
 
+class playerStats(BaseModel):
+    player_name : str
+    player_ID : int
+    player_position : str
+    pass_TD : int
+    pass_yds : int
+    interceptions : int
+    fumbles_lost : int
+    rush_yds : int
+    rush_TD : int
+    reception_yds : int
+    reception_TD : int
+    receptions : int
+    extra_points : int
+    extra_points_missed : int
+    field_goals : int
+    field_goals_missed : int
+
+
+class D_ST_Stats(BaseModel):
+    team_name : str
+    tackles : int
+    punt_TDs : int
+    kick_return_TDs : int
+    int_TDs : int
+    interceptions : int
+    fumbles_recovered : int
+    other_defensive_TDs : int
+    sacks : int
+    deflected_passes : int
     
+
 class playerList():
 
     def __init__(self):
@@ -44,7 +75,7 @@ class playerList():
 
         url = f"https://api.collegefootballdata.com/roster?year={datetime.now().year}"
 
-        headers = {"Authorization": f"Bearer {token}"}
+        headers = {'Accept': 'application/json', "Authorization": f"Bearer {token}"}
 
         response = requests.get(url, headers=headers)
 
