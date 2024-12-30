@@ -50,6 +50,24 @@ class playerStats(BaseModel):
     field_goals : int
     field_goals_missed : int
 
+class predictedStats(BaseModel):
+    player_name : str
+    player_ID : int
+    player_position : str
+    pass_TD : float
+    pass_yds : float
+    interceptions : float
+    fumbles_lost : float
+    rush_yds : float
+    rush_TD : float
+    reception_yds : float
+    reception_TD : float
+    receptions : float
+    extra_points : float
+    extra_points_missed : float
+    field_goals : float
+    field_goals_missed : float
+
 
 class D_ST_Stats(BaseModel):
     team_name : str

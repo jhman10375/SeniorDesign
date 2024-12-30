@@ -7,10 +7,12 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import json
+import pickle
 import os
 from classes import *
 from functions import *
 from dotenv import load_dotenv
+from sklearn.preprocessing import LabelEncoder
 
 fullList = playerList()
 
@@ -28,6 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
@@ -37,6 +40,7 @@ async def root():
 async def get_schedule(team_name: str) -> list[fbGame]:
 
     return team_schedule(team_name)
+
 
 @app.get("/teams/{team_name}/last_game", tags=["Team Info"])
 async def get_last_game(team_name: str) -> fbGame:
@@ -63,6 +67,7 @@ async def get_last_game(team_name: str) -> fbGame:
 
     return last_game
 
+
 @app.get("/teams/{team_name}/next_game", tags=["Team Info"])
 async def get_next_game(team_name: str) -> fbGame:
 
@@ -87,6 +92,7 @@ async def get_next_game(team_name: str) -> fbGame:
                     away_team=sched_df.iloc[0]['away_team'], start_date=sched_df.iloc[0]['start_date'])
 
     return next_game
+
 
 @app.get("/teams/{team_name}/players", tags=["Team Info"])
 async def get_players(team_name : str, player_type = "None") -> list[playerInfo]:
@@ -180,6 +186,7 @@ async def populate_player_lists():
     else:
         return "Already populated."
 
+
 @app.get("/players/getall", tags=["Player Info"])
 async def get_all_players(page = 1, page_size= 100):
 
@@ -210,7 +217,6 @@ async def get_all_players(page = 1, page_size= 100):
                            player_height=player.height, player_weight=player.weight,
                            player_year=player.year, team_color=player.color, 
                            team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()] 
-
 
 
 @app.get("/players/get_first_string", tags=["Player Info"])
@@ -251,7 +257,7 @@ async def get_player_stats_for_whole_year(player_id : int) -> playerStats:
 
     team = player.player_team
 
-    url = f"https://api.collegefootballdata.com/stats/player/season?year={datetime.now().year}&team={team}"
+    url = f"https://api.collegefootballdata.com/stats/player/season?year={datetime.now().year}&team={team.replace("&", "%26")}"
 
     headers = {"Authorization": f"Bearer {token}"}
 
@@ -354,6 +360,7 @@ async def get_player_stats_for_whole_year(player_id : int) -> playerStats:
                        rush_TD=rush_TD, reception_yds=rec_yds, reception_TD=rec_TD, receptions=receptions,
                        extra_points=xp, field_goals=fgs, extra_points_missed=xp_miss, field_goals_missed=fg_miss,
                        player_position=player.player_position)
+
 
 @app.get("/player/{player_id}/stats/last_game", tags=["Player Info"])
 async def get_last_game_stats_for_player(player_id : int) -> playerStats:
@@ -551,8 +558,9 @@ async def get_last_game_stats_for_player(player_id : int) -> playerStats:
                        extra_points=xp, field_goals=fgs, extra_points_missed=xp_miss, field_goals_missed=fg_miss,
                        player_position=plyr_pos)
 
+
 @app.get("/{team_name}/D-ST/stats/last_game", tags=["D/ST"])
-async def get_D_ST_last_game_stats(team_name : str) -> D_ST_Stats:
+async def get_Defence_Special_Teams_last_game_stats(team_name : str) -> D_ST_Stats:
   last_game = get_team_last_game(team_name)
 
   game_id = last_game.game_id
@@ -566,6 +574,16 @@ async def get_D_ST_last_game_stats(team_name : str) -> D_ST_Stats:
   game_json = json.loads(response.text)
 
   game_df = pd.json_normalize(game_json)
+
+  punt_TD = 0
+  kick_TD = 0
+  ints = 0
+  pick6 = 0
+  fumbles = 0
+  tackles = 0
+  sacks = 0
+  pass_deflect = 0
+  all_def_TD = 0
 
   if str(game_df.iloc[0]['teams'][1]['school']) == team_name:
     team = game_df.iloc[0]['teams'][1]
@@ -598,12 +616,13 @@ async def get_D_ST_last_game_stats(team_name : str) -> D_ST_Stats:
   misc_def_TD = all_def_TD - (punt_TD + kick_TD + pick6)
 
   return D_ST_Stats(team_name=team_name, tackles=tackles, punt_TDs=punt_TD,
-                    kick_return_TDs=kick_TD, int_TDs=pick6, interceptions=pick6, fumbles_recovered=fumbles,
+                    kick_return_TDs=kick_TD, int_TDs=pick6, interceptions=ints, fumbles_recovered=fumbles,
                   other_defensive_TDs=misc_def_TD, sacks=sacks, deflected_passes=pass_deflect)
 
+
 @app.get("/{team_name}/D-ST/stats/full_season", tags=["D/ST"])
-async def get_D_ST_season_stats(team_name : str) -> D_ST_Stats:
-  url = f"https://api.collegefootballdata.com/stats/season?year={datetime.now().year}&team={team_name}"
+async def get_Defence_Special_Teams_season_stats(team_name : str) -> D_ST_Stats:
+  url = f"https://api.collegefootballdata.com/stats/season?year={datetime.now().year}&team={team_name.replace("&", "%26")}"
 
 
   headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
@@ -658,8 +677,334 @@ async def get_D_ST_season_stats(team_name : str) -> D_ST_Stats:
   misc_def_TD= all_def_TD - (punt_TD + kick_TD + pick6)
 
   return D_ST_Stats(team_name=team_name, tackles=tackles, punt_TDs=punt_TD,
-                    kick_return_TDs=kick_TD, int_TDs=pick6, interceptions=pick6, fumbles_recovered=fumbles,
+                    kick_return_TDs=kick_TD, int_TDs=pick6, interceptions=ints, fumbles_recovered=fumbles,
                   other_defensive_TDs=misc_def_TD, sacks=sacks, deflected_passes=pass_deflect)
+
+@app.get("/predict/{player_id}/game", tags=["Prediction"])
+async def predict_player_stats(player_id : str, opponent = "next") -> predictedStats:
+    
+    with open('model/opponent_classifier.pkl', 'rb') as fid:
+      model_opp = pickle.load(fid)
+
+    plyr = search_player(fullList, player_id)
+
+    le = LabelEncoder()
+
+    schedule = team_schedule(plyr.player_team)
+
+    sched_df = pd.DataFrame([game.__dict__ for game in schedule])
+
+    now = datetime.now()
+
+    sched_df['start_date'] = pd.to_datetime(sched_df['start_date'])
+
+    sched_df['start_date'] = sched_df['start_date'].dt.strftime('%Y-%m-%d')
+
+    played_df = next_df = sched_df.query(f'start_date <= "{now.strftime("%Y-%m-%d")}"')
+
+    games_played = len(played_df)
+
+    year_stats = get_season_stats_per_game(fullList, player_id, games_played)
+
+    if opponent == "next":
+      next_df = sched_df.query(f'start_date > "{now.strftime("%Y-%m-%d")}"').copy()
+
+      next_df.sort_values(by='start_date', inplace=True)
+
+      next_df.reset_index(drop=True, inplace=True)
+
+      next_game = fbGame(game_id=next_df.iloc[0]['game_id'], 
+                          home_id=next_df.iloc[0]['home_id'], home_team=next_df.iloc[0]['home_team'], 
+                          away_team=next_df.iloc[0]['away_team'], start_date=next_df.iloc[0]['start_date'])
+
+      if next_game.home_team == plyr.player_team:
+        opponent = next_game.away_team
+      else:
+        opponent = next_game.home_team
+
+    test_QB = [[plyr.player_team, plyr.player_weight, plyr.player_height,
+                  plyr.player_year, plyr.player_position, opponent]]
+    df_test = pd.DataFrame(test_QB, columns=['team', 'weight', 'height', 'year', 'position', 'opponent'])
+
+    for column in df_test.columns:
+        if df_test[column].dtype == object:
+          le.classes_ = np.load(f'model/{column} classes.npy', allow_pickle=True)
+          df_test[column] = le.transform(df_test[column])
+
+    test_QB = df_test.values.reshape(1, -1)
+    test_results = model_opp.predict(test_QB)
+
+    test_results.tolist()
+
+    test_dict = {}
+
+    test_dict['pass_TD'] = (round(test_results[0][0], 1) + year_stats.pass_TD)/2
+    test_dict['xp'] = (round(test_results[0][1], 1) + year_stats.extra_points)/2
+    test_dict['xp_miss'] = (round(test_results[0][2], 1) + year_stats.extra_points_missed)/2
+    test_dict['fgs'] = (round(test_results[0][3], 1) + year_stats.field_goals)/2
+    test_dict['fg_miss'] = (round(test_results[0][4], 1) + year_stats.field_goals_missed)/2
+    test_dict['fumbles'] = (round(test_results[0][5], 1) + year_stats.fumbles_lost)/2
+    test_dict['ints'] = (round(test_results[0][6], 1) + year_stats.interceptions)/2
+    test_dict['pass_yds'] = (round(test_results[0][7], 1) + year_stats.pass_yds)/2
+    test_dict['rush_yds'] = (round(test_results[0][8], 1) + year_stats.rush_yds)/2
+    test_dict['rush_TD'] = (round(test_results[0][9], 1) + year_stats.rush_TD)/2
+    test_dict['rec_yds'] = (round(test_results[0][10], 1) + year_stats.reception_yds)/2
+    test_dict['rec_TD'] = (round(test_results[0][11], 1) + year_stats.reception_TD)/2
+    test_dict['receptions'] = (round(test_results[0][12], 1) + year_stats.receptions)/2
+
+    if year_stats.pass_TD == 0:
+      test_dict['pass_TD'] = 0
+    if year_stats.extra_points == 0:
+      test_dict['xp'] = 0
+    if year_stats.extra_points_missed == 0:
+      test_dict['xp_miss'] = 0
+    if year_stats.field_goals == 0:
+      test_dict['fgs'] = 0
+    if year_stats.field_goals_missed == 0:
+      test_dict['fg_miss'] = 0
+    if year_stats.fumbles_lost == 0:
+      test_dict['fumbles'] = 0
+    if year_stats.interceptions == 0:
+      test_dict['ints'] = 0
+    if year_stats.pass_yds == 0:
+      test_dict['pass_yds'] = 0
+    if year_stats.rush_yds == 0:
+      test_dict['rush_yds'] = 0
+    if year_stats.rush_TD == 0:
+      test_dict['rush_TD'] = 0
+    if year_stats.reception_yds == 0:
+      test_dict['rec_yds'] = 0
+    if year_stats.reception_TD == 0:
+      test_dict['rec_TD'] = 0
+    if year_stats.receptions == 0:
+      test_dict['receptions'] = 0
+
+    for i in test_dict:
+      test_dict[i] = float(round(abs(test_dict[i]), 1))
+      if test_dict[i] <= 0.1:
+        test_dict[i] = 0
+      if i == 'receptions':
+        test_dict[i] = round(test_dict[i], 0)
+        if test_dict[i] == 0:
+          test_dict["rec_yds"] = 0
+          test_dict["rec_TD"] = 0
+
+    return_stats = predictedStats(player_name=plyr.player_name,
+                               player_ID=player_id, player_position=plyr.player_position,
+                               pass_TD=test_dict["pass_TD"], pass_yds=test_dict["pass_yds"],
+                               interceptions=test_dict["ints"], fumbles_lost=test_dict["fumbles"],
+                               rush_yds=test_dict["rush_yds"], rush_TD=test_dict["rush_TD"],
+                               reception_yds=test_dict["rec_yds"], reception_TD=test_dict["rec_TD"],
+                               receptions=test_dict["receptions"], extra_points=test_dict["xp"],
+                               extra_points_missed=test_dict["xp_miss"], field_goals=test_dict["fgs"],
+                               field_goals_missed=test_dict["fg_miss"])
+    
+    return return_stats
+
+
+@app.get("/predict/season/{player_id}", tags=["Prediction"])
+async def predict_player_season(player_id : str) -> predictedStats:
+    with open('model/my_dumped_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 12
+
+    plyr = search_player(fullList, player_id)
+
+    le = LabelEncoder()
+
+    input_list = [[plyr.player_team, plyr.player_weight, plyr.player_height,
+              plyr.player_year, plyr.player_position]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'weight', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['pass_TD'] = round(test_results[0][0], 1)
+    test_dict['xp'] = round(test_results[0][1], 1)
+    test_dict['xp_miss'] = round(test_results[0][2], 1)
+    test_dict['fgs'] = round(test_results[0][3], 1)
+    test_dict['fg_miss'] = round(test_results[0][4], 1)
+    test_dict['fumbles'] = round(test_results[0][5], 1)
+    test_dict['ints'] = round(test_results[0][6], 1)
+    test_dict['pass_yds'] = round(test_results[0][7], 1)
+    test_dict['rush_yds'] = round(test_results[0][8], 1)
+    test_dict['rush_TD'] = round(test_results[0][9], 1)
+    test_dict['rec_yds'] = round(test_results[0][10], 1)
+    test_dict['rec_TD'] = round(test_results[0][11], 1)
+    test_dict['receptions'] = round(test_results[0][12], 1)
+
+    for i in test_dict:
+      test_dict[i] = abs(test_dict[i])
+      if test_dict[i] <= 0.1:
+        test_dict[i] = 0
+      if i == 'receptions':
+        test_dict[i] = round(test_dict[i], 0)
+        if test_dict[i] == 0:
+          test_dict["rec_yds"] = 0
+          test_dict["rec_TD"] = 0
+      if i == "xp" or i == 'fgs':
+         test_dict[i] = int(test_dict[i])
+
+
+
+    return_stats = predictedStats(player_name=plyr.player_name,
+                               player_ID=player_id, player_position=plyr.player_position,
+                               pass_TD=round(test_dict["pass_TD"]*NUM_GAMES, 1), 
+                               pass_yds=round(test_dict["pass_yds"]*NUM_GAMES, 1),
+                               interceptions=round(test_dict["ints"]*NUM_GAMES, 1), 
+                               fumbles_lost=round(test_dict["fumbles"]*NUM_GAMES, 1),
+                               rush_yds=round(test_dict["rush_yds"]*NUM_GAMES, 1), 
+                               rush_TD=round(test_dict["rush_TD"]*NUM_GAMES, 1),
+                               reception_yds=round(test_dict["rec_yds"]*NUM_GAMES, 1), 
+                               reception_TD=round(test_dict["rec_TD"]*NUM_GAMES, 1),
+                               receptions=round(test_dict["receptions"]*NUM_GAMES, 1), 
+                               extra_points=round(test_dict["xp"]*NUM_GAMES, 1),
+                               extra_points_missed=round(test_dict["xp_miss"]*NUM_GAMES, 1), 
+                               field_goals=round(test_dict["fgs"]*NUM_GAMES, 1),
+                               field_goals_missed=round(test_dict["fg_miss"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
+@app.get("/predict/D-ST/{team_name}", tags=["Prediction"])
+async def predict_Defence_Special_Teams_stats(team_name : str, opponent = "next") -> D_ST_Stats:
+  
+  with open('model/defensive_model.pkl', 'rb') as fid:
+      defensive_model = pickle.load(fid)
+
+  le = LabelEncoder()
+
+  if opponent == "next":
+    schedule = team_schedule(team_name)
+
+    sched_df = pd.DataFrame([game.__dict__ for game in schedule])
+
+    now = datetime.now()
+
+    sched_df['start_date'] = pd.to_datetime(sched_df['start_date'])
+
+    sched_df['start_date'] = sched_df['start_date'].dt.strftime('%Y-%m-%d')
+
+    sched_df = sched_df.query(f'start_date > "{now.strftime("%Y-%m-%d")}"')
+
+    sched_df.sort_values(by='start_date', inplace=True)
+
+    sched_df.reset_index(drop=True, inplace=True)
+
+    next_game = fbGame(game_id=sched_df.iloc[0]['game_id'], 
+                    home_id=sched_df.iloc[0]['home_id'], home_team=sched_df.iloc[0]['home_team'], 
+                    away_team=sched_df.iloc[0]['away_team'], start_date=sched_df.iloc[0]['start_date'])     
+    
+    if next_game.home_team == team_name:
+       opponent = next_game.away_team
+    else:
+       opponent = next_game.home_team
+  
+  defense = [[team_name.replace("&", "%26"), opponent.replace("&", "%26")]]
+  df_def = pd.DataFrame(defense, columns=['team', 'opponent'])
+
+  for column in df_def.columns:
+      if df_def[column].dtype == object:
+        le.classes_ = np.load(f'model/{column} classes.npy', allow_pickle=True)
+        df_def[column] = le.transform(df_def[column])
+
+  test_DST = df_def.values.tolist()
+  test_DST = test_DST[0]
+  test_DST
+  
+  defense = df_def.values.reshape(1, -1)
+  test_results = defensive_model.predict(defense)
+
+  test_dict = {}
+
+
+
+  test_dict['tackles'] = abs(round(test_results[0][0], 0))
+  test_dict['punt_TDs'] = abs(round(test_results[0][1], 0))
+  test_dict['kick_return_TDs'] = abs(round(test_results[0][2], 0))
+  test_dict['int_TDs'] = abs(round(test_results[0][3], 0))
+  test_dict['interceptions'] = abs(round(test_results[0][4], 0))
+  test_dict['fumbles_recovered'] = abs(round(test_results[0][5], 0))
+  test_dict['other_defensive_TDs'] = abs(round(test_results[0][6], 0))
+  test_dict['sacks'] = abs(round(test_results[0][7], 0))
+  test_dict['deflected_passes'] = abs(round(test_results[0][8], 0))
+  
+  return D_ST_Stats(team_name=team_name, tackles=test_dict['tackles'], 
+                     punt_TDs=test_dict['punt_TDs'], 
+                     kick_return_TDs=test_dict['kick_return_TDs'], 
+                     int_TDs=test_dict['int_TDs'], 
+                     interceptions=test_dict['interceptions'], 
+                     fumbles_recovered=test_dict['fumbles_recovered'], 
+                     other_defensive_TDs=test_dict['other_defensive_TDs'], 
+                     sacks=test_dict['sacks'], 
+                     deflected_passes=test_dict['deflected_passes'])
+
+
+@app.get("/predict/season/D-ST/{team_name}", tags=["Prediction"])
+async def predict_Defense_Special_Teams_season(team_name : str) -> D_ST_Stats:
+  
+  NUM_GAMES = 12
+
+  with open('model/def_season_model.pkl', 'rb') as fid:
+      defensive_model = pickle.load(fid)
+
+  le = LabelEncoder()
+  
+  defense = [[team_name.replace("&", "%26")]]
+  df_def = pd.DataFrame(defense, columns=['team'])
+
+  for column in df_def.columns:
+      if df_def[column].dtype == object:
+        le.classes_ = np.load(f'model/{column} classes.npy', allow_pickle=True)
+        df_def[column] = le.transform(df_def[column])
+
+  test_DST = df_def.values.tolist()
+  test_DST = test_DST[0]
+  test_DST
+  
+  defense = df_def.values.reshape(1, -1)
+  test_results = defensive_model.predict(defense)
+
+  test_dict = {}
+
+  test_dict['tackles'] = (round(test_results[0][0], 1))
+  test_dict['punt_TDs'] = (round(test_results[0][1], 1))
+  test_dict['kick_return_TDs'] = (round(test_results[0][2], 1))
+  test_dict['int_TDs'] = (round(test_results[0][3], 1))
+  test_dict['interceptions'] = (round(test_results[0][4], 1))
+  test_dict['fumbles_recovered'] = (round(test_results[0][5], 1))
+  test_dict['other_defensive_TDs'] = (round(test_results[0][6], 1))
+  test_dict['sacks'] = (round(test_results[0][7], 1))
+  test_dict['deflected_passes'] = (round(test_results[0][8], 1))
+
+  for i in test_dict:
+    if test_dict[i] <= 0.1:
+      test_dict[i] = 0
+
+  for i in test_dict:
+    test_dict[i] = test_dict[i] * NUM_GAMES
+    test_dict[i] = round(test_dict[i], 0)
+
+  return D_ST_Stats(team_name=team_name, tackles=test_dict['tackles'], 
+                     punt_TDs=test_dict['punt_TDs'], 
+                     kick_return_TDs=test_dict['kick_return_TDs'], 
+                     int_TDs=test_dict['int_TDs'], 
+                     interceptions=test_dict['interceptions'], 
+                     fumbles_recovered=test_dict['fumbles_recovered'], 
+                     other_defensive_TDs=test_dict['other_defensive_TDs'], 
+                     sacks=test_dict['sacks'], 
+                     deflected_passes=test_dict['deflected_passes'])
+
+
 
 @app.get("/status")
 async def get_status():
