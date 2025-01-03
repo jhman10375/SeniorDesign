@@ -37,15 +37,15 @@ async def root():
 
 
 @app.get("/teams/{team_name}", tags=["Team Info"])
-async def get_schedule(team_name: str) -> list[fbGame]:
+async def get_schedule(team_name: str, season : Season) -> list[fbGame]:
 
-    return team_schedule(team_name)
+    return team_schedule(team_name, season.value)
 
 
 @app.get("/teams/{team_name}/last_game", tags=["Team Info"])
 async def get_last_game(team_name: str) -> fbGame:
 
-    schedule = team_schedule(team_name)
+    schedule = team_schedule(team_name, fullList.active_season)
 
     sched_df = pd.DataFrame([game.__dict__ for game in schedule])
 
@@ -71,7 +71,7 @@ async def get_last_game(team_name: str) -> fbGame:
 @app.get("/teams/{team_name}/next_game", tags=["Team Info"])
 async def get_next_game(team_name: str) -> fbGame:
 
-    schedule = team_schedule(team_name)
+    schedule = team_schedule(team_name, fullList.active_season)
 
     sched_df = pd.DataFrame([game.__dict__ for game in schedule])
 
@@ -252,12 +252,12 @@ async def get_all_first_string_players(page = 1, page_size= 100):
 
 
 @app.get("/player/{player_id}/stats/full_year", tags=["Player Info"])
-async def get_player_stats_for_whole_year(player_id : int) -> playerStats:
+async def get_player_stats_for_whole_year(player_id : int, season : Season) -> playerStats:
     player = search_player(fullList, player_id)
 
     team = player.player_team
 
-    url = f"https://api.collegefootballdata.com/stats/player/season?year={datetime.now().year}&team={team.replace("&", "%26")}"
+    url = f"https://api.collegefootballdata.com/stats/player/season?year={season.value}&team={team.replace("&", "%26")}"
 
     headers = {"Authorization": f"Bearer {token}"}
 
@@ -365,7 +365,7 @@ async def get_player_stats_for_whole_year(player_id : int) -> playerStats:
 @app.get("/player/{player_id}/stats/last_game", tags=["Player Info"])
 async def get_last_game_stats_for_player(player_id : int) -> playerStats:
   player = search_player(fullList, player_id)
-  last_game = get_player_last_game(player.player_team)
+  last_game = get_player_last_game(player.player_team, fullList.active_season)
   
   plyr_name = player.player_name
   plyr_id = player.player_id
@@ -373,7 +373,7 @@ async def get_last_game_stats_for_player(player_id : int) -> playerStats:
 
   game_id = last_game.game_id
 
-  url = f"https://api.collegefootballdata.com/games/players?year={datetime.now().year}&seasonType=regular&gameId={game_id}"
+  url = f"https://api.collegefootballdata.com/games/players?year={fullList.active_season}&seasonType=regular&gameId={game_id}"
 
   headers = {"Authorization": f"Bearer {token}"}
 
@@ -561,11 +561,11 @@ async def get_last_game_stats_for_player(player_id : int) -> playerStats:
 
 @app.get("/{team_name}/D-ST/stats/last_game", tags=["D/ST"])
 async def get_Defence_Special_Teams_last_game_stats(team_name : str) -> D_ST_Stats:
-  last_game = get_team_last_game(team_name)
+  last_game = get_team_last_game(team_name, fullList.active_season)
 
   game_id = last_game.game_id
 
-  url = f"https://api.collegefootballdata.com/games/teams?year={datetime.now().year}&seasonType=regular&gameId={game_id}"
+  url = f"https://api.collegefootballdata.com/games/teams?year={fullList.active_season}&seasonType=regular&gameId={game_id}"
 
   headers = {"Authorization": f"Bearer {token}"}
 
@@ -621,8 +621,8 @@ async def get_Defence_Special_Teams_last_game_stats(team_name : str) -> D_ST_Sta
 
 
 @app.get("/{team_name}/D-ST/stats/full_season", tags=["D/ST"])
-async def get_Defence_Special_Teams_season_stats(team_name : str) -> D_ST_Stats:
-  url = f"https://api.collegefootballdata.com/stats/season?year={datetime.now().year}&team={team_name.replace("&", "%26")}"
+async def get_Defence_Special_Teams_season_stats(team_name : str, season : Season) -> D_ST_Stats:
+  url = f"https://api.collegefootballdata.com/stats/season?year={season.value}&team={team_name.replace("&", "%26")}"
 
 
   headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
@@ -642,7 +642,7 @@ async def get_Defence_Special_Teams_season_stats(team_name : str) -> D_ST_Stats:
   sacks= team_df.query(f'statName == "sacks"').iloc[0]['statValue']
 
 
-  all_games = team_schedule(team_name)
+  all_games = team_schedule(team_name, season.value)
 
   tackles = 0
   pass_deflect = 0
@@ -650,7 +650,7 @@ async def get_Defence_Special_Teams_season_stats(team_name : str) -> D_ST_Stats:
 
   for game in all_games:
     game_id = game.game_id
-    curr_url = f"https://api.collegefootballdata.com/games/teams?year={datetime.now().year}&seasonType=regular&gameId={game_id}"
+    curr_url = f"https://api.collegefootballdata.com/games/teams?year={season.value}&seasonType=regular&gameId={game_id}"
 
     curr_response = requests.get(curr_url, headers=headers)
 
@@ -690,7 +690,7 @@ async def predict_player_stats(player_id : str, opponent = "next") -> predictedS
 
     le = LabelEncoder()
 
-    schedule = team_schedule(plyr.player_team)
+    schedule = team_schedule(plyr.player_team, fullList.active_season)
 
     sched_df = pd.DataFrame([game.__dict__ for game in schedule])
 
@@ -704,7 +704,7 @@ async def predict_player_stats(player_id : str, opponent = "next") -> predictedS
 
     games_played = len(played_df)
 
-    year_stats = get_season_stats_per_game(fullList, player_id, games_played)
+    year_stats = get_season_stats_per_game(fullList, player_id, games_played, fullList.active_season)
 
     if opponent == "next":
       next_df = sched_df.query(f'start_date > "{now.strftime("%Y-%m-%d")}"').copy()
@@ -722,8 +722,8 @@ async def predict_player_stats(player_id : str, opponent = "next") -> predictedS
       else:
         opponent = next_game.home_team
 
-    test_QB = [[plyr.player_team, plyr.player_weight, plyr.player_height,
-                  plyr.player_year, plyr.player_position, opponent]]
+    test_QB = [[plyr.player_team.replace("&", "%26"), plyr.player_weight, plyr.player_height,
+                  plyr.player_year, plyr.player_position, opponent.replace("&", "%26")]]
     df_test = pd.DataFrame(test_QB, columns=['team', 'weight', 'height', 'year', 'position', 'opponent'])
 
     for column in df_test.columns:
@@ -813,7 +813,7 @@ async def predict_player_season(player_id : str) -> predictedStats:
 
     le = LabelEncoder()
 
-    input_list = [[plyr.player_team, plyr.player_weight, plyr.player_height,
+    input_list = [[plyr.player_team.replace("&", "%26"), plyr.player_weight, plyr.player_height,
               plyr.player_year, plyr.player_position]]
     
     df_input = pd.DataFrame(input_list, columns=['team', 'weight', 'height', 'year', 'position'])
@@ -884,7 +884,7 @@ async def predict_Defence_Special_Teams_stats(team_name : str, opponent = "next"
   le = LabelEncoder()
 
   if opponent == "next":
-    schedule = team_schedule(team_name)
+    schedule = team_schedule(team_name, fullList.active_season)
 
     sched_df = pd.DataFrame([game.__dict__ for game in schedule])
 

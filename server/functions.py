@@ -9,10 +9,10 @@ from dotenv import load_dotenv
 load_dotenv()
 token = os.getenv("CFBD_TOKEN")
 
-def team_schedule(team):
-    url = f"https://api.collegefootballdata.com/games?year={datetime.now().year}&team={team.replace("&", "%26")}"
+def team_schedule(team, year):
+    url = f"https://api.collegefootballdata.com/games?year={year}&team={team.replace("&", "%26")}"
 
-    post_url = f"https://api.collegefootballdata.com/games?year={datetime.now().year}&seasonType=postseason&team={team.replace("&", "%26")}"
+    post_url = f"https://api.collegefootballdata.com/games?year={year}&seasonType=postseason&team={team.replace("&", "%26")}"
 
     headers = {"Authorization": f"Bearer {token}"}
 
@@ -60,8 +60,8 @@ def search_player(players, player_id):
 
     return player
 
-def get_player_last_game(team_name):
-    schedule = team_schedule(team_name)
+def get_player_last_game(team_name, year):
+    schedule = team_schedule(team_name, year)
 
     sched_df = pd.DataFrame([game.__dict__ for game in schedule])
 
@@ -84,8 +84,8 @@ def get_player_last_game(team_name):
     return last_game
 
 
-def get_team_last_game(team_name):
-    schedule = team_schedule(team_name)
+def get_team_last_game(team_name, year):
+    schedule = team_schedule(team_name, year)
 
     sched_df = pd.DataFrame([game.__dict__ for game in schedule])
 
@@ -107,12 +107,12 @@ def get_team_last_game(team_name):
 
     return last_game
 
-def get_season_stats_per_game(fullList, player_id, games_played):
+def get_season_stats_per_game(fullList, player_id, games_played, year):
     player = search_player(fullList, player_id)
 
     team = player.player_team
 
-    url = f"https://api.collegefootballdata.com/stats/player/season?year={datetime.now().year}&team={team.replace("&", "%26")}"
+    url = f"https://api.collegefootballdata.com/stats/player/season?year={year}&team={team.replace("&", "%26")}"
 
     headers = {"Authorization": f"Bearer {token}"}
 

@@ -5,6 +5,7 @@ import pandas as pd
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+from enum import Enum
 
 load_dotenv()
 token = os.getenv("CFBD_TOKEN")
@@ -16,6 +17,11 @@ class fbGame(BaseModel):
     home_team : str
     away_team : str
     start_date : str
+
+class Season(int, Enum):
+    last_season = datetime.now().year - 1
+    curr_season = datetime.now().year 
+    next_season = datetime.now().year + 1
 
 
 class playerInfo(BaseModel):
@@ -87,15 +93,24 @@ class playerList():
     def __init__(self):
         self.__df__ = None
         self.populated = False
+        self.active_season = datetime.now().year
     
     def populate(self):
         
-
+        
         url = f"https://api.collegefootballdata.com/roster?year={datetime.now().year}"
 
         headers = {'Accept': 'application/json', "Authorization": f"Bearer {token}"}
 
         response = requests.get(url, headers=headers)
+
+        if response.text == "[]":
+            url = f"https://api.collegefootballdata.com/roster?year={datetime.now().year - 1}"
+
+            headers = {'Accept': 'application/json', "Authorization": f"Bearer {token}"}
+
+            response = requests.get(url, headers=headers)
+            self.active_season = self.active_season - 1
 
         roster_json = json.loads(response.text)
 
@@ -160,6 +175,14 @@ class firstStringList():
         headers = {"Authorization": f"Bearer {token}"}
 
         response = requests.get(url, headers=headers)
+
+        if response.text == "[]":
+            url = f"https://api.collegefootballdata.com/stats/player/season?year={datetime.now().year - 1}"
+
+            headers = {"Authorization": f"Bearer {token}"}
+
+            response = requests.get(url, headers=headers)
+
 
         response_json = json.loads(response.text)
 
