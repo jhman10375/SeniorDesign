@@ -9,10 +9,12 @@ import pandas as pd
 import json
 import pickle
 import os
+import pytz
 from classes import *
 from functions import *
 from dotenv import load_dotenv
 from sklearn.preprocessing import LabelEncoder
+import cbbpy.mens_scraper as s
 
 fullList = playerList()
 
@@ -35,6 +37,7 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
 
+#FOOTBALL ENDPOINTS
 
 @app.get("/teams/{team_name}", tags=["Team Info"])
 async def get_schedule(team_name: str, season : Season) -> list[fbGame]:
@@ -1004,8 +1007,39 @@ async def predict_Defense_Special_Teams_season(team_name : str) -> D_ST_Stats:
                      sacks=test_dict['sacks'], 
                      deflected_passes=test_dict['deflected_passes'])
 
+#BASKETBALL ENDPOINTS
+
+@app.get("/bb/teams/{team_name}", tags=["Basketball", "Team Info"])
+async def get_schedule(team_name: str, season : Season) -> list[fbGame]:
+  
+  game_list = s.get_team_schedule(team_name, season.value)
+  
+  return_list = []
+  pst = pytz.timezone('US/Pacific')
 
 
+  for row in game_list.iterrows():
+      game_info = s.get_game_info(row[1]["game_id"])
+
+      combined_str = f"{row[1]['game_day']} {row[1]['game_time']}"
+      naive_datetime = datetime.strptime(combined_str, '%B %d, %Y %I:%M %p PST')
+      pst_datetime = pst.localize(naive_datetime)
+      utc_datetime = pst_datetime.astimezone(pytz.utc)
+      final_date = utc_datetime.strftime('%Y-%m-%dT%H:%M:%S.000Z')
+
+      curr_game = fbGame(game_id=row[1]["game_id"],
+                        home_id=int(game_info["home_id"].iloc[0]),
+                        home_team=game_info["home_team"].iloc[0],
+                        away_team=game_info["away_team"].iloc[0],
+                        start_date=final_date)
+      
+      return_list.append(curr_game)
+
+  
+  return return_list
+
+
+#DRAFT ENDPOINTS
 @app.get("/status")
 async def get_status():
     return({
