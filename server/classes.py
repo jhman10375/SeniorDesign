@@ -6,6 +6,11 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 from enum import Enum
+from bs4 import BeautifulSoup
+from utils.cbbpy_utils import _get_id_from_team, _get_team_map
+import cbbpy.mens_scraper as s
+import pytz
+
 
 load_dotenv()
 token = os.getenv("CFBD_TOKEN")
@@ -88,6 +93,19 @@ class D_ST_Stats(BaseModel):
     deflected_passes : int
     
 
+class bkbStats(BaseModel):
+    player_name: str
+    player_ID : int
+    player_position: str
+    three_pointers: int
+    two_pointers : int
+    free_throws : int
+    rebounds : int
+    assists : int
+    blocked_shots : int
+    steals : int
+    turnovers : int
+
 class playerList():
 
     def __init__(self):
@@ -164,6 +182,14 @@ class firstStringList():
 
         self.populated = False 
 
+        try:
+            self.__df__ = pd.read_csv(f"{os.getcwd()}/cache/fb/first_string.csv")
+            self.populated = True 
+        except FileNotFoundError:
+            self.populate()
+
+        
+
     def populate(self):
         self.populated = True
 
@@ -225,11 +251,207 @@ class firstStringList():
 
         first_stringers.drop(['stat'], axis=1, inplace=True)
 
+        first_stringers.to_csv(f"{os.getcwd()}/cache/fb/first_string.csv")
+
         self.__df__ = first_stringers
     
     def getlist(self):
         return self.__df__
 
+
+class bkbPlayers():
+    def __init__(self, fullList : playerList):
+        self.df = None
+        self.populated = False
+        try:
+            self.df = pd.read_csv(f"{os.getcwd()}/cache/bkb/bkb_players.csv")
+            self.populated = True 
+        except FileNotFoundError:
+            self.populate()
+
+        self.populated = False
+
+        if not(fullList.populated):
+            fullList.populate()
+        self.details = fullList.__df__[['team', 'color', 'alt_color', 'logos']].drop_duplicates(subset=['team'])
+
+        self.first_string_populated = False
+        self.first_string_df = None
+
+        try:
+            self.first_string_df = pd.read_csv(f"{os.getcwd()}/cache/bkb/first_string.csv")
+            self.first_string_populated = True 
+        except FileNotFoundError:
+            self.populate_first_string()        
+
+
+    def populate(self):
+        team_info = _get_team_map("mens")[['id', 'location']].drop_duplicates()
+
+        team_list = list(team_info.itertuples(index=False, name=None))
+
+        players_df = pd.DataFrame(columns=["id","jersey","name","position","height","weight","year", "team"])
+
+        for TEAM_id, TEAM_name in team_list:
+            
+            url = f'https://www.espn.com/mens-college-basketball/team/roster/_/id/{TEAM_id}/'
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            response = requests.get(url, headers=headers)
+            if response.status_code == 200:
+                html_content = response.text
+            else:
+                print(f'Failed to retrieve the page. Status code: {response.status_code}, team: {TEAM_name}')
+            soup = BeautifulSoup(html_content, 'html.parser')
+            roster_table = soup.find('table', {'class': 'Table'})
+            found_roster = False
+            if roster_table:
+                found_roster = True
+                players = []
+                for row in roster_table.find_all('tr')[1:]:  # Skip the header row
+                    cols = row.find_all('td')
+                    if len(cols) >= 4:
+                        id_html = cols[0].find('a')
+                        raw_name = cols[1].text.strip()
+                        num_start = 0
+                        jers_shown = False
+                        for i, char in enumerate(raw_name):
+                            if char.isdigit():
+                                num_start = i
+                                jers_shown = True
+                                break
+                        if jers_shown:
+                            name = raw_name[:num_start]
+                            number = raw_name[num_start:]
+                        else:
+                            name = raw_name
+                            number = -1
+                        position = cols[2].text.strip()
+                        raw_height = cols[3].text.strip()
+                        height = (int(raw_height[:raw_height.find("'")].replace("-", "0"))*12
+                                +int(raw_height[raw_height.find("'")+1:raw_height.find("'")+4].replace('"', '').replace("--", "-1").replace("-", "-1")))
+                        weight = cols[4].text.strip().replace(" lbs", "").replace("--", "-1")
+                        pl_class = cols[5].text.strip()
+                        match pl_class:
+                            case 'FR':
+                                year = 1
+                            case 'SO':
+                                year = 2
+                            case 'JR':
+                                year = 3
+                            case 'SR':
+                                year = 4
+                            case _:
+                                year = 0
+            
+                        # Extract player ID from the href attribute of the link
+                        player_id = None
+                        if id_html and 'href' in id_html.attrs:
+                            href = id_html['href']
+                            # Extract the numeric player ID from the href (e.g., '/mens-college-basketball/player/_/id/12345/')
+                            player_id = href.split('/')[-2] if 'player/_/id/' in href else None
+                        players.append({
+                            'id': player_id,
+                            'jersey': int(number),
+                            'name': name,
+                            'position': position,
+                            'height': height,
+                            'weight': int(weight),
+                            'year' : year,
+                            'team' : TEAM_name
+                        })
+            else:
+                print(f'Roster table not found, id = {TEAM_id}')
+            if found_roster:
+                curr =  pd.DataFrame(players)
+            else: 
+                curr =  pd.DataFrame(columns=["id","jersey","name","position","height","weight","year","team"])
+            
+            players_df = pd.concat([players_df, curr])
+            players_df.reset_index(drop=True, inplace=True)
+
+        players_df.drop_duplicates(inplace=True)
+
+        columns = list(self.details.columns) + list(players_df.columns)
+        columns = columns[0:-1]
+
+        details_df = pd.DataFrame(columns=columns)
+
+        for _, row in players_df.iterrows():
+            curr_deets = self.details.query(f'team == "{row["team"]}"')
+            if curr_deets.empty:
+                curr_col = '#152532'
+                curr_alt = '#c8caca'
+                curr_log = "[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912]"
+            else:   
+                curr_col = curr_deets["color"].iloc[0]
+                curr_alt = curr_deets["alt_color"].iloc[0]
+                curr_log = curr_deets["logos"].iloc[0]
+            curr = {"team": row["team"],
+                    "color" : curr_col,
+                    "alt_color": curr_alt,
+                    "logos": curr_log,
+                    "id" : row["id"],
+                    "jersey" : row["jersey"],
+                    "name" : row["name"],
+                    "position" : row["position"],
+                    "height" : row["height"],
+                    "weight" : row["weight"],
+                    "year" : row["year"]
+                }
+            details_df.loc[len(details_df)] = curr
         
+        details_df.to_csv(f"{os.getcwd()}/cache/bkb/bkb_players.csv")
+
+        self.df = details_df
+        self.populated = True
 
 
+    def to_utc(row):
+
+        pst = pytz.timezone('US/Pacific')
+        combined_str = f"{row['game_day']} {row['game_time']}"
+        if combined_str.find("PST") != -1:
+            naive_datetime = datetime.strptime(combined_str, '%B %d, %Y %I:%M %p PST')
+        else:
+            naive_datetime = datetime.strptime(combined_str, '%B %d, %Y %I:%M %p PDT')
+        pst_datetime = pst.localize(naive_datetime)
+        utc_datetime = pst_datetime.astimezone(pytz.utc)
+        return utc_datetime.strftime('%Y-%m-%dT%H:%M:%S.000Z')
+
+
+    def populate_first_string(self):
+        if not(self.populated):
+            self.populate()
+
+        team_list = self.df["team"].unique()
+
+        last_game_list = []
+
+        for team in team_list:
+            sched_df = s.get_team_schedule(team)
+        
+            sched_df["datetime"] = sched_df.apply(bkbPlayers.to_utc, axis=1)
+
+            now = datetime.now()
+
+            sched_df = sched_df.query(f'datetime <= "{now.strftime("%Y-%m-%d")}"')
+
+            sched_df.sort_values(by='datetime', inplace=True, ascending=False)
+
+            sched_df.reset_index(drop=True, inplace=True)
+ 
+            last_game_list.append(sched_df.iloc[0]["game_id"])
+
+        starters = []
+
+        for game in last_game_list:
+            box_df = s.get_game_boxscore(game)
+            
+            curr_starters = box_df[box_df['starter'] == True]["player_id"].astype('int').values.tolist()
+
+            starters = starters + curr_starters
+
+        
+        self.first_string_df = self.df[self.df['id'].isin(starters)]
+        self.first_string_df.to_csv(f"{os.getcwd()}/cache/bkb/first_string.csv")
+        self.first_string_populated = True
