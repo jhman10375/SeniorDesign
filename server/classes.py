@@ -10,6 +10,11 @@ from bs4 import BeautifulSoup
 from utils.cbbpy_utils import _get_id_from_team, _get_team_map
 import cbbpy.mens_scraper as s
 import pytz
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 load_dotenv()
@@ -18,6 +23,14 @@ token = os.getenv("CFBD_TOKEN")
 class fbGame(BaseModel):
 
     game_id : int
+    home_id : int
+    home_team : str
+    away_team : str
+    start_date : str
+
+class bbGame(BaseModel):
+
+    game_id : str
     home_id : int
     home_team : str
     away_team : str
@@ -269,7 +282,6 @@ class bkbPlayers():
         except FileNotFoundError:
             self.populate()
 
-        self.populated = False
 
         if not(fullList.populated):
             fullList.populate()
@@ -455,3 +467,106 @@ class bkbPlayers():
         self.first_string_df = self.df[self.df['id'].isin(starters)]
         self.first_string_df.to_csv(f"{os.getcwd()}/cache/bkb/first_string.csv")
         self.first_string_populated = True
+
+class bsbPlayers():
+    def __init__(self, fullList : playerList):
+        
+        self.teams = None
+        self.populated = False
+        try:
+            self.teams = pd.read_csv(f"{os.getcwd()}/cache/bsb/bsb_teams.csv")
+            self.populated = True 
+        except FileNotFoundError:
+            self.populate()
+        
+        if not(fullList.populated):
+            fullList.populate()
+        
+        self.details = fullList.__df__
+
+    
+    def populate(self):
+        self.populated = True
+
+        try:
+            driver = webdriver.Chrome()
+            # Open the NCAA rankings page
+            driver.get("https://stats.ncaa.org/rankings/national_ranking?academic_year=2024.0&division=1.0&ranking_period=108.0&sport_code=MBA&stat_seq=496.0")
+
+            # Wait for the page to load
+            wait = WebDriverWait(driver, 10)
+
+            
+            # Select "Baseball" from the sports dropdown
+            sports_dropdown = wait.until(EC.presence_of_element_located((By.NAME, "rankings_table_length")))
+            Select(sports_dropdown).select_by_value("-1")
+            team_num = int(Select(sports_dropdown).first_selected_option.text)
+
+            # Wait for the table to load
+            wait = WebDriverWait(driver, 10)
+            table = wait.until(EC.presence_of_element_located((By.XPATH, "//div[@class='dataTables_scrollBody']//table")))
+
+            # Extract rows from the table
+            rows = table.find_elements(By.TAG_NAME, "tr")
+
+            teams = []
+        
+            print("Team ID and Name:")
+            for row_index in range(1,team_num+1):  # Skip the header row
+                # Locate the link within the cell containing the team name
+                link = rows[row_index].find_element(By.XPATH, f'//*[@id="rankings_table"]/tbody/tr[{row_index}]/td[2]/a')
+                team_name = link.text
+                team_id = link.get_attribute("href").split("/")[-1]  # Extract the ID from the URL
+                teams.append({"id": team_id, "name": team_name})
+                row_index = 1 + row_index
+
+            #print(teams)
+            print("Scrape Done!")
+        finally:
+            # Close the browser
+            driver.quit()
+        
+        year = datetime.now().year
+
+        for team in teams:
+            team["id"] = int(team["id"])
+        
+            driver = webdriver.Chrome()
+        
+            # Open the NCAA rankings page
+            driver.get(f"https://stats.ncaa.org/teams/{team['id']}")
+
+            year_str = str(int(year) - 1) + '-' + str(year)[-2:]
+
+            wait = WebDriverWait(driver, 10)
+            
+            # Select "Baseball" from the sports dropdown
+            year_dropdown = wait.until(EC.presence_of_element_located((By.ID, "year_list")))
+            Select(year_dropdown).select_by_visible_text(year_str)
+            
+            wait = WebDriverWait(driver, 10)
+        
+            
+            
+            if team["name"].find('(') != -1:
+                team["conference"] = team["name"][(team["name"].find('(')+1) : team["name"].find(')')]
+                team["name"] = team["name"][:(team["name"].find('(')-1)]
+
+            new_url = driver.current_url
+            new_number = new_url.split("/")[-1]
+            new_number = new_number[:(new_number.find('?'))]
+
+            team["id"] = new_number
+            
+            driver.quit()  
+
+        teams_df = pd.DataFrame(teams)
+
+        teams_df.to_csv(f"{os.getcwd()}/cache/bsb/bsb_teams.csv")
+
+        self.teams = teams_df
+
+
+
+
+

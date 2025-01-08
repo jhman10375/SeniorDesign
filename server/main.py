@@ -23,6 +23,8 @@ firstStrings = firstStringList(fullList)
 
 bkbList = bkbPlayers(fullList)
 
+bsbList = bsbPlayers(fullList)
+
 load_dotenv()
 token = os.getenv("CFBD_TOKEN")
 
@@ -1326,6 +1328,171 @@ async def get_basketball_player_season_stats(player_id : int, season : Season) -
                      blocked_shots=stats_df['blk'].sum(),
                      steals=stats_df['stl'].sum(),
                      turnovers=stats_df['to'].sum())
+
+
+#BASEBALL ENDPOINTS
+
+@app.get("/bsb/teams/{team_name}", tags=["Baseball", "Baseball - Team Info"])
+async def get_baseball_schedule(team_name: str, season : Season) -> list[bbGame]:
+
+  teams_df = bsbList.teams  
+
+  team_id = teams_df.query(f'name == "{team_name}"').iloc[0]['id']
+
+  year = season.value
+  try:
+      
+      
+          driver = webdriver.Chrome()
+      
+          # Open the NCAA rankings page
+          driver.get(f"https://stats.ncaa.org/teams/{team_id}")
+
+          if year != datetime.now().year: 
+              year_str = str(int(year) - 1) + '-' + str(year)[-2:]
+      
+              wait = WebDriverWait(driver, 10)
+              
+              # Select "year" from the year dropdown
+              year_dropdown = wait.until(EC.presence_of_element_located((By.ID, "year_list")))
+              Select(year_dropdown).select_by_visible_text(year_str)
+
+      
+          # Wait for the table to load
+          wait = WebDriverWait(driver, 10)
+          table = wait.until(EC.presence_of_element_located((By.XPATH, "//div[@class='card-body']//table")))
+      
+          # Extract rows from the table
+          rows = table.text.split('\n')
+
+          #rows = table.find_elements(By.XPATH, ".//tbody/tr")
+          games = []
+        
+          for index in range(1,len(rows)):
+              row = rows[index]
+              
+              if row[0] == '@':
+                  continue
+              
+              if row[0:4] == str(year):
+                  continue
+          
+              date = row[:row.rfind('/')+5]
+              date_list = date.split('/')
+              #print(f'{date=}')
+      
+              year = date_list[2]
+              year_format = year[-2:]
+              year_format
+
+              #print(f'{date_list=}')
+              #print(f'{year=}')
+              
+              date_format = date[:date.rfind('/')+1]
+              #print(f'{date_format=}')
+              datetime_str = date_format + year_format + ' 00:00:00'
+              
+              game_date = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S')
+
+              if game_date <= datetime.now():
+                      last_W = row.rfind('W')
+                      last_L = row.rfind('L')
+                  
+                      if last_W == -1:
+                          result_index = last_L
+                      elif last_L == -1:
+                          result_index = last_W
+                      elif last_W > last_L:
+                          result_index = last_W
+                      else:
+                          result_index = last_L
+                  
+                      if result_index != -1:
+                          opp = row[row.find(date)+len(date):result_index].strip()
+                      else:
+                          opp = row[row.find(date)+len(date):].strip()
+                  
+                      if (opp.find(')') != -1) and (opp.find('(OH)') == -1):
+                          opp = opp[opp.find(')')+1:].strip()
+                  
+                      if opp.find('#') != -1:
+                          opp = row[row.find('#')+3:].strip()
+                  
+                      if (row != rows[-1]):
+                          if (rows[index+1][0] == '@') or (rows[index+1][0:4] == str(year)):
+                              home = False
+                          elif opp.find('@') == -1:
+                              home = True
+                          else:
+                              home = False
+                              opp = opp.replace('@', '').strip()
+                      else:
+                          if opp.find('@') == -1:
+                              home = True
+                          else:
+                              home = False
+                              opp = opp.replace('@', '').strip()
+              else:
+                  if row.find('TBA') == -1:
+                      opp = row[findnth(row,' ',2):].strip()
+                  else:
+                      opp = row[(row.find('TBA')+3):].strip()
+      
+      
+                  if (row != rows[-1]):
+                      if (rows[index+1][0] == '@'):
+                          home = False
+                      elif opp.find('@') == -1:
+                          home = True
+                      else:
+                          home = False
+                          opp = opp.replace('@', '').strip()
+                  else:
+                      if opp.find('@') == -1:
+                          home = True
+                      else:
+                          home = False
+                          opp = opp.replace('@', '').strip()
+
+                          
+              opp = opp.replace('Canceled', '').strip()
+              if (opp.find(')') != -1) and (opp.find('(OH)') == -1):
+                opp = opp[:opp.find('(')].strip()
+              
+              games.append({"date": str(game_date), "opponent": opp, "home": home})
+  finally:
+      # Close the browser
+      driver.quit() 
+      
+  return_list = []
+
+  for index in range(0,len(games)):
+
+      game_id = str(team_id) + '-' + str(index)
+
+      if games[index]['home'] == True:
+          home_id = team_id
+          home_team = team_name
+          away_team = games[index]['opponent']
+      else:
+          opp_q = teams_df.query(f'name == "{games[index]['opponent']}"')
+
+          if (opp_q.empty):
+             opp_id = -1
+          else:
+             opp_id = opp_q.iloc[0]['id']
+
+          home_id = opp_id
+          home_team = games[index]['opponent']
+          away_team = team_name
+      
+      curr_game = bbGame(game_id=game_id,home_id=home_id,
+                        away_team=away_team,home_team=home_team,start_date=games[index]['date'])
+
+      return_list.append(curr_game)
+  
+  return return_list
+
 
 #DRAFT ENDPOINTS
 @app.get("/status")
