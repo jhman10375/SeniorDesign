@@ -1,17 +1,40 @@
-import { SchoolModel } from './school.model';
+import { BaseballPositionEnum } from '../enums/position/baseball-position.enum';
+import { BasketballPositionEnum } from '../enums/position/basketball-position.enum';
+import { FootballPositionEnum } from '../enums/position/football-position.enum';
+import { SoccerRosterModel } from './roster/soccer-roster.model';
 
 export class LeagueAthleteModel {
   AthleteID: string;
-  PlayerID: string;
+  AltColor: string;
+  Color: string;
+  Height: number;
+  Jersey: number;
+  Logos: Array<string>;
   Name: string;
-  Number: string | Number;
-  School: SchoolModel;
+  PlayerID: string | null;
+  Position:
+    | FootballPositionEnum
+    | BaseballPositionEnum
+    | BasketballPositionEnum
+    | SoccerRosterModel;
+  School: string;
+  Team: string;
+  Weight: number;
+  Year: number;
 
   constructor() {
     this.AthleteID = '';
-    this.PlayerID = '';
+    this.AltColor = '';
+    this.Color = '';
+    this.Height = 0;
+    this.Jersey = 0;
+    this.Logos = [];
     this.Name = '';
-    this.Number = '-1';
-    this.School = new SchoolModel();
+    this.PlayerID = null;
+    this.Position = 0;
+    this.School = '';
+    this.Team = '';
+    this.Weight = 0;
+    this.Year = 0;
   }
 }

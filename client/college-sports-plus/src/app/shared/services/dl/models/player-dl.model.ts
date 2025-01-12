@@ -1,9 +1,9 @@
 export class PlayerDLModel {
-  ID: String;
-  Name: String;
+  ID: string;
+  Name: string;
   DraftPickSortOrder: number;
-  School: String;
-  TeamName: String;
+  School: string;
+  TeamName: string;
   TeamPlayerIDs: Array<string>;
 
   constructor() {

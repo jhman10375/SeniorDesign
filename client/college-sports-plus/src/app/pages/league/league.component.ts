@@ -5,7 +5,8 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Button } from 'primeng/button';
+import { Subject, takeUntil } from 'rxjs';
 
 import { LeaguePlayerModel } from '../../shared/models/league-player.model';
 import { LeagueModel } from '../../shared/models/league.model';
@@ -17,7 +18,7 @@ import { UserService } from '../../shared/services/dl/user.service';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, Button],
   providers: [LeagueService, AthleteService, UserService],
   styleUrls: ['league.component.scss'],
   selector: 'league',
@@ -52,15 +53,21 @@ export class LeagueComponent implements OnInit, OnDestroy {
       this.currentId = params.get('leagueID');
     });
 
-    this.activeLeague = this.leagueService.getLeague(this.currentId ?? '-1');
-    const currentUser: UserModel | undefined = this.userService.currentUser;
-    if (currentUser) {
-      this.myTeam = this.activeLeague?.Players.find(
-        (x) => x.ID === currentUser.ID
-      );
-    }
-    this.hasDraftOccurred =
-      (this.activeLeague?.DraftDate.getTime() ?? 0) < new Date().getTime();
+    this.leagueService.league.pipe(takeUntil(this.unsubscribe)).subscribe({
+      next: (leagues) => {
+        this.activeLeague = this.leagueService.getLeague(
+          this.currentId ?? '-1'
+        );
+        const currentUser: UserModel | undefined = this.userService.currentUser;
+        if (currentUser) {
+          this.myTeam = this.activeLeague?.Players.find(
+            (x) => x.ID === currentUser.ID
+          );
+        }
+        this.hasDraftOccurred =
+          (this.activeLeague?.DraftDate.getTime() ?? 0) < new Date().getTime();
+      },
+    });
   }
 
   ngOnDestroy(): void {
@@ -68,7 +75,7 @@ export class LeagueComponent implements OnInit, OnDestroy {
   }
 
   navigateTo(url: string, id: string = '-1'): void {
-    if (url == 'team' || url == 'player') {
+    if (url == 'team' || url == 'player' || url == 'current-games') {
       this.router.navigate([url, id], { relativeTo: this.activatedRoute });
     } else {
       this.router.navigate([url], { relativeTo: this.activatedRoute });
@@ -94,21 +101,29 @@ export class LeagueComponent implements OnInit, OnDestroy {
     // );
 
     const segments = urlTree.root.children['primary']?.segments;
+    const playerSearch = segments.find((x) => x.path == 'player-search');
+    const player = segments.find((x) => x.path == 'player');
 
-    if (segments && segments.length > 4) {
-      const id = segments[segments.length - 3].path;
-      const path = segments[segments.length - 4].path;
-      this.router.navigate([path, id], {
+    if (playerSearch && player) {
+      this.router.navigate([playerSearch.path], {
         relativeTo: this.activatedRoute,
       });
-    } else if (segments && segments.length > 3) {
-      const id = segments[segments.length - 3].path;
-      const path = segments[segments.length - 4].path;
-      this.router.navigate([path, id]);
-    } else if (segments && segments.length > 2) {
-      const id = segments[segments.length - 2].path;
-      const path = segments[segments.length - 3].path;
-      this.router.navigate([path, id]);
+    } else {
+      if (segments && segments.length > 4) {
+        const id = segments[segments.length - 3].path;
+        const path = segments[segments.length - 4].path;
+        this.router.navigate([path, id], {
+          relativeTo: this.activatedRoute,
+        });
+      } else if (segments && segments.length > 3) {
+        const id = segments[segments.length - 3].path;
+        const path = segments[segments.length - 4].path;
+        this.router.navigate([path, id]);
+      } else if (segments && segments.length > 2) {
+        const id = segments[segments.length - 2].path;
+        const path = segments[segments.length - 3].path;
+        this.router.navigate([path, id]);
+      }
     }
   }
 }

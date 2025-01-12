@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 
 import { LeaguePlayerModel } from '../../models/league-player.model';
-import { AthleteService } from './athlete.service';
-import { LeagueService } from './league.service';
+import { PlayerDLService } from '../dl/player-dl.service';
+import { SchoolService } from './school.service';
 
 @Injectable()
-export class PlayerService {
-  constructor(
-    private athleteService: AthleteService,
-    private leagueService: LeagueService
-  ) {}
+export class PlayerService extends PlayerDLService {
+  constructor(schoolService: SchoolService) {
+    super(schoolService);
+  }
 
-  getPlayer(id: string): LeaguePlayerModel {
-    const leaguePlayerModel: LeaguePlayerModel = new LeaguePlayerModel();
-    leaguePlayerModel.ID = id;
-    return leaguePlayerModel;
+  override getPlayer(id: string): LeaguePlayerModel {
+    return super.getPlayer(id) ?? new LeaguePlayerModel();
   }
 }

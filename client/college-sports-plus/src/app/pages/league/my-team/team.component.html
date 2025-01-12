@@ -1,18 +1,26 @@
 @if (isMobile) {
   @if (checkIfAtParentRoute()) {
-    <mobile-scoreboard [teamScoreboard]="true" [player]="player?.player">
-    </mobile-scoreboard>
-
-    @for (athlete of player?.athletes; track athlete) {
-      <div
-        (click)="navigateTo(athlete.AthleteID)"
-        class="m-2 flex flex-row justify-content-between pl-1 pr-1 pb-1 border-bottom-1 surface-border"
-      >
-        <span>{{ athlete.Name }}</span>
-        <span>{{ athlete.Number }}</span>
-        <span>{{ athlete.School.Name }}</span>
+    <div class="scrollable-container" [style]="{ height: '100%' }">
+      <div class="header">
+        <mobile-scoreboard [teamScoreboard]="true" [player]="team?.player">
+        </mobile-scoreboard>
+        <div
+          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+        >
+          <span class="header-item">Pos</span>
+          <span class="header-item">Name</span>
+          <span class="header-item">Number</span>
+          <span class="header-item">School</span>
+        </div>
       </div>
-    }
+      <div class="body">
+        <roster
+          [team]="team"
+          [leagueType]="leagueType"
+          (navigateToEmitter)="navigateTo($event)"
+        ></roster>
+      </div>
+    </div>
   }
 
   <router-outlet></router-outlet>

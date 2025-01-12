@@ -1,17 +1,40 @@
-import { DraftSchoolWSModel } from './draft-school-ws.model';
+import { BaseballPositionEnum } from '../../../../shared/enums/position/baseball-position.enum';
+import { BasketballPositionEnum } from '../../../../shared/enums/position/basketball-position.enum';
+import { FootballPositionEnum } from '../../../../shared/enums/position/football-position.enum';
+import { SoccerRosterModel } from '../../../../shared/models/roster/soccer-roster.model';
 
 export class DraftPlayerWSModel {
   id: string;
+  alt_color: string;
+  color: string;
+  height: number;
+  jersey: number;
+  logos: Array<string>;
   name: string;
-  number: string;
-  player_id: string;
-  school: DraftSchoolWSModel;
+  position:
+    | FootballPositionEnum
+    | BaseballPositionEnum
+    | BasketballPositionEnum
+    | SoccerRosterModel;
+  school: string;
+  team: string;
+  user_id: string | null;
+  weight: number;
+  year: number;
 
   constructor() {
     this.id = '';
+    this.alt_color = '';
+    this.color = '';
+    this.height = 0;
+    this.jersey = 0;
+    this.logos = [];
     this.name = '';
-    this.number = '';
-    this.player_id = '';
-    this.school = new DraftSchoolWSModel();
+    this.position = 0;
+    this.school = '';
+    this.team = '';
+    this.user_id = null;
+    this.weight = 0;
+    this.year = 0;
   }
 }

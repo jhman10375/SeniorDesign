@@ -1,0 +1,32 @@
+@if (player) {
+  <div class="flex flex-row justify-content-between mb-2">
+    <div class="mr-2">
+      <number-logo [player]="player" [school]="school"></number-logo>
+    </div>
+    <div
+      class="flex flex-column ml-2"
+      style="max-width: 60%; overflow-wrap: break-word"
+    >
+      <div class="text-4xl" style="text-wrap: wrap; text-align: right">
+        {{ player.Position }} {{ player.Name }}
+      </div>
+      @if (draftModal) {
+        <div
+          class="text-4xl mt-2 border-top-1"
+          style="text-wrap: wrap; text-align: right"
+        >
+          {{ player.School }}
+        </div>
+      } @else {
+        <div
+          class="inline-flex align-items-center justify-content-end gap-2 pt-1 mt-2 border-top-1"
+        >
+          <p-avatar [image]="player.Logos[0]" shape="circle" />
+          <span class="text-4xl" style="text-wrap: wrap; text-align: right">{{
+            player.School
+          }}</span>
+        </div>
+      }
+    </div>
+  </div>
+}

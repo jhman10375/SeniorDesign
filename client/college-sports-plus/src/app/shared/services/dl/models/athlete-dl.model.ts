@@ -1,6 +1,6 @@
-export class LeagueAthleteModel {
-  AthleteID: String;
-  PlayerID: String;
+export class LeagueAthleteDLModel {
+  AthleteID: string;
+  PlayerID: string;
 
   constructor() {
     this.AthleteID = '';

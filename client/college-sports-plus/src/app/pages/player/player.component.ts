@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
 
-import { NumberLogoComponent } from '../../shared/components/shared/number-logo/number-logo.component';
+import { PlayerHeaderComponent } from '../../shared/components/shared/player-header/player-header.component';
 import { LeagueAthleteModel } from '../../shared/models/league-athlete.model';
 import { AthleteService } from '../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../shared/services/bl/general-service.service';
+import { PlayerFAPIModel } from '../../shared/services/fastAPI/models/player-fapi.model';
 
 @Component({
   standalone: true,
-  imports: [NumberLogoComponent],
+  imports: [PlayerHeaderComponent],
   providers: [AthleteService],
-  styleUrls: ['player.component.scss'],
   selector: 'player',
   templateUrl: 'player.component.html',
 })
@@ -27,7 +28,16 @@ export class PlayerComponent implements OnInit {
 
     const currentID = this.activatedRoute.snapshot.params['playerID'];
     if (currentID !== '-1') {
-      this.player = this.athleteService.getPlayer(currentID);
+      this.athleteService
+        .getAthleteByID(currentID)
+        .pipe(take(1))
+        .subscribe({
+          next: (a: PlayerFAPIModel) => {
+            const p = GeneralService.FastAPILeagueAthleteModelConverter(a);
+            this.player = p;
+          },
+          error: (e) => console.error(e),
+        });
     }
     console.log(this.player);
   }

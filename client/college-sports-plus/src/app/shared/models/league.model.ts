@@ -4,6 +4,7 @@ import { BasketballLeagueSettingsModel } from './basketball-league-settings/bask
 import { FootballLeagueSettingsModel } from './football-league-settings/football-league-settings.model';
 import { LeagueAthleteModel } from './league-athlete.model';
 import { LeaguePlayerModel } from './league-player.model';
+import { LeagueWeekModel } from './league-week.model';
 import { SoccerLeagueSettingsModel } from './soccer-league-settings/soccer-league-settings.model';
 
 export class LeagueModel {
@@ -19,4 +20,5 @@ export class LeagueModel {
   Players: Array<LeaguePlayerModel>;
   Athletes: Array<LeagueAthleteModel>;
   LeagueType: SportEnum;
+  Season: Array<LeagueWeekModel>;
 }

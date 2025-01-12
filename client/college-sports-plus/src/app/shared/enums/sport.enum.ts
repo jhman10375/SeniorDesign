@@ -1,7 +1,7 @@
 export enum SportEnum {
   None = -1,
-  Basketball = 0,
-  Baseball = 1,
-  Football = 2,
-  Soccer = 3,
+  Basketball = 1,
+  Baseball = 2,
+  Football = 3,
+  Soccer = 4,
 }

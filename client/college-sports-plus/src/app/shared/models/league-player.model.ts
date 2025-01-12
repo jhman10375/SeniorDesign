@@ -1,3 +1,7 @@
+import { BaseballRosterModel } from './roster/baseball-roster.model';
+import { BasketballRosterModel } from './roster/basketball-roster.model';
+import { FootballRosterModel } from './roster/football-roster.model';
+import { SoccerRosterModel } from './roster/soccer-roster.model';
 import { SchoolModel } from './school.model';
 
 export class LeaguePlayerModel {
@@ -6,7 +10,12 @@ export class LeaguePlayerModel {
   DraftPickSortOrder: number;
   School: SchoolModel;
   TeamName: string;
-  TeamPlayerIDs: Array<string>;
+  DraftTeamPlayerIDs: Array<string>;
+  DraftRoster:
+    | BaseballRosterModel
+    | BasketballRosterModel
+    | FootballRosterModel
+    | SoccerRosterModel;
 
   constructor() {
     this.ID = '';
@@ -14,6 +23,7 @@ export class LeaguePlayerModel {
     this.DraftPickSortOrder = -1;
     this.School = new SchoolModel();
     this.TeamName = '';
-    this.TeamPlayerIDs = [];
+    this.DraftTeamPlayerIDs = [];
+    this.DraftRoster = new FootballRosterModel();
   }
 }
