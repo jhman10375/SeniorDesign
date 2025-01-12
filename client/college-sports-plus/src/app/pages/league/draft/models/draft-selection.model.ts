@@ -3,7 +3,7 @@ import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.mod
 export class DraftSelectionModel {
   ID: string;
   Name: string;
-  Players: Array<LeagueAthleteModel>;
+  Players: Array<LeagueAthleteModel | null>;
 
   constructor() {
     this.ID = '';

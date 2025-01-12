@@ -8,6 +8,7 @@ export class LeagueDLModel {
   SettingsID: string;
   PlayerIDs: Array<string>;
   LeagueType: SportEnum;
+  Season: Array<string>;
 
   constructor() {
     this.ID = '';
@@ -17,5 +18,6 @@ export class LeagueDLModel {
     this.SettingsID = '';
     this.PlayerIDs = [];
     this.LeagueType = SportEnum.None;
+    this.Season = [];
   }
 }

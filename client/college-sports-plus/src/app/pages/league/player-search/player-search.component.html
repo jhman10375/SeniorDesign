@@ -1,0 +1,134 @@
+@if (this.checkIfAtParentRoute()) {
+  <div
+    class="scrollable-container"
+    [style]="{ height: '100%' }"
+    [ngClass]="draftMode ? 'mt-2' : ''"
+  >
+    <div class="header w-full mb-2 border-bottom-1 surface-border">
+      <div class="flex flex-row w-full">
+        <div
+          [style]="
+            searchText() && searchText().length > 0
+              ? 'width: 83.3333%'
+              : 'width: 100%'
+          "
+          [ngClass]="searchText() && searchText().length > 0 ? 'mr-2' : ''"
+        >
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-search" />
+            <input
+              #mySearchBox
+              type="text"
+              class="w-full"
+              pInputText
+              [ngModel]="searchText()"
+              (ngModelChange)="searchPlayers($event, undefined, draftMode)"
+              placeholder="Search"
+            />
+          </p-iconField>
+        </div>
+        @if (searchText() && searchText().length > 0) {
+          <p-button
+            [severity]="'danger'"
+            class="ml-2"
+            icon="pi pi-times"
+            (onClick)="onClearFilter()"
+          ></p-button>
+        }
+      </div>
+      <div
+        class="flex flex-row align-items-center justify-content-between border-bottom-1 mt-2 mb-1 surface-border"
+      >
+        <span class="header-item">Filters:</span>
+        <player-filter
+          class="header-item"
+          [filterName]="'Position'"
+          [filters]="positionFilters"
+          [currentFilter]="currentPositionFilter()"
+          (setFilterEmitter)="setFilterss('Position', $event)"
+        ></player-filter>
+        <player-filter
+          class="header-item"
+          [filterName]="'General'"
+          [filters]="[]"
+          [currentFilter]="null"
+          (setFilterEmitter)="setFilterss('General', $event)"
+        ></player-filter>
+      </div>
+      <div
+        class="flex flex-row align-items-center justify-content-between surface-border"
+      >
+        @if (draftMode && !endDraft) {
+          @if (myPick) {
+            <span class="header-item">Pick</span>
+          } @else {
+            <span class="header-item">Reserve</span>
+          }
+        }
+        <player-sort
+          class="header-item"
+          [sortFunction]="'Name'"
+          [currentSortFunction]="currentSortFunction()"
+          [currentSortType]="currentSortType()"
+          (sortFunctionEmitter)="setSortFunction($event)"
+        ></player-sort>
+        <player-sort
+          class="header-item"
+          [sortFunction]="'Number'"
+          [currentSortFunction]="currentSortFunction()"
+          [currentSortType]="currentSortType()"
+          (sortFunctionEmitter)="setSortFunction($event)"
+        ></player-sort>
+        <player-sort
+          class="header-item"
+          [sortFunction]="'School'"
+          [currentSortFunction]="currentSortFunction()"
+          [currentSortType]="currentSortType()"
+          (sortFunctionEmitter)="setSortFunction($event)"
+        ></player-sort>
+      </div>
+    </div>
+
+    <div class="body overflow-hiden">
+      <div class="flex flex-column mt-2">
+        @for (player of athleteSelection | async; track player) {
+          <div
+            class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
+          >
+            @if (!endDraft && draftMode) {
+              <div class="data-cell">
+                @if (myPick) {
+                  <span
+                    class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                    (click)="addToRoster(player)"
+                    >Pick</span
+                  >
+                } @else {
+                  @if (inQueue(player)) {
+                    <span
+                      class="grid-item text-xs text-primary border-1 p-1 border-primary border-round p-disabled"
+                      >Reserved</span
+                    >
+                  } @else {
+                    <span
+                      class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                      (click)="addToQueue(player)"
+                      >Reserve</span
+                    >
+                  }
+                }
+              </div>
+            }
+            <div class="data-cell" (click)="onPlayerSelected(player)">{{
+              player.Name
+            }}</div>
+            <div class="data-cell">{{ player.Jersey }}</div>
+            <div class="data-cell">{{ player.School }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <router-outlet></router-outlet>
+}

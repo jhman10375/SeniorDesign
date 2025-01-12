@@ -40,7 +40,16 @@ export class PlayerDLService {
     player.Name = 'Jordan Herman';
     player.DraftPickSortOrder = -1;
     player.TeamName = "Jordan's Allstars";
-    player.TeamPlayerIDs = ['0'];
+    player.DraftTeamPlayerIDs = [
+      '4433971',
+      '4688380',
+      '4431196',
+      '4610131',
+      '4899046',
+      '4429955',
+      '5092232',
+      '4431506',
+    ];
     player.School = this.schoolService.getSchool(
       SchoolNameEnum.UniversityOfCincinnati
     );
@@ -51,7 +60,7 @@ export class PlayerDLService {
     player2.Name = 'Zach Herman';
     player2.DraftPickSortOrder = -1;
     player2.TeamName = "Zach's Rockstars";
-    player2.TeamPlayerIDs = ['0', '1'];
+    player2.DraftTeamPlayerIDs = ['0', '1'];
     player2.School = this.schoolService.getSchool(
       SchoolNameEnum.OhioStateUniversity
     );
@@ -62,7 +71,7 @@ export class PlayerDLService {
     player3.Name = 'Adam Herman';
     player3.DraftPickSortOrder = -1;
     player3.TeamName = "Adam's Rockstars";
-    player3.TeamPlayerIDs = ['1'];
+    player3.DraftTeamPlayerIDs = ['1'];
     player3.School = this.schoolService.getSchool(
       SchoolNameEnum.OhioStateUniversity
     );

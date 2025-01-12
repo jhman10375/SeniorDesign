@@ -1,0 +1,40 @@
+.scrollable-container {
+  display: flex;
+  flex-direction: column;
+  //   height: 100%; /* Adjust as needed */
+}
+
+.header {
+  flex-shrink: 0;
+  /* Header styles */
+}
+
+.body {
+  flex: 1; /* Takes up remaining space */
+  overflow-y: auto;
+  /* Body styles */
+}
+
+.header-item {
+  flex: 1; /* Make all header items take equal space */
+  text-align: center; /* Center the content within header items */
+  /* Add additional styles as needed, e.g., padding, margin */
+  &:first-child {
+    text-align: left;
+  }
+  &:last-child {
+    text-align: right;
+  }
+}
+
+.data-cell {
+  flex: 1;
+  text-align: center;
+  /* Add other styles as needed */
+  &:first-child {
+    text-align: left;
+  }
+  &:last-child {
+    text-align: right;
+  }
+}

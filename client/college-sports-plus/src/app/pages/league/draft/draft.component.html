@@ -11,6 +11,7 @@
       (enterDraft)="onEnterDraft()"
     ></draft-otp>
   } @else {
+    <p-toast />
     <div class="grid-container w-full">
       <div class="grid-header max-w-full">
         <draft-nav
@@ -35,6 +36,7 @@
           @case (DraftNavEnum.Main) {
             <div class="pb-2 pl-2 pr-2">
               <draft-main
+                [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
                 [athletes]="(athletes$ | async) ?? []"
                 [queue]="(queue$ | async) ?? []"
                 [currentlyPicking]="
@@ -47,6 +49,8 @@
                 [endDraft]="(endDraft | async) ?? false"
                 (addToQueueEmitter)="onAddToQueue($event)"
                 (addToRosterEmitter)="onAddToRoster($event)"
+                (dialogPlayerEmitter)="showDialog($event)"
+                (searchEmitter)="onSearch()"
               ></draft-main
             ></div>
           }
@@ -56,6 +60,7 @@
           @case (DraftNavEnum.Queue) {
             <div class="pb-2 pl-2 pr-2">
               <draft-queue
+                [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
                 [athletes]="(queue$ | async) ?? []"
                 [currentlyPicking]="
                   (currentPick | async)?.Player?.ID
@@ -67,20 +72,24 @@
                 [endDraft]="(endDraft | async) ?? false"
                 (addToRosterEmitter)="onAddToRoster($event)"
                 (removeFromRosterEmitter)="onRemoveFromQueue($event)"
+                (dialogPlayer)="showDialog($event)"
               ></draft-queue
             ></div>
           }
           @case (DraftNavEnum.MySelections) {
             <div class="pb-2 pl-2 pr-2">
               <draft-my-selections
+                [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
                 [athletes]="(myTeam | async) ?? []"
+                (dialogPlayer)="showDialog($event)"
               ></draft-my-selections
             ></div>
           }
           @case (DraftNavEnum.Selections) {
             <draft-selections
-              [selections]="(leagueAthlete$ | async) ?? []"
+              [selections]="(draftSelections | async) ?? []"
               [numberOfRounds]="numberOfRounds"
+              (dialogPlayer)="showDialog($event)"
             ></draft-selections>
           }
           @case (DraftNavEnum.None) {
@@ -95,3 +104,75 @@
     </div>
   }
 }
+
+<p-dialog
+  header="Header"
+  [(visible)]="playerDialogVisible"
+  [modal]="true"
+  [style]="{
+    'min-height': '75%',
+    'max-height': '75%',
+    'min-width': '100%',
+    'max-width': '100%',
+  }"
+>
+  <ng-template pTemplate="header">
+    <div class="inline-flex align-items-center justify-content-center gap-2">
+      <p-avatar [image]="playerDialogPlayer().Logos[0]" shape="circle" />
+      <span class="font-bold white-space-nowrap">
+        {{ playerDialogPlayer().Name }}
+      </span>
+    </div>
+  </ng-template>
+  <player-header
+    [player]="playerDialogPlayer()"
+    [draftModal]="true"
+  ></player-header>
+  <draft-player></draft-player>
+  <!-- <span class="p-text-secondary block mb-5">Update your information.</span>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label class="font-semibold w-6rem"> Username </label>
+  </div>
+  <div class="flex align-items-center gap-3 mb-5">
+    <label class="font-semibold w-6rem">Email</label>
+  </div> -->
+  <!-- <ng-template pTemplate="footer">
+               Use if needed 
+            </ng-template> -->
+</p-dialog>
+
+<p-dialog
+  header="Header"
+  [(visible)]="searchDialogVisible"
+  [modal]="true"
+  [style]="{
+    'min-height': '75%',
+    'max-height': '75%',
+    'min-width': '100%',
+    'max-width': '100%',
+  }"
+>
+  <ng-template pTemplate="header">
+    <div class="inline-flex align-items-center justify-content-center gap-2">
+      <i class="pi pi-search"></i>
+      <span class="font-bold white-space-nowrap"> Player Search </span>
+    </div>
+  </ng-template>
+  <player-search
+    [draftMode]="true"
+    [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
+    [athletes]="searchAthletes()"
+    [myPick]="
+      (currentPick | async)?.Player?.ID
+        ? (currentPick | async)?.Player?.ID == activeUser?.ID
+          ? true
+          : false
+        : false
+    "
+    [endDraft]="(endDraft | async) ?? false"
+    [queue]="(queue$ | async) ?? []"
+    (dialogPlayerEmitter)="showDialog($event)"
+    (addToQueueFromSearchEmitter)="onAddToFromSearch(true, $event)"
+    (addToRosterFromSearchEmitter)="onAddToFromSearch(false, $event)"
+  ></player-search>
+</p-dialog>

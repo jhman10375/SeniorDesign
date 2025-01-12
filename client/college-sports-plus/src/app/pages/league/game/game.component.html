@@ -1,0 +1,43 @@
+@if (isMobile) {
+  @if (checkIfAtParentRoute()) {
+    <div class="scrollable-container" [style]="{ height: '100%' }">
+      <div class="header">
+        <!-- NEED TO ADD A GAME SCOREBOARD COMPONENT -->
+        <!-- <mobile-scoreboard [teamScoreboard]="true" [player]="team?.player">
+          </mobile-scoreboard> -->
+        <div
+          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+        >
+          <span class="header-item">Pos</span>
+          <span class="header-item">Name</span>
+          <span class="header-item">Number</span>
+          <span class="header-item">School</span>
+          <span>|</span>
+          <span class="header-item">School</span>
+          <span class="header-item">Number</span>
+          <span class="header-item">Name</span>
+          <span class="header-item">Pos</span>
+        </div>
+      </div>
+      <div class="body">
+        <div class="flex flex-row justify-content-between">
+          <roster
+            [team]="team"
+            [leagueType]="leagueType"
+            (navigateToEmitter)="navigateTo($event)"
+            class="w-full"
+          ></roster>
+          <roster
+            [team]="team"
+            [reverse]="true"
+            [leagueType]="leagueType"
+            (navigateToEmitter)="navigateTo($event)"
+            class="w-full"
+          ></roster>
+        </div>
+      </div>
+    </div>
+  }
+
+  <router-outlet></router-outlet>
+}

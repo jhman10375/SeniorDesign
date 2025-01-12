@@ -1,0 +1,67 @@
+<div class="flex align-items-center" style="margin-top: 150px">
+  <div
+    class="w-full border-1 scoreboard-background border-round surface-border p-2"
+    style="max-width: 500px"
+  >
+    <div class="flex flex-column">
+      <span class="mt-2 mb-2 text-4xl">Welcome to College Sports +</span>
+      <div
+        class="flex flex-row flex-align-center justify-content-between mt-2 mb-2"
+      >
+        <span class="pi-spin material-icons" style="width: 24px; color: brown"
+          >sports_football</span
+        >
+        <span class="pi-spin material-icons" style="width: 24px; color: #f88158"
+          >sports_basketball</span
+        >
+        <span class="pi-spin material-icons" style="width: 24px"
+          >sports_baseball</span
+        >
+        <span class="pi-spin material-icons text-primary" style="width: 24px"
+          >sports_soccer</span
+        >
+      </div>
+      <p-divider />
+      <span class="text-4xl mb-2">Register</span>
+      <p-inputGroup class="mb-2">
+        <p-inputGroupAddon>
+          <i class="pi pi-user"></i>
+        </p-inputGroupAddon>
+        <input pInputText placeholder="Username" />
+      </p-inputGroup>
+      <p-inputGroup>
+        <p-inputGroupAddon>
+          <i class="pi pi-lock"></i>
+        </p-inputGroupAddon>
+        <p-password
+          [inputStyleClass]="'w-full border-noround'"
+          [(ngModel)]="password"
+          [toggleMask]="true"
+          placeholder="Password"
+          [feedback]="true"
+        >
+          <ng-template pTemplate="footer">
+            <p-divider />
+            <p class="mt-2">Suggestions</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+              <li>At least one lowercase</li>
+              <li>At least one uppercase</li>
+              <li>At least one numeric</li>
+              <li>Minimum 8 characters</li>
+            </ul>
+          </ng-template>
+        </p-password>
+      </p-inputGroup>
+      <div class="flex flex-row align-items-end mt-2">
+        <p-button label="Register" [routerLink]="['/register']"></p-button>
+      </div>
+      <p-divider />
+      <div
+        class="flex flex-row justify-content-between align-items-center mb-2"
+      >
+        <span [routerLink]="['/login']">Login</span>
+        <span [routerLink]="['/forgot-password']">Forgot Password</span>
+      </div>
+    </div>
+  </div>
+</div>

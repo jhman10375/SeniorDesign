@@ -12,9 +12,13 @@
       <tr>
         <td>{{ team.Name }}</td>
         @for (player of team.Players; track player) {
-          <td>
-            <span class="text-base">{{ player.Name }}</span></td
-          >
+          @if (player) {
+            <td>
+              <span class="text-base" (click)="onPlayerSelected(player)">{{
+                player?.Name
+              }}</span></td
+            >
+          }
         }
       </tr>
     }

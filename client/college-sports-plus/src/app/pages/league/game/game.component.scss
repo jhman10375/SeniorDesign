@@ -1,0 +1,16 @@
+.scrollable-container {
+  display: flex;
+  flex-direction: column;
+  //   height: 100%; /* Adjust as needed */
+}
+
+.header {
+  flex-shrink: 0;
+  /* Header styles */
+}
+
+.body {
+  flex: 1; /* Takes up remaining space */
+  overflow-y: auto;
+  /* Body styles */
+}

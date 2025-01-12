@@ -80,11 +80,14 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                 user_id = data.get("user_id")
                 round = data.get("round")
                 index = data.get("index")
-                draft_manager.update_draft_order(draft_key, user_id, round, index)
+                player_id = data.get("player_id")
+                draft_manager.update_draft_order(draft_key, user_id, round, index, player_id)
                 await draft_manager.broadcast(draft_key, {
                         "type": "draft_order_updated",
                         "draft_order": draft_manager.get_draft_order(draft_key),
                         "connected_users": draft_manager.draft_users[draft_key],
+                        "draft_results": draft_manager.get_draft_results(draft_key),
+                        "draft_athletes": draft_manager.players[draft_key],
                         "allow_draft_entry": True
                         # "connected_users": list(draft_manager.client_usernames.values())
                     })

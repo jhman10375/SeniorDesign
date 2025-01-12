@@ -54,7 +54,13 @@
           </div>
           <div
             class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('current-games')"
+            (click)="navigateTo('player-search')"
+          >
+            <span class="text-xl">Players</span>
+          </div>
+          <div
+            class="mt-2 mb-2 p-2 border-1 surface-border"
+            (click)="navigateTo('current-games', '0')"
           >
             <span class="text-xl">Current Games</span> </div
           ><div
@@ -102,6 +108,7 @@
       </div>
     } @else {
       <h2>No League Found</h2>
+      <p-button label="Go Back" [routerLink]="['/home']"></p-button>
     }
   </div>
 }

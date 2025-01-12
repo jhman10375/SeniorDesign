@@ -1,16 +1,14 @@
 <div class="container">
   @if (player) {
-    <div
-      class="bar longer-bar"
-      [style.background-color]="player.School.PrimaryColor"
-    ></div>
+    <div class="bar longer-bar" [style.background-color]="player.Color"></div>
     <div
       class="bar shorter-bar"
-      [style.background-color]="player.School.SecondaryColor"
+      [style.background-color]="player.AltColor"
     ></div>
-    <span class="numbers">#{{ player.Number }}</span>
+    <span class="numbers">#{{ player.Jersey }}</span>
   }
   @if (school) {
+    <!-- If we add a school page, need to make this a logo -->
     <div
       class="bar longer-bar"
       [style.background-color]="school.PrimaryColor"
