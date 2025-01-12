@@ -4,7 +4,7 @@ import { LeaguePlayerModel } from './league-player.model';
 export class LeagueSearchModel {
   ID: string;
   Manager: LeaguePlayerModel;
-  Name: String;
+  Name: string;
   DraftDate: Date;
   LeagueType: SportEnum;
 

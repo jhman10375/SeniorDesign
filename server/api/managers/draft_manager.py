@@ -3,8 +3,13 @@ from fastapi import WebSocket
 import uuid
 import random
 
+from pandas import DataFrame
+
 from api.models.CreateDraftData import CreateDraftData
 from api.models.DraftOrderData import DraftOrderData
+from api.models.DraftResultData import DraftResultData
+from api.models.DraftPlayerData import DraftPlayerData
+from classes import firstStringList, playerInfo, playerList
 
 class DraftManager:
     def __init__(self):
@@ -13,7 +18,8 @@ class DraftManager:
         self.draft_keys: Dict[str, str] = {}
         self.draft_users: Dict[str, List[str]] = {}
         self.draft_orders: Dict[str, List[DraftOrderData]] = {}
-        self.players: Dict[str, List[str]] = {}  # List of players for each draft
+        self.draft_results: Dict[str, List[DraftResultData]] = {}
+        self.players: Dict[str, List[str]] = {}
 
     def create_draft(self, data: CreateDraftData) -> str:
         """Generate a unique 6-digit numeric draft key."""
@@ -23,22 +29,39 @@ class DraftManager:
                 self.draft_keys[draft_key] = draft_key
                 self.draft_users[draft_key] = []
                 self.draft_orders[draft_key] = []
-                self.players[draft_key] = [
-                    {"id": "0", "name": "John Smith", "number": "55", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
-                    {"id": "1", "name": "Gene Smith", "number": "1", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
-                    {"id": "2", "name": "Jack Smith", "number": "2", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
-                    {"id": "3", "name": "Jeff Smith", "number": "3", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
-                    {"id": "4", "name": "Jacksn Smith", "number": "4", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
-                    {"id": "5", "name": "Andrew Smith", "number": "5", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
-                    {"id": "6", "name": "Jason Smith", "number": "6", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
-                    {"id": "7", "name": "Anthony Smith", "number": "7", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
-                    {"id": "8", "name": "Alex Smith", "number": "8", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
-                    {"id": "9", "name": "Andy Smith", "number": "9", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
-                    {"id": "10", "name": "Austin Smith", "number": "10", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
-                    {"id": "11", "name": "Adam Smith", "number": "11", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
-                ]
+                self.draft_results[draft_key] = []
+                # self.players[draft_key] = [
+                #     {"id": "0", "name": "John Smith", "number": "55", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
+                #     {"id": "1", "name": "Gene Smith", "number": "1", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
+                #     {"id": "2", "name": "Jack Smith", "number": "2", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
+                #     {"id": "3", "name": "Jeff Smith", "number": "3", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
+                #     {"id": "4", "name": "Jacksn Smith", "number": "4", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
+                #     {"id": "5", "name": "Andrew Smith", "number": "5", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
+                #     {"id": "6", "name": "Jason Smith", "number": "6", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
+                #     {"id": "7", "name": "Anthony Smith", "number": "7", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
+                #     {"id": "8", "name": "Alex Smith", "number": "8", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
+                #     {"id": "9", "name": "Andy Smith", "number": "9", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
+                #     {"id": "10", "name": "Austin Smith", "number": "10", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
+                #     {"id": "11", "name": "Adam Smith", "number": "11", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
+                # ]
+                self.generate_players(draft_key)
                 self.generate_draft_order(draft_key, data)
                 return draft_key
+    
+    def generate_players(self, draft_key):
+        pl: playerList = playerList()
+        pl.populate()
+        fsl: firstStringList = firstStringList(pl)
+        fsl.populate()
+        generatedAthletes = []
+        if (fsl.populated):
+            athletes = fsl.getlist().to_dict('records')
+            for athlete in athletes:
+                # a: DraftPlayerData = DraftPlayerData(**athlete)
+                athlete['user_id']= None
+                generatedAthletes.append(athlete)
+        self.players[draft_key] = generatedAthletes
+            # print(generatedAthletes)
             
     def generate_draft_order(self, draft_key, data: CreateDraftData) -> Dict[str, int]:
         match data.draft_type:
@@ -67,13 +90,23 @@ class DraftManager:
     def get_draft_order(self, draft_key) -> Dict[str, any]:
         """Return JSON serialized draft_order"""
         return [obj.GetJSONData() for obj in self.draft_orders[draft_key]]
+    
+    def get_draft_results(self, draft_key) -> Dict[str, any]:
+        """Return JSON serialized draft_result"""
+        return [obj.GetJSONData() for obj in self.draft_results[draft_key]]
 
-    def update_draft_order(self, draft_key, user_id, round, index):
+    def update_draft_order(self, draft_key, user_id, round, index, player_id):
         """Remove the previous user"""
         d: DraftOrderData = DraftOrderData(user_id, round, index)
         for x in self.draft_orders[draft_key]:
             if d.index == x.index and d.round == x.round and d.user_id == x.user_id:
+                self.update_draft_results(draft_key, d, player_id)
                 self.draft_orders[draft_key].remove(x)
+
+    def update_draft_results(self, draft_key, draftOrderData: DraftOrderData, player_id):
+        """Return draft results"""
+        d: DraftResultData = DraftResultData(draftOrderData.user_id,draftOrderData.round, draftOrderData.index, player_id)
+        self.draft_results[draft_key].append(d)
 
     def get_anonymous_username(self) -> str:
         """Generate a short, unique anonymous username."""
@@ -108,8 +141,8 @@ class DraftManager:
     async def select_player(self, draft_key: str, athlete_id: str, player_id: str):
         """Mark a player as selected by a user and notify others."""
         for player in self.players[draft_key]:
-            if player["id"] == athlete_id and player["player_id"] is None:
-                player["player_id"] = player_id
+            if player["id"] == athlete_id and player["user_id"] is None:
+                player["user_id"] = player_id
                 return True  # Successfully selected player
         return False  # Player already selected
 

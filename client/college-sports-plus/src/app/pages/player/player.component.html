@@ -1,24 +1,6 @@
 @if (isMobile) {
   @if (player) {
-    <div class="flex flex-row justify-content-between mb-2">
-      <div class="mr-2">
-        <number-logo [player]="player"></number-logo>
-      </div>
-      <div
-        class="flex flex-column ml-2"
-        style="max-width: 60%; overflow-wrap: break-word"
-      >
-        <div class="text-4xl" style="text-wrap: wrap; text-align: right">
-          {{ player.Name }}
-        </div>
-        <div
-          class="text-4xl mt-2 border-top-1"
-          style="text-wrap: wrap; text-align: right"
-        >
-          {{ player.School.Name }}
-        </div>
-      </div>
-    </div>
+    <player-header [player]="player"></player-header>
     <div style="overflow-y: auto">
       <div style="height: 200px" class="border-1 border-round mb-2">
         <h2>This div will contain general stats</h2>

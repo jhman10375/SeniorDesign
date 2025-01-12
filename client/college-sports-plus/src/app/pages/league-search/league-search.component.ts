@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -27,6 +27,7 @@ import { LeagueService } from '../../shared/services/bl/league.service';
     InputIconModule,
     IconFieldModule,
     ButtonModule,
+    RouterLink,
   ],
   providers: [LeagueService, AthleteService],
   selector: 'league-search',

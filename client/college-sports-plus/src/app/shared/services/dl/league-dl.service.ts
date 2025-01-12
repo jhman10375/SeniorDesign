@@ -1,33 +1,62 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import {
+  BehaviorSubject,
+  Observable,
+  skip,
+  Subject,
+  take,
+  takeUntil,
+} from 'rxjs';
 
 import { SportEnum } from '../../enums/sport.enum';
+import { LeagueAthleteModel } from '../../models/league-athlete.model';
+import { LeagueWeekModel } from '../../models/league-week.model';
 import { LeagueModel } from '../../models/league.model';
 import { AthleteDLService } from './athlete-dl.service';
+import { LeagueSeasonDLService } from './league-season-dl.service';
 import { LeagueSettingsDLService } from './league-settings-dl.service';
 import { LeagueDLModel } from './models/league-dl.model';
 import { PlayerDLService } from './player-dl.service';
 
 @Injectable({ providedIn: 'root' })
-export class LeagueDLService {
+export class LeagueDLService implements OnDestroy {
   league: Observable<Array<LeagueModel>>;
 
   leagueDL: Observable<Array<LeagueDLModel>>;
 
+  _league = new BehaviorSubject<Array<LeagueModel>>([]);
+
   private _leagueDL = new BehaviorSubject<Array<LeagueDLModel>>([]);
 
-  _league = new BehaviorSubject<Array<LeagueModel>>([]);
+  private unsubscribe = new Subject<void>();
 
   constructor(
     private playerDLService: PlayerDLService,
     private leagueSettingsDLService: LeagueSettingsDLService,
-    private athleteDLService: AthleteDLService
+    private athleteDLService: AthleteDLService,
+    private leagueSeasonDLService: LeagueSeasonDLService
   ) {
     this.league = this._league.asObservable();
     this.leagueDL = this._leagueDL.asObservable();
 
+    this.leagueSeasonDLService.seasonDL
+      .pipe(skip(2), takeUntil(this.unsubscribe))
+      .subscribe({
+        next: (season) => {
+          let athletes: Array<LeagueAthleteModel> = [];
+          this.athleteDLService.players.pipe(take(1)).subscribe({
+            next: (a) => (athletes = a),
+          });
+          this.convertLeagues(athletes);
+        },
+      });
+
     this.initializeLeagues();
-    this.convertLeagues();
+    // this.convertLeagues();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
   }
 
   initializeLeagues(): void {
@@ -53,7 +82,7 @@ export class LeagueDLService {
     this._leagueDL.next([league]);
   }
 
-  convertLeagues(): void {
+  convertLeagues(athletes: Array<LeagueAthleteModel>): void {
     const leagueDL: Array<LeagueDLModel> = this._leagueDL.value;
     const league: Array<LeagueModel> = [];
     leagueDL.forEach((lDL) => {
@@ -71,12 +100,22 @@ export class LeagueDLService {
         lDL.LeagueType
       );
       l.Players = this.playerDLService.getLeague(lDL.PlayerIDs);
+      l.Season = this.leagueSeasonDLService.getSeason(
+        lDL.ID,
+        lDL.LeagueType,
+        athletes
+      );
+      console.log(l.Season);
       //Will probably have an error since l is not really defined here at all
-      l.Athletes = this.athleteDLService.initializeLeagueAthletes(l);
+      l.Athletes = athletes;
 
       league.push(l);
     });
 
     this._league.next(league);
+  }
+
+  updateSeason(leagueType: SportEnum, week: LeagueWeekModel): void {
+    this.leagueSeasonDLService.updateSeason(leagueType, week);
   }
 }

@@ -4,5 +4,6 @@
   "icons": [],
   "theme_color": "#FFFFFF",
   "background_color": "#FFFFFF",
+  "display_override": ["standalone"],
   "display": "standalone"
 }

@@ -4,8 +4,20 @@
       class="flex flex-row mb-1 align-items-center justify-content-between border-bottom-1 surface-border"
     >
       <span class="header-item">Filters:</span>
-      <span class="header-item">Position</span>
-      <span class="header-item">General</span>
+      <player-filter
+        class="header-item"
+        [filterName]="'Position'"
+        [filters]="positionFilters"
+        [currentFilter]="currentPositionFilter()"
+        (setFilterEmitter)="setFilterss('Position', $event)"
+      ></player-filter>
+      <player-filter
+        class="header-item"
+        [filterName]="'General'"
+        [filters]="[]"
+        [currentFilter]="null"
+        (setFilterEmitter)="setFilterss('General', $event)"
+      ></player-filter>
     </div>
     <div
       class="flex flex-row mb-2 align-items-center justify-content-between border-bottom-1 surface-border"
@@ -14,14 +26,32 @@
         <span class="header-item">Pick</span>
         <span class="header-item">Remove</span>
       }
-      <span class="header-item">Name</span>
-      <span class="header-item">Number</span>
-      <span class="header-item">School</span>
+      <player-sort
+        class="header-item"
+        [sortFunction]="'Name'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
+      <player-sort
+        class="header-item"
+        [sortFunction]="'Number'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
+      <player-sort
+        class="header-item"
+        [sortFunction]="'School'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
     </div>
   </div>
 
   <div class="body">
-    @for (athlete of athletes; track athlete) {
+    @for (athlete of athleteSelection | async; track athlete) {
       <div
         class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
       >
@@ -46,9 +76,11 @@
             >Remove</span
           >
         }
-        <div class="data-cell">{{ athlete.Athlete.Name }}</div>
-        <div class="data-cell">{{ athlete.Athlete.Number }}</div>
-        <div class="data-cell">{{ athlete.Athlete.School.Name }}</div>
+        <div class="data-cell" (click)="onPlayerSelected(athlete)">{{
+          athlete.Name
+        }}</div>
+        <div class="data-cell">{{ athlete.Jersey }}</div>
+        <div class="data-cell">{{ athlete.School }}</div>
       </div>
     }
   </div>

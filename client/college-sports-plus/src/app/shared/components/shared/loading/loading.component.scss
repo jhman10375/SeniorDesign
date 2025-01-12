@@ -1,0 +1,53 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+:root {
+  --vh: 1vh;
+}
+
+// .root-container loading {
+//   display: flex;
+//   flex-direction: column;
+//   // height: calc(var(--vh, 1vh) * 100); // Use dynamically calculated height
+//   height: calc(100vh - 16px); // Full viewport height
+// }
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100%);
+  background-color: #f4f4f4;
+  flex-direction: column;
+}
+
+@supports (height: 100dvh) {
+  .root-container {
+    height: calc(100dvh - 16px);
+  }
+}
+
+.icon-wrapper {
+  width: 100px;
+  height: 100px;
+}
+
+.loading-icon {
+  animation: spin 1.7s linear infinite;
+
+  span {
+    font-size: 5rem;
+  }
+}
+
+.loading-text {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}

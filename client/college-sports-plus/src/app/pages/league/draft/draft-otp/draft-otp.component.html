@@ -1,29 +1,29 @@
-@if (isLeagueManager) {
-  @if (!draftKey && !displayWaitingRoom) {
-    <p class="text-4xl m-2">Create Draft</p>
-    <p-button
-      label="New Draft"
-      (onClick)="onCreateDraft()"
-      styleClass="m-2"
-    ></p-button>
-  }
-  @if (draftKey) {
-    <div class="flex flex-column">
-      <div class="flex flex-row justify-content-between align-items-center">
-        <p class="text-2xl m-2">DraftKey: {{ draftKey }}</p>
-        <p-button
-          icon="pi pi-upload"
-          label="Share"
-          class="m-2"
-          (onClick)="onCopyDraftKey()"
-        ></p-button>
-      </div>
-      <span class="ml-2 mb-4 text-base"
-        >Share this draft key with your league</span
-      >
-    </div>
-  }
+<!-- @if (isLeagueManager) { -->
+@if (!draftKey && !displayWaitingRoom) {
+  <p class="text-4xl m-2">Create Draft</p>
+  <p-button
+    label="New Draft"
+    (onClick)="onCreateDraft()"
+    styleClass="m-2"
+  ></p-button>
 }
+@if (draftKey) {
+  <div class="flex flex-column">
+    <div class="flex flex-row justify-content-between align-items-center">
+      <p class="text-2xl m-2">DraftKey: {{ draftKey }}</p>
+      <p-button
+        icon="pi pi-upload"
+        label="Share"
+        class="m-2"
+        (onClick)="onCopyDraftKey()"
+      ></p-button>
+    </div>
+    <span class="ml-2 mb-4 text-base"
+      >Share this draft key with your league</span
+    >
+  </div>
+}
+<!-- } -->
 
 <p class="text-4xl m-2">Draft Login</p>
 
@@ -32,27 +32,8 @@
   [integerOnly]="true"
   [disabled]="displayWaitingRoom"
   [length]="6"
-  style="gap: 0"
->
-  <ng-template
-    pTemplate="input"
-    let-token
-    let-events="events"
-    let-index="index"
-  >
-    <input
-      pInputText
-      type="number"
-      [maxLength]="1"
-      (input)="events.input($event)"
-      (keydown)="events.keydown($event)"
-      (paste)="events.paste($event)"
-      [attr.value]="token"
-      class="custom-otp-input"
-      [disabled]="displayWaitingRoom"
-    />
-  </ng-template>
-</p-inputOtp>
+  class="ml-2"
+/>
 
 @if (webSocketError && webSocketError.length > 0 && !displayWaitingRoom) {
   <p class="ml-2 p-error">{{ webSocketError }}</p>
@@ -63,6 +44,7 @@
   !(webSocketError && webSocketError.length > 0 && webSocketError.endsWith(otp))
 ) {
   <p-button
+    #joinDraftButton
     label="Enter Waitingroom"
     styleClass="m-2"
     (onClick)="onJoinDraft(otp)"
@@ -76,11 +58,11 @@
       <p class="m-2">{{ user }}</p>
     }
   </div>
-  @if (isLeagueManager) {
-    <p-button
-      label="Start Draft"
-      styleClass="m-2"
-      (onClick)="onEnterDraft()"
-    ></p-button>
-  }
+  <!-- @if (isLeagueManager) { -->
+  <p-button
+    label="Start Draft"
+    styleClass="m-2"
+    (onClick)="onEnterDraft()"
+  ></p-button>
+  <!-- } -->
 }

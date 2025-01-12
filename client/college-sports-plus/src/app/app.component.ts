@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { skip, take } from 'rxjs';
 
 import { MobileNavBarComponent } from './shared/components/mobile/mobile-nav-bar/mobile-nav-bar.component';
+import { LoadingComponent } from './shared/components/shared/loading/loading.component';
 import { WebNavBarComponent } from './shared/components/web/web-nav-bar/web-nav-bar.component';
+import { AthleteService } from './shared/services/bl/athlete.service';
 import { GeneralService } from './shared/services/bl/general-service.service';
+import { LeagueService } from './shared/services/bl/league.service';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +18,28 @@ import { GeneralService } from './shared/services/bl/general-service.service';
     WebNavBarComponent,
     MobileNavBarComponent,
     CommonModule,
+    LoadingComponent,
   ],
-  providers: [GeneralService],
+  providers: [GeneralService, LeagueService, AthleteService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   isMobile: boolean = false;
 
-  constructor() {
+  constructor(
+    private athleteService: AthleteService,
+    private leagueService: LeagueService
+  ) {
     this.isMobile = GeneralService.isMobile();
+    this.athleteService.loadAthletes();
+    this.athleteService.players
+      .pipe(
+        skip(1), // Skip the first value
+        take(1) // Take only the second value
+      )
+      .subscribe({
+        next: (athletes) => this.leagueService.convertLeagues(athletes),
+      });
   }
 }

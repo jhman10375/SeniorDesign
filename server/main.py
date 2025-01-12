@@ -1,3 +1,5 @@
+import ast
+from typing import List
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routes.draft import router as draft_router
@@ -163,6 +165,14 @@ async def search_for_players_by_id(player_id : int) -> playerInfo:
 
     return search_player(fullList, player_id)
 
+@app.get("/players/search/by_ids")
+async def search_for_players_by_ids(player_ids = ['']) -> List[playerInfo]:
+    print(player_ids)
+    ids = ast.literal_eval(player_ids)
+    players = []
+    for id in ids:
+        players.append(search_player(fullList, id))
+    return players
 
 @app.get("/lists/populate")
 async def populate_player_lists():

@@ -1,0 +1,19 @@
+<span class="header-item" (click)="filterOverlayPanel.toggle($event)">
+  @if (currentFilter) {
+    {{ filterName }}: {{ currentFilter }}
+  } @else {
+    {{ filterName }}
+  }
+</span>
+
+<p-overlayPanel #filterOverlayPanel>
+  <div class="overflow-scroll" style="max-height: 10vh">
+    <div class="flex flex-column">
+      @for (filter of filters; track filter) {
+        <div (click)="setFilter(filter); filterOverlayPanel.toggle($event)">
+          {{ filter }}
+        </div>
+      }
+    </div>
+  </div>
+</p-overlayPanel>

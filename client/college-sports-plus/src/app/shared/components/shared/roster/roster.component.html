@@ -1,0 +1,47 @@
+@if (reverse) {
+  @switch (leagueType) {
+    @case (SportEnum.Baseball) {}
+    @case (SportEnum.Basketball) {}
+    @case (SportEnum.Football) {
+      @for (pos of positions; track pos) {
+        <div
+          (click)="navigateTo(getRosterValue(pos).AthleteID)"
+          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+        >
+          <span class="data-cell">{{ getRosterValue(pos).School }}</span>
+          <span class="data-cell">{{ getRosterValue(pos).Jersey }}</span>
+          <span class="data-cell">{{ getRosterValue(pos).Name }}</span>
+          <span class="data-cell">{{ getPosition(pos) }}</span>
+        </div>
+      }
+      <!-- <div> {{ getRosterValue("QB1") }} </div> -->
+    }
+    @case (SportEnum.Soccer) {}
+    @case (SportEnum.None) {
+      <span>Error loading details, please refresh the page</span>
+    }
+  }
+} @else {
+  @switch (leagueType) {
+    @case (SportEnum.Baseball) {}
+    @case (SportEnum.Basketball) {}
+    @case (SportEnum.Football) {
+      @for (pos of positions; track pos) {
+        <div
+          (click)="navigateTo(getRosterValue(pos).AthleteID)"
+          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+        >
+          <span class="data-cell">{{ getPosition(pos) }}</span>
+          <span class="data-cell">{{ getRosterValue(pos).Name }}</span>
+          <span class="data-cell">{{ getRosterValue(pos).Jersey }}</span>
+          <span class="data-cell">{{ getRosterValue(pos).School }}</span>
+        </div>
+      }
+      <!-- <div> {{ getRosterValue("QB1") }} </div> -->
+    }
+    @case (SportEnum.Soccer) {}
+    @case (SportEnum.None) {
+      <span>Error loading details, please refresh the page</span>
+    }
+  }
+}

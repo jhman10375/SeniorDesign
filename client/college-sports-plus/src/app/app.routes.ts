@@ -3,9 +3,15 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LeagueSearchComponent } from './pages/league-search/league-search.component';
 import { DraftComponent } from './pages/league/draft/draft.component';
+import { GameComponent } from './pages/league/game/game.component';
 import { LeagueComponent } from './pages/league/league.component';
 import { TeamComponent } from './pages/league/my-team/team.component';
+import { PlayerSearchComponent } from './pages/league/player-search/player-search.component';
 import { StandingsComponent } from './pages/league/standings/standings.component';
+import { ForgotPasswordComponent } from './pages/login/forgot-password/forgot-password.component';
+import { LoginComponent } from './pages/login/login/login.component';
+import { RegisterComponent } from './pages/login/register/register.component';
+import { ResetPasswordComponent } from './pages/login/reset-password/reset-password.component';
 import { PlayerComponent } from './pages/player/player.component';
 import { PageComingComponent } from './shared/exceptions/page-coming/page-coming.component';
 import { PageNotFoundComponent } from './shared/exceptions/page-not-found/page-not-found.component';
@@ -13,19 +19,19 @@ import { PageNotFoundComponent } from './shared/exceptions/page-not-found/page-n
 export const routes: Routes = [
   {
     path: 'login',
-    component: PageComingComponent,
+    component: LoginComponent,
   },
   {
     path: 'register',
-    component: PageComingComponent,
+    component: RegisterComponent,
   },
   {
     path: 'reset-password',
-    component: PageComingComponent,
+    component: ResetPasswordComponent,
   },
   {
     path: 'forgot-password',
-    component: PageComingComponent,
+    component: ForgotPasswordComponent,
   },
   {
     path: 'home',
@@ -62,6 +68,16 @@ export const routes: Routes = [
         component: StandingsComponent,
       },
       {
+        path: 'player-search',
+        component: PlayerSearchComponent,
+        children: [
+          {
+            path: 'player/:playerID',
+            component: PlayerComponent,
+          },
+        ],
+      },
+      {
         path: 'draft',
         component: DraftComponent,
       },
@@ -82,20 +98,20 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'current-games',
-        component: PageComingComponent,
+        path: 'current-games/:teamID',
+        component: GameComponent,
+        // children: [
+        //   {
+        //     path: 'game/:gameID',
+        //     component: PageComingComponent,
         children: [
           {
-            path: 'game/:gameID',
-            component: PageComingComponent,
-            children: [
-              {
-                path: 'player/:playerID',
-                component: PlayerComponent,
-              },
-            ],
+            path: 'player/:playerID',
+            component: PlayerComponent,
           },
         ],
+        //   },
+        // ],
       },
       {
         path: 'league-settings',

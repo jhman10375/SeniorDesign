@@ -1,5 +1,12 @@
 <div class="scrollable-container" [style]="{ height: '100%' }">
   <div class="header w-full pb-2 mb-2 border-bottom-1 surface-border">
+    <div
+      class="flex align-items-center justify-content-start text-primary mb-1"
+      [routerLink]="['/home']"
+    >
+      <i class="pi pi-angle-left"></i>
+      <span>Home</span>
+    </div>
     <div class="flex flex-row w-full">
       <div
         [style]="
@@ -18,7 +25,7 @@
             pInputText
             [ngModel]="searchText"
             (ngModelChange)="filterLeagues($event)"
-            placeholder="Search"
+            placeholder="League Search"
           />
         </p-iconField>
       </div>

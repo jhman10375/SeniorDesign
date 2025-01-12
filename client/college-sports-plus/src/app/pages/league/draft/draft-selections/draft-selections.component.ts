@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.model';
 import { DraftSelectionModel } from '../models/draft-selection.model';
 
 @Component({
@@ -14,19 +15,26 @@ export class DraftSelectionsComponent implements OnInit {
 
   @Input() set numberOfRounds(v: number) {
     if (v) {
-      this.numOfRounds = Array.from({ length: 10 }, (_, i) => i + 1);
+      this.numOfRounds = Array.from({ length: v }, (_, i) => i + 1);
       this._numberOfRounds = v;
     }
   }
-  numOfRounds: Array<number> = [];
 
   get numberOfRounds() {
     return this._numberOfRounds;
   }
+
+  @Output() dialogPlayer = new EventEmitter<LeagueAthleteModel>();
+
+  numOfRounds: Array<number> = [];
 
   private _numberOfRounds: number;
 
   constructor() {}
 
   ngOnInit() {}
+
+  onPlayerSelected(player: LeagueAthleteModel): void {
+    this.dialogPlayer.emit(player);
+  }
 }

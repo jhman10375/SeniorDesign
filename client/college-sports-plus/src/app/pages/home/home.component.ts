@@ -23,6 +23,7 @@ import { FastAPIService } from '../../shared/services/fastAPI/fast-api.service';
   providers: [LeagueService, AthleteService, FastAPIService],
   selector: 'home',
   templateUrl: 'home.component.html',
+  styleUrls: ['home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   readonly SportEnum = SportEnum;
@@ -39,7 +40,9 @@ export class HomeComponent implements OnInit {
 
     this.leagueList = this.leagueService.leagueScoreboard;
 
-    this.fastAPIService.getData();
+    this.fastAPIService.getStatus();
+    this.fastAPIService.getTeams('ohio');
+    // this.fastAPIService.getPlayers();
   }
   ngOnInit() {}
 }
