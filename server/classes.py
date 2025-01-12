@@ -28,6 +28,7 @@ class fbGame(BaseModel):
     away_team : str
     start_date : str
 
+
 class bbGame(BaseModel):
 
     game_id : str
@@ -35,6 +36,7 @@ class bbGame(BaseModel):
     home_team : str
     away_team : str
     start_date : str
+
 
 class Season(int, Enum):
     last_season = datetime.now().year - 1
@@ -56,6 +58,7 @@ class playerInfo(BaseModel):
     team_alt_color : str
     team_logos : str
 
+
 class playerStats(BaseModel):
     player_name : str
     player_ID : int
@@ -73,6 +76,7 @@ class playerStats(BaseModel):
     extra_points_missed : int
     field_goals : int
     field_goals_missed : int
+
 
 class predictedStats(BaseModel):
     player_name : str
@@ -118,6 +122,42 @@ class bkbStats(BaseModel):
     blocked_shots : int
     steals : int
     turnovers : int
+
+
+class bbPlayer(BaseModel):
+
+    player_id : int
+    player_name : str
+    player_position : str
+    player_jersey : int
+    player_height : int
+    player_year : int
+    player_team : str
+    player_batting_hand : str
+    player_throwing_hand : str
+    team_color : str
+    team_alt_color : str
+    team_logos : str
+
+
+class bsbStats(BaseModel):
+    player_name : str
+    player_id : int
+    player_position : str
+    win : bool
+    saves : float
+    innings : float
+    earned_runs_allowed : float
+    singles : float
+    doubles : float
+    triples : float
+    homers : float
+    runs : float
+    runs_batted_in : float
+    walks : float
+    hits_by_pitch : float
+    stolen_bases : float
+    caught_stealing : float
 
 class playerList():
 
@@ -468,6 +508,7 @@ class bkbPlayers():
         self.first_string_df.to_csv(f"{os.getcwd()}/cache/bkb/first_string.csv")
         self.first_string_populated = True
 
+
 class bsbPlayers():
     def __init__(self, fullList : playerList):
         
@@ -483,6 +524,16 @@ class bsbPlayers():
             fullList.populate()
         
         self.details = fullList.__df__
+
+        self.players_populated = False
+
+        self.players = None
+
+        try:
+            self.players = pd.read_csv(f"{os.getcwd()}/cache/bsb/bsb_players.csv")
+            self.populated = True 
+        except FileNotFoundError:
+            self.populate_players()
 
     
     def populate(self):
@@ -566,7 +617,109 @@ class bsbPlayers():
 
         self.teams = teams_df
 
+    def populate_players(self):
+        
+        if not(self.populated):
+            self.populate()
 
+        self.players_populated = True
+
+        team_list = self.teams["name"].unique()
+        bsb_players = pd.DataFrame(columns = ['id', 'name', 'year', 'jersey', 'position', 'height', 'bat', 'throw', 'color', 'alt_color', 'logos', 'team'])
+        teams_df = self.teams  
+
+
+        for team_name in team_list:
+            
+            team_id = teams_df.query(f'name == "{team_name}"').iloc[0]['id']
+            
+            team_info = self.details.query(f'school == "{team_name}"')
+            if team_info.empty:
+                team_color = "#152532"
+                team_alt = "#c8caca"
+                team_logos = "[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912]"
+            else:
+                team_info = team_info.iloc[0]
+                team_color = team_info['color']
+                team_alt = team_info['alt_color']
+                team_logos = team_info['logos']
+            
+            try:
+                
+                driver = webdriver.Chrome()
+                
+                    # Open the NCAA roster page
+                driver.get(f"https://stats.ncaa.org/teams/{team_id}/roster")
+            
+                # Wait for the table to load
+                wait = WebDriverWait(driver, 10)
+                table = wait.until(EC.presence_of_element_located((By.XPATH, "//div[@class='dataTables_scrollBody']//table")))    
+            
+                # Extract rows from the table
+                rows = rows = table.text.split('\n')
+
+                player_list = []
+                
+                for index in range(1,len(rows)+1):
+                    player_info = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16840_data_table"]/tbody/tr[{index}]/td[4]/a')
+                
+                    name = player_info.text
+                    id = int(player_info.get_attribute("href").split("/")[-1])
+                
+                    year_raw = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16840_data_table"]/tbody/tr[{index}]/td[5]').text
+                
+                    jersey = int(table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16840_data_table"]/tbody/tr[{index}]/td[3]').text)
+                
+                    pos = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16840_data_table"]/tbody/tr[{index}]/td[6]').text
+                    
+                    height = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16840_data_table"]/tbody/tr[{index}]/td[7]').text
+                
+                    bat_hand = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16840_data_table"]/tbody/tr[{index}]/td[8]').text
+                
+                    throw_hand = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16840_data_table"]/tbody/tr[{index}]/td[9]').text
+            
+                    player_list.append({'id': id, 'name': name, 'year': year_raw, 
+                                        'jersey': jersey, 'position': pos, 
+                                    'height': height, 'bat': bat_hand, 'throw': throw_hand,
+                                    'color': team_color, 'alt_color': team_alt, 
+                                    'logos': team_logos, 'team': team_name})
+                    
+            finally:
+                # Close the browser
+                driver.quit() 
+
+            for player in player_list:
+            
+                match player['year']:
+                    case 'Fr.':
+                        pl_year = 1
+                    case 'So.':
+                        pl_year = 2
+                    case 'Jr.':
+                        pl_year = 3
+                    case 'Sr.':
+                        pl_year = 4
+                    case _:
+                        pl_year = 0
+                if player['height'] == '-':
+                    height = 0
+                else:
+                    h_comps = player['height'].split('-')
+                    if len(h_comps[0]) >= 1:
+                        if len(h_comps[1]) >= 1:
+                            height = int(h_comps[0])*12 + int(h_comps[1])  
+                        else:
+                            height = int(h_comps[0])*12
+                    else:
+                        height = 0
+                player['height'] = height
+                player['year'] = pl_year
+            
+                bsb_players.loc[len(bsb_players)] = player
+            
+
+        bsb_players.to_csv(f"{os.getcwd()}/cache/bsb/bsb_players.csv")
+        self.players = bsb_players
 
 
 
