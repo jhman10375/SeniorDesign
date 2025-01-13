@@ -8,7 +8,7 @@ from pandas import DataFrame
 from api.models.CreateDraftData import CreateDraftData
 from api.models.DraftOrderData import DraftOrderData
 from api.models.DraftResultData import DraftResultData
-from api.models.DraftPlayerData import DraftPlayerData
+#from api.models.DraftPlayerData import DraftPlayerData
 from classes import firstStringList, playerInfo, playerList
 
 class DraftManager:
