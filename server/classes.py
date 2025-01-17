@@ -159,6 +159,37 @@ class bsbStats(BaseModel):
     stolen_bases : float
     caught_stealing : float
 
+
+class sccPlayer(BaseModel):
+    player_id : int
+    player_name : str
+    player_position : str
+    player_jersey : int
+    player_height : int
+    player_year : int
+    player_team : str
+    team_color : str
+    team_alt_color : str
+    team_logos : str
+
+
+class sccStats(BaseModel):
+    player_name : str
+    player_id : int
+    player_position : str
+    goals : int
+    assists : int
+    shots_on_goal : int
+    shots_off_goal : int
+    fouls : int
+    yellow_cards : int
+    red_cards : int
+    clean_sheet : int
+    goals_allowed : int
+    saves : int
+
+
+
 class playerList():
 
     def __init__(self):
@@ -498,10 +529,12 @@ class bkbPlayers():
 
         for game in last_game_list:
             box_df = s.get_game_boxscore(game)
-            
-            curr_starters = box_df[box_df['starter'] == True]["player_id"].astype('int').values.tolist()
 
-            starters = starters + curr_starters
+            if not(box_df.empty):
+            
+                curr_starters = box_df[box_df['starter'] == True]["player_id"].astype('int').values.tolist()
+
+                starters = starters + curr_starters
 
         
         self.first_string_df = self.df[self.df['id'].isin(starters)]
@@ -534,6 +567,18 @@ class bsbPlayers():
             self.populated = True 
         except FileNotFoundError:
             self.populate_players()
+
+    def elongate_name(old_name : str) -> str:
+        new_name = old_name
+        
+        if new_name[-3:] == "St.":
+            new_name = "State".join(old_name.rsplit("St.", 1))
+        
+        new_name = new_name.replace("Mich.", "Michigan").replace("Fla.", "Florida").replace("Ga.", "Georgia")
+
+        
+        return new_name.replace("Ark.", "Arkansas").replace("Ky.", "Kentucky").replace("Ill.", "Illinois")
+
 
     
     def populate(self):
@@ -601,7 +646,7 @@ class bsbPlayers():
             
             if team["name"].find('(') != -1:
                 team["conference"] = team["name"][(team["name"].find('(')+1) : team["name"].find(')')]
-                team["name"] = team["name"][:(team["name"].find('(')-1)]
+                team["name"] = bsbPlayers.elongate_name(team["name"][:(team["name"].find('(')-1)])
 
             new_url = driver.current_url
             new_number = new_url.split("/")[-1]
@@ -720,6 +765,196 @@ class bsbPlayers():
 
         bsb_players.to_csv(f"{os.getcwd()}/cache/bsb/bsb_players.csv")
         self.players = bsb_players
+
+
+class sccPlayers():
+    def __init__(self, fullList : playerList):
+        
+        self.teams = None
+        self.populated = False
+        try:
+            self.teams = pd.read_csv(f"{os.getcwd()}/cache/scc/scc_teams.csv")
+            self.populated = True 
+        except FileNotFoundError:
+            self.populate()
+        
+        if not(fullList.populated):
+            fullList.populate()
+        
+        self.details = fullList.__df__
+
+        self.players_populated = False
+
+        self.players = None
+
+        try:
+            self.players = pd.read_csv(f"{os.getcwd()}/cache/scc/scc_players.csv")
+            self.populated = True 
+        except FileNotFoundError:
+            self.populate_players()
+
+    
+    def populate(self):
+        self.populated = True
+        try:
+            driver = webdriver.Chrome()
+            # Open the NCAA rankings page
+            driver.get("https://stats.ncaa.org/rankings/national_ranking?academic_year=2025.0&division=1.0&ranking_period=69.0&sport_code=MSO&stat_seq=90.0")
+
+            # Wait for the page to load
+            wait = WebDriverWait(driver, 10)
+
+            
+            # Select "Baseball" from the sports dropdown
+            sports_dropdown = wait.until(EC.presence_of_element_located((By.NAME, "rankings_table_length")))
+            Select(sports_dropdown).select_by_value("-1")
+            team_num = int(Select(sports_dropdown).first_selected_option.text)
+
+            # Wait for the table to load
+            wait = WebDriverWait(driver, 10)
+            table = wait.until(EC.presence_of_element_located((By.XPATH, "//div[@class='dataTables_scrollBody']//table")))
+
+            # Extract rows from the table
+            #rows = table.find_elements(By.TAG_NAME, "tr")
+
+            teams = []
+        
+            print("Team ID and Name:")
+            for row_index in range(1,team_num+1):  # Skip the header row
+                # Locate the link within the cell containing the team name
+                link = table.find_element(By.XPATH, f'/html/body/div[2]/div/div/div/div/div/div[2]/div/div[2]/div[1]/div[5]/div[2]/table/tbody/tr[{row_index}]/td[2]/a')
+                team_name = link.text
+                team_id = link.get_attribute("href").split("/")[-1]  # Extract the ID from the URL
+                teams.append({"id": team_id, "name": team_name})
+                row_index = 1 + row_index
+
+            #print(teams)
+            print("Scrape Done!")
+        finally:
+            # Close the browser
+            driver.quit()
+            #pass
+        
+
+        for team in teams:        
+            
+            if team["name"].find('(') != -1:
+                team["conference"] = team["name"][(team["name"].find('(')+1) : team["name"].find(')')]
+                team["name"] = bsbPlayers.elongate_name(team["name"][:(team["name"].find('(')-1)])
+
+        teams_df = pd.DataFrame(teams)
+
+        self.teams = teams_df
+
+        teams_df.to_csv(f"{os.getcwd()}/cache/scc/scc_teams.csv")
+
+
+    def populate_players(self):
+        
+        if not(self.populated):
+            self.populate()
+
+        self.players_populated = True
+
+        teams_df = self.teams
+        team_list = teams_df["name"].unique()
+
+        scc_players = pd.DataFrame(columns = ['id', 'name', 'year', 'jersey', 'position', 'height', 'color', 'alt_color', 'logos', 'team'])
+
+
+        for team_name in team_list:
+                    
+                    team_id = teams_df.query(f'name == "{team_name}"').iloc[0]['id']
+                    
+                    team_info = self.details.__df__.query(f'school == "{team_name}"')
+                    if team_info.empty:
+                        team_color = "#152532"
+                        team_alt = "#c8caca"
+                        team_logos = "[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912]"
+                    else:
+                        team_info = team_info.iloc[0]
+                        team_color = team_info['color']
+                        team_alt = team_info['alt_color']
+                        team_logos = team_info['logos']
+                    
+                    try:
+                        
+                        driver = webdriver.Chrome()
+                        
+                            # Open the NCAA roster page
+                        driver.get(f"https://stats.ncaa.org/teams/{team_id}/roster")
+                    
+                        # Wait for the table to load
+                        wait = WebDriverWait(driver, 10)
+                        table = wait.until(EC.presence_of_element_located((By.XPATH, "//div[@class='dataTables_scrollBody']//table")))    
+                    
+                        # Extract rows from the table
+                        rows = rows = table.text.split('\n')
+
+                        player_list = []
+                        
+                        for index in range(1,len(rows)+1):
+                            player_info = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16660_data_table"]/tbody/tr[{index}]/td[4]/a')
+                        
+                            name = player_info.text
+                            id = int(player_info.get_attribute("href").split("/")[-1])
+                        
+                            year_raw = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16660_data_table"]/tbody/tr[{index}]/td[5]').text
+                        
+                            jersey = int(table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16660_data_table"]/tbody/tr[{index}]/td[3]').text)
+                        
+                            pos = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16660_data_table"]/tbody/tr[{index}]/td[6]').text
+                            
+                            height = table.find_element(By.XPATH, f'//*[@id="rosters_form_players_16660_data_table"]/tbody/tr[{index}]/td[7]').text
+                        
+                            
+                    
+                            player_list.append({'id': id, 'name': name, 'year': year_raw, 
+                                                'jersey': jersey, 'position': pos, 
+                                            'height': height,
+                                            'color': team_color, 'alt_color': team_alt, 
+                                            'logos': team_logos, 'team': team_name})
+                            
+                    finally:
+                        # Close the browser
+                        driver.quit() 
+                        #pass
+
+                    for player in player_list:
+                    
+                        match player['year']:
+                            case 'Fr.':
+                                pl_year = 1
+                            case 'So.':
+                                pl_year = 2
+                            case 'Jr.':
+                                pl_year = 3
+                            case 'Sr.':
+                                pl_year = 4
+                            case _:
+                                pl_year = 0
+                        if player['height'] == '-':
+                            height = 0
+                        else:
+                            h_comps = player['height'].split('-')
+                            if len(h_comps[0]) >= 1:
+                                if len(h_comps[1]) >= 1:
+                                    height = int(h_comps[0])*12 + int(h_comps[1])  
+                                else:
+                                    height = int(h_comps[0])*12
+                            else:
+                                height = 0
+                        player['height'] = height
+                        player['year'] = pl_year
+
+                        scc_players.loc[len(scc_players)] = player
+                    
+
+        scc_players.to_csv(f"{os.getcwd()}/cache/scc/scc_players.csv")
+
+                    
+        self.players = scc_players
+
 
 
 

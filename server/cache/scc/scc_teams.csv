@@ -1,206 +1,206 @@
 ,id,name,conference
-0,58785,Western Mich.,MVC
-1,58794,Fla. Atlantic,The American
-2,58788,Akron,Big East
-3,58793,Duke,ACC
-4,58787,Kansas City,Summit League
-5,58780,Oregon St.,WCC
-6,58793,Denver,Summit League
-7,58790,Bowling Green,MVC
-8,58780,Portland,WCC
-9,58793,Delaware,CAA
-10,58793,Dayton,Atlantic 10
-11,58783,Missouri St.,MVC
-12,58792,Cornell,Ivy League
-13,58786,Col. of Charleston,CAA
-14,58779,Ohio St.,Big Ten
-15,58786,Presbyterian,Big South
-16,58780,Quinnipiac,MAAC
-17,58792,Clemson,ACC
-18,58794,George Mason,Atlantic 10
-19,58790,Cal St. Fullerton,Big West
-20,58786,Seattle U,WAC
-21,58779,Notre Dame,ACC
-22,58792,Creighton,Big East
-23,58796,Iona,MAAC
-24,58787,North Florida,ASUN
-25,58791,UC Santa Barbara,Big West
-26,58795,Hofstra,CAA
-27,58782,Saint Louis,Atlantic 10
-28,58780,Pittsburgh,ACC
-29,58781,Robert Morris,Horizon
-30,58786,Wright St.,Horizon
-31,58785,Green Bay,Horizon
-32,58791,UCLA,Big Ten
-33,58797,Louisville,ACC
-34,58781,Saint Francis,NEC
-35,58784,Vermont,America East
-36,58800,NC State,ACC
-37,58781,St. John's,NY
-38,58794,Fordham,Atlantic 10
-39,58790,Butler,Big East
-40,58793,DePaul,Big East
-41,58795,Ga. Southern,Sun Belt
-42,58783,South Carolina,Sun Belt
-43,58796,Indiana,Big Ten
-44,58798,Maryland,Big Ten
-45,58782,San Diego,WCC
-46,58785,Milwaukee,Horizon
-47,58798,UMBC,America East
-48,58798,Marshall,Sun Belt
-49,58797,Liberty,OVC
-50,58786,Central Ark.,ASUN
-51,58796,Kentucky,Sun Belt
-52,58784,Virginia,ACC
-53,58794,ETSU,SoCon
-54,58794,Furman,SoCon
-55,58783,Stanford,ACC
-56,58792,Cleveland St.,Horizon
-57,58793,Drexel,CAA
-58,58787,High Point,Big South
-59,58781,St. Bonaventure,Atlantic 10
-60,58784,Villanova,Big East
-61,58799,Charlotte,The American
-62,58780,Penn,Ivy League
-63,58779,Northeastern,CAA
-64,58798,Michigan,Big Ten
-65,58785,West Virginia,Sun Belt
-66,58793,Detroit Mercy,Horizon
-67,58779,Northwestern,Big Ten
-68,58784,Virginia Tech,ACC
-69,58792,UCF,Sun Belt
-70,58793,Davidson,Atlantic 10
-71,58797,Longwood,Big South
-72,58798,Mercer,SoCon
-73,58791,Sacramento St.,Big West
-74,58782,San Diego St.,WAC
-75,58795,Houston Christian,OVC
-76,58791,UC Davis,Big West
-77,58795,Harvard,Ivy League
-78,58786,Elon,CAA
-79,58797,Loyola Chicago,Atlantic 10
-80,58798,Massachusetts,Atlantic 10
-81,58784,VMI,SoCon
-82,58795,Georgetown,Big East
-83,58785,Washington,Big Ten
-84,58780,Princeton,Ivy League
-85,58791,UC Irvine,Big West
-86,58794,Fairfield,MAAC
-87,58799,UNC Greensboro,SoCon
-88,58797,Marist,MAAC
-89,58791,UC Riverside,Big West
-90,58785,William & Mary,CAA
-91,58785,Wisconsin,Big Ten
-92,58791,California,ACC
-93,58791,Campbell,CAA
-94,58795,Holy Cross,Patriot
-95,58792,UConn,Big East
-96,58783,SMU,ACC
-97,58798,Monmouth,CAA
-98,58783,Stony Brook,CAA
-99,58789,American,Patriot
-100,58780,Providence,Big East
-101,58797,Loyola Maryland,Patriot
-102,58799,New Hampshire,America East
-103,58786,Gardner-Webb,Big South
-104,58794,Evansville,MVC
-105,58779,Oakland,Horizon
-106,58788,Utah Valley,WAC
-107,58794,FDU,NEC
-108,58790,Bradley,MVC
-109,58797,Manhattan,MAAC
-110,58796,Purdue Fort Wayne,Horizon
-111,58790,Bryant,America East
-112,58797,LIU,NEC
-113,58790,Brown,Ivy League
-114,58790,CSU Bakersfield,Big West
-115,58793,Duquesne,Atlantic 10
-116,58799,UNC Asheville,Big South
-117,58791,Canisius,MAAC
-118,58783,SIUE,OVC
-119,58799,UNCW,CAA
-120,58780,UTRGV,WAC
-121,58787,Belmont,MVC
-122,58789,Boston College,ACC
-123,58779,Old Dominion,Sun Belt
-124,58783,Stetson,ASUN
-125,58795,Gonzaga,WCC
-126,58782,Seton Hall,Big East
-127,58782,Siena,MAAC
-128,58789,Binghamton,America East
-129,58796,James Madison,Sun Belt
-130,58790,Bucknell,Patriot
-131,58779,NIU,MVC
-132,58783,South Fla.,The American
-133,58782,San Francisco,WCC
-134,58783,Syracuse,ACC
-135,58787,USC Upstate,Big South
-136,58789,Boston U.,Patriot
-137,58785,Wake Forest,ACC
-138,58782,San Jose St.,WAC
-139,58795,Howard,NEC
-140,58779,Northern Ky.,Horizon
-141,58779,Oral Roberts,Summit League
-142,58781,Rutgers,Big Ten
-143,58796,UIC,MVC
-144,58796,La Salle,Atlantic 10
-145,58796,Lafayette,Patriot
-146,58799,North Carolina,ACC
-147,58781,Rider,MAAC
-148,58788,Bellarmine,ASUN
-149,58792,Dartmouth,Ivy League
-150,58786,Yale,Ivy League
-151,58793,Drake,MVC
-152,58798,Memphis,The American
-153,58799,UNLV,WAC
-154,58787,Wofford,SoCon
-155,58786,Grand Canyon,WAC
-156,58790,Cal Poly,Big West
-157,58785,Western Ill.,OVC
-158,58780,Pacific,WCC
-159,58781,Sacred Heart,MAAC
-160,58792,Colgate,Patriot
-161,58790,CSUN,Big West
-162,58787,FGCU,ASUN
-163,58784,Tulsa,The American
-164,58789,UAB,The American
-165,58788,California Baptist,WAC
-166,58799,NJIT,America East
-167,58789,UAlbany,America East
-168,58795,George Washington,Atlantic 10
-169,58787,IU Indy,Horizon
-170,58781,Rhode Island,Atlantic 10
-171,58782,Saint Mary's,CA
-172,58780,Penn St.,Big Ten
-173,58796,Lehigh,Patriot
-174,58788,Mount St. Mary's,MAAC
-175,58788,UC San Diego,Big West
-176,58785,Winthrop,Big South
-177,58795,Georgia St.,Sun Belt
-178,58798,Marquette,Big East
-179,58799,Omaha,Summit League
-180,58781,Saint Joseph's,Atlantic 10
-181,58789,Merrimack,MAAC
-182,58784,Navy,Patriot
-183,58797,UMass Lowell,America East
-184,58784,Army West Point,Patriot
-185,58794,Eastern Ill.,OVC
-186,58787,Lipscomb,ASUN
-187,58799,Niagara,MAAC
-188,58788,Chicago St.,NEC
-189,58794,FIU,The American
-190,58789,Utah Tech,WAC
-191,58797,LMU,CA
-192,58798,Michigan St.,Big Ten
-193,58786,Xavier,Big East
-194,58791,Central Conn. St.,NEC
-195,58792,Coastal Carolina,Sun Belt
-196,58782,Santa Clara,WCC
-197,58796,Jacksonville,ASUN
-198,58792,Columbia,Ivy League
-199,58781,Radford,Big South
-200,58787,UIW,OVC
-201,58784,VCU,Atlantic 10
-202,58782,Saint Peter's,MAAC
-203,58784,Air Force,WAC
-204,58783,Temple,The American
+0,587854,Western Michigan,MVC
+1,587945,Florida Atlantic,The American
+2,587883,Akron,Big East
+3,587938,Duke,ACC
+4,587871,Kansas City,Summit League
+5,587800,Oregon State,WCC
+6,587934,Denver,Summit League
+7,587900,Bowling Green,MVC
+8,587806,Portland,WCC
+9,587933,Delaware,CAA
+10,587931,Dayton,Atlantic 10
+11,587834,Missouri State,MVC
+12,587927,Cornell,Ivy League
+13,587864,Col. of Charleston,CAA
+14,587797,Ohio State,Big Ten
+15,587868,Presbyterian,Big South
+16,587809,Quinnipiac,MAAC
+17,587921,Clemson,ACC
+18,587949,George Mason,Atlantic 10
+19,587908,Cal St. Fullerton,Big West
+20,587869,Seattle U,WAC
+21,587794,Notre Dame,ACC
+22,587928,Creighton,Big East
+23,587963,Iona,MAAC
+24,587872,North Florida,ASUN
+25,587911,UC Santa Barbara,Big West
+26,587956,Hofstra,CAA
+27,587820,Saint Louis,Atlantic 10
+28,587805,Pittsburgh,ACC
+29,587813,Robert Morris,Horizon
+30,587860,Wright State,Horizon
+31,587857,Green Bay,Horizon
+32,587915,UCLA,Big Ten
+33,587973,Louisville,ACC
+34,587817,Saint Francis,NEC
+35,587844,Vermont,America East
+36,588000,NC State,ACC
+37,587818,St. John's,NY
+38,587947,Fordham,Atlantic 10
+39,587905,Butler,Big East
+40,587932,DePaul,Big East
+41,587952,Georgia Southern,Sun Belt
+42,587830,South Carolina,Sun Belt
+43,587961,Indiana,Big Ten
+44,587983,Maryland,Big Ten
+45,587824,San Diego,WCC
+46,587859,Milwaukee,Horizon
+47,587982,UMBC,America East
+48,587981,Marshall,Sun Belt
+49,587970,Liberty,OVC
+50,587863,Central Arkansas,ASUN
+51,587966,Kentucky,Sun Belt
+52,587849,Virginia,ACC
+53,587940,ETSU,SoCon
+54,587948,Furman,SoCon
+55,587835,Stanford,ACC
+56,587922,Cleveland State,Horizon
+57,587937,Drexel,CAA
+58,587877,High Point,Big South
+59,587816,St. Bonaventure,Atlantic 10
+60,587845,Villanova,Big East
+61,587992,Charlotte,The American
+62,587804,Penn,Ivy League
+63,587790,Northeastern,CAA
+64,587988,Michigan,Big Ten
+65,587852,West Virginia,Sun Belt
+66,587935,Detroit Mercy,Horizon
+67,587793,Northwestern,Big Ten
+68,587848,Virginia Tech,ACC
+69,587920,UCF,Sun Belt
+70,587930,Davidson,Atlantic 10
+71,587972,Longwood,Big South
+72,587986,Mercer,SoCon
+73,587910,Sacramento State,Big West
+74,587823,San Diego State,WAC
+75,587958,Houston Christian,OVC
+76,587913,UC Davis,Big West
+77,587955,Harvard,Ivy League
+78,587865,Elon,CAA
+79,587977,Loyola Chicago,Atlantic 10
+80,587984,Massachusetts,Atlantic 10
+81,587847,VMI,SoCon
+82,587951,Georgetown,Big East
+83,587851,Washington,Big Ten
+84,587807,Princeton,Ivy League
+85,587914,UC Irvine,Big West
+86,587943,Fairfield,MAAC
+87,587993,UNC Greensboro,SoCon
+88,587979,Marist,MAAC
+89,587916,UC Riverside,Big West
+90,587855,William & Mary,CAA
+91,587858,Wisconsin,Big Ten
+92,587912,California,ACC
+93,587917,Campbell,CAA
+94,587957,Holy Cross,Patriot
+95,587926,UConn,Big East
+96,587833,SMU,ACC
+97,587989,Monmouth,CAA
+98,587837,Stony Brook,CAA
+99,587896,American,Patriot
+100,587808,Providence,Big East
+101,587975,Loyola Maryland,Patriot
+102,587997,New Hampshire,America East
+103,587866,Gardner-Webb,Big South
+104,587942,Evansville,MVC
+105,587796,Oakland,Horizon
+106,587880,Utah Valley,WAC
+107,587944,FDU,NEC
+108,587901,Bradley,MVC
+109,587978,Manhattan,MAAC
+110,587962,Purdue Fort Wayne,Horizon
+111,587903,Bryant,America East
+112,587971,LIU,NEC
+113,587902,Brown,Ivy League
+114,587907,CSU Bakersfield,Big West
+115,587939,Duquesne,Atlantic 10
+116,587990,UNC Asheville,Big South
+117,587918,Canisius,MAAC
+118,587832,SIUE,OVC
+119,587994,UNCW,CAA
+120,587802,UTRGV,WAC
+121,587876,Belmont,MVC
+122,587898,Boston College,ACC
+123,587798,Old Dominion,Sun Belt
+124,587836,Stetson,ASUN
+125,587954,Gonzaga,WCC
+126,587828,Seton Hall,Big East
+127,587829,Siena,MAAC
+128,587897,Binghamton,America East
+129,587965,James Madison,Sun Belt
+130,587904,Bucknell,Patriot
+131,587791,NIU,MVC
+132,587831,South Florida,The American
+133,587825,San Francisco,WCC
+134,587838,Syracuse,ACC
+135,587875,USC Upstate,Big South
+136,587899,Boston U.,Patriot
+137,587850,Wake Forest,ACC
+138,587826,San Jose State,WAC
+139,587959,Howard,NEC
+140,587792,Northern Kentucky,Horizon
+141,587799,Oral Roberts,Summit League
+142,587814,Rutgers,Big Ten
+143,587960,UIC,MVC
+144,587967,La Salle,Atlantic 10
+145,587968,Lafayette,Patriot
+146,587991,North Carolina,ACC
+147,587812,Rider,MAAC
+148,587884,Bellarmine,ASUN
+149,587929,Dartmouth,Ivy League
+150,587862,Yale,Ivy League
+151,587936,Drake,MVC
+152,587985,Memphis,The American
+153,587996,UNLV,WAC
+154,587874,Wofford,SoCon
+155,587867,Grand Canyon,WAC
+156,587906,Cal Poly,Big West
+157,587853,Western Illinois,OVC
+158,587801,Pacific,WCC
+159,587815,Sacred Heart,MAAC
+160,587924,Colgate,Patriot
+161,587909,CSUN,Big West
+162,587879,FGCU,ASUN
+163,587840,Tulsa,The American
+164,587894,UAB,The American
+165,587881,California Baptist,WAC
+166,587998,NJIT,America East
+167,587895,UAlbany,America East
+168,587950,George Washington,Atlantic 10
+169,587870,IU Indy,Horizon
+170,587811,Rhode Island,Atlantic 10
+171,587821,Saint Mary's,CA
+172,587803,Penn State,Big Ten
+173,587969,Lehigh,Patriot
+174,587882,Mount St. Mary's,MAAC
+175,587885,UC San Diego,Big West
+176,587856,Winthrop,Big South
+177,587953,Georgia State,Sun Belt
+178,587980,Marquette,Big East
+179,587995,Omaha,Summit League
+180,587819,Saint Joseph's,Atlantic 10
+181,587893,Merrimack,MAAC
+182,587843,Navy,Patriot
+183,587974,UMass Lowell,America East
+184,587842,Army West Point,Patriot
+185,587941,Eastern Illinois,OVC
+186,587878,Lipscomb,ASUN
+187,587999,Niagara,MAAC
+188,587886,Chicago State,NEC
+189,587946,FIU,The American
+190,587892,Utah Tech,WAC
+191,587976,LMU,CA
+192,587987,Michigan State,Big Ten
+193,587861,Xavier,Big East
+194,587919,Central Conn. State,NEC
+195,587923,Coastal Carolina,Sun Belt
+196,587827,Santa Clara,WCC
+197,587964,Jacksonville,ASUN
+198,587925,Columbia,Ivy League
+199,587810,Radford,Big South
+200,587873,UIW,OVC
+201,587846,VCU,Atlantic 10
+202,587822,Saint Peter's,MAAC
+203,587841,Air Force,WAC
+204,587839,Temple,The American
