@@ -27,7 +27,7 @@
         <p-inputGroupAddon>
           <i class="pi pi-user"></i>
         </p-inputGroupAddon>
-        <input pInputText placeholder="Username" />
+        <input pInputText [(ngModel)]="username" placeholder="Email" />
       </p-inputGroup>
       <p-inputGroup>
         <p-inputGroupAddon>
@@ -42,7 +42,7 @@
         />
       </p-inputGroup>
       <div class="flex flex-row align-items-end mt-2">
-        <p-button label="Login" [routerLink]="['/home']"></p-button>
+        <p-button label="Login" (onClick)="login()"></p-button>
       </div>
       <p-divider />
       <div

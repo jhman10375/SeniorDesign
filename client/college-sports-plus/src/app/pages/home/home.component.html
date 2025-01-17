@@ -1,13 +1,20 @@
 @if (isMobile) {
   <div class="scrollable-container" [style]="{ height: '100%' }">
     <div class="head mb-2">
-      <h1 class="text-center">College Sports +</h1>
+      <div class="flex justify-content-between align-items-center">
+        <h1 class="text-center">College Sports +</h1>
+        <p-avatar
+          [label]="userInitials()"
+          size="xlarge"
+          (click)="op.toggle($event)"
+        ></p-avatar>
+      </div>
       <mobile-scoreboard [hasDifferentContent]="true">
         <div class="flex flex-column">
           <span class="mt-2 mb-2">Welcome to College Sports +</span>
           <span class="mt-2 mb-2">Checkout your leagues here</span>
           <div
-            class="flex flex-row flex-align-center justify-content-between mt-2 mb-2"
+            class="flex flex-row align-items-center justify-content-between mt-2 mb-2"
           >
             <span
               class="pi-spin material-icons"
@@ -175,3 +182,12 @@
     </div>
   </div>
 }
+
+<p-overlayPanel #op>
+  <div class="flex flex-column">
+    <div class="p-2 text-l border-bottom-1 surface-border">Account</div>
+    <div class="p-2 text-l border-bottom-1 surface-border" (click)="logout()"
+      >Logout</div
+    >
+  </div>
+</p-overlayPanel>

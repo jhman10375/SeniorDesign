@@ -23,14 +23,16 @@ export class FastAPIService {
   }
 
   getTeams(team: string): any {
-    this.httpClient.get<any>(this.url + 'teams/' + team).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (e) => {
-        console.log(e);
-      },
-    });
+    this.httpClient
+      .get<any>(this.url + 'teams/' + team + '?season=2024')
+      .subscribe({
+        next: (data) => {
+          console.log(team, data);
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
   }
 
   getPlayers(): Observable<Array<PlayerFAPIModel>> {

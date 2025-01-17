@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { AuthGuard } from './auth-guard.guard';
+import { LoginGuard } from './login-guard.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LeagueSearchComponent } from './pages/league-search/league-search.component';
 import { DraftComponent } from './pages/league/draft/draft.component';
@@ -18,80 +20,83 @@ import { PageNotFoundComponent } from './shared/exceptions/page-not-found/page-n
 
 export const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'reset-password',
-    component: ResetPasswordComponent,
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent,
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'create-league',
     component: PageComingComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'league-search',
     component: LeagueSearchComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'account',
     component: PageComingComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'league/:leagueID',
     component: LeagueComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'team/:teamID',
         component: TeamComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: 'player/:playerID',
             component: PlayerComponent,
+            canActivate: [AuthGuard],
           },
         ],
       },
       {
         path: 'standings',
         component: StandingsComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'player-search',
         component: PlayerSearchComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: 'player/:playerID',
             component: PlayerComponent,
+            canActivate: [AuthGuard],
           },
         ],
       },
       {
         path: 'draft',
         component: DraftComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'history',
         component: PageComingComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: 'game/:gameID',
             component: PageComingComponent,
+            canActivate: [AuthGuard],
             children: [
               {
                 path: 'player/:playerID',
                 component: PlayerComponent,
+                canActivate: [AuthGuard],
               },
             ],
           },
@@ -100,14 +105,17 @@ export const routes: Routes = [
       {
         path: 'current-games/:teamID',
         component: GameComponent,
+        canActivate: [AuthGuard],
         // children: [
         //   {
         //     path: 'game/:gameID',
         //     component: PageComingComponent,
+        //     canActivate: [AuthGuard],
         children: [
           {
             path: 'player/:playerID',
             component: PlayerComponent,
+            canActivate: [AuthGuard],
           },
         ],
         //   },
@@ -116,19 +124,38 @@ export const routes: Routes = [
       {
         path: 'league-settings',
         component: PageComingComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'player/:playerID',
         component: PlayerComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
   {
-    path: '',
-    component: HomeComponent,
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    canActivate: [LoginGuard],
   },
   {
     path: '**',
     component: PageNotFoundComponent,
+    canActivate: [AuthGuard],
   },
 ];
