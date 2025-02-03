@@ -30,6 +30,7 @@ class fbGame(BaseModel):
     away_team : str
     start_date : str
 
+
 class teamLogo(BaseModel):
     id: str
     school : str
@@ -41,6 +42,7 @@ class teamLogo(BaseModel):
     state : str | None
     logos : List[str] | None
     
+
 class location(BaseModel):
     venue_id : float | None
     name : str | None
@@ -56,6 +58,8 @@ class location(BaseModel):
     year_constructed : float | None
     grass : bool | None
     dome : bool | None
+
+
 class school(BaseModel):
     id: str
     school : str
@@ -71,6 +75,7 @@ class school(BaseModel):
     logos : List[str] | None
     twitter : str | None
     location : location
+
 
 class bbGame(BaseModel):
 
@@ -231,6 +236,15 @@ class sccStats(BaseModel):
     goals_allowed : int
     saves : int
 
+
+class SchedMatch(BaseModel):
+  home: str
+  away: str
+
+
+class SchedWeek(BaseModel):
+  week_num: int
+  week_matches: list[SchedMatch]
 
 
 class playerList():

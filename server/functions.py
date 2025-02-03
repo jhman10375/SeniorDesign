@@ -1852,5 +1852,44 @@ def get_scc_season_info(player_id, year, position, name):
     
     return gameStats
 
+def generate_schedule(num_teams : int, num_weeks : int):
+    
+    if num_teams % 2 != 0:
+        num_teams += 1  # Add a "bye" team
 
+    teams = list(range(1, num_teams + 1))  # Numbered teams (bye included if needed)
+    num_rounds = num_teams - 1  # Each team plays every other team once
+
+    # Step 1: Create an initial round-robin schedule
+    base_schedule = []
+    for _ in range(num_rounds):
+        week_matches = []
+        for i in range(num_teams // 2):
+            home, away = teams[i], teams[-(i + 1)]
+            if (num_teams % 2 != 0) and (home == num_teams or away == num_teams):
+                continue  # Ignore "bye" matches
+            week_matches.append((home, away))
+        base_schedule.append(week_matches)
+
+        # Rotate teams, keeping the first team fixed
+        teams = [teams[0]] + teams[-1:] + teams[1:-1]
+
+    # Step 2: Ensure required weeks and avoid consecutive rematches
+    schedule = []
+    used_matchups = set()
+
+    while len(schedule) < num_weeks:
+        
+        available_matches = [match for match in base_schedule if not set(match).intersection(used_matchups)]
+
+        if not available_matches:  # If all are used, reshuffle to avoid consecutive repeats
+            available_matches = base_schedule[:]
+            used_matchups.clear()
+
+        chosen_week = available_matches.pop(0)
+        for match in chosen_week:
+            used_matchups.add(match)
+        schedule.append(chosen_week)
+
+    return schedule[:num_weeks]  # Trim to exact num_weeks
 
