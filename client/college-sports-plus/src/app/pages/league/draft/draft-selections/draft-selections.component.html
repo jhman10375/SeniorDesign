@@ -1,26 +1,60 @@
-<table class="scrollable-table h-full">
-  <thead>
-    <tr>
-      <th></th>
-      @for (i of numOfRounds; track i) {
-        <th class="text-xl font-normal">Round {{ i }}</th>
-      }
-    </tr>
-  </thead>
-  <tbody>
-    @for (team of selections; track team) {
-      <tr>
-        <td>{{ team.Name }}</td>
-        @for (player of team.Players; track player) {
-          @if (player) {
-            <td>
-              <span class="text-base" (click)="onPlayerSelected(player)">{{
-                player?.Name
-              }}</span></td
-            >
+@if (reverse) {
+  <div class="hide-scroll w-full h-full">
+    <table class="scrollable-table h-full">
+      <thead>
+        <tr>
+          <th></th>
+          @for (i of selections; track i) {
+            <th class="text-xl font-normal">{{ i.Name }}</th>
           }
+        </tr>
+      </thead>
+      <tbody>
+        @for (i of numOfRounds; track i) {
+          <tr>
+            <td>Round {{ i }}</td>
+            @for (team of selections; track team) {
+              @if (team.Players[i]) {
+                <td>
+                  <span
+                    class="text-base"
+                    (click)="onPlayerSelected(team.Players[i])"
+                    >{{ team.Players[i]?.Position }}
+                    {{ team.Players[i]?.Name }}</span
+                  ></td
+                >
+              }
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+} @else {
+  <table class="scrollable-table h-full">
+    <thead>
+      <tr>
+        <th></th>
+        @for (i of numOfRounds; track i) {
+          <th class="text-xl font-normal">Round {{ i }}</th>
         }
       </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      @for (team of selections; track team) {
+        <tr>
+          <td>{{ team.Name }}</td>
+          @for (player of team.Players; track player) {
+            @if (player) {
+              <td>
+                <span class="text-base" (click)="onPlayerSelected(player)"
+                  >{{ player?.Position }} {{ player?.Name }}</span
+                ></td
+              >
+            }
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+}

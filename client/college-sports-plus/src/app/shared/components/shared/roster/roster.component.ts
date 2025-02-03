@@ -1,32 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DividerModule } from 'primeng/divider';
 
+import { FootballPositionEnum } from '../../../enums/position/football-position.enum';
+import { RosterPositionEnum } from '../../../enums/roster-position.enum';
 import { SportEnum } from '../../../enums/sport.enum';
-import { LeagueAthleteModel } from '../../../models/league-athlete.model';
-import { LeaguePlayerModel } from '../../../models/league-player.model';
-import { BaseballRosterModel } from '../../../models/roster/baseball-roster.model';
-import { BasketballRosterModel } from '../../../models/roster/basketball-roster.model';
-import { FootballRosterModel } from '../../../models/roster/football-roster.model';
-import { SoccerRosterModel } from '../../../models/roster/soccer-roster.model';
+import { LeagueRosterAthleteModel } from '../../../models/league-roster-athlete.model';
 
 @Component({
   standalone: true,
-  imports: [DividerModule],
+  imports: [CommonModule, DividerModule],
   selector: 'roster',
   styleUrls: ['roster.component.scss'],
   templateUrl: 'roster.component.html',
 })
 export class RosterComponent implements OnInit {
-  @Input() team:
-    | {
-        player: LeaguePlayerModel | undefined;
-        roster:
-          | BaseballRosterModel
-          | BasketballRosterModel
-          | FootballRosterModel
-          | SoccerRosterModel;
-      }
-    | undefined = undefined;
+  @Input() team: Array<LeagueRosterAthleteModel> | undefined = undefined;
 
   @Input() leagueType: SportEnum = SportEnum.None;
 
@@ -35,6 +24,8 @@ export class RosterComponent implements OnInit {
   @Output() navigateToEmitter = new EventEmitter<string>();
 
   readonly SportEnum = SportEnum;
+
+  readonly RosterPositionEnum = RosterPositionEnum;
 
   positions: Array<string>;
 
@@ -116,10 +107,12 @@ export class RosterComponent implements OnInit {
             retPosition = 'TE';
             break;
           case 'FTFLEX':
-            retPosition = this.getRosterValue('FTFLEX').Position.toString();
+            retPosition =
+              this.getRosterValue('FTFLEX').Athlete.Position.toString();
             break;
           case 'STFLEX':
-            retPosition = this.getRosterValue('STFLEX').Position.toString();
+            retPosition =
+              this.getRosterValue('STFLEX').Athlete.Position.toString();
             break;
           case 'FTDST':
           case 'STDST':
@@ -130,22 +123,22 @@ export class RosterComponent implements OnInit {
             retPosition = 'K';
             break;
           case 'B1':
-            retPosition = this.getRosterValue('B1').Position.toString();
+            retPosition = this.getRosterValue('B1').Athlete.Position.toString();
             break;
           case 'B2':
-            retPosition = this.getRosterValue('B2').Position.toString();
+            retPosition = this.getRosterValue('B2').Athlete.Position.toString();
             break;
           case 'B3':
-            retPosition = this.getRosterValue('B3').Position.toString();
+            retPosition = this.getRosterValue('B3').Athlete.Position.toString();
             break;
           case 'B4':
-            retPosition = this.getRosterValue('B4').Position.toString();
+            retPosition = this.getRosterValue('B4').Athlete.Position.toString();
             break;
           case 'B5':
-            retPosition = this.getRosterValue('B5').Position.toString();
+            retPosition = this.getRosterValue('B5').Athlete.Position.toString();
             break;
           case 'B6':
-            retPosition = this.getRosterValue('B6').Position.toString();
+            retPosition = this.getRosterValue('B6').Athlete.Position.toString();
             break;
           case 'IR':
             retPosition = 'IR';
@@ -160,8 +153,8 @@ export class RosterComponent implements OnInit {
     return retPosition;
   }
 
-  getRosterValue(position: string): LeagueAthleteModel {
-    let athlete: LeagueAthleteModel = new LeagueAthleteModel();
+  getRosterValue(position: string): LeagueRosterAthleteModel {
+    let athlete: LeagueRosterAthleteModel = new LeagueRosterAthleteModel();
     switch (this.leagueType) {
       case SportEnum.Baseball:
         break;
@@ -171,150 +164,215 @@ export class RosterComponent implements OnInit {
         switch (position) {
           case 'FTQB':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamQB ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == FootballPositionEnum.QB
+              ) ?? new LeagueRosterAthleteModel();
             break;
           case 'FTRB1':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamRB1 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
+                  x.Athlete.Position == FootballPositionEnum.RB
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'FTRB2':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamRB2 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == true &&
+                  x.Athlete.Position == FootballPositionEnum.RB
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'FTWR1':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamWR1 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
+                  x.Athlete.Position == FootballPositionEnum.WR
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'FTWR2':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamWR2 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == true &&
+                  x.Athlete.Position == FootballPositionEnum.WR
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'FTTE':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamTE ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == FootballPositionEnum.TE
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'FTFLEX':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamFLEX ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.FirstStringFlex
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'FTDST':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamDST ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == FootballPositionEnum.DST
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'FTK':
             athlete =
-              (this.team?.roster as FootballRosterModel).FirstTeamK ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == FootballPositionEnum.P
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STQB':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamQB ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == FootballPositionEnum.QB
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STRB1':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamRB1 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
+                  x.Athlete.Position == FootballPositionEnum.RB
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STRB2':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamRB2 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == true &&
+                  x.Athlete.Position == FootballPositionEnum.RB
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STWR1':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamWR1 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
+                  x.Athlete.Position == FootballPositionEnum.WR
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STWR2':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamWR2 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == true &&
+                  x.Athlete.Position == FootballPositionEnum.WR
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STTE':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamTE ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == FootballPositionEnum.TE
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STFLEX':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamFLEX ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.SecondStringFlex
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STDST':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamDST ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == FootballPositionEnum.DST
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'STK':
             athlete =
-              (this.team?.roster as FootballRosterModel).SecondTeamK ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == FootballPositionEnum.P
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'B1':
             athlete =
-              (this.team?.roster as FootballRosterModel).Bench1 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.B1
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'B2':
             athlete =
-              (this.team?.roster as FootballRosterModel).Bench2 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.B2
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'B3':
             athlete =
-              (this.team?.roster as FootballRosterModel).Bench3 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.B3
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'B4':
             athlete =
-              (this.team?.roster as FootballRosterModel).Bench4 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.B4
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'B5':
             athlete =
-              (this.team?.roster as FootballRosterModel).Bench5 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.B5
+              ) ?? new LeagueRosterAthleteModel();
             break;
 
           case 'B6':
             athlete =
-              (this.team?.roster as FootballRosterModel).Bench6 ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.B6
+              ) ?? new LeagueRosterAthleteModel();
             break;
           case 'IR':
             athlete =
-              (this.team?.roster as FootballRosterModel).IR ??
-              new LeagueAthleteModel();
+              this.team?.find(
+                (x) => x.RosterPosition == RosterPositionEnum.IR
+              ) ?? new LeagueRosterAthleteModel();
             break;
         }
         break;

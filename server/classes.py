@@ -1,3 +1,5 @@
+from ctypes import Array
+from typing import List
 from pydantic import BaseModel
 import requests
 import json
@@ -28,6 +30,47 @@ class fbGame(BaseModel):
     away_team : str
     start_date : str
 
+class teamLogo(BaseModel):
+    id: str
+    school : str
+    abbreviation : str | None
+    alt_name_1 : str | None
+    alt_name_2 : str | None
+    alt_name_3 : str | None
+    city : str | None
+    state : str | None
+    logos : List[str] | None
+    
+class location(BaseModel):
+    venue_id : float | None
+    name : str | None
+    city : str | None
+    state : str | None
+    zip : str | None
+    country_code : str | None
+    timezone : str | None
+    latitude : float | None
+    longitude : float | None
+    elevation : float | None
+    capacity : float | None
+    year_constructed : float | None
+    grass : bool | None
+    dome : bool | None
+class school(BaseModel):
+    id: str
+    school : str
+    mascot : str | None
+    abbreviation : str | None
+    alt_name_1 : str | None
+    alt_name_2 : str | None
+    alt_name_3 : str | None
+    conference : str | None
+    division : str | None
+    color : str | None
+    alt_color : str | None
+    logos : List[str] | None
+    twitter : str | None
+    location : location
 
 class bbGame(BaseModel):
 

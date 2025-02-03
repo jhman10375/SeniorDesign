@@ -19,4 +19,5 @@ export enum FootballPositionEnum {
   P = 'P',
   PK = 'PK',
   LS = 'LS',
+  DST = 'DST',
 }

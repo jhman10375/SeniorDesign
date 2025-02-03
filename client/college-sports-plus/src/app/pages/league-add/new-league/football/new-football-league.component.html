@@ -1,0 +1,765 @@
+<p-confirmDialog />
+<form [formGroup]="formGroup">
+  <div class="card flex justify-content-center">
+    <p-stepper
+      #settingStepper
+      [(activeStep)]="active"
+      [linear]="true"
+      [className]="'w-full h-full'"
+    >
+      <!-- Create Your Team -->
+      <p-stepperPanel>
+        <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
+          <button
+            class="bg-transparent border-none inline-flex flex-column gap-2"
+            (click)="onClick.emit()"
+          >
+            <span
+              class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
+              [ngClass]="{
+                'bg-primary border-primary': index <= active,
+                'surface-border': index > active,
+              }"
+            >
+              <i class="material-icons">groups_3</i>
+            </span>
+          </button>
+        </ng-template>
+        <ng-template pTemplate="content" let-nextCallback="nextCallback">
+          <form [formGroup]="teamForm">
+            <div
+              class="flex flex-column gap-2 mx-auto"
+              style="min-height: 16rem; max-width: 20rem"
+            >
+              <div class="text-center mt-3 mb-3 text-xl font-semibold"
+                >Create your Team</div
+              >
+              <div class="field p-fluid">
+                <logo-selector
+                  formControlName="Logo"
+                  (selectedOptionChange)="getSchool($event)"
+                ></logo-selector>
+              </div>
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="TeamName"
+                    id="team-name"
+                    type="text"
+                  />
+                  <label for="team-name">Team Name</label>
+                </p-floatLabel>
+              </div>
+            </div>
+            <div class="flex pt-4 justify-content-end">
+              <p-button
+                (onClick)="
+                  onCreateTeam($event); enableGeneralSettingsModelValidation()
+                "
+                label="Next"
+                icon="pi pi-arrow-right"
+                iconPos="right"
+                [disabled]="
+                  (teamForm.invalid && teamForm.touched) || teamForm.untouched
+                "
+              />
+            </div>
+          </form>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- General League Settings -->
+      <p-stepperPanel>
+        <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
+          <button
+            class="bg-transparent border-none inline-flex flex-column gap-2"
+            (click)="onClick.emit()"
+          >
+            <span
+              class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
+              [ngClass]="{
+                'bg-primary border-primary': index <= active,
+                'surface-border': index > active,
+              }"
+            >
+              <i class="material-icons">settings</i>
+            </span>
+          </button>
+        </ng-template>
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+        >
+          <div
+            class="flex flex-column gap-2 mx-auto"
+            style="min-height: 16rem; max-width: 20rem"
+            formGroupName="GeneralSettingsModel"
+          >
+            <div class="text-center mt-3 mb-3 text-xl font-semibold"
+              >General League Settings</div
+            >
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="Name"
+                  id="league-name"
+                  type="text"
+                />
+                <label for="league-name">League Name</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="NumberOfTeams"
+                  id="number-of-teams"
+                  type="number"
+                />
+                <label for="number-of-teams">Number of Teams</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <div
+                class="flex flex-row justify-content-between align-items-center"
+              >
+                <label for="primary-color">Primary League Color</label>
+                <p-colorPicker
+                  id="primary-color"
+                  formControlName="PrimaryColor"
+                />
+              </div>
+            </div>
+            <div class="field p-fluid">
+              <div
+                class="flex flex-row justify-content-between align-items-center"
+              >
+                <label for="secondary-color">Secondary League Color</label>
+                <p-colorPicker
+                  id="secondary-color"
+                  formControlName="SecondaryColor"
+                />
+              </div>
+            </div>
+            <div class="field p-fluid">
+              <div
+                class="flex flex-row justify-content-between align-items-center"
+              >
+                <label for="public-league">Public League?</label>
+                <p-inputSwitch
+                  id="public-league"
+                  formControlName="PublicLeague"
+                />
+              </div>
+            </div>
+            @if (!formGroup.getRawValue().GeneralSettingsModel?.PublicLeague) {
+              <div class="field p-fluid">
+                <p-password
+                  formControlName="Passcode"
+                  [toggleMask]="true"
+                  placeholder="Password"
+                />
+              </div>
+            }
+          </div>
+          <div class="flex pt-4 justify-content-end">
+            <p-button
+              (onClick)="
+                nextCallback.emit();
+                unsubscribeGeneralSettingsModel();
+                enableDraftSettingsModelValidation()
+              "
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              [disabled]="formGroup.get('GeneralSettingsModel')?.invalid"
+            />
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- Draft Settings -->
+      <p-stepperPanel>
+        <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
+          <button
+            class="bg-transparent border-none inline-flex flex-column gap-2"
+            (click)="onClick.emit()"
+          >
+            <span
+              class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
+              [ngClass]="{
+                'bg-primary border-primary': index <= active,
+                'surface-border': index > active,
+              }"
+            >
+              <span class="material-icons"> diversity_3 </span>
+            </span>
+          </button>
+        </ng-template>
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+        >
+          <div
+            class="flex flex-column gap-2 mx-auto"
+            style="min-height: 16rem; max-width: 24rem"
+            formGroupName="DraftSettingsModel"
+          >
+            <div class="text-center mt-3 mb-3 text-xl font-semibold"
+              >Draft Settings</div
+            >
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <p-dropdown
+                  [options]="draftTypes"
+                  [appendTo]="'body'"
+                  [optionValue]="'value'"
+                  formControlName="PickOrderType"
+                  optionLabel="label"
+                  inputId="pick-order-dropdown"
+                />
+                <label for="pick-order-dropdown">Select a Draft Type</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="SelectionTime"
+                  id="selection-time"
+                  type="number"
+                />
+                <label for="selection-time">Draft Selection Time</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <p-calendar
+                  id="date"
+                  formControlName="Date"
+                  [iconDisplay]="'input'"
+                  [showIcon]="true"
+                  [minDate]="minDate"
+                  [showTime]="true"
+                  [hourFormat]="'12'"
+                  [showOtherMonths]="false"
+                />
+                <label for="date">Draft Date & Time</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <div
+                class="flex flex-row justify-content-between align-items-center"
+              >
+                <label for="bench-in-draft">Include Bench In Draft?</label>
+                <p-inputSwitch
+                  id="bench-in-draft"
+                  formControlName="IncludeBenchInDraft"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="flex pt-4 justify-content-between">
+            <p-button
+              (onClick)="
+                prevCallback.emit(); enableGeneralSettingsModelValidation()
+              "
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              (onClick)="nextCallback.emit(); enablePositionModelValidation()"
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              [disabled]="
+                formGroup.get('DraftSettingsModel')?.invalid &&
+                formGroup.get('DraftSettingsModel')?.touched
+              "
+            />
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- Position Settings -->
+      <p-stepperPanel>
+        <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
+          <button
+            class="bg-transparent border-none inline-flex flex-column gap-2"
+            (click)="onClick.emit()"
+          >
+            <span
+              class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
+              [ngClass]="{
+                'bg-primary border-primary': index <= active,
+                'surface-border': index > active,
+              }"
+            >
+              <i class="material-icons">tune</i>
+            </span>
+          </button>
+        </ng-template>
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+        >
+          <div
+            class="flex flex-column gap-2 mx-auto"
+            style="min-height: 16rem; max-width: 24rem"
+            formGroupName="PositionModel"
+          >
+            <div class="text-center mt-3 mb-3 text-xl font-semibold"
+              >Position Settings</div
+            >
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="QBMax"
+                  id="qb-max"
+                  type="number"
+                />
+                <label for="qb-max">Max QB's Per Team</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="RBMax"
+                  id="rb-max"
+                  type="number"
+                />
+                <label for="rb-max">Max RB's Per Team</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="WRMax"
+                  id="wr-max"
+                  type="number"
+                />
+                <label for="wr-max">Max WR's Per Team</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="TEMax"
+                  id="te-max"
+                  type="number"
+                />
+                <label for="te-max">Max TE's Per Team</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="DSTMax"
+                  id="dst-max"
+                  type="number"
+                />
+                <label for="dst-max">Max D/ST's Per Team</label>
+              </p-floatLabel>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <input
+                  pInputText
+                  formControlName="KMax"
+                  id="k-max"
+                  type="number"
+                />
+                <label for="k-max">Max K's Per Team</label>
+              </p-floatLabel>
+            </div>
+          </div>
+          <div class="flex pt-4 justify-content-between">
+            <p-button
+              (onClick)="
+                prevCallback.emit(); enableDraftSettingsModelValidation()
+              "
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              (onClick)="nextCallback.emit(); enableSeasonModelValidation()"
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              [disabled]="
+                (formGroup.get('PositionModel')?.invalid &&
+                  formGroup.get('PositionModel')?.touched) ||
+                formGroup.get('PositionModel')?.untouched
+              "
+            />
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- Season Settings -->
+      <p-stepperPanel>
+        <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
+          <button
+            class="bg-transparent border-none inline-flex flex-column gap-2"
+            (click)="onClick.emit()"
+          >
+            <span
+              class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
+              [ngClass]="{
+                'bg-primary border-primary': index <= active,
+                'surface-border': index > active,
+              }"
+            >
+              <i class="material-icons">event_note</i>
+            </span>
+          </button>
+        </ng-template>
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+        >
+          <div
+            formGroupName="SeasonModel"
+            class="flex flex-column gap-2 mx-auto"
+            style="min-height: 16rem; max-width: 24rem"
+          >
+            <div class="text-center mt-3 mb-3 text-xl font-semibold"
+              >Season Settings</div
+            >
+            <div
+              formGroupName="RegularSeasonSettings"
+              class="flex flex-column gap-2"
+            >
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="RegularSeasonStart"
+                    id="regular-season-start"
+                    type="number"
+                  />
+                  <label for="regular-season-start">Regular Season Start</label>
+                </p-floatLabel>
+              </div>
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="WeeksPerGame"
+                    id="weeks-per-game"
+                    type="number"
+                  />
+                  <label for="weeks-per-game">Weeks Per Game</label>
+                </p-floatLabel>
+              </div>
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="RegularSeasonGames"
+                    id="regular-season-games"
+                    type="number"
+                  />
+                  <label for="regular-season-games">Regular Season Games</label>
+                </p-floatLabel>
+              </div>
+              <div class="field p-fluid">
+                <div
+                  class="flex flex-row justify-content-between align-items-center"
+                >
+                  <label for="home-field-advantage"
+                    >Home Field Advantage?</label
+                  >
+                  <p-inputSwitch
+                    id="home-field-advantage"
+                    formControlName="HomeFieldAdvantage"
+                  />
+                </div>
+              </div>
+              @if (
+                formGroup.getRawValue().SeasonModel.RegularSeasonSettings
+                  .HomeFieldAdvantage
+              ) {
+                <div class="field p-fluid">
+                  <p-floatLabel>
+                    <input
+                      pInputText
+                      formControlName="PointBenefit"
+                      id="point-benefit"
+                      type="number"
+                    />
+                    <label for="point-benefit">Home Team Point Benefit</label>
+                  </p-floatLabel>
+                </div>
+              }
+            </div>
+            <div
+              formGroupName="PlayoffSeasonSettings"
+              class="flex flex-column gap-2"
+            >
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="PlayoffTeams"
+                    id="playoff-teams"
+                    type="number"
+                  />
+                  <label for="playoff-teams">Playoff Teams</label>
+                </p-floatLabel>
+              </div>
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="WeeksInSemifinalGame"
+                    id="weeks-in-semifinal-game"
+                    type="number"
+                  />
+                  <label for="weeks-in-semifinal-game"
+                    >Weeks in Semifinal Game</label
+                  >
+                </p-floatLabel>
+              </div>
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="WeeksInChampionshipGame"
+                    id="weeks-in-championship-game"
+                    type="number"
+                  />
+                  <label for="weeks-in-championship-game"
+                    >Weeks in Championship Game</label
+                  >
+                </p-floatLabel>
+              </div>
+              <div class="field p-fluid">
+                <p-floatLabel>
+                  <p-dropdown
+                    [options]="seedingTypes"
+                    [appendTo]="'body'"
+                    [optionValue]="'value'"
+                    formControlName="SeedingType"
+                    optionLabel="label"
+                    inputId="seeding-type"
+                  />
+                  <label for="seeding-type"
+                    >Playoff Seeding Configuration</label
+                  >
+                </p-floatLabel>
+              </div>
+              @if (
+                formGroup.getRawValue().SeasonModel.PlayoffSeasonSettings
+                  .SeedingType == SeedingTypeEnum.BestByConference ||
+                formGroup.getRawValue().SeasonModel.PlayoffSeasonSettings
+                  .SeedingType == SeedingTypeEnum.BestOverall
+              ) {
+                <div class="field p-fluid">
+                  <p-floatLabel>
+                    <p-dropdown
+                      [options]="tieBreakerTypes"
+                      [appendTo]="'body'"
+                      [optionValue]="'value'"
+                      formControlName="TieBreakerType"
+                      optionLabel="label"
+                      inputId="tie-breaker-type"
+                    />
+                    <label for="tie-breaker-type">Playoff Tie-Breaker</label>
+                  </p-floatLabel>
+                </div>
+              } @else if (
+                formGroup.getRawValue().SeasonModel.PlayoffSeasonSettings
+                  .SeedingType == SeedingTypeEnum.Manual
+              ) {
+                <div class="field p-fluid">
+                  <span class="text-center"
+                    >Manual draft selection will be available once the league
+                    has started in league settings.</span
+                  >
+                </div>
+              }
+            </div>
+          </div>
+          <div class="flex pt-4 justify-content-between">
+            <p-button
+              (onClick)="
+                prevCallback.emit();
+                enablePositionModelValidation();
+                unsubscribeSeasonModel()
+              "
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              (onClick)="
+                nextCallback.emit();
+                enableLeagueSettingsModelValidation();
+                unsubscribeSeasonModel()
+              "
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              [disabled]="
+                formGroup.get('SeasonModel')?.get('RegularSeasonSettings')
+                  ?.invalid ||
+                formGroup.get('SeasonModel')?.get('PlayoffSeasonSettings')
+                  ?.invalid
+              "
+            />
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- Other League Settings -->
+      <p-stepperPanel>
+        <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
+          <button
+            class="bg-transparent border-none inline-flex flex-column gap-2"
+            (click)="onClick.emit()"
+          >
+            <span
+              class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
+              [ngClass]="{
+                'bg-primary border-primary': index <= active,
+                'surface-border': index > active,
+              }"
+            >
+              <i class="material-icons">manage_accounts</i>
+            </span>
+          </button>
+        </ng-template>
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+        >
+          <div
+            class="flex flex-column gap-2 mx-auto"
+            style="min-height: 16rem; max-width: 24rem"
+            [formGroupName]="'LeagueSettingsModel'"
+          >
+            <div class="text-center mt-3 mb-3 text-xl font-semibold">
+              Other League Settings
+            </div>
+
+            <div formArrayName="Conferences" class="flex flex-column gap-2">
+              <div
+                class="field p-fluid"
+                *ngFor="
+                  let conference of conferenceFormArray.controls;
+                  let i = index
+                "
+                [formGroupName]="i"
+              >
+                <p-floatLabel>
+                  <input
+                    pInputText
+                    formControlName="ConferenceName"
+                    [id]="'conference-name-' + i"
+                    type="text"
+                  />
+                  <label [for]="'conference-name-' + i">Conference Name</label>
+                </p-floatLabel>
+              </div>
+            </div>
+            <div class="field p-fluid">
+              <p-floatLabel>
+                <p-dropdown
+                  [options]="transferPortalDeadlineTypes"
+                  [appendTo]="'body'"
+                  [optionValue]="'value'"
+                  formControlName="TransferPortalDeadline"
+                  optionLabel="label"
+                  inputId="transfer-portal-deadline"
+                />
+                <label for="transfer-portal-deadline"
+                  >Deadline for Transfer Portal</label
+                >
+              </p-floatLabel>
+            </div>
+          </div>
+          <div class="flex pt-4 justify-content-between">
+            <p-button
+              (onClick)="prevCallback.emit(); enableSeasonModelValidation()"
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              (onClick)="nextCallback.emit(); onSubmit()"
+              label="Create League"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              [disabled]="formGroup.get('LeagueSettingsModel')?.invalid"
+            />
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- Confirmation Page -->
+      <p-stepperPanel>
+        <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
+          <button
+            class="bg-transparent border-none inline-flex flex-column gap-2"
+            (click)="onClick.emit()"
+          >
+            <span
+              class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
+              [ngClass]="{
+                'bg-green-500 border-green-500': index <= active,
+                'surface-border': index > active,
+              }"
+            >
+              <i
+                class="material-icons"
+                [ngClass]="{
+                  'text-white': index <= active,
+                  'text-color': index > active,
+                }"
+                >check_circle</i
+              >
+            </span>
+          </button>
+        </ng-template>
+        <ng-template pTemplate="content" let-prevCallback="prevCallback">
+          <div
+            class="flex flex-column gap-2 mx-auto"
+            style="min-height: 16rem; max-width: 24rem"
+          >
+            <div class="text-center mt-3 mb-3 text-xl font-semibold"
+              >League created and Joined successfully</div
+            >
+            <div class="text-center">
+              <img alt="logo" src="assets/images/content.svg" />
+            </div>
+          </div>
+          <div class="flex pt-4 justify-content-between">
+            <p-button
+              (onClick)="
+                prevCallback.emit(); enableLeagueSettingsModelValidation()
+              "
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              (onClick)="goToLeague()"
+              label="Go to League"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+            />
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+    </p-stepper>
+  </div>
+</form>

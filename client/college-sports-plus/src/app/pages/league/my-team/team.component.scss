@@ -9,8 +9,32 @@
   /* Header styles */
 }
 
+.header-item {
+  flex: 1;
+  text-align: center;
+
+  &:first-child {
+    flex: none; // Remove flex grow from the first column
+    text-align: left;
+  }
+
+  &:nth-child(3) {
+    flex: none;
+  }
+
+  &:last-child {
+    text-align: right;
+  }
+}
+
 .body {
   flex: 1; /* Takes up remaining space */
   overflow-y: auto;
   /* Body styles */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
 }

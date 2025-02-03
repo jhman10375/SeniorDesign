@@ -19,7 +19,7 @@ import { UserService } from '../../shared/services/dl/user.service';
 @Component({
   standalone: true,
   imports: [RouterOutlet, RouterLink, Button],
-  providers: [LeagueService, AthleteService, UserService],
+  providers: [AthleteService, UserService],
   styleUrls: ['league.component.scss'],
   selector: 'league',
   templateUrl: 'league.component.html',
@@ -30,6 +30,8 @@ export class LeagueComponent implements OnInit, OnDestroy {
   myTeam: LeaguePlayerModel | undefined;
 
   activeLeague: LeagueModel | undefined;
+
+  isLeagueManager: boolean = false;
 
   isAtParentRoute: boolean = false;
 
@@ -58,14 +60,20 @@ export class LeagueComponent implements OnInit, OnDestroy {
         this.activeLeague = this.leagueService.getLeague(
           this.currentId ?? '-1'
         );
-        const currentUser: UserModel | undefined = this.userService.currentUser;
+        const currentUser: UserModel | undefined = this.userService.getUser();
         if (currentUser) {
           this.myTeam = this.activeLeague?.Players.find(
-            (x) => x.ID === currentUser.ID
+            (x) => x.PlayerID === currentUser.ID
           );
         }
         this.hasDraftOccurred =
           (this.activeLeague?.DraftDate.getTime() ?? 0) < new Date().getTime();
+
+        if (this.myTeam?.ID === this.activeLeague?.Manager?.ID) {
+          this.isLeagueManager = true;
+        } else {
+          this.isLeagueManager = false;
+        }
       },
     });
   }
@@ -75,7 +83,12 @@ export class LeagueComponent implements OnInit, OnDestroy {
   }
 
   navigateTo(url: string, id: string = '-1'): void {
-    if (url == 'team' || url == 'player' || url == 'current-games') {
+    if (
+      url == 'team' ||
+      url == 'player' ||
+      url == 'current-games' ||
+      url == 'history'
+    ) {
       this.router.navigate([url, id], { relativeTo: this.activatedRoute });
     } else {
       this.router.navigate([url], { relativeTo: this.activatedRoute });
@@ -102,12 +115,22 @@ export class LeagueComponent implements OnInit, OnDestroy {
 
     const segments = urlTree.root.children['primary']?.segments;
     const playerSearch = segments.find((x) => x.path == 'player-search');
+    const draftResults = segments.find((x) => x.path == 'draft-results');
+    const pastGame = segments.find((x) => x.path == 'past-game');
     const player = segments.find((x) => x.path == 'player');
 
     if (playerSearch && player) {
       this.router.navigate([playerSearch.path], {
         relativeTo: this.activatedRoute,
       });
+    } else if (draftResults && player) {
+      this.router.navigate([draftResults.path], {
+        relativeTo: this.activatedRoute,
+      });
+    } else if (pastGame && player) {
+      const updatedSegments = segments.slice(0, -2);
+      const newPath = updatedSegments.map((segment) => segment.path).join('/');
+      this.router.navigateByUrl(`/${newPath}`);
     } else {
       if (segments && segments.length > 4) {
         const id = segments[segments.length - 3].path;

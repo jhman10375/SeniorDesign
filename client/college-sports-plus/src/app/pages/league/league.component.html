@@ -65,44 +65,48 @@
             <span class="text-xl">Current Games</span> </div
           ><div
             class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('history')"
+            (click)="navigateTo('history', '0')"
           >
             <span class="text-xl">Game History</span>
           </div>
+          <!-- @if (hasDraftOccurred) { -->
+          <div
+            class="mt-2 mb-2 p-2 border-1 surface-border"
+            (click)="navigateTo('draft-results')"
+          >
+            <span class="text-xl">Draft Results</span>
+          </div>
+          <!-- } -->
           <div
             class="mt-2 mb-2 p-2 border-1 surface-border"
             (click)="navigateTo('league-settings')"
           >
-            <span class="text-xl">League Settings</span>
+            @if (isLeagueManager) {
+              <span class="text-xl">League Settings</span>
+            } @else {
+              <span class="text-xl">League Information</span>
+            }
           </div>
-          @if (hasDraftOccurred) {
-            <div
-              class="mt-2 mb-2 p-2 border-1 surface-border"
-              (click)="navigateTo('draft')"
-            >
-              <span class="text-xl">Draft Results</span>
+          <!-- @if (hasDraftOccurred) { -->
+          <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
+            <span class="text-xl">High Scoring Players</span>
+            <span (click)="navigateTo('player')">Player info 1</span>
+            <span (click)="navigateTo('player')">Player info 2</span>
+            <span (click)="navigateTo('player')">Player info 3</span>
+          </div>
+          <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
+            <span class="text-xl">Low Scoring Players</span>
+            <div>
+              <span (click)="navigateTo('player', '0')">Player info 1</span>
             </div>
-          }
-          @if (hasDraftOccurred) {
-            <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
-              <span class="text-xl">High Scoring Players</span>
-              <span (click)="navigateTo('player')">Player info 1</span>
-              <span (click)="navigateTo('player')">Player info 2</span>
+            <div>
+              <span (click)="navigateTo('player', '1')">Player info 2</span>
+            </div>
+            <div>
               <span (click)="navigateTo('player')">Player info 3</span>
             </div>
-            <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
-              <span class="text-xl">Low Scoring Players</span>
-              <div>
-                <span (click)="navigateTo('player', '0')">Player info 1</span>
-              </div>
-              <div>
-                <span (click)="navigateTo('player', '1')">Player info 2</span>
-              </div>
-              <div>
-                <span (click)="navigateTo('player')">Player info 3</span>
-              </div>
-            </div>
-          }
+          </div>
+          <!-- } -->
         }
         <router-outlet></router-outlet>
       </div>

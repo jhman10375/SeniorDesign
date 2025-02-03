@@ -16,6 +16,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { LeagueAthleteModel } from '../../../shared/models/league-athlete.model';
+import { AthleteService } from '../../../shared/services/bl/athlete.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 import { PlayerFilterBase } from './player-filter/player-filter.base.component';
 import { PlayerFilterComponent } from './player-filter/player-filter/player-filter.component';
@@ -34,7 +35,7 @@ import { PlayerSortComponent } from './player-filter/player-sort/player-sort.com
     PlayerFilterComponent,
     PlayerSortComponent,
   ],
-  providers: [LeagueService],
+  providers: [],
   selector: 'player-search',
   styleUrls: ['player-search.component.scss'],
   templateUrl: 'player-search.component.html',
@@ -79,7 +80,8 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
   constructor(
     private leagueService: LeagueService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private athleteService: AthleteService
   ) {
     super();
   }
@@ -92,7 +94,11 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
     if (!this.draftMode && leagueID) {
       const activeLeague = this.leagueService.getLeague(leagueID);
       if (activeLeague) {
-        this.athletes = activeLeague.Athletes;
+        if (activeLeague.Athletes && activeLeague.Athletes.length > 0) {
+          this.athletes = activeLeague.Athletes;
+        } else {
+          this.athletes = this.athleteService.getAllAthletes();
+        }
       }
     }
   }

@@ -1,0 +1,15 @@
+@if (isMobile) {
+  @if (league) {
+    @switch (league.LeagueType) {
+      @case (SportEnum.Football) {
+        <football-settings-view-edit
+          [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
+          [view]="isLeagueManager"
+        ></football-settings-view-edit>
+      }
+      @case (SportEnum.Baseball) {}
+      @case (SportEnum.Basketball) {}
+      @case (SportEnum.Soccer) {}
+    }
+  }
+}

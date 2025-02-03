@@ -1,0 +1,29 @@
+<p-floatLabel>
+  <p-dropdown
+    [options]="logos"
+    (onChange)="onOptionChange($event)"
+    optionLabel="name"
+    [(ngModel)]="selectedLogoTest"
+    [filterPlaceholder]="'School Search'"
+    [filter]="true"
+    filterBy="name"
+    [appendTo]="'body'"
+    [showClear]="true"
+    (onClear)="clear()"
+    id="logo-selector"
+  >
+    <ng-template pTemplate="selectedItem" let-selectedLogo>
+      <div class="flex align-items-center gap-2">
+        <img [src]="selectedLogo?.value[0] ?? ''" style="width: 18px" />
+        <div>{{ selectedLogo.name }}</div>
+      </div>
+    </ng-template>
+    <ng-template let-logo pTemplate="item">
+      <div class="flex align-items-center gap-2">
+        <img [src]="logo?.value[0] ?? ''" style="width: 18px" />
+        <div>{{ logo.name }}</div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+  <label for="logo-selector">Select a Logo</label>
+</p-floatLabel>

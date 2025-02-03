@@ -1,7 +1,8 @@
 import { WeekStatusEnum } from '../../../enums/week-status.enum';
+import { HasID } from '../../firebase/interfaces/has-id.interface';
 import { LeagueGameDLModel } from './league-game-dl.model';
 
-export class LeagueWeekDLModel {
+export class LeagueWeekDLModel implements HasID {
   ID: string;
   LeagueID: string;
   Week: number;

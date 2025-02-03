@@ -9,6 +9,7 @@ import { FastAPIService } from '../fastAPI/fast-api.service';
 import { PlayerFAPIModel } from '../fastAPI/models/player-fapi.model';
 
 @Injectable({ providedIn: 'root' })
+// @Injectable()
 export class AthleteDLService implements OnDestroy {
   players: Observable<Array<LeagueAthleteModel>>;
 
@@ -119,6 +120,21 @@ export class AthleteDLService implements OnDestroy {
 
   getAthleteByID(id: string): Observable<PlayerFAPIModel> {
     return this.fastApiService.getPlayerByID(id);
+  }
+
+  getAthletesByIDs(
+    ids: Array<string>,
+    athletesToSearch: Array<LeagueAthleteModel>
+  ): Array<LeagueAthleteModel> {
+    const athletes: Array<LeagueAthleteModel> = [];
+    ids.forEach((id) => {
+      const athlete = athletesToSearch.find((x) => x.AthleteID === id);
+      if (athlete) {
+        athletes.push(athlete);
+      }
+    });
+
+    return athletes;
   }
 
   loadAthletes(): void {

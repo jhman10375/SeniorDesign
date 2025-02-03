@@ -1,0 +1,50 @@
+<div class="flex flex-row h-full">
+  <div class="flex flex-row justify-content-start align-items-center w-full">
+    <div class="flex flex-column">
+      <span class="text-xs mb-2">Home</span>
+      <span
+        class="pi pi-arrow-circle-left text-4xl text-primary mr-2"
+        (click)="switchGame('Left', currentGame)"
+      ></span>
+    </div>
+    <div class="flex flex-column">
+      <div
+        class="flex flex-row align-items-center justify-content-between mb-1"
+      >
+        <span class="width-half text-xs"> {{ homeTeam?.TeamName }}</span>
+      </div>
+      <div
+        class="flex flex-row align-items-center justify-content-between mb-1"
+      >
+        @if (homeTeam) {
+          <p-avatar [image]="homeTeam.Logos[0]" shape="square" />
+        }
+        <span class="width-half text-xl font-bold"> 147.82</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row justify-content-end align-items-center w-full">
+    <div class="flex flex-column">
+      <div
+        class="flex flex-row align-items-center justify-content-between mb-1"
+      >
+        <span class="width-half text-xs"> {{ awayTeam?.TeamName }}</span>
+      </div>
+      <div
+        class="flex flex-row align-items-center justify-content-between mb-1"
+      >
+        <span class="width-half text-xl font-bold"> 134.97</span>
+        @if (awayTeam) {
+          <p-avatar [image]="awayTeam.Logos[0]" shape="square" />
+        }
+      </div>
+    </div>
+    <div class="flex flex-column">
+      <span class="text-xs mb-2 text-right">Away</span>
+      <span
+        class="pi pi-arrow-circle-right text-4xl ml-2 text-primary"
+        (click)="switchGame('Right', currentGame)"
+      ></span>
+    </div>
+  </div>
+</div>

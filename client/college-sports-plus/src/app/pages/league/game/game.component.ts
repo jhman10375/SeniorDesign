@@ -2,20 +2,21 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
+import { MobileScoreBoardComponent } from '../../../shared/components/mobile/mobile-scoreboard/mobile-scoreboard.component';
 import { RosterComponent } from '../../../shared/components/shared/roster/roster.component';
 import { SportEnum } from '../../../shared/enums/sport.enum';
-import { LeaguePlayerModel } from '../../../shared/models/league-player.model';
-import { BaseballRosterModel } from '../../../shared/models/roster/baseball-roster.model';
-import { BasketballRosterModel } from '../../../shared/models/roster/basketball-roster.model';
+import { WeekStatusEnum } from '../../../shared/enums/week-status.enum';
+import { LeagueGameModel } from '../../../shared/models/league-game.model';
+import { LeagueWeekModel } from '../../../shared/models/league-week.model';
+import { LeagueModel } from '../../../shared/models/league.model';
 import { FootballRosterModel } from '../../../shared/models/roster/football-roster.model';
-import { SoccerRosterModel } from '../../../shared/models/roster/soccer-roster.model';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 
 @Component({
   standalone: true,
-  imports: [RosterComponent, RouterOutlet],
-  providers: [LeagueService],
+  imports: [RosterComponent, RouterOutlet, MobileScoreBoardComponent],
+  providers: [],
   selector: 'game',
   styleUrls: ['game.component.scss'],
   templateUrl: 'game.component.html',
@@ -27,22 +28,17 @@ export class GameComponent implements OnInit, OnDestroy {
 
   readonly FootballRosterModel = FootballRosterModel;
 
-  team:
-    | {
-        player: LeaguePlayerModel | undefined;
-        roster:
-          | BaseballRosterModel
-          | BasketballRosterModel
-          | FootballRosterModel
-          | SoccerRosterModel;
-      }
-    | undefined = undefined;
+  leagueWeek: LeagueWeekModel;
+
+  currentGame: LeagueGameModel;
 
   isAtParentRoute: boolean = false;
 
   teamID: string;
 
   LeagueID: string;
+
+  weekID: string;
 
   leagueType: SportEnum;
 
@@ -55,18 +51,43 @@ export class GameComponent implements OnInit, OnDestroy {
   ) {
     this.isMobile = GeneralService.isMobile();
 
-    const teamID: string = this.activatedRoute.snapshot.params['teamID'];
-    const leagueID: string =
-      this.activatedRoute.parent?.snapshot.params['leagueID'];
+    this.weekID = this.activatedRoute.snapshot.params['weekID'];
+    let teamID: string;
+    let leagueID: string;
+    if (this.weekID) {
+      teamID = this.activatedRoute.parent?.snapshot.params['teamID'];
+      leagueID =
+        this.activatedRoute.parent?.parent?.snapshot.params['leagueID'];
+    } else {
+      teamID = this.activatedRoute.snapshot.params['teamID'];
+      leagueID = this.activatedRoute.parent?.snapshot.params['leagueID'];
+    }
     if (leagueID) {
       this.teamID = teamID;
       this.LeagueID = leagueID;
       this.leagueService.league.pipe(takeUntil(this.unsubscribe)).subscribe({
         next: (leagues) => {
-          this.team = this.leagueService.getLeagueTeam(leagueID, teamID);
           this.leagueType =
             this.leagueService.getLeagueType(leagueID) ?? SportEnum.None;
-          console.log(this.team);
+
+          const currentLeague: LeagueModel =
+            leagues.find((x) => x.ID === leagueID) ?? new LeagueModel();
+          if (this.weekID) {
+            this.leagueWeek =
+              currentLeague?.Season.find(
+                (y) => y.Week.toString() == this.weekID
+              ) ?? new LeagueWeekModel();
+          } else {
+            this.leagueWeek =
+              currentLeague?.Season.find(
+                (y) => y.Status == WeekStatusEnum.Current
+              ) ?? new LeagueWeekModel();
+          }
+          this.currentGame =
+            this.leagueWeek.Games.find(
+              (x) =>
+                x.AwayTeamPlayerID === teamID || x.HomeTeamPlayerID === teamID
+            ) ?? new LeagueGameModel();
         },
       });
     }
@@ -86,11 +107,20 @@ export class GameComponent implements OnInit, OnDestroy {
 
   checkIfAtParentRoute(): boolean {
     const currentUrl = this.router.url;
-    const parentRoute = `/league/${this.LeagueID}/current-games/${this.teamID}`; // Construct the parent route dynamically
+    let parentRoute: string = '';
+    if (this.weekID) {
+      parentRoute = `/league/${this.LeagueID}/history/${this.teamID}/past-game/${this.weekID}`; // Construct the parent route dynamically
+    } else {
+      parentRoute = `/league/${this.LeagueID}/current-games/${this.teamID}`; // Construct the parent route dynamically
+    }
 
     // Check if the current URL is the parent route (i.e., /app/:id and not any child route)
     this.isAtParentRoute = currentUrl.length == parentRoute.length;
 
     return this.isAtParentRoute;
+  }
+
+  updateGameView(game: LeagueGameModel): void {
+    this.currentGame = game;
   }
 }

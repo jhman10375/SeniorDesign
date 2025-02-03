@@ -1,23 +1,63 @@
-.header-item {
-  flex: 1; /* Make all header items take equal space */
-  text-align: center; /* Center the content within header items */
-  /* Add additional styles as needed, e.g., padding, margin */
+// .data-cell {
+//   flex: 1;
+//   text-align: center;
+//   /* Add other styles as needed */
+//   &:first-child {
+//     text-align: left;
+//   }
+//   &:last-child {
+//     text-align: right;
+//   }
+// }
+
+.data-cell-left {
+  flex: 1;
+  text-align: center;
+
   &:first-child {
+    flex: none; // Remove flex grow from the first column
     text-align: left;
+    width: 2rem;
   }
+
+  &:nth-child(3) {
+    flex: none;
+    width: 2rem;
+  }
+
   &:last-child {
     text-align: right;
   }
 }
 
-.data-cell {
+.data-cell-right {
   flex: 1;
   text-align: center;
-  /* Add other styles as needed */
+
   &:first-child {
     text-align: left;
   }
-  &:last-child {
-    text-align: right;
+
+  &:nth-child(2) {
+    flex: none;
+    width: 2rem;
   }
+
+  &:last-child {
+    flex: none; // Remove flex grow from the first column
+    text-align: right;
+    width: 2rem;
+  }
+}
+
+.first-string-background {
+  background-color: var(--gray-100);
+}
+
+.second-string-background {
+  background-color: var(--gray-200);
+}
+
+.bench-background {
+  background-color: var(--gray-300);
 }

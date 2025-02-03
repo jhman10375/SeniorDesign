@@ -1,5 +1,6 @@
 <div
-  class="h-8rem border-1 scoreboard-background border-round surface-border p-2"
+  class="border-1 scoreboard-background border-round surface-border p-2"
+  [ngClass]="customHeight ? customHeight : 'h-8rem'"
 >
   @if (hasDifferentContent) {
     <ng-content></ng-content>
@@ -8,6 +9,10 @@
       [league]="league"
     ></mobile-league-information-scoreboard>
   } @else if (gameScoreboard) {
+    <mobile-game-information-scoreboard
+      [LeagueWeek]="LeagueWeek"
+      (newGameToViewEmitter)="onNewGameToView($event)"
+    ></mobile-game-information-scoreboard>
   } @else if (teamScoreboard) {
     <mobile-team-scoreboard [player]="player"></mobile-team-scoreboard>
   } @else {

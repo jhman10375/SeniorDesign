@@ -1,30 +1,30 @@
-import { BaseballRosterDLModel } from './roster/baseball-roster-dl.model';
-import { BasketballRosterDLModel } from './roster/basketball-roster-dl.model';
-import { FootballRosterDLModel } from './roster/football-roster-dl.model';
-import { SoccerRosterDLModel } from './roster/soccer-roster-dl.model';
+import { HasID } from '../../firebase/interfaces/has-id.interface';
+import { LeagueRosterAthleteDLModel } from './league-roster-athlete-dl.model';
 
-export class LeagueGameDLModel {
+export class LeagueGameDLModel implements HasID {
   ID: string;
   WeekNumber: number;
   HomeTeamPlayerID: string;
-  HomeTeam:
-    | BaseballRosterDLModel
-    | BasketballRosterDLModel
-    | FootballRosterDLModel
-    | SoccerRosterDLModel;
+  HomeTeam: Array<LeagueRosterAthleteDLModel>;
+  // HomeTeam:
+  //   | BaseballRosterDLModel
+  //   | BasketballRosterDLModel
+  //   | FootballRosterDLModel
+  //   | SoccerRosterDLModel;
   AwayTeamPlayerID: string;
-  AwayTeam:
-    | BaseballRosterDLModel
-    | BasketballRosterDLModel
-    | FootballRosterDLModel
-    | SoccerRosterDLModel;
+  AwayTeam: Array<LeagueRosterAthleteDLModel>;
+  // AwayTeam:
+  //   | BaseballRosterDLModel
+  //   | BasketballRosterDLModel
+  //   | FootballRosterDLModel
+  //   | SoccerRosterDLModel;
 
   constructor() {
     this.ID = '';
     this.WeekNumber = 0;
     this.HomeTeamPlayerID = '';
-    this.HomeTeam = new FootballRosterDLModel();
+    this.HomeTeam = [];
     this.AwayTeamPlayerID = '';
-    this.AwayTeam = new FootballRosterDLModel();
+    this.AwayTeam = [];
   }
 }

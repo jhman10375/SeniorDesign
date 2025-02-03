@@ -1,5 +1,8 @@
+import ast
+from typing import List
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 from api.routes.draft import router as draft_router
 
 import requests
@@ -51,6 +54,18 @@ async def get_schedule(team_name: str, season : Season) -> list[fbGame]:
 
     return team_schedule(team_name, season.value)
 
+@app.get("/schools/get_all", tags=["School Info"])
+async def get_all_schools() -> list[school]:
+   return all_schools()
+
+@app.get("/team/get_by_id/{team_id}", tags=["Team Info"])
+async def get_team_by_id(team_id):
+   return team_by_id(team_id)
+
+@app.get("/teams/logos/{}")
+async def get_team_logos() -> list[teamLogo]:
+
+    return team_logos()
 
 @app.get("/teams/{team_name}/last_game", tags=["Team Info"])
 async def get_last_game(team_name: str) -> fbGame:
@@ -179,6 +194,14 @@ async def search_for_players_by_id(player_id : int) -> playerInfo:
 
     return search_player(fullList, player_id)
 
+@app.get("/players/search/by_ids", tags=["Player Info"])
+async def search_for_players_by_ids(player_ids = ['']) -> List[playerInfo]:
+    print(player_ids)
+    ids = ast.literal_eval(player_ids)
+    players = []
+    for id in ids:
+        players.append(search_player(fullList, id))
+    return players
 
 @app.get("/lists/repopulate")
 async def repopulate_player_lists():
@@ -275,9 +298,9 @@ async def get_all_first_string_players(page = 1, page_size= 100):
 async def get_player_stats_for_whole_year(player_id : int, season : Season) -> playerStats:
     player = search_player(fullList, player_id)
 
-    team = player.player_team
+    team = player.player_team.replace("&", "%26")
 
-    url = f"https://api.collegefootballdata.com/stats/player/season?year={season.value}&team={team.replace("&", "%26")}"
+    url = f"https://api.collegefootballdata.com/stats/player/season?year={season.value}&team={team}"
 
     headers = {"Authorization": f"Bearer {token}"}
 
@@ -642,7 +665,8 @@ async def get_Defence_Special_Teams_last_game_stats(team_name : str) -> D_ST_Sta
 
 @app.get("/{team_name}/D-ST/stats/full_season", tags=["D/ST"])
 async def get_Defence_Special_Teams_season_stats(team_name : str, season : Season) -> D_ST_Stats:
-  url = f"https://api.collegefootballdata.com/stats/season?year={season.value}&team={team_name.replace("&", "%26")}"
+  team = team_name.replace("&", "%26")
+  url = f"https://api.collegefootballdata.com/stats/season?year={season.value}&team={team}"
 
 
   headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
@@ -1490,7 +1514,8 @@ async def get_baseball_schedule(team_name: str, season : Season) -> list[bbGame]
           home_team = team_name
           away_team = games[index]['opponent']
       else:
-          opp_q = teams_df.query(f'name == "{games[index]['opponent']}"')
+          name = games[index]['opponent']
+          opp_q = teams_df.query(f'name == "{name}"')
 
           if (opp_q.empty):
              opp_id = -1
@@ -2499,3 +2524,6 @@ async def get_status():
 
 
 app.include_router(draft_router, tags=["Draft"])
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="192.168.200.36", port=8000)

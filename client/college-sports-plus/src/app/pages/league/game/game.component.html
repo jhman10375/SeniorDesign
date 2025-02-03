@@ -3,10 +3,15 @@
     <div class="scrollable-container" [style]="{ height: '100%' }">
       <div class="header">
         <!-- NEED TO ADD A GAME SCOREBOARD COMPONENT -->
-        <!-- <mobile-scoreboard [teamScoreboard]="true" [player]="team?.player">
-          </mobile-scoreboard> -->
+        <mobile-scoreboard
+          [gameScoreboard]="true"
+          [LeagueWeek]="leagueWeek"
+          [customHeight]="'h-4rem'"
+          (newGameToViewEmitter)="updateGameView($event)"
+        >
+        </mobile-scoreboard>
         <div
-          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border text-xs"
         >
           <span class="header-item">Pos</span>
           <span class="header-item">Name</span>
@@ -22,17 +27,17 @@
       <div class="body">
         <div class="flex flex-row justify-content-between">
           <roster
-            [team]="team"
+            [team]="currentGame.HomeTeam"
             [leagueType]="leagueType"
             (navigateToEmitter)="navigateTo($event)"
-            class="w-full"
+            class="w-full border-right-1 surface-border pr-1"
           ></roster>
           <roster
-            [team]="team"
+            [team]="currentGame.AwayTeam"
             [reverse]="true"
             [leagueType]="leagueType"
             (navigateToEmitter)="navigateTo($event)"
-            class="w-full"
+            class="w-full border-left-1 surface-border pl-1"
           ></roster>
         </div>
       </div>

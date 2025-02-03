@@ -20,7 +20,7 @@
         ></draft-nav>
         <draft-pick-order
           [selectionTime]="
-            activeLeague?.Settings?.DraftSettingsModel?.DraftSelectionTime ?? 0
+            activeLeague?.Settings?.DraftSettingsModel?.SelectionTime ?? 0
           "
           [draftOrder]="(draftOrder | async) ?? []"
           [pickOrder]="(pickOrder | async) ?? []"

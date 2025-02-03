@@ -23,3 +23,12 @@
   left: 0;
   background-color: var(--surface-b);
 }
+
+.hide-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}

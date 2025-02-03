@@ -29,7 +29,7 @@ import { LeagueService } from '../../shared/services/bl/league.service';
     ButtonModule,
     RouterLink,
   ],
-  providers: [LeagueService, AthleteService],
+  providers: [AthleteService],
   selector: 'league-search',
   styleUrls: ['league-search.component.scss'],
   templateUrl: 'league-search.component.html',

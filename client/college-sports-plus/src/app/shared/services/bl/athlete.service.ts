@@ -7,7 +7,7 @@ import { AthleteDLService } from '../dl/athlete-dl.service';
 import { FastAPIService } from '../fastAPI/fast-api.service';
 import { PlayerFAPIModel } from '../fastAPI/models/player-fapi.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AthleteService extends AthleteDLService {
   // players: Observable<Array<LeagueAthleteModel>>;
 

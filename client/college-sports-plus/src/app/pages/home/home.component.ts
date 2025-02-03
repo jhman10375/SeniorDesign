@@ -20,7 +20,7 @@ import { FastAPIService } from '../../shared/services/fastAPI/fast-api.service';
     CommonModule,
     HttpClientModule,
   ],
-  providers: [LeagueService, AthleteService, FastAPIService],
+  providers: [AthleteService, FastAPIService],
   selector: 'home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.scss'],
@@ -40,8 +40,13 @@ export class HomeComponent implements OnInit {
 
     this.leagueList = this.leagueService.leagueScoreboard;
 
+    this.leagueService.leagueScoreboard.subscribe({
+      next: (l) => console.log(l),
+    });
+
     this.fastAPIService.getStatus();
     this.fastAPIService.getTeams('ohio');
+    this.fastAPIService.getLogos();
     // this.fastAPIService.getPlayers();
   }
   ngOnInit() {}

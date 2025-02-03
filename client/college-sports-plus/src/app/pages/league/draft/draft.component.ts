@@ -63,7 +63,6 @@ import { DraftWebSocketService } from './services/draft-web-socket.service';
     PlayerSearchComponent,
   ],
   providers: [
-    LeagueService,
     AthleteService,
     DraftPickOrderService,
     DraftWebSocketService,
@@ -233,7 +232,7 @@ export class DraftComponent implements OnInit {
     this._pickMade.next(athlete);
     this.onUpdateCurrentPick();
     this.updateAthletes(athlete);
-    this.leagueService.addAthleteToTeam(
+    this.leagueService.addAthleteToTeamFromDraft(
       this.activeLeague?.ID ?? '-1',
       this.activeUser?.ID ?? '-1',
       athlete
@@ -296,7 +295,7 @@ export class DraftComponent implements OnInit {
     const createPickOrderData: DraftCreatePickOrderDataWSModel =
       new DraftCreatePickOrderDataWSModel();
     createPickOrderData.draft_type =
-      this.activeLeague?.Settings.DraftSettingsModel.DraftPickOrderType ??
+      this.activeLeague?.Settings.DraftSettingsModel?.PickOrderType ??
       DraftPickOrderTypeEnum.RandomSnake;
     createPickOrderData.number_of_rounds = this.numberOfRounds;
     createPickOrderData.user_ids = pickOrder;
@@ -349,6 +348,9 @@ export class DraftComponent implements OnInit {
         if (dop.round == 0) {
           pickOrderModel.Player.DraftPickSortOrder = dop.index;
           player.DraftPickSortOrder = dop.index;
+          this.leagueService.updateLeague(
+            this.activeLeague ?? new LeagueModel()
+          );
         }
         pickOrder.push(pickOrderModel);
       }

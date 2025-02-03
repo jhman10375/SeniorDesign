@@ -1,11 +1,11 @@
 import { DraftPickOrderTypeEnum } from '../../enums/draft-pick-order-type.enum';
 
 export class DraftSettingsModel {
-  DraftPickOrderType: DraftPickOrderTypeEnum;
-  DraftSelectionTime: number;
+  PickOrderType: DraftPickOrderTypeEnum;
+  SelectionTime: number;
 
   constructor() {
-    this.DraftPickOrderType = DraftPickOrderTypeEnum.None;
-    this.DraftSelectionTime = 0;
+    this.PickOrderType = DraftPickOrderTypeEnum.None;
+    this.SelectionTime = 0;
   }
 }

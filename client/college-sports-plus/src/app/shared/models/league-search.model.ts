@@ -1,7 +1,8 @@
 import { SportEnum } from '../enums/sport.enum';
+import { HasID } from '../services/firebase/interfaces/has-id.interface';
 import { LeaguePlayerModel } from './league-player.model';
 
-export class LeagueSearchModel {
+export class LeagueSearchModel implements HasID {
   ID: string;
   Manager: LeaguePlayerModel;
   Name: string;

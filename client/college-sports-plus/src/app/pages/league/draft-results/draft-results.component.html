@@ -1,0 +1,11 @@
+@if (isMobile) {
+  @if (checkIfAtParentRoute()) {
+    <draft-selections
+      [selections]="selections()"
+      [numberOfRounds]="numberOfRounds"
+      [reverse]="true"
+      (dialogPlayer)="navigateTo($event)"
+    ></draft-selections>
+  }
+  <router-outlet></router-outlet>
+}

@@ -5,16 +5,34 @@
     @case (SportEnum.Football) {
       @for (pos of positions; track pos) {
         <div
-          (click)="navigateTo(getRosterValue(pos).AthleteID)"
-          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+          (click)="navigateTo(getRosterValue(pos).Athlete.AthleteID)"
+          class="flex flex-row align-items-center justify-content-between pt-2 pb-2 border-bottom-1 surface-border text-xs"
+          [ngClass]="
+            getRosterValue(pos).RosterPosition ===
+            RosterPositionEnum.FirstString
+              ? 'first-string-background'
+              : getRosterValue(pos).RosterPosition ===
+                  RosterPositionEnum.FirstString
+                ? 'second-string-background'
+                : 'bench-background'
+          "
         >
-          <span class="data-cell">{{ getRosterValue(pos).School }}</span>
-          <span class="data-cell">{{ getRosterValue(pos).Jersey }}</span>
-          <span class="data-cell">{{ getRosterValue(pos).Name }}</span>
-          <span class="data-cell">{{ getPosition(pos) }}</span>
+          <span class="data-cell-right">{{
+            getRosterValue(pos).Athlete.School
+          }}</span>
+          <span class="data-cell-right">{{
+            getRosterValue(pos).Athlete.Jersey
+          }}</span>
+          <span class="data-cell-right">{{
+            getRosterValue(pos).Athlete.Name
+          }}</span>
+          @if (pos == "FTFLEX" || pos == "STFLEX") {
+            <span class="data-cell-right pr-1">FLEX</span>
+          } @else {
+            <span class="data-cell-right pr-1">{{ getPosition(pos) }}</span>
+          }
         </div>
       }
-      <!-- <div> {{ getRosterValue("QB1") }} </div> -->
     }
     @case (SportEnum.Soccer) {}
     @case (SportEnum.None) {
@@ -28,16 +46,34 @@
     @case (SportEnum.Football) {
       @for (pos of positions; track pos) {
         <div
-          (click)="navigateTo(getRosterValue(pos).AthleteID)"
-          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+          (click)="navigateTo(getRosterValue(pos).Athlete.AthleteID)"
+          class="flex flex-row align-items-center justify-content-between pt-2 pb-2 border-bottom-1 surface-border text-xs"
+          [ngClass]="
+            getRosterValue(pos).RosterPosition ===
+            RosterPositionEnum.FirstString
+              ? 'first-string-background'
+              : getRosterValue(pos).RosterPosition ===
+                  RosterPositionEnum.FirstString
+                ? 'second-string-background'
+                : 'bench-background'
+          "
         >
-          <span class="data-cell">{{ getPosition(pos) }}</span>
-          <span class="data-cell">{{ getRosterValue(pos).Name }}</span>
-          <span class="data-cell">{{ getRosterValue(pos).Jersey }}</span>
-          <span class="data-cell">{{ getRosterValue(pos).School }}</span>
+          @if (pos == "FTFLEX" || pos == "STFLEX") {
+            <span class="data-cell-left pl-1">FLEX</span>
+          } @else {
+            <span class="data-cell-left pl-1">{{ getPosition(pos) }}</span>
+          }
+          <span class="data-cell-left">{{
+            getRosterValue(pos).Athlete.Name
+          }}</span>
+          <span class="data-cell-left">{{
+            getRosterValue(pos).Athlete.Jersey
+          }}</span>
+          <span class="data-cell-left">{{
+            getRosterValue(pos).Athlete.School
+          }}</span>
         </div>
       }
-      <!-- <div> {{ getRosterValue("QB1") }} </div> -->
     }
     @case (SportEnum.Soccer) {}
     @case (SportEnum.None) {

@@ -1,4 +1,5 @@
 import { SportEnum } from '../enums/sport.enum';
+import { HasID } from '../services/firebase/interfaces/has-id.interface';
 import { BaseballLeagueSettingsModel } from './baseball-league-settings/baseball-league-settings.model';
 import { BasketballLeagueSettingsModel } from './basketball-league-settings/basketball-league-settings.model';
 import { FootballLeagueSettingsModel } from './football-league-settings/football-league-settings.model';
@@ -7,7 +8,7 @@ import { LeaguePlayerModel } from './league-player.model';
 import { LeagueWeekModel } from './league-week.model';
 import { SoccerLeagueSettingsModel } from './soccer-league-settings/soccer-league-settings.model';
 
-export class LeagueModel {
+export class LeagueModel implements HasID {
   ID: string;
   Manager: LeaguePlayerModel;
   Name: string;

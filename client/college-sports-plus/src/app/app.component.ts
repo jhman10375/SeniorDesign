@@ -9,6 +9,7 @@ import { WebNavBarComponent } from './shared/components/web/web-nav-bar/web-nav-
 import { AthleteService } from './shared/services/bl/athlete.service';
 import { GeneralService } from './shared/services/bl/general-service.service';
 import { LeagueService } from './shared/services/bl/league.service';
+import { SchoolService } from './shared/services/bl/school.service';
 
 @Component({
   selector: 'app-root',
@@ -29,17 +30,24 @@ export class AppComponent {
 
   constructor(
     private athleteService: AthleteService,
-    private leagueService: LeagueService
+    private leagueService: LeagueService,
+    private schoolService: SchoolService
   ) {
     this.isMobile = GeneralService.isMobile();
+    this.schoolService.loadSchools();
     this.athleteService.loadAthletes();
-    this.athleteService.players
-      .pipe(
-        skip(1), // Skip the first value
-        take(1) // Take only the second value
-      )
-      .subscribe({
-        next: (athletes) => this.leagueService.convertLeagues(athletes),
-      });
+    this.schoolService.schools.pipe(skip(1), take(1)).subscribe({
+      next: (schools) => {
+        this.athleteService.players
+          .pipe(
+            // skip(1), // Skip the first value
+            take(1) // Take only the second value
+          )
+          .subscribe({
+            next: (athletes) =>
+              this.leagueService.convertLeagues(athletes, schools),
+          });
+      },
+    });
   }
 }

@@ -7,11 +7,8 @@ import { MobileScoreBoardComponent } from '../../../shared/components/mobile/mob
 import { RosterComponent } from '../../../shared/components/shared/roster/roster.component';
 import { SportEnum } from '../../../shared/enums/sport.enum';
 import { LeaguePlayerModel } from '../../../shared/models/league-player.model';
-import { BaseballRosterModel } from '../../../shared/models/roster/baseball-roster.model';
-import { BasketballRosterModel } from '../../../shared/models/roster/basketball-roster.model';
+import { LeagueRosterAthleteModel } from '../../../shared/models/league-roster-athlete.model';
 import { FootballRosterModel } from '../../../shared/models/roster/football-roster.model';
-import { SoccerRosterModel } from '../../../shared/models/roster/soccer-roster.model';
-import { AthleteService } from '../../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 
@@ -23,7 +20,7 @@ import { LeagueService } from '../../../shared/services/bl/league.service';
     DividerModule,
     RosterComponent,
   ],
-  providers: [LeagueService, AthleteService],
+  providers: [],
   selector: 'team',
   styleUrls: ['team.component.scss'],
   templateUrl: 'team.component.html',
@@ -35,16 +32,9 @@ export class TeamComponent implements OnInit, OnDestroy {
 
   readonly FootballRosterModel = FootballRosterModel;
 
-  team:
-    | {
-        player: LeaguePlayerModel | undefined;
-        roster:
-          | BaseballRosterModel
-          | BasketballRosterModel
-          | FootballRosterModel
-          | SoccerRosterModel;
-      }
-    | undefined = undefined;
+  team: Array<LeagueRosterAthleteModel> | undefined = undefined;
+
+  currentPlayer: LeaguePlayerModel;
 
   isAtParentRoute: boolean = false;
 
@@ -74,6 +64,12 @@ export class TeamComponent implements OnInit, OnDestroy {
           this.team = this.leagueService.getLeagueTeam(leagueID, teamID);
           this.leagueType =
             this.leagueService.getLeagueType(leagueID) ?? SportEnum.None;
+
+          this.currentPlayer =
+            leagues
+              .find((x) => x.ID === leagueID)
+              ?.Players?.find((y) => y.PlayerID === teamID) ??
+            new LeaguePlayerModel();
           console.log(this.team);
         },
       });

@@ -39,6 +39,156 @@ def team_schedule(team, year):
     
     return games_list + post_list
 
+def all_schools():
+    url = f"https://api.collegefootballdata.com/teams/fbs"
+
+    headers = {"Authorization": f"Bearer {token}"}
+
+    teams_response = requests.get(url, headers=headers)
+
+    teams_json = json.loads(teams_response.text)
+    # print(teams_json)
+
+    teams_df = pd.json_normalize(teams_json)
+
+    teams_df = teams_df.fillna(value=0)
+
+    teams_df['venue_id'] = teams_df['location.venue_id'].apply(lambda x: x)
+    teams_df['name'] = teams_df['location.name'].apply(lambda x: x)
+    teams_df['city'] = teams_df['location.city'].apply(lambda x: x)
+    teams_df['state'] = teams_df['location.state'].apply(lambda x: x)
+    teams_df['zip'] = teams_df['location.zip'].apply(lambda x: x)
+    teams_df['country_code'] = teams_df['location.country_code'].apply(lambda x: x)
+    teams_df['timezone'] = teams_df['location.timezone'].apply(lambda x: x)
+    teams_df['latitude'] = teams_df['location.latitude'].apply(lambda x: x)
+    teams_df['longitude'] = teams_df['location.longitude'].apply(lambda x: x)
+    teams_df['elevation'] = teams_df['location.elevation'].apply(lambda x: x)
+    teams_df['capacity'] = teams_df['location.capacity'].apply(lambda x: x)
+    teams_df['year_constructed'] = teams_df['location.year_constructed'].apply(lambda x: x)
+    teams_df['grass'] = teams_df['location.grass'].apply(lambda x: x)
+    teams_df['dome'] = teams_df['location.dome'].apply(lambda x: x)
+
+    school_data = [school(
+            id=str(i.id), 
+            school=str(i.school), 
+            mascot=str(i.mascot), 
+            abbreviation=str(i.abbreviation), 
+            alt_name_1=str(i.alt_name1),
+            alt_name_2=str(i.alt_name2), 
+            alt_name_3=str(i.alt_name3), 
+            conference=str(i.conference), 
+            division=str(i.division), 
+            color=str(i.color), 
+            alt_color=str(i.alt_color), 
+            logos=i.logos, 
+            twitter=str(i.twitter), 
+            location=
+                location(
+            venue_id=i.venue_id, 
+            name=str(i.name), 
+            city=str(i.city), 
+            state=str(i.state), 
+            zip=str(i.zip), 
+            country_code=str(i.country_code), 
+            timezone=str(i.timezone), 
+            latitude=i.latitude, 
+            longitude=i.longitude, 
+            elevation=i.elevation, 
+            capacity=i.capacity, 
+            year_constructed=i.year_constructed, 
+            grass=i.grass, 
+            dome=i.dome)
+            
+            ) for i in teams_df.itertuples()]
+    return school_data
+
+def team_by_id(team_id):
+    url = f"https://api.collegefootballdata.com/teams/fbs"
+
+    headers = {"Authorization": f"Bearer {token}"}
+
+    teams_response = requests.get(url, headers=headers)
+
+    teams_json = json.loads(teams_response.text)
+    # print(teams_json)
+
+    teams_df = pd.json_normalize(teams_json)
+
+    team = teams_df[teams_df['id'] == int(team_id)]
+    team['venue_id'] = team['location.venue_id'].apply(lambda x: x)
+    team['name'] = team['location.name'].apply(lambda x: x)
+    team['city'] = team['location.city'].apply(lambda x: x)
+    team['state'] = team['location.state'].apply(lambda x: x)
+    team['zip'] = team['location.zip'].apply(lambda x: x)
+    team['country_code'] = team['location.country_code'].apply(lambda x: x)
+    team['timezone'] = team['location.timezone'].apply(lambda x: x)
+    team['latitude'] = team['location.latitude'].apply(lambda x: x)
+    team['longitude'] = team['location.longitude'].apply(lambda x: x)
+    team['elevation'] = team['location.elevation'].apply(lambda x: x)
+    team['capacity'] = team['location.capacity'].apply(lambda x: x)
+    team['year_constructed'] = team['location.year_constructed'].apply(lambda x: x)
+    team['grass'] = team['location.grass'].apply(lambda x: x)
+    team['dome'] = team['location.dome'].apply(lambda x: x)
+
+    if (team.empty):
+        return None
+    else:
+        team_location = [location(
+            venue_id=i.venue_id, 
+            name=str(i.name), 
+            city=str(i.city), 
+            state=str(i.state), 
+            zip=str(i.zip), 
+            country_code=str(i.country_code), 
+            timezone=str(i.timezone), 
+            latitude=i.latitude, 
+            longitude=i.longitude, 
+            elevation=i.elevation, 
+            capacity=i.capacity, 
+            year_constructed=i.year_constructed, 
+            grass=i.grass, 
+            dome=i.dome
+            ) for i in team.itertuples()]
+        
+        school_data = [school(
+            id=str(i.id), 
+            school=str(i.school), 
+            mascot=str(i.mascot), 
+            abbreviation=str(i.abbreviation), 
+            alt_name_1=str(i.alt_name1),
+            alt_name_2=str(i.alt_name2), 
+            alt_name_3=str(i.alt_name3), 
+            conference=str(i.conference), 
+            division=str(i.division), 
+            color=str(i.color), 
+            alt_color=str(i.alt_color), 
+            logos=i.logos, 
+            twitter=str(i.twitter), 
+            location=team_location[0]
+            ) for i in team.itertuples()]
+        return school_data[0]
+
+def team_logos():
+    url = f"https://api.collegefootballdata.com/teams/fbs"
+
+    headers = {"Authorization": f"Bearer {token}"}
+
+    teams_response = requests.get(url, headers=headers)
+
+    teams_json = json.loads(teams_response.text)
+    # print(teams_json)
+
+    teams_df = pd.json_normalize(teams_json)
+    teams_df['city'] = teams_df['location.city'].apply(lambda x: x)
+    teams_df['state'] = teams_df['location.state'].apply(lambda x: x)
+    print(teams_df)
+    print(teams_df.itertuples())
+
+    teams_list = [teamLogo(id=str(team.id), school=team.school, abbreviation=team.abbreviation, alt_name_1=team.alt_name1, 
+                           alt_name_2=team.alt_name2, alt_name_3=team.alt_name3, city=team.city, state=team.state, logos=team.logos) for team in teams_df.itertuples()]
+    
+    return teams_list
+
 def search_player(players, player_id):
 
     if not(players.populated):

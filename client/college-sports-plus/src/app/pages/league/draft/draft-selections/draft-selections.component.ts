@@ -24,6 +24,8 @@ export class DraftSelectionsComponent implements OnInit {
     return this._numberOfRounds;
   }
 
+  @Input() reverse: boolean = false;
+
   @Output() dialogPlayer = new EventEmitter<LeagueAthleteModel>();
 
   numOfRounds: Array<number> = [];
@@ -34,7 +36,9 @@ export class DraftSelectionsComponent implements OnInit {
 
   ngOnInit() {}
 
-  onPlayerSelected(player: LeagueAthleteModel): void {
-    this.dialogPlayer.emit(player);
+  onPlayerSelected(player: LeagueAthleteModel | null): void {
+    if (player) {
+      this.dialogPlayer.emit(player);
+    }
   }
 }

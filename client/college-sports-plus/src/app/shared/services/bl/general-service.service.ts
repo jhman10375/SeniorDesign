@@ -6,10 +6,6 @@ import { BasketballLeagueSettingsModel } from '../../models/basketball-league-se
 import { FootballLeagueSettingsModel } from '../../models/football-league-settings/football-league-settings.model';
 import { LeagueAthleteModel } from '../../models/league-athlete.model';
 import { SoccerLeagueSettingsModel } from '../../models/soccer-league-settings/soccer-league-settings.model';
-import { BaseballRosterDLModel } from '../dl/models/roster/baseball-roster-dl.model';
-import { BasketballRosterDLModel } from '../dl/models/roster/basketball-roster-dl.model';
-import { FootballRosterDLModel } from '../dl/models/roster/football-roster-dl.model';
-import { SoccerRosterDLModel } from '../dl/models/roster/soccer-roster-dl.model';
 import { PlayerFAPIModel } from '../fastAPI/models/player-fapi.model';
 
 @Injectable({ providedIn: 'root' })
@@ -54,34 +50,48 @@ export class GeneralService {
     return leagueSettingsModel;
   }
 
-  static GetLeagueRosterDLMap(): Map<
-    SportEnum,
-    | FootballRosterDLModel
-    | SoccerRosterDLModel
-    | BaseballRosterDLModel
-    | BasketballRosterDLModel
-  > {
-    const leagueRosterModel: Map<
-      SportEnum,
-      | FootballRosterDLModel
-      | SoccerRosterDLModel
-      | BaseballRosterDLModel
-      | BasketballRosterDLModel
-    > = new Map<
-      SportEnum,
-      | FootballRosterDLModel
-      | SoccerRosterDLModel
-      | BaseballRosterDLModel
-      | BasketballRosterDLModel
-    >([
-      [SportEnum.Baseball, new BaseballRosterDLModel()],
-      [SportEnum.Basketball, new BasketballRosterDLModel()],
-      [SportEnum.Football, new FootballRosterDLModel()],
-      [SportEnum.Soccer, new SoccerRosterDLModel()],
-    ]);
-
-    return leagueRosterModel;
+  static GenerateID() // angularFirestore: AngularFirestore
+  : string {
+    // return angularFirestore.createId();
+    const length = 10;
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+    return result;
   }
+
+  // static GetLeagueRosterDLMap(): Map<
+  //   SportEnum,
+  //   | FootballRosterDLModel
+  //   | SoccerRosterDLModel
+  //   | BaseballRosterDLModel
+  //   | BasketballRosterDLModel
+  // > {
+  //   const leagueRosterModel: Map<
+  //     SportEnum,
+  //     | FootballRosterDLModel
+  //     | SoccerRosterDLModel
+  //     | BaseballRosterDLModel
+  //     | BasketballRosterDLModel
+  //   > = new Map<
+  //     SportEnum,
+  //     | FootballRosterDLModel
+  //     | SoccerRosterDLModel
+  //     | BaseballRosterDLModel
+  //     | BasketballRosterDLModel
+  //   >([
+  //     [SportEnum.Baseball, new BaseballRosterDLModel()],
+  //     [SportEnum.Basketball, new BasketballRosterDLModel()],
+  //     [SportEnum.Football, new FootballRosterDLModel()],
+  //     [SportEnum.Soccer, new SoccerRosterDLModel()],
+  //   ]);
+
+  //   return leagueRosterModel;
+  // }
 
   static FastAPILeagueAthleteModelConverter(
     a: PlayerFAPIModel

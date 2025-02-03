@@ -1,29 +1,31 @@
-import { BaseballRosterModel } from './roster/baseball-roster.model';
-import { BasketballRosterModel } from './roster/basketball-roster.model';
-import { FootballRosterModel } from './roster/football-roster.model';
-import { SoccerRosterModel } from './roster/soccer-roster.model';
+import { HasID } from '../services/firebase/interfaces/has-id.interface';
+import { LeagueRosterAthleteModel } from './league-roster-athlete.model';
 import { SchoolModel } from './school.model';
 
-export class LeaguePlayerModel {
+export class LeaguePlayerModel implements HasID {
   ID: string;
+  LeagueID: string;
+  PlayerID: string;
+  ConferenceID: string;
   Name: string;
   DraftPickSortOrder: number;
   School: SchoolModel;
   TeamName: string;
   DraftTeamPlayerIDs: Array<string>;
-  DraftRoster:
-    | BaseballRosterModel
-    | BasketballRosterModel
-    | FootballRosterModel
-    | SoccerRosterModel;
+  DraftRoster: Array<LeagueRosterAthleteModel>;
+  Logos: Array<string>;
 
   constructor() {
     this.ID = '';
+    this.LeagueID = '';
+    this.PlayerID = '';
+    this.ConferenceID = '';
     this.Name = '';
     this.DraftPickSortOrder = -1;
     this.School = new SchoolModel();
     this.TeamName = '';
     this.DraftTeamPlayerIDs = [];
-    this.DraftRoster = new FootballRosterModel();
+    this.DraftRoster = [];
+    this.Logos = [];
   }
 }

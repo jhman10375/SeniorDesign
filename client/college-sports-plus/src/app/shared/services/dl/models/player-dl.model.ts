@@ -1,4 +1,6 @@
-export class PlayerDLModel {
+import { HasID } from '../../firebase/interfaces/has-id.interface';
+
+export class PlayerDLModel implements HasID {
   ID: string;
   Name: string;
   DraftPickSortOrder: number;

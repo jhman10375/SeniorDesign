@@ -1,0 +1,27 @@
+@if (isMobile) {
+  @if (checkIfAtParentRoute()) {
+    <div class="flex flex-column">
+      @for (week of season; track week) {
+        <div
+          class="flex flex-row justify-content-between border-bottom-1 surface-border pb-1"
+          [routerLink]="['past-game', week.Week]"
+        >
+          <span>Week {{ week.Week }}</span>
+          @for (game of week.Games; track game) {
+            @if (
+              game.HomeTeamPlayerID === teamID ||
+              game.AwayTeamPlayerID === teamID
+            ) {
+              <!-- Need this to change and have scores -->
+              <span
+                >{{ getTeamName(game.HomeTeamPlayerID) }} vs.
+                {{ getTeamName(game.AwayTeamPlayerID) }}</span
+              >
+            }
+          }
+        </div>
+      }
+    </div>
+  }
+  <router-outlet></router-outlet>
+}

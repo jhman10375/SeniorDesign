@@ -1,12 +1,16 @@
 import { Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
+import { LeagueAddComponent } from './pages/league-add/league-add.component';
 import { LeagueSearchComponent } from './pages/league-search/league-search.component';
+import { DraftResultsComponent } from './pages/league/draft-results/draft-results.component';
 import { DraftComponent } from './pages/league/draft/draft.component';
+import { GameHistoryComponent } from './pages/league/game-history/game-history.component';
 import { GameComponent } from './pages/league/game/game.component';
 import { LeagueComponent } from './pages/league/league.component';
 import { TeamComponent } from './pages/league/my-team/team.component';
 import { PlayerSearchComponent } from './pages/league/player-search/player-search.component';
+import { SettingsComponent } from './pages/league/settings/settings.component';
 import { StandingsComponent } from './pages/league/standings/standings.component';
 import { ForgotPasswordComponent } from './pages/login/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login/login.component';
@@ -39,7 +43,7 @@ export const routes: Routes = [
   },
   {
     path: 'create-league',
-    component: PageComingComponent,
+    component: LeagueAddComponent,
   },
   {
     path: 'league-search',
@@ -82,12 +86,12 @@ export const routes: Routes = [
         component: DraftComponent,
       },
       {
-        path: 'history',
-        component: PageComingComponent,
+        path: 'history/:teamID',
+        component: GameHistoryComponent,
         children: [
           {
-            path: 'game/:gameID',
-            component: PageComingComponent,
+            path: 'past-game/:weekID',
+            component: GameComponent,
             children: [
               {
                 path: 'player/:playerID',
@@ -98,24 +102,28 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'current-games/:teamID',
-        component: GameComponent,
-        // children: [
-        //   {
-        //     path: 'game/:gameID',
-        //     component: PageComingComponent,
+        path: 'draft-results',
+        component: DraftResultsComponent,
         children: [
           {
             path: 'player/:playerID',
             component: PlayerComponent,
           },
         ],
-        //   },
-        // ],
+      },
+      {
+        path: 'current-games/:teamID',
+        component: GameComponent,
+        children: [
+          {
+            path: 'player/:playerID',
+            component: PlayerComponent,
+          },
+        ],
       },
       {
         path: 'league-settings',
-        component: PageComingComponent,
+        component: SettingsComponent,
       },
       {
         path: 'player/:playerID',

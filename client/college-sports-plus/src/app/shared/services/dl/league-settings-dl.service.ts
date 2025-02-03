@@ -24,8 +24,16 @@ export class LeagueSettingsDLService {
     const settingsModel =
       GeneralService.GetLeagueSettingsModelMap().get(leagueType);
     if (settingsModel) {
-      settingsModel.DraftSettingsModel.DraftSelectionTime = 10;
-      settingsModel.DraftSettingsModel.DraftPickOrderType =
+      if (leagueType === SportEnum.Football) {
+        (
+          settingsModel as FootballLeagueSettingsModel
+        ).GeneralSettingsModel.PrimaryColor = '#e00122';
+        (
+          settingsModel as FootballLeagueSettingsModel
+        ).GeneralSettingsModel.SecondaryColor = '#000000';
+      }
+      settingsModel.DraftSettingsModel.SelectionTime = 10;
+      settingsModel.DraftSettingsModel.PickOrderType =
         DraftPickOrderTypeEnum.RandomSnake;
       return settingsModel;
     } else {

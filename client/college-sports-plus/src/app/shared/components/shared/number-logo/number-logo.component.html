@@ -9,13 +9,10 @@
   }
   @if (school) {
     <!-- If we add a school page, need to make this a logo -->
-    <div
-      class="bar longer-bar"
-      [style.background-color]="school.PrimaryColor"
-    ></div>
+    <div class="bar longer-bar" [style.background-color]="school.Color"></div>
     <div
       class="bar shorter-bar"
-      [style.background-color]="school.SecondaryColor"
+      [style.background-color]="school.AltColor"
     ></div>
   }
 </div>

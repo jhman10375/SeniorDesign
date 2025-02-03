@@ -13,4 +13,10 @@
   flex: 1; /* Takes up remaining space */
   overflow-y: auto;
   /* Body styles */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
 }

@@ -12,6 +12,8 @@ import { SportEnum } from '../../enums/sport.enum';
 import { LeagueAthleteModel } from '../../models/league-athlete.model';
 import { LeagueWeekModel } from '../../models/league-week.model';
 import { LeagueModel } from '../../models/league.model';
+import { SchoolModel } from '../../models/school.model';
+import { SchoolService } from '../bl/school.service';
 import { AthleteDLService } from './athlete-dl.service';
 import { LeagueSeasonDLService } from './league-season-dl.service';
 import { LeagueSettingsDLService } from './league-settings-dl.service';
@@ -34,7 +36,8 @@ export class LeagueDLService implements OnDestroy {
     private playerDLService: PlayerDLService,
     private leagueSettingsDLService: LeagueSettingsDLService,
     private athleteDLService: AthleteDLService,
-    private leagueSeasonDLService: LeagueSeasonDLService
+    private leagueSeasonDLService: LeagueSeasonDLService,
+    private schoolsService: SchoolService
   ) {
     this.league = this._league.asObservable();
     this.leagueDL = this._leagueDL.asObservable();
@@ -43,11 +46,15 @@ export class LeagueDLService implements OnDestroy {
       .pipe(skip(2), takeUntil(this.unsubscribe))
       .subscribe({
         next: (season) => {
-          let athletes: Array<LeagueAthleteModel> = [];
-          this.athleteDLService.players.pipe(take(1)).subscribe({
-            next: (a) => (athletes = a),
+          this.schoolsService.schools.pipe(take(1)).subscribe({
+            next: (schools) => {
+              this.athleteDLService.players.pipe(take(1)).subscribe({
+                next: (a) => {
+                  this.convertLeagues(a, schools);
+                },
+              });
+            },
           });
-          this.convertLeagues(athletes);
         },
       });
 
@@ -82,7 +89,10 @@ export class LeagueDLService implements OnDestroy {
     this._leagueDL.next([league]);
   }
 
-  convertLeagues(athletes: Array<LeagueAthleteModel>): void {
+  convertLeagues(
+    athletes: Array<LeagueAthleteModel>,
+    schools: Array<SchoolModel>
+  ): void {
     const leagueDL: Array<LeagueDLModel> = this._leagueDL.value;
     const league: Array<LeagueModel> = [];
     leagueDL.forEach((lDL) => {
@@ -91,15 +101,15 @@ export class LeagueDLService implements OnDestroy {
       l.DraftDate = lDL.DraftDate;
       l.Name = lDL.Name;
       l.LeagueType = lDL.LeagueType;
-      const manager = this.playerDLService.getPlayer(lDL.ManagerID);
-      if (manager) {
-        l.Manager = manager;
-      }
       l.Settings = this.leagueSettingsDLService.getSettingsModel(
         lDL.ID,
         lDL.LeagueType
       );
-      l.Players = this.playerDLService.getLeague(lDL.PlayerIDs);
+      l.Players = this.playerDLService.getLeague(lDL.PlayerIDs, schools);
+      const manager = l.Players.find((x) => x.ID == lDL.ManagerID);
+      if (manager) {
+        l.Manager = manager;
+      }
       l.Season = this.leagueSeasonDLService.getSeason(
         lDL.ID,
         lDL.LeagueType,

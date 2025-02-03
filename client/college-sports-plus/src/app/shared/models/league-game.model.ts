@@ -1,21 +1,21 @@
-import { BaseballRosterModel } from './roster/baseball-roster.model';
-import { BasketballRosterModel } from './roster/basketball-roster.model';
-import { FootballRosterModel } from './roster/football-roster.model';
-import { SoccerRosterModel } from './roster/soccer-roster.model';
+import { HasID } from '../services/firebase/interfaces/has-id.interface';
+import { LeagueRosterAthleteModel } from './league-roster-athlete.model';
 
-export class LeagueGameModel {
+export class LeagueGameModel implements HasID {
   ID: string;
   WeekNumber: number;
   HomeTeamPlayerID: string;
-  HomeTeam:
-    | BaseballRosterModel
-    | BasketballRosterModel
-    | FootballRosterModel
-    | SoccerRosterModel;
+  HomeTeam: Array<LeagueRosterAthleteModel>;
+  // HomeTeam:
+  //   | BaseballRosterModel
+  //   | BasketballRosterModel
+  //   | FootballRosterModel
+  //   | SoccerRosterModel;
   AwayTeamPlayerID: string;
-  AwayTeam:
-    | BaseballRosterModel
-    | BasketballRosterModel
-    | FootballRosterModel
-    | SoccerRosterModel;
+  AwayTeam: Array<LeagueRosterAthleteModel>;
+  // AwayTeam:
+  //   | BaseballRosterModel
+  //   | BasketballRosterModel
+  //   | FootballRosterModel
+  //   | SoccerRosterModel;
 }
