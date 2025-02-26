@@ -2,7 +2,11 @@
   @if (checkIfAtParentRoute()) {
     <div class="scrollable-container" [style]="{ height: '100%' }">
       <div class="header">
-        <mobile-scoreboard [teamScoreboard]="true" [player]="currentPlayer">
+        <mobile-scoreboard
+          [teamScoreboard]="true"
+          [player]="currentPlayer"
+          (openMyTeamSettingsDialogEmitter)="onOpenMyTeamSettingsDialog()"
+        >
         </mobile-scoreboard>
         <div
           class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border text-xs"

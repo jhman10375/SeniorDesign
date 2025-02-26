@@ -1,0 +1,21 @@
+<form [formGroup]="teamForm">
+  <div class="field p-fluid mt-4">
+    <logo-selector
+      formControlName="Logo"
+      (selectedOptionChange)="getSchool($event)"
+    ></logo-selector>
+  </div>
+  <div class="field p-fluid mt-4">
+    <p-floatLabel>
+      <input pInputText formControlName="TeamName" id="team-name" type="text" />
+      <label for="team-name">Team Name</label>
+    </p-floatLabel>
+  </div>
+  <div class="flex flex-row justify-content-end">
+    <p-button
+      label="Save"
+      [disabled]="!(valueChanged | async)"
+      (onClick)="submit()"
+    ></p-button>
+  </div>
+</form>

@@ -11,7 +11,7 @@ export class UserService {
 
   getUser(): UserModel | undefined {
     const user: UserModel | undefined = new UserModel();
-    user.ID = '0';
+    user.ID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
     user.FirstName = 'Jordan';
     user.LastName = 'Herman';
     user.LeagueIDs = ['0'];

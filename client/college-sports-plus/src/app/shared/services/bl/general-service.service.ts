@@ -127,4 +127,10 @@ export class GeneralService {
     p.Year = a.player_year;
     return p;
   }
+
+  static StringArrayComparison(a: Array<string>, b: Array<string>): boolean {
+    return (
+      a.length === b.length && a.every((element, index) => element === b[index])
+    );
+  }
 }

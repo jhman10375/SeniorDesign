@@ -40,11 +40,17 @@ export class MobileScoreBoardComponent implements OnInit {
 
   @Output() newGameToViewEmitter = new EventEmitter<LeagueGameModel>();
 
+  @Output() openMyTeamSettingsDialogEmitter = new EventEmitter<void>();
+
   constructor() {}
 
   ngOnInit() {}
 
   onNewGameToView(g: LeagueGameModel): void {
     this.newGameToViewEmitter.emit(g);
+  }
+
+  onOpenMyTeamSettingsDialog(): void {
+    this.openMyTeamSettingsDialogEmitter.emit();
   }
 }

@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import {
   BehaviorSubject,
   Observable,
+  of,
   skip,
   Subject,
   take,
@@ -13,6 +14,7 @@ import { LeagueAthleteModel } from '../../models/league-athlete.model';
 import { LeagueWeekModel } from '../../models/league-week.model';
 import { LeagueModel } from '../../models/league.model';
 import { SchoolModel } from '../../models/school.model';
+import { LoadingService } from '../bl/loading.service';
 import { SchoolService } from '../bl/school.service';
 import { AthleteDLService } from './athlete-dl.service';
 import { LeagueSeasonDLService } from './league-season-dl.service';
@@ -37,7 +39,8 @@ export class LeagueDLService implements OnDestroy {
     private leagueSettingsDLService: LeagueSettingsDLService,
     private athleteDLService: AthleteDLService,
     private leagueSeasonDLService: LeagueSeasonDLService,
-    private schoolsService: SchoolService
+    private schoolsService: SchoolService,
+    private loadingService: LoadingService
   ) {
     this.league = this._league.asObservable();
     this.leagueDL = this._leagueDL.asObservable();
@@ -79,11 +82,10 @@ export class LeagueDLService implements OnDestroy {
     const league: LeagueDLModel = new LeagueDLModel();
     league.ID = '0';
     league.Name = "smith's league";
-    league.ManagerID = '0';
-    league.PlayerIDs = ['0', '1', '2'];
+    league.ManagerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+    league.PlayerIDs = ['9vnblV3TFHb7XNisPvkX2tTTkhj2', '1', '2'];
     league.SettingsID = '0';
     league.DraftDate = draftDate;
-    league.ManagerID = '0';
     league.LeagueType = SportEnum.Football;
 
     this._leagueDL.next([league]);
@@ -92,7 +94,7 @@ export class LeagueDLService implements OnDestroy {
   convertLeagues(
     athletes: Array<LeagueAthleteModel>,
     schools: Array<SchoolModel>
-  ): void {
+  ): Observable<Array<LeagueModel>> {
     const leagueDL: Array<LeagueDLModel> = this._leagueDL.value;
     const league: Array<LeagueModel> = [];
     leagueDL.forEach((lDL) => {
@@ -123,6 +125,7 @@ export class LeagueDLService implements OnDestroy {
     });
 
     this._league.next(league);
+    return of(league);
   }
 
   updateSeason(leagueType: SportEnum, week: LeagueWeekModel): void {

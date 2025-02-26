@@ -17,12 +17,19 @@
       </div>
     </div>
     <div class="flex flex-row align-items-center justify-content-between mb-1">
-      <span class="width-half text-xs">Owner:</span>
+      <span class="width-half text-xs">Head Coach:</span>
       <span class="width-half text-xs"> {{ player?.Name }}</span>
     </div>
   </div>
   <div class="flex flex-column half-width">
+    <!-- <div class="flex flex-row"> -->
     <span class="width-75 text-right text-xl"> {{ player?.TeamName }}</span>
+    <div class="flex flex-column flex-grow-1 justify-content-end">
+      <span class="material-icons align-self-end" (click)="openMyTeamSettings()"
+        >settings</span
+      >
+    </div>
+    <!-- </div> -->
     <!-- <div class="flex flex-row align-items-center justify-content-between mb-1">
         <span class="width-half text-xs">Current Ranking:</span>
         <span class="width-half text-xs"> {{ league.CurrentRanking }}</span>

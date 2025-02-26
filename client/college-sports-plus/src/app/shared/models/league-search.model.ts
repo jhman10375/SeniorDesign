@@ -8,6 +8,8 @@ export class LeagueSearchModel implements HasID {
   Name: string;
   DraftDate: Date;
   LeagueType: SportEnum;
+  CurrentPlayers: number;
+  MaxPlayers: number;
 
   constructor() {
     this.ID = '';
@@ -15,5 +17,7 @@ export class LeagueSearchModel implements HasID {
     this.Name = '';
     this.DraftDate = new Date();
     this.LeagueType = SportEnum.None;
+    this.CurrentPlayers = 0;
+    this.MaxPlayers = 0;
   }
 }

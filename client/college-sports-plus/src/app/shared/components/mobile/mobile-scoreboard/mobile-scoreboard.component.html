@@ -14,7 +14,10 @@
       (newGameToViewEmitter)="onNewGameToView($event)"
     ></mobile-game-information-scoreboard>
   } @else if (teamScoreboard) {
-    <mobile-team-scoreboard [player]="player"></mobile-team-scoreboard>
+    <mobile-team-scoreboard
+      [player]="player"
+      (openMyTeamSettingsDialogEmitter)="onOpenMyTeamSettingsDialog()"
+    ></mobile-team-scoreboard>
   } @else {
     <span>No Content Found</span>
   }

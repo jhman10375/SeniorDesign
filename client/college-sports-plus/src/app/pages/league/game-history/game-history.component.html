@@ -14,8 +14,8 @@
             ) {
               <!-- Need this to change and have scores -->
               <span
-                >{{ getTeamName(game.HomeTeamPlayerID) }} vs.
-                {{ getTeamName(game.AwayTeamPlayerID) }}</span
+                >{{ game.HomeTeamPlayerID | getTeamName: league }} vs.
+                {{ game.AwayTeamPlayerID | getTeamName: league }}</span
               >
             }
           }

@@ -9,6 +9,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 
+import { AuthService } from '../services/auth.service';
+
 @Component({
   standalone: true,
   imports: [
@@ -27,8 +29,17 @@ import { PasswordModule } from 'primeng/password';
   templateUrl: 'register.component.html',
 })
 export class RegisterComponent implements OnInit {
+  fullName: string = '';
+
+  username: string = '';
+
   password: string = '';
-  constructor() {}
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
+
+  register(): void {
+    this.authService.register(this.fullName, this.username, this.password);
+  }
 }

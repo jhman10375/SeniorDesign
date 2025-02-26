@@ -13,7 +13,13 @@ import { PlayerFAPIModel } from '../fastAPI/models/player-fapi.model';
 export class AthleteDLService implements OnDestroy {
   players: Observable<Array<LeagueAthleteModel>>;
 
+  basketballPlayers: Observable<Array<LeagueAthleteModel>>;
+
   private _players = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
+
+  private _basketballPlayers = new BehaviorSubject<Array<LeagueAthleteModel>>(
+    []
+  );
 
   private unsubscribe = new Subject<void>();
 
@@ -22,6 +28,7 @@ export class AthleteDLService implements OnDestroy {
     private fastApiService: FastAPIService
   ) {
     this.players = this._players.asObservable();
+    this.basketballPlayers = this._basketballPlayers.asObservable();
     // this.initializeAthletes();
     // this.loadAthletes();
   }
@@ -150,6 +157,24 @@ export class AthleteDLService implements OnDestroy {
             players.push(p);
           });
           this._players.next(players);
+        },
+        error: (e) => console.error(e),
+      });
+  }
+
+  loadBasketballAthletes(): void {
+    this.fastApiService
+      .getBasketballPlayers()
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe({
+        next: (playersAPI) => {
+          const players: Array<LeagueAthleteModel> = [];
+          playersAPI?.forEach((a: PlayerFAPIModel) => {
+            const p: LeagueAthleteModel =
+              GeneralService.FastAPILeagueAthleteModelConverter(a);
+            players.push(p);
+          });
+          this._basketballPlayers.next(players);
         },
         error: (e) => console.error(e),
       });

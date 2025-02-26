@@ -4,7 +4,9 @@
     style="max-width: 500px"
   >
     <div class="flex flex-column">
-      <span class="mt-2 mb-2 text-4xl">Welcome to College Sports +</span>
+      <span class="mt-2 mb-2 text-4xl text-center"
+        >Welcome to College Sports +</span
+      >
       <div
         class="flex flex-row flex-align-center justify-content-between mt-2 mb-2"
       >
@@ -27,7 +29,13 @@
         <p-inputGroupAddon>
           <i class="pi pi-user"></i>
         </p-inputGroupAddon>
-        <input pInputText placeholder="Username" />
+        <input pInputText [(ngModel)]="fullName" placeholder="Full Name" />
+      </p-inputGroup>
+      <p-inputGroup class="mb-2">
+        <p-inputGroupAddon>
+          <i class="pi pi-user"></i>
+        </p-inputGroupAddon>
+        <input pInputText [(ngModel)]="username" placeholder="Email" />
       </p-inputGroup>
       <p-inputGroup>
         <p-inputGroupAddon>
@@ -53,7 +61,7 @@
         </p-password>
       </p-inputGroup>
       <div class="flex flex-row align-items-end mt-2">
-        <p-button label="Register" [routerLink]="['/register']"></p-button>
+        <p-button label="Register" (onClick)="register()"></p-button>
       </div>
       <p-divider />
       <div

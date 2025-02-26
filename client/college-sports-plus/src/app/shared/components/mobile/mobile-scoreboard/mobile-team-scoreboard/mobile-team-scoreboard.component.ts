@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { LeaguePlayerModel } from '../../../../models/league-player.model';
 
@@ -12,7 +12,13 @@ import { LeaguePlayerModel } from '../../../../models/league-player.model';
 export class MobileTeamScoreboardComponent implements OnInit {
   @Input() player: LeaguePlayerModel | undefined = new LeaguePlayerModel();
 
+  @Output() openMyTeamSettingsDialogEmitter = new EventEmitter<void>();
+
   constructor() {}
 
   ngOnInit() {}
+
+  openMyTeamSettings(): void {
+    this.openMyTeamSettingsDialogEmitter.emit();
+  }
 }

@@ -1,0 +1,41 @@
+<form [formGroup]="leagueJoinForm">
+  @if (passcodeRequired) {
+    <div class="field p-fluid mt-4">
+      <p-floatLabel>
+        <input
+          pInputText
+          formControlName="passcode"
+          id="passcode"
+          type="text"
+        />
+        <label for="passcode">Passcode</label>
+      </p-floatLabel>
+    </div>
+  }
+  <form formGroupName="player">
+    <div class="field p-fluid mt-4">
+      <logo-selector
+        formControlName="Logo"
+        (selectedOptionChange)="getSchool($event)"
+      ></logo-selector>
+    </div>
+    <div class="field p-fluid mt-4">
+      <p-floatLabel>
+        <input
+          pInputText
+          formControlName="TeamName"
+          id="team-name"
+          type="text"
+        />
+        <label for="team-name">Team Name</label>
+      </p-floatLabel>
+    </div>
+  </form>
+  <div class="flex flex-row justify-content-end">
+    <p-button
+      label="Join"
+      [disabled]="!leagueJoinForm.touched && !leagueJoinForm.valid"
+      (onClick)="submit()"
+    ></p-button>
+  </div>
+</form>

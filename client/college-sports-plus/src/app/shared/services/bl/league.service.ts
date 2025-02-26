@@ -36,7 +36,7 @@ export class LeagueService implements OnDestroy {
 
   private currentUser: CurrentUserModel = new CurrentUserModel();
 
-  private _league = new BehaviorSubject<Array<LeagueModel>>([]);
+  // private _league = new BehaviorSubject<Array<LeagueModel>>([]);
 
   private _leagueScoreboard = new BehaviorSubject<Array<LeagueScorboardModel>>(
     []
@@ -53,9 +53,9 @@ export class LeagueService implements OnDestroy {
     private userService: UserService
   ) {
     this.league = this.leagueDLService.league; // need to figure out if this is needed
-    this.league.pipe(takeUntil(this.unsubscribe)).subscribe({
+    this.league.pipe(take(1)).subscribe({
       // need to figure out if this is needed
-      next: (l) => this._league.next(l),
+      next: (l) => this.leagueDLService._league.next(l),
     });
     // this.league = this._league.asObservable(); // need to figure out if this is needed
     this.leagueScoreboard = this._leagueScoreboard.asObservable();
@@ -84,16 +84,18 @@ export class LeagueService implements OnDestroy {
     schools: Array<SchoolModel>
   ): void {
     this.leagueDLService.convertLeagues(athletes, schools);
+    this.initializeLeagueScoreBoards();
   }
 
   initializeLeagueScoreBoards(): void {
     const scoreboards: Array<LeagueScorboardModel> = [];
+    this.loadingService.setIsLoading(true);
     this.fastAPIService
       .getAllSchools()
       .pipe(take(1))
       .subscribe({
         next: (schools) => {
-          this._league.value?.forEach((league) => {
+          this.leagueDLService._league.value?.forEach((league) => {
             const newScoreboard: LeagueScorboardModel =
               new LeagueScorboardModel();
 
@@ -122,6 +124,7 @@ export class LeagueService implements OnDestroy {
             scoreboards.push(newScoreboard);
           });
           this._leagueScoreboard.next(scoreboards);
+          this.loadingService.setIsLoading(false);
         },
       });
 
@@ -331,7 +334,9 @@ export class LeagueService implements OnDestroy {
   }
 
   getLeague(leagueID: string): LeagueModel | undefined {
-    const league = this._league.value.find((x) => x.ID === leagueID);
+    const league = this.leagueDLService._league.value.find(
+      (x) => x.ID === leagueID
+    );
     return league;
   }
 
@@ -348,6 +353,8 @@ export class LeagueService implements OnDestroy {
         Name: obj.Name,
         DraftDate: obj.DraftDate,
         LeagueType: obj.LeagueType,
+        CurrentPlayers: obj.Players.length,
+        MaxPlayers: obj.Settings.GeneralSettingsModel.NumberOfTeams,
       };
     });
     const leagues = leagueUnfiltered.filter((x) => x.LeagueType === lt);
@@ -419,16 +426,17 @@ export class LeagueService implements OnDestroy {
   }
 
   updateLeague(league: LeagueModel): void {
-    const leagues: Array<LeagueModel> = this._league.value;
+    const leagues: Array<LeagueModel> = this.leagueDLService._league.value;
     const leaguesFiltered = leagues.filter((x) => x.ID !== league.ID);
     leaguesFiltered.push(league);
-    this._league.next(leaguesFiltered);
+    this.leagueDLService._league.next(leaguesFiltered);
+    this.getLeaguesForSearch(league.LeagueType);
   }
 
   addLeague(league: LeagueModel): void {
-    const leagues: Array<LeagueModel> = this._league.value;
+    const leagues: Array<LeagueModel> = this.leagueDLService._league.value;
     leagues.push(league);
-    this._league.next(leagues);
+    this.leagueDLService._league.next(leagues);
     this.initializeLeagueScoreBoards();
   }
 

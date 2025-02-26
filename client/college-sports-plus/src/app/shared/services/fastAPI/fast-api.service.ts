@@ -10,6 +10,7 @@ import { TeamLogoModel } from '../../models/team-logo.model';
 import { PlayerFAPIModel } from './models/player-fapi.model';
 import { SchoolFAPIModel } from './models/school-fapi.model';
 import { TeamLogoFAPIModel } from './models/team-logo-fapi.model';
+import { WeekFAPIModel } from './models/week-fapi.model';
 
 @Injectable({ providedIn: 'root' })
 export class FastAPIService {
@@ -52,14 +53,16 @@ export class FastAPIService {
   }
 
   getTeams(team: string): any {
-    this.httpClient.get<any>(this.url + 'teams/' + team).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (e) => {
-        console.log(e);
-      },
-    });
+    this.httpClient
+      .get<any>(this.url + 'teams/' + team + '?season=2024')
+      .subscribe({
+        next: (data) => {
+          console.log(team, data);
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
   }
 
   getAllSchools(): Observable<Array<SchoolModel>> {
@@ -170,5 +173,23 @@ export class FastAPIService {
 
   createDraft(data: DraftCreatePickOrderDataWSModel): Observable<any> {
     return this.httpClient.post<string>(this.url + 'create-draft', data);
+  }
+
+  // Basketball
+  getBasketballPlayers(): Observable<Array<PlayerFAPIModel>> {
+    return this.httpClient.get<Array<PlayerFAPIModel>>(
+      this.url + 'bkb/players/get_first_string?page=1&page_size=999999'
+    );
+  }
+
+  // League Tools
+  getLeagueSchedule(
+    numTeams: number = 8,
+    numWeeks: number = 10
+  ): Observable<Array<WeekFAPIModel>> {
+    return this.httpClient.get<Array<WeekFAPIModel>>(
+      this.url +
+        `league-tools/generate_schedule/?num_teams=${numTeams}&num_weeks=${numWeeks}`
+    );
   }
 }

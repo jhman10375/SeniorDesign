@@ -9,7 +9,8 @@ export class UserService {
 
   private _CurrentUser = new BehaviorSubject<CurrentUserModel>({
     Name: 'Jordan Herman',
-    ID: '0',
+    ID: '9vnblV3TFHb7XNisPvkX2tTTkhj2',
+    LeagueIDs: ['0'],
   });
 
   constructor() {

@@ -46,7 +46,7 @@ export class LeagueSeasonDLService implements OnDestroy {
     const p: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
     p.AthleteID = '4433971';
     p.RosterPosition = RosterPositionEnum.FirstString;
-    p.PlayerID = '0';
+    p.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
 
     const p1: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
     p1.AthleteID = '5084084';
@@ -61,7 +61,7 @@ export class LeagueSeasonDLService implements OnDestroy {
     const game: LeagueGameDLModel = new LeagueGameDLModel();
     game.ID = '0';
     game.WeekNumber = 1;
-    game.HomeTeamPlayerID = '0';
+    game.HomeTeamPlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
     game.HomeTeam = [p];
     game.AwayTeamPlayerID = '1';
     game.AwayTeam = [p1];

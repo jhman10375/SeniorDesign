@@ -14,6 +14,10 @@ export class logoService implements OnDestroy {
 
   constructor(private fastAPIService: FastAPIService) {
     this.logos = this._logos.asObservable();
+    this.loadLogos();
+  }
+
+  loadLogos(): void {
     this.fastAPIService
       .getLogos()
       .pipe(takeUntil(this.unsubscribe))

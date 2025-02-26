@@ -10,12 +10,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { SportEnum } from '../../../shared/enums/sport.enum';
 import { LeagueWeekModel } from '../../../shared/models/league-week.model';
 import { LeagueModel } from '../../../shared/models/league.model';
+import { PipesModule } from '../../../shared/pipes/pipes.module';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterOutlet, PipesModule],
   selector: 'game-history',
   templateUrl: 'game-history.component.html',
 })
@@ -32,7 +33,7 @@ export class GameHistoryComponent implements OnInit, OnDestroy {
 
   isAtParentRoute: boolean = false;
 
-  private league: LeagueModel;
+  league: LeagueModel;
 
   private unsubscribe = new Subject<void>();
 

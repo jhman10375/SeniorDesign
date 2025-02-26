@@ -48,7 +48,7 @@
           }
           <div
             class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('team', '0')"
+            (click)="navigateTo('team', '9vnblV3TFHb7XNisPvkX2tTTkhj2')"
           >
             <span class="text-xl">My Team: {{ myTeam?.TeamName }}</span>
           </div>
@@ -65,7 +65,7 @@
             <span class="text-xl">Current Games</span> </div
           ><div
             class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('history', '0')"
+            (click)="navigateTo('history', myTeam?.PlayerID ?? '-1')"
           >
             <span class="text-xl">Game History</span>
           </div>

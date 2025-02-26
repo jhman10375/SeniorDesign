@@ -5,6 +5,7 @@ import { DraftOrderTypeTypePipe } from './get-draft-order-type.pipe';
 import { PlayoffSeedingTypePipe } from './get-playoff-seeding-type.pipe';
 import { PlayoffTieBreakerTypePipe } from './get-playoff-tie-breaker-type.pipe';
 import { TransferPortalDeadlineTypePipe } from './get-transfer-portal-deadline-type-pipe.pipe';
+import { TeamNamePipe } from './team-name.pipe';
 
 @NgModule({
   imports: [],
@@ -14,6 +15,7 @@ import { TransferPortalDeadlineTypePipe } from './get-transfer-portal-deadline-t
     PlayoffSeedingTypePipe,
     PlayoffTieBreakerTypePipe,
     TransferPortalDeadlineTypePipe,
+    TeamNamePipe,
   ],
   declarations: [
     LeagueTypePipe,
@@ -21,6 +23,7 @@ import { TransferPortalDeadlineTypePipe } from './get-transfer-portal-deadline-t
     PlayoffSeedingTypePipe,
     PlayoffTieBreakerTypePipe,
     TransferPortalDeadlineTypePipe,
+    TeamNamePipe,
   ],
   providers: [],
 })

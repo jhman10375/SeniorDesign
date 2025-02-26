@@ -37,8 +37,11 @@ import { TransferPortalDeadlineTypeEnum } from '../../../../shared/enums/transfe
 import { FootballLeagueSettingsModel } from '../../../../shared/models/football-league-settings/football-league-settings.model';
 import { LeaguePlayerModel } from '../../../../shared/models/league-player.model';
 import { LeagueModel } from '../../../../shared/models/league.model';
+import { AthleteService } from '../../../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../../../shared/services/bl/general-service.service';
+import { LeagueToolsService } from '../../../../shared/services/bl/league-tools.service';
 import { LeagueService } from '../../../../shared/services/bl/league.service';
+import { LoadingService } from '../../../../shared/services/bl/loading.service';
 import { PlayerService } from '../../../../shared/services/bl/player.service';
 import { UserService } from '../../../../shared/services/bl/user.service';
 import { FastAPIService } from '../../../../shared/services/fastAPI/fast-api.service';
@@ -178,7 +181,10 @@ export class NewFootballLeagueComponent
     private userService: UserService,
     // private angularFirestore: AngularFirestore,
     private leagueService: LeagueService,
+    private leagueToolsService: LeagueToolsService,
     private playerService: PlayerService,
+    private athleteService: AthleteService,
+    private loadingService: LoadingService,
     private router: Router
   ) {
     console.log('hit');
@@ -250,18 +256,43 @@ export class NewFootballLeagueComponent
       this.formGroup.disable();
       console.log(this.formGroup.getRawValue() as FootballLeagueSettingsModel);
       this.formGroup.updateValueAndValidity();
-      const league: LeagueModel = new LeagueModel();
-      league.Settings =
-        this.formGroup.getRawValue() as FootballLeagueSettingsModel;
-      league.ID = this.team.LeagueID;
-      league.Name = league.Settings.GeneralSettingsModel.Name;
-      league.LeagueType = SportEnum.Football;
-      league.Manager = league.Settings.GeneralSettingsModel.LeagueManager;
-      league.Players = [this.team];
-      league.DraftDate = league.Settings.DraftSettingsModel.Date;
-      league.Season = [];
-      league.Athletes = [];
-      this.leagueService.addLeague(league);
+      this.loadingService.setIsLoading(true);
+      // this.schoolsService.schools.pipe(skip(1), take(1)).subscribe({
+      //   next: (schools) => {
+      this.athleteService.players.pipe(take(1)).subscribe({
+        next: (athletes) => {
+          this.team.ConferenceID = this.conferenceFormArray.getRawValue()[0].ID;
+          this.playerService;
+          const league: LeagueModel = new LeagueModel();
+          league.Settings =
+            this.formGroup.getRawValue() as FootballLeagueSettingsModel;
+          league.ID = this.team.LeagueID;
+          league.Name = league.Settings.GeneralSettingsModel.Name;
+          league.LeagueType = SportEnum.Football;
+          league.Manager = league.Settings.GeneralSettingsModel.LeagueManager;
+          league.Players = [this.team];
+          league.DraftDate = league.Settings.DraftSettingsModel.Date;
+          // league.Season = [];
+          this.leagueToolsService
+            .getLeagueSchedules(
+              this.team.PlayerID,
+              league.Settings.GeneralSettingsModel.NumberOfTeams,
+              league.Settings.SeasonModel.RegularSeasonSettings
+                .RegularSeasonGames
+            )
+            .pipe(take(1))
+            .subscribe({
+              next: (schedule) => {
+                league.Season = schedule;
+                league.Athletes = athletes;
+                this.leagueService.addLeague(league);
+                this.loadingService.setIsLoading(false);
+              },
+            });
+        },
+      });
+      //   },
+      // });
     }
   }
 
@@ -539,7 +570,7 @@ export class NewFootballLeagueComponent
 
   private addConferenceToConferenceFormArray(): void {
     const formGroup = this.fb.group({
-      ID: [],
+      ID: [GeneralService.GenerateID()],
       LeagueID: [],
       ConferenceName: [
         '',
@@ -698,6 +729,8 @@ export class NewFootballLeagueComponent
       Name: [this.team.Name],
       PlayerID: [this.team.PlayerID],
       LeagueID: [this.team.LeagueID],
+      DraftTeamPlayerIDs: [this.team.DraftTeamPlayerIDs],
+      DraftRoster: [this.team.DraftRoster],
     });
   }
 

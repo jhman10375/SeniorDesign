@@ -8,15 +8,24 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
 import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 
 import { LeagueSearchModel } from '../../shared/models/league-search.model';
+import { LeagueModel } from '../../shared/models/league.model';
 import { AthleteService } from '../../shared/services/bl/athlete.service';
+import { GeneralService } from '../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../shared/services/bl/league.service';
+import { UserService } from '../../shared/services/bl/user.service';
+import { LeagueJoinComponent } from './league-join/league-join.component';
+import { CanJoinLeaguePipe } from './pipes/can-join-league.pipe';
+import { CurrentLeaguePlayersPipe } from './pipes/current-league-players.pipe';
 
 @Component({
   standalone: true,
@@ -28,14 +37,22 @@ import { LeagueService } from '../../shared/services/bl/league.service';
     IconFieldModule,
     ButtonModule,
     RouterLink,
+    DynamicDialogModule,
+    ToastModule,
+    CanJoinLeaguePipe,
+    CurrentLeaguePlayersPipe,
   ],
-  providers: [AthleteService],
+  providers: [AthleteService, DialogService, MessageService],
   selector: 'league-search',
   styleUrls: ['league-search.component.scss'],
   templateUrl: 'league-search.component.html',
 })
 export class LeagueSearchComponent implements OnInit, OnDestroy {
   @ViewChild('mySearchBox') mySearchBox: ElementRef;
+
+  isMobile: boolean = false;
+
+  myLeagues: Array<string> = [];
 
   leagues: Observable<Array<LeagueSearchModel>>;
 
@@ -49,8 +66,13 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
 
   constructor(
     private leagueService: LeagueService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dialogService: DialogService,
+    private messageService: MessageService,
+    private userService: UserService
   ) {
+    this.isMobile = GeneralService.isMobile();
+
     this.leagues = this._leagues.asObservable();
     let lt: number = -1;
     this.activatedRoute.queryParams
@@ -60,6 +82,12 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
           lt = query['lt'] as number;
         },
       });
+
+    this.userService.CurrentUser.pipe(takeUntil(this.unsubscribe)).subscribe({
+      next: (user) => {
+        this.myLeagues = user.LeagueIDs;
+      },
+    });
 
     this.leagueService
       .getLeaguesForSearch(Number(lt))
@@ -91,5 +119,58 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
   onClearFilter() {
     this.mySearchBox.nativeElement.focus();
     this.filterLeagues('');
+  }
+
+  joinLeague(leagueSearch: LeagueSearchModel): void {
+    const league: LeagueModel | undefined = this.leagueService.getLeague(
+      leagueSearch.ID
+    );
+    if (league) {
+      const leagueJoinComponent = this.dialogService.open(LeagueJoinComponent, {
+        header: 'Join League',
+        width: this.isMobile ? '100vw' : '33vw',
+        data: {
+          passcodeRequired: !league.Settings.GeneralSettingsModel.PublicLeague,
+        },
+      });
+
+      leagueJoinComponent.onClose.subscribe({
+        next: (data) => {
+          if (data?.player) {
+            let canJoinLeague: boolean = false;
+            if (league.Settings.GeneralSettingsModel.PublicLeague) {
+              canJoinLeague = true;
+            } else if (
+              !league.Settings.GeneralSettingsModel.PublicLeague &&
+              data.passcode &&
+              data.passcode == league.Settings.GeneralSettingsModel.Passcode
+            ) {
+              canJoinLeague = true;
+            } else {
+              canJoinLeague = false;
+              this.messageService.add({
+                severity: 'error',
+                detail: 'Error: Invalid Passcode',
+              });
+            }
+            if (canJoinLeague) {
+              data.player.LeagueID = league.ID;
+              league.Players.push(data.player);
+              this.leagueService.updateLeague(league);
+              console.log(league);
+              this.messageService.add({
+                severity: 'success',
+                detail: 'You Have Joined The League',
+              });
+            }
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              detail: 'Error: Could Not Join League, Try Again Later',
+            });
+          }
+        },
+      });
+    }
   }
 }

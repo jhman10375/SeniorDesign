@@ -31,8 +31,8 @@ export class PlayerDLService {
     const leaguePlayers: Array<LeaguePlayerModel> = [];
     const player: LeaguePlayerModel = new LeaguePlayerModel();
 
-    player.ID = '0';
-    player.PlayerID = '0';
+    player.ID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+    player.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
     player.Name = 'Jordan Herman';
     player.DraftPickSortOrder = -1;
     player.TeamName = "Jordan's Allstars";
@@ -96,6 +96,13 @@ export class PlayerDLService {
 
   addPlayer(player: LeaguePlayerModel): void {
     const players: Array<LeaguePlayerModel> = [];
+    this._players.next([...players, player]);
+  }
+
+  updatePlayer(player: LeaguePlayerModel): void {
+    const players: Array<LeaguePlayerModel> = this._players.value.filter(
+      (x) => x.ID != player.ID
+    );
     this._players.next([...players, player]);
   }
 

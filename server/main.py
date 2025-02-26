@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from api.routes.draft import router as draft_router
+from api.routes.authentication import router as authentication_router
 
 import requests
 from datetime import datetime
@@ -2525,11 +2526,11 @@ async def generate_league_schedule(num_teams = 8, num_weeks = 10) -> list[SchedW
             if home > int(num_teams):
                 home = "Bye"
             else:
-                home = f"P{home}"
+                home = f"{home}"
             if away > int(num_teams):
                 away = "Bye"
             else:
-                away = f"P{away}"    
+                away = f"{away}"    
             #print(f"  {home} vs {away}")
             match_list.append(SchedMatch(home=home, away=away))
         return_sched.append(SchedWeek(week_num=week_number, week_matches=match_list))
@@ -2549,6 +2550,7 @@ async def get_status():
 
 
 app.include_router(draft_router, tags=["Draft"])
+app.include_router(authentication_router, tags=["Authentication"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="192.168.200.36", port=8000)

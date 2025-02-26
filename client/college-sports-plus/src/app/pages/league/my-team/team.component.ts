@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { DividerModule } from 'primeng/divider';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { Subject, takeUntil } from 'rxjs';
 
 import { MobileScoreBoardComponent } from '../../../shared/components/mobile/mobile-scoreboard/mobile-scoreboard.component';
@@ -11,6 +12,8 @@ import { LeagueRosterAthleteModel } from '../../../shared/models/league-roster-a
 import { FootballRosterModel } from '../../../shared/models/roster/football-roster.model';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
+import { PlayerService } from '../../../shared/services/bl/player.service';
+import { TeamSettingsComponent } from './team-settings/team-settings.component';
 
 @Component({
   standalone: true,
@@ -19,8 +22,9 @@ import { LeagueService } from '../../../shared/services/bl/league.service';
     MobileScoreBoardComponent,
     DividerModule,
     RosterComponent,
+    DynamicDialogModule,
   ],
-  providers: [],
+  providers: [DialogService],
   selector: 'team',
   styleUrls: ['team.component.scss'],
   templateUrl: 'team.component.html',
@@ -49,7 +53,9 @@ export class TeamComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private leagueService: LeagueService
+    private leagueService: LeagueService,
+    private dialogService: DialogService,
+    private playerService: PlayerService
   ) {
     this.isMobile = GeneralService.isMobile();
 
@@ -96,5 +102,35 @@ export class TeamComponent implements OnInit, OnDestroy {
     this.isAtParentRoute = currentUrl.length == parentRoute.length;
 
     return this.isAtParentRoute;
+  }
+
+  onOpenMyTeamSettingsDialog(): void {
+    const leagueJoinComponent = this.dialogService.open(TeamSettingsComponent, {
+      header: 'Edit Team',
+      width: this.isMobile ? '100vw' : '33vw',
+      data: {
+        team: this.currentPlayer,
+      },
+    });
+
+    leagueJoinComponent.onClose.subscribe({
+      next: (data) => {
+        if (data) {
+          this.currentPlayer.School = data.School;
+          this.currentPlayer.Logos = data.Logo;
+          this.currentPlayer.TeamName = data.TeamName;
+          this.playerService.updatePlayer(this.currentPlayer);
+          const league = this.leagueService.getLeague(this.LeagueID);
+          const leaguePlayers: Array<LeaguePlayerModel> =
+            league?.Players.filter(
+              (x) => x.PlayerID != this.currentPlayer.PlayerID
+            ) ?? [];
+          if (league && leaguePlayers) {
+            league.Players = [...leaguePlayers, this.currentPlayer];
+            this.leagueService.updateLeague(league);
+          }
+        }
+      },
+    });
   }
 }
