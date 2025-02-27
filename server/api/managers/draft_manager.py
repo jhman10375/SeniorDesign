@@ -17,6 +17,7 @@ class DraftManager:
         self.client_usernames: Dict[str, str] = {}
         self.draft_keys: Dict[str, str] = {}
         self.draft_users: Dict[str, List[str]] = {}
+        self.allow_draft_entry: Dict[str, bool] = {}
         self.draft_orders: Dict[str, List[DraftOrderData]] = {}
         self.draft_results: Dict[str, List[DraftResultData]] = {}
         self.players: Dict[str, List[str]] = {}
@@ -27,6 +28,7 @@ class DraftManager:
             draft_key = "".join([str(random.randint(0, 9)) for _ in range(6)])
             if draft_key not in self.draft_keys:
                 self.draft_keys[draft_key] = draft_key
+                self.allow_draft_entry[draft_key] = False
                 self.draft_users[draft_key] = []
                 self.draft_orders[draft_key] = []
                 self.draft_results[draft_key] = []
@@ -50,9 +52,7 @@ class DraftManager:
     
     def generate_players(self, draft_key):
         pl: playerList = playerList()
-        pl.populate()
         fsl: firstStringList = firstStringList(pl)
-        fsl.populate()
         generatedAthletes = []
         if (fsl.populated):
             athletes = fsl.getlist().to_dict('records')
@@ -111,6 +111,10 @@ class DraftManager:
     def get_anonymous_username(self) -> str:
         """Generate a short, unique anonymous username."""
         return str(uuid.uuid4())[:8]
+    
+    def start_draft(self, draft_key: str) -> bool:
+        self.allow_draft_entry[draft_key] = True
+        return True
 
     async def connect(self, websocket: WebSocket, draft_key: str, username: str = None):
         await websocket.accept()
@@ -122,9 +126,16 @@ class DraftManager:
         if username is None:
             username = self.get_anonymous_username()
 
-        if draft_key in self.draft_users:
+        # Check for duplicate connections (refresh handler)
+        if draft_key in self.draft_users and username not in self.draft_users[draft_key]:
             self.draft_users[draft_key].append(username)
-        self.client_usernames[id(websocket)] = username
+            self.client_usernames[id(websocket)] = username
+        elif draft_key in self.draft_users:
+            keys_to_remove = [key for key, value in self.client_usernames.items() if value == username]
+            for key in keys_to_remove:
+                del self.client_usernames[key]
+            
+            self.client_usernames[id(websocket)] = username
         # Send list of players and currently connected users to the new client
         await websocket.send_json({
             "type": "players_list",

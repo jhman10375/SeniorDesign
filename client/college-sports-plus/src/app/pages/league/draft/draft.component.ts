@@ -187,6 +187,11 @@ export class DraftComponent implements OnInit {
       this.activatedRoute.parent?.snapshot.params['leagueID'];
 
     this.activeLeague = this.leagueService.getLeague(leagueID ?? '-1');
+    const draftKey = localStorage.getItem('dk');
+    const dk = draftKey?.substring(7);
+    if (draftKey && dk && dk == this.activeLeague?.ID) {
+      this.onJoinDraft(draftKey.substring(0, 6));
+    }
     this.numberOfRounds =
       this.numberOfRoundsMap.get(
         this.activeLeague?.LeagueType ?? SportEnum.None
@@ -315,8 +320,14 @@ export class DraftComponent implements OnInit {
         `${this.activeUser?.FirstName ?? ''} ${this.activeUser?.LastName ?? ''}`
       )
       .subscribe({
-        next: (message) => this.handleMessage(message),
-        error: (err) => console.error(err),
+        next: (message) => {
+          this.handleMessage(message);
+          localStorage.setItem('dk', `${joinKey}-${this.activeLeague?.ID}`);
+        },
+        error: (err) => {
+          console.error(err);
+          localStorage.removeItem('dk');
+        },
       });
   }
 
@@ -403,6 +414,8 @@ export class DraftComponent implements OnInit {
       draftOrder.push(dop);
     });
     this.setPickOrder(draftOrder);
+
+    this.draftStarted = message.allow_draft_entry;
   }
 
   private draftOrderUpdate(message: any): void {
@@ -469,9 +482,7 @@ export class DraftComponent implements OnInit {
 
     this._draftSelections.next(draftResponseUpdated);
 
-    if (message.allow_draft_entry) {
-      this.draftStarted = true;
-    }
+    this.draftStarted = message.allow_draft_entry;
   }
 
   private playersList(message: any): void {
@@ -486,12 +497,12 @@ export class DraftComponent implements OnInit {
     if (this.searchDialogVisible) {
       this.onSearch();
     }
+
+    this.draftStarted = message.allow_draft_entry;
   }
 
   private startDraft(message: any): void {
-    if (message.allow_draft_entry) {
-      this.draftStarted = true;
-    }
+    this.draftStarted = message.allow_draft_entry;
 
     const draftResponseUpdated: Array<DraftSelectionModel> = [];
     this.activeLeague?.Players.forEach((player) => {
@@ -518,6 +529,8 @@ export class DraftComponent implements OnInit {
     if (this.searchDialogVisible) {
       this.onSearch();
     }
+
+    this.draftStarted = message.allow_draft_entry;
   }
 
   private clientDisconnected(message: any): void {

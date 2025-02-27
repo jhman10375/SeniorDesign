@@ -140,10 +140,13 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
 
   checkIfAtParentRoute(): boolean {
     const currentUrl = this.router.url;
-    const parentRoute = `/league/${this.leagueID}/player-search`; // Construct the parent route dynamically
+    const parentRouteParentSearch = `/league/${this.leagueID}/player-search`; // Construct the parent route dynamically
+    const parentRouteDraftSearch = `/league/${this.leagueID}/draft`; // Construct the parent route dynamically
 
     // Check if the current URL is the parent route (i.e., /app/:id and not any child route)
-    this.isAtParentRoute = currentUrl.length == parentRoute.length;
+    this.isAtParentRoute =
+      currentUrl.length == parentRouteParentSearch.length ||
+      currentUrl.length == parentRouteDraftSearch.length;
 
     return this.isAtParentRoute;
   }

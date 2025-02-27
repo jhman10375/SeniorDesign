@@ -1,9 +1,14 @@
 from fastapi import APIRouter
 
+import firebase_admin
+from firebase_admin import auth
+
+cred = firebase_admin.credentials.Certificate("../../../KEYS/college-sports-plus-firebase-adminsdk-lzjbm-98cd60e9d3.json")
+authentication = firebase_admin.initialize_app(cred)
 
 router = APIRouter()
 
-@app.get("/user/{uid}", tags=["Authentication"])
+@router.get("/user/{uid}", tags=["Authentication"])
 async def verify_user(uid: str):
     try:
         decoded_token = auth.verify_id_token(uid)
