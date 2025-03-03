@@ -9,19 +9,22 @@
         >
         </mobile-scoreboard>
         <div
-          class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border text-xs"
+          class="flex flex-row align-items-center justify-content-between mt-1 pb-2 border-bottom-1 surface-border text-xs"
         >
-          <span class="header-item">Pos</span>
+          <span class="header-item mr-2">Edit</span>
+          <span class="header-item no-flex">Pos</span>
           <span class="header-item">Name</span>
-          <span class="header-item">Number</span>
+          <span class="header-item no-flex">Number</span>
           <span class="header-item">School</span>
         </div>
       </div>
       <div class="body">
         <roster
           [team]="team"
+          [canEditTeam]="true"
           [leagueType]="leagueType"
           (navigateToEmitter)="navigateTo($event)"
+          (editTeamEmitter)="onTeamEdit($event)"
         ></roster>
       </div>
     </div>

@@ -10,7 +10,9 @@ import {
 } from 'rxjs';
 
 import { SportEnum } from '../../enums/sport.enum';
+import { WeekStatusEnum } from '../../enums/week-status.enum';
 import { LeagueAthleteModel } from '../../models/league-athlete.model';
+import { LeagueRosterAthleteModel } from '../../models/league-roster-athlete.model';
 import { LeagueWeekModel } from '../../models/league-week.model';
 import { LeagueModel } from '../../models/league.model';
 import { SchoolModel } from '../../models/school.model';
@@ -51,11 +53,14 @@ export class LeagueDLService implements OnDestroy {
         next: (season) => {
           this.schoolsService.schools.pipe(take(1)).subscribe({
             next: (schools) => {
-              this.athleteDLService.players.pipe(take(1)).subscribe({
-                next: (a) => {
-                  this.convertLeagues(a, schools);
-                },
-              });
+              this.athleteDLService
+                .getAthletesAPI()
+                .pipe(take(1))
+                .subscribe({
+                  next: (a) => {
+                    this.convertLeagues(a, schools);
+                  },
+                });
             },
           });
         },
@@ -130,5 +135,23 @@ export class LeagueDLService implements OnDestroy {
 
   updateSeason(leagueType: SportEnum, week: LeagueWeekModel): void {
     this.leagueSeasonDLService.updateSeason(leagueType, week);
+  }
+
+  updateTeam(
+    leagueID: string,
+    teamID: string,
+    team: Array<LeagueRosterAthleteModel>
+  ): void {
+    const league: LeagueModel =
+      this._league.value.find((x) => x.ID == leagueID) ?? new LeagueModel();
+    const leagueType = league.LeagueType;
+    league.Season.forEach((week) => {
+      if (
+        week.Status == WeekStatusEnum.Current ||
+        week.Status == WeekStatusEnum.Future
+      ) {
+        this.leagueSeasonDLService.updateTeam(leagueType, week, teamID, team);
+      }
+    });
   }
 }

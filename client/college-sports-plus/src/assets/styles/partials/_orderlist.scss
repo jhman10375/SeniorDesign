@@ -20,3 +20,14 @@ draft-queue {
     }
   }
 }
+
+transfer-dialog {
+  .p-orderlist-controls {
+    display: none;
+  }
+
+  .p-orderlist-list .p-orderlist-item.p-highlight {
+    color: inherit;
+    background-color: inherit;
+  }
+}

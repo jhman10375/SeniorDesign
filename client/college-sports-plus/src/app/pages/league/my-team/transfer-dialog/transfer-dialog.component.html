@@ -1,0 +1,22 @@
+<p-orderList
+  [value]="positionPlayers"
+  [dragdrop]="true"
+  (onReorder)="onReorder()"
+>
+  <ng-template let-athlete pTemplate="item">
+    <div
+      class="flex flex-row justify-content-between align-items-center w-full"
+    >
+      <span class="flex align-items-center"
+        ><span class="pi pi-bars mr-2"></span
+        ><span>{{ athlete.Athlete.Name }}</span></span
+      >
+      <span
+        class="data-cell-left text-xs text-primary border-1 p-1 border-primary border-round mr-2"
+        style="max-width: 4rem"
+        (click)="onTransfer(athlete)"
+        >Transfer</span
+      >
+    </div>
+  </ng-template>
+</p-orderList>

@@ -39,7 +39,7 @@ export class LeagueSeasonDLService implements OnDestroy {
     const week: LeagueWeekDLModel = new LeagueWeekDLModel();
     week.ID = '0';
     week.LeagueID = '0';
-    week.Status = WeekStatusEnum.Current;
+    week.Status = WeekStatusEnum.Played;
     week.Week = 1;
     week.Games = [];
 
@@ -58,11 +58,21 @@ export class LeagueSeasonDLService implements OnDestroy {
     p2.RosterPosition = RosterPositionEnum.FirstString;
     p2.PlayerID = '2';
 
+    const p3: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p3.AthleteID = '4689114';
+    p3.RosterPosition = RosterPositionEnum.B1;
+    p3.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
+    const p4: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p4.AthleteID = '4688380';
+    p4.RosterPosition = RosterPositionEnum.SecondString;
+    p4.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
     const game: LeagueGameDLModel = new LeagueGameDLModel();
     game.ID = '0';
     game.WeekNumber = 1;
     game.HomeTeamPlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
-    game.HomeTeam = [p];
+    game.HomeTeam = [p, p3, p4];
     game.AwayTeamPlayerID = '1';
     game.AwayTeam = [p1];
     week.Games.push(game);
@@ -86,6 +96,110 @@ export class LeagueSeasonDLService implements OnDestroy {
     // week.Games.push(game2);
 
     weeks.push(week);
+
+    const week1: LeagueWeekDLModel = new LeagueWeekDLModel();
+    week1.ID = '1';
+    week1.LeagueID = '0';
+    week1.Status = WeekStatusEnum.Current;
+    week1.Week = 2;
+    week1.Games = [];
+
+    const p5: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p5.AthleteID = '4433971';
+    p5.RosterPosition = RosterPositionEnum.FirstString;
+    p5.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
+    const p6: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p6.AthleteID = '5084084';
+    p6.RosterPosition = RosterPositionEnum.FirstString;
+    p6.PlayerID = '1';
+
+    const p7: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p7.AthleteID = '4574356';
+    p7.RosterPosition = RosterPositionEnum.FirstString;
+    p7.PlayerID = '2';
+
+    const p8: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p8.AthleteID = '4689114';
+    p8.RosterPosition = RosterPositionEnum.B1;
+    p8.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
+    const p9: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p9.AthleteID = '4688380';
+    p9.RosterPosition = RosterPositionEnum.SecondString;
+    p9.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
+    const game2: LeagueGameDLModel = new LeagueGameDLModel();
+    game2.ID = '2';
+    game2.WeekNumber = 2;
+    game2.HomeTeamPlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+    game2.HomeTeam = [p, p3, p4];
+    game2.AwayTeamPlayerID = '1';
+    game2.AwayTeam = [p1];
+    week1.Games.push(game2);
+
+    const game3: LeagueGameDLModel = new LeagueGameDLModel();
+    game3.ID = '3';
+    game3.WeekNumber = 2;
+    game3.HomeTeamPlayerID = '1';
+    game3.HomeTeam = [p1];
+    game3.AwayTeamPlayerID = '2';
+    game3.AwayTeam = [p2];
+    week1.Games.push(game3);
+
+    weeks.push(week1);
+
+    const week2: LeagueWeekDLModel = new LeagueWeekDLModel();
+    week2.ID = '2';
+    week2.LeagueID = '0';
+    week2.Status = WeekStatusEnum.Future;
+    week2.Week = 3;
+    week2.Games = [];
+
+    const p10: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p10.AthleteID = '4433971';
+    p10.RosterPosition = RosterPositionEnum.FirstString;
+    p10.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
+    const p11: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p11.AthleteID = '5084084';
+    p11.RosterPosition = RosterPositionEnum.FirstString;
+    p11.PlayerID = '1';
+
+    const p12: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p12.AthleteID = '4574356';
+    p12.RosterPosition = RosterPositionEnum.FirstString;
+    p12.PlayerID = '2';
+
+    const p13: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p13.AthleteID = '4689114';
+    p13.RosterPosition = RosterPositionEnum.B1;
+    p13.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
+    const p14: LeagueRosterAthleteDLModel = new LeagueRosterAthleteDLModel();
+    p14.AthleteID = '4688380';
+    p14.RosterPosition = RosterPositionEnum.SecondString;
+    p14.PlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+
+    const game4: LeagueGameDLModel = new LeagueGameDLModel();
+    game4.ID = '4';
+    game4.WeekNumber = 3;
+    game4.HomeTeamPlayerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
+    game4.HomeTeam = [p, p3, p4];
+    game4.AwayTeamPlayerID = '1';
+    game4.AwayTeam = [p1];
+    week2.Games.push(game4);
+
+    const game5: LeagueGameDLModel = new LeagueGameDLModel();
+    game5.ID = '5';
+    game5.WeekNumber = 3;
+    game5.HomeTeamPlayerID = '1';
+    game5.HomeTeam = [p1];
+    game5.AwayTeamPlayerID = '2';
+    game5.AwayTeam = [p2];
+    week2.Games.push(game5);
+
+    weeks.push(week2);
 
     this._seasonDL.next(weeks);
   }
@@ -118,6 +232,23 @@ export class LeagueSeasonDLService implements OnDestroy {
       }
     });
     return season;
+  }
+
+  updateTeam(
+    leagueType: SportEnum,
+    week: LeagueWeekModel,
+    teamID: string,
+    team: Array<LeagueRosterAthleteModel>
+  ): void {
+    const game = week.Games.find(
+      (x) => x.AwayTeamPlayerID == teamID || x.HomeTeamPlayerID == teamID
+    );
+    if (game && game.AwayTeamPlayerID == teamID) {
+      game.AwayTeam = team;
+    } else if (game && game.HomeTeamPlayerID == teamID) {
+      game.HomeTeam = team;
+    }
+    this.updateSeason(leagueType, week);
   }
 
   updateSeason(leagueType: SportEnum, week: LeagueWeekModel): void {

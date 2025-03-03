@@ -59,6 +59,7 @@ export class PlayerDLService {
 
     const player2: LeaguePlayerModel = new LeaguePlayerModel();
     player2.ID = '1';
+    player2.PlayerID = '1';
     player2.Name = 'Zach Herman';
     player2.DraftPickSortOrder = -1;
     player2.TeamName = "Zach's Rockstars";
@@ -76,6 +77,7 @@ export class PlayerDLService {
 
     const player3: LeaguePlayerModel = new LeaguePlayerModel();
     player3.ID = '2';
+    player3.PlayerID = '2';
     player3.Name = 'Adam Herman';
     player3.DraftPickSortOrder = -1;
     player3.TeamName = "Adam's Rockstars";

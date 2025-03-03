@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
+import { WeekStatusEnum } from '../../enums/week-status.enum';
 import { LeagueGameModel } from '../../models/league-game.model';
 import { LeagueWeekModel } from '../../models/league-week.model';
 import { FastAPIService } from '../fastAPI/fast-api.service';
@@ -17,9 +18,11 @@ export class LeagueToolsService {
     return this.fastAPIService.getLeagueSchedule(numTeams, numWeeks).pipe(
       map((x) => {
         const retVal: Array<LeagueWeekModel> = [];
-        x.forEach((week) => {
+        x.forEach((week, index) => {
           const weekModel = new LeagueWeekModel();
           weekModel.Week = week.week_num;
+          weekModel.Status =
+            index == 1 ? WeekStatusEnum.Current : WeekStatusEnum.Future;
           const games: Array<LeagueGameModel> = [];
           week.week_matches.forEach((match) => {
             const game: LeagueGameModel = new LeagueGameModel();
