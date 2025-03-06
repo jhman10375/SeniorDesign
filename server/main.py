@@ -218,14 +218,19 @@ async def repopulate_player_lists():
     print("Baseball Teams done")
     bsbList.populate_players()
     print("Baseball Players done")
+    bsbList.populate_first_string()
+    print("Baseball First Stringers done")
     sccList.populate()
     print("Soccer Teams done")
+    sccList.populate_players()
+    print("Soccer Players done")
 
 
     if (fullList.populated and firstStrings.populated 
         and bkbList.populated and bkbList.first_string_populated
         and bsbList.populated and bsbList.players_populated
-        and sccList.populated):
+        and sccList.populated and sccList.players_populated
+        and bsbList.first_string_populated):
        return "All lists populated!"
     else:
        return "Something went wrong"
@@ -1996,6 +2001,23 @@ async def get_baseball_player_season_stats(player_id : int, season : Season) -> 
 
     return get_bsb_season_info(player_id,season.value,player_details['position'], player_details['name'])
 
+@app.get("/bsb/players/get_first_string", tags=["Baseball", "Baseball - Player Info"]) 
+async def get_all_first_string_baseball_players(page = 1, page_size= 100) -> list[bbPlayer]:
+
+    start = (int(page) - 1)*int(page_size)
+
+    end =  ((int(page) - 1)*int(page_size))+int(page_size)
+
+    all_players = bsbList.first_string_df.copy()
+
+    all_players = all_players[start:end]
+
+    return [bbPlayer(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_team=player.team,
+                           player_height=player.height, player_batting_hand=str(player.bat),
+                           player_throwing_hand=str(player.throw),
+                           player_year=player.year, team_color=player.color, 
+                           team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
 
 #SOCCER ENDPOINTS
 

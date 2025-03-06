@@ -9,6 +9,8 @@ import pytz
 from bs4 import BeautifulSoup
 from utils.cbbpy_utils import _get_id_from_team
 import cbbpy.mens_scraper as s
+from selenium.common.exceptions import NoSuchElementException
+import re
 
 load_dotenv()
 token = os.getenv("CFBD_TOKEN")
@@ -543,8 +545,8 @@ def bsb_team_schedule(team_name, year, bsbList : bsbPlayers):
               game_date = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S')
 
               if game_date <= datetime.now():
-                      last_W = row.rfind('W')
-                      last_L = row.rfind('L')
+                      last_W = row.rfind(' W ' )
+                      last_L = row.rfind(' L ')
                   
                       if last_W == -1:
                           result_index = last_L
@@ -560,7 +562,7 @@ def bsb_team_schedule(team_name, year, bsbList : bsbPlayers):
                       else:
                           opp = row[row.find(date)+len(date):].strip()
                   
-                      if (opp.find(')') != -1) and (opp.find('(OH)') == -1):
+                      if (opp.find(')') != -1) and (type(re.search(r"\([A-Z]{2}\)", opp)) == type(None)):
                           opp = opp[opp.find(')')+1:].strip()
                   
                       if opp.find('#') != -1:
@@ -582,7 +584,7 @@ def bsb_team_schedule(team_name, year, bsbList : bsbPlayers):
                               opp = opp.replace('@', '').strip()
               else:
                   if row.find('TBA') == -1:
-                      opp = row[findnth(row,' ',2):].strip()
+                      opp = row[(row.find(str(datetime.now().year)) + len(str(datetime.now().year))):].strip()
                   else:
                       opp = row[(row.find('TBA')+3):].strip()
       
@@ -604,7 +606,11 @@ def bsb_team_schedule(team_name, year, bsbList : bsbPlayers):
 
                           
               opp = opp.replace('Canceled', '').strip()
-              if (opp.find(')') != -1) and (opp.find('(OH)') == -1):
+              opp = opp.replace('Ppd', '').strip()
+              opp = opp.replace('(1)', '').replace('(2)', '').strip()
+              
+             
+              if (opp.find(')') != -1) and (type(re.search(r"\([A-Z]{2}\)", opp)) == type(None)):
                 opp = opp[:opp.find('(')].strip()
               
               games.append({"date": str(game_date), "opponent": elongate_name(opp), "home": home})
@@ -735,8 +741,10 @@ def bsb_last_game(team_name, bsbList : bsbPlayers):
   games_df.reset_index(drop=True, inplace=True)
 
   last_game = bbGame(game_id=games_df.iloc[0]['game_id'], 
-                      home_id=games_df.iloc[0]['home_id'], home_team=games_df.iloc[0]['home_team'], 
-                      away_team=games_df.iloc[0]['away_team'], start_date=games_df.iloc[0]['start_date'])
+                      home_id=games_df.iloc[0]['home_id'], 
+                      home_team=games_df.iloc[0]['home_team'].replace('(1)', '').replace('(2)', '').strip(), 
+                      away_team=games_df.iloc[0]['away_team'].replace('(1)', '').replace('(2)', '').strip(), 
+                      start_date=games_df.iloc[0]['start_date'])
 
   return last_game
 
@@ -785,14 +793,59 @@ def get_bsb_game_info(player_id, game_date, opp, position, name):
                         break
 
 
-
-        
-            if tables[-1].text.split('\n')[0].find("Totals") != -1:
-                table = tables[-2].text.split('\n')
-                xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
-            else:
-                table = tables[-1].text.split('\n')
-                xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+            try:
+                if tables[-1].text.split('\n')[0].find("Totals") != -1:
+                    table = tables[-2].text.split('\n')
+                    xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                    alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                else:
+                    table = tables[-1].text.split('\n')
+                    xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                    alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+            except IndexError:
+                try:
+                    invalid_test = driver.find_element(By.XPATH, "/html/body/pre")
+                    return bsbStats(win=0, 
+                             saves=0,
+                             innings=0,
+                             earned_runs_allowed=0,
+                             singles=0,
+                             doubles=0,
+                             triples=0,
+                             homers=0,
+                             runs=0,
+                             runs_batted_in=0,
+                             walks=0,
+                             hits_by_pitch=0,
+                             stolen_bases=0,
+                             caught_stealing=0,
+                             player_id=-1,
+                             player_name="zz-INVALID PLAYER-zz",
+                             player_position="N/A")
+                except IndexError:
+                    wait = WebDriverWait(driver, 10)
+                    wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/header")))
+                    tables = driver.find_elements(By.TAG_NAME, "table")
+                    if tables[-1].text.split('\n')[0].find("Totals") != -1:
+                        table = tables[-2].text.split('\n')
+                        xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                        alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                    else:
+                        table = tables[-1].text.split('\n')
+                        xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                        alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                except NoSuchElementException:
+                    wait = WebDriverWait(driver, 10)
+                    wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/header")))
+                    tables = driver.find_elements(By.TAG_NAME, "table")
+                    if tables[-1].text.split('\n')[0].find("Totals") != -1:
+                        table = tables[-2].text.split('\n')
+                        xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                        alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                    else:
+                        table = tables[-1].text.split('\n')
+                        xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                        alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
             
             num_rows = 0
     
@@ -815,7 +868,11 @@ def get_bsb_game_info(player_id, game_date, opp, position, name):
 
             #print(f'{num_rows=}')
             for index in range(1,num_rows+1):
-                current_date_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[1]')
+                try:
+                    current_date_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[1]')
+                except NoSuchElementException:
+                    xml_path = alt_path
+                    current_date_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[1]')
                 current_date = current_date_info.text
     
                 current_team_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[2]')
@@ -833,14 +890,16 @@ def get_bsb_game_info(player_id, game_date, opp, position, name):
                 if current_team.find('#') == 0:
                     current_team = current_team[3:].strip()
                 
-                current_team = current_team.strip()
+                current_team = current_team.replace('(1)', '').replace('(2)', '')
+                current_team = bsbPlayers.elongate_name(current_team.strip())
                 #print(f'{current_team == opp=}')
                 #print(f'{current_date == game_date=}')
                 #print(f'{current_team.find(opp)=}')
                 #print(f'{current_team=}')
                 #print(f'{GP=}')
     
-                
+                current_date = current_date.replace('(1)', '').replace('(2)', '').strip()
+
                 if (current_date == game_date) and (current_team == opp):
                     found_game = True
                     #print(opp)
@@ -863,90 +922,170 @@ def get_bsb_game_info(player_id, game_date, opp, position, name):
                             hits_by_pitch = 0 
                             stolen_bases = 0
                             caught_stealing = 0
-                            
-                            saves_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[33]')
-                            saves = saves_info.text
-                            if saves == '':
-                                saves = '0'
-                            saves = float(saves.replace('/', ''))
-                            
-                            innings_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
-                            innings = innings_info.text
-                            if innings == '':
-                                innings = '0'
-                            innings = float(innings.replace('/', ''))
-                            
-                            ERA_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
-                            earned_runs_allowed = ERA_info.text
-                            if earned_runs_allowed == '':
-                                earned_runs_allowed = '0'
-                            earned_runs_allowed = float(earned_runs_allowed.replace('/', ''))
+                            try:
+                                saves_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[33]')
+                                saves = saves_info.text
+                                if saves == '':
+                                    saves = '0'
+                                saves = float(saves.replace('/', ''))
+                                
+                                innings_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
+                                innings = innings_info.text
+                                if innings == '':
+                                    innings = '0'
+                                innings = float(innings.replace('/', ''))
+                                
+                                ERA_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
+                                earned_runs_allowed = ERA_info.text
+                                if earned_runs_allowed == '':
+                                    earned_runs_allowed = '0'
+                                earned_runs_allowed = float(earned_runs_allowed.replace('/', ''))
+                            except NoSuchElementException:
+                                singles_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
+                                singles = singles_info.text
+                                if singles == '':
+                                    singles = '0'
+                                singles = float(singles.replace('/', ''))
+                                
+                                doubles_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
+                                doubles = doubles_info.text
+                                if doubles == '':
+                                    doubles = '0'
+                                doubles = float(doubles.replace('/', ''))
+                                
+                                triples_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
+                                triples = triples_info.text
+                                if triples == '':
+                                    triples = '0'
+                                triples = float(triples.replace('/', ''))
+                                
+                                homers_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
+                                homers = homers_info.text
+                                if homers == '':
+                                    homers = '0'
+                                homers = float(homers.replace('/', ''))
+                                
+                                runs_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[5]')
+                                runs = runs_info.text
+                                if runs == '':
+                                    runs = '0'
+                                runs = float(runs.replace('/', ''))
+                                
+                                RBI_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[12]')
+                                runs_batted_in = RBI_info.text
+                                if runs_batted_in == '':
+                                    runs_batted_in = '0'
+                                runs_batted_in = float(runs_batted_in.replace('/', ''))
+                                
+                                walks_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[13]')
+                                walks = walks_info.text
+                                if walks == '':
+                                    walks = '0'
+                                walks = float(walks.replace('/', ''))
+                                
+                                HBP_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[14]')
+                                hits_by_pitch = HBP_info.text
+                                if hits_by_pitch == '':
+                                    hits_by_pitch = '0'
+                                hits_by_pitch = float(hits_by_pitch.replace('/', ''))
+                                
+                                stolen_bases_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[21]')
+                                stolen_bases = stolen_bases_info.text
+                                if stolen_bases == '':
+                                    stolen_bases = '0'
+                                stolen_bases = float(stolen_bases.replace('/', ''))
+                                
+                                caught_stealing_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[19]')
+                                caught_stealing = caught_stealing_info.text
+                                if caught_stealing == '':
+                                    caught_stealing = '0'
+                                caught_stealing = float(caught_stealing.replace('/', ''))
+        
+                                
+                                saves = 0
+                                innings = 0
+                                earned_runs_allowed = 0
                         else:
                             #print('nonpitcher')
-                            singles_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
-                            singles = singles_info.text
-                            if singles == '':
-                                singles = '0'
-                            singles = float(singles.replace('/', ''))
-                            
-                            doubles_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
-                            doubles = doubles_info.text
-                            if doubles == '':
-                                doubles = '0'
-                            doubles = float(doubles.replace('/', ''))
-                            
-                            triples_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
-                            triples = triples_info.text
-                            if triples == '':
-                                triples = '0'
-                            triples = float(triples.replace('/', ''))
-                            
-                            homers_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
-                            homers = homers_info.text
-                            if homers == '':
-                                homers = '0'
-                            homers = float(homers.replace('/', ''))
-                            
-                            runs_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[5]')
-                            runs = runs_info.text
-                            if runs == '':
-                                runs = '0'
-                            runs = float(runs.replace('/', ''))
-                            
-                            RBI_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[12]')
-                            runs_batted_in = RBI_info.text
-                            if runs_batted_in == '':
-                                runs_batted_in = '0'
-                            runs_batted_in = float(runs_batted_in.replace('/', ''))
-                            
-                            walks_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[13]')
-                            walks = walks_info.text
-                            if walks == '':
-                                walks = '0'
-                            walks = float(walks.replace('/', ''))
-                            
-                            HBP_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[15]')
-                            hits_by_pitch = HBP_info.text
-                            if hits_by_pitch == '':
-                                hits_by_pitch = '0'
-                            hits_by_pitch = float(hits_by_pitch.replace('/', ''))
-                            
-                            stolen_bases_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[21]')
-                            stolen_bases = stolen_bases_info.text
-                            if stolen_bases == '':
-                                stolen_bases = '0'
-                            stolen_bases = float(stolen_bases.replace('/', ''))
-                            
-                            caught_stealing_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[19]')
-                            caught_stealing = caught_stealing_info.text
-                            if caught_stealing == '':
-                                caught_stealing = '0'
-                            caught_stealing = float(caught_stealing.replace('/', ''))
-    
-                            
-                            saves = 0
-                            innings = 0
-                            earned_runs_allowed = 0
+                            try:
+                                singles_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
+                                singles = singles_info.text
+                                if singles == '':
+                                    singles = '0'
+                                singles = float(singles.replace('/', ''))
+                                
+                                doubles_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
+                                doubles = doubles_info.text
+                                if doubles == '':
+                                    doubles = '0'
+                                doubles = float(doubles.replace('/', ''))
+                                
+                                triples_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
+                                triples = triples_info.text
+                                if triples == '':
+                                    triples = '0'
+                                triples = float(triples.replace('/', ''))
+                                
+                                homers_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
+                                homers = homers_info.text
+                                if homers == '':
+                                    homers = '0'
+                                homers = float(homers.replace('/', ''))
+                                
+                                runs_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[5]')
+                                runs = runs_info.text
+                                if runs == '':
+                                    runs = '0'
+                                runs = float(runs.replace('/', ''))
+                                
+                                RBI_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[12]')
+                                runs_batted_in = RBI_info.text
+                                if runs_batted_in == '':
+                                    runs_batted_in = '0'
+                                runs_batted_in = float(runs_batted_in.replace('/', ''))
+                                
+                                walks_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[13]')
+                                walks = walks_info.text
+                                if walks == '':
+                                    walks = '0'
+                                walks = float(walks.replace('/', ''))
+                                
+                                HBP_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[14]')
+                                hits_by_pitch = HBP_info.text
+                                if hits_by_pitch == '':
+                                    hits_by_pitch = '0'
+                                hits_by_pitch = float(hits_by_pitch.replace('/', ''))
+                                
+                                stolen_bases_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[21]')
+                                stolen_bases = stolen_bases_info.text
+                                if stolen_bases == '':
+                                    stolen_bases = '0'
+                                stolen_bases = float(stolen_bases.replace('/', ''))
+                                
+                                caught_stealing_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[19]')
+                                caught_stealing = caught_stealing_info.text
+                                if caught_stealing == '':
+                                    caught_stealing = '0'
+                                caught_stealing = float(caught_stealing.replace('/', ''))
+        
+                                
+                                saves = 0
+                                innings = 0
+                                earned_runs_allowed = 0
+                            except NoSuchElementException:
+                                saves = 0
+                                innings = 0
+                                earned_runs_allowed = 0
+                                singles = 0
+                                doubles = 0
+                                triples = 0
+                                homers = 0
+                                runs = 0
+                                runs_batted_in = 0
+                                walks = 0
+                                hits_by_pitch = 0 
+                                stolen_bases = 0
+                                caught_stealing = 0 
                     else:
                         saves = 0
                         innings = 0
