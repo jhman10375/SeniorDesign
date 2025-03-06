@@ -425,6 +425,14 @@ export class LeagueService implements OnDestroy {
     this.leagueDLService.updateSeason(leagueType, week);
   }
 
+  updateTeam(
+    leagueID: string,
+    teamID: string,
+    team: Array<LeagueRosterAthleteModel>
+  ): void {
+    this.leagueDLService.updateTeam(leagueID, teamID, team);
+  }
+
   updateLeague(league: LeagueModel): void {
     const leagues: Array<LeagueModel> = this.leagueDLService._league.value;
     const leaguesFiltered = leagues.filter((x) => x.ID !== league.ID);

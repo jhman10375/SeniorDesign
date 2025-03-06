@@ -5,31 +5,37 @@
     @case (SportEnum.Football) {
       @for (pos of positions; track pos) {
         <div
-          (click)="navigateTo(getRosterValue(pos).Athlete.AthleteID)"
           class="flex flex-row align-items-center justify-content-between pt-2 pb-2 border-bottom-1 surface-border text-xs"
           [ngClass]="
-            getRosterValue(pos).RosterPosition ===
-            RosterPositionEnum.FirstString
+            (pos | footballRosterPlayerPipe: leagueType : team ?? [])
+              .RosterPosition === RosterPositionEnum.FirstString
               ? 'first-string-background'
-              : getRosterValue(pos).RosterPosition ===
-                  RosterPositionEnum.FirstString
+              : (pos | footballRosterPlayerPipe: leagueType : team ?? [])
+                    .RosterPosition === RosterPositionEnum.FirstString
                 ? 'second-string-background'
                 : 'bench-background'
           "
         >
-          <span class="data-cell-right">{{
-            getRosterValue(pos).Athlete.School
+          <span class="data-cell-right" (click)="navigateTo(pos)">{{
+            (pos | footballRosterPlayerPipe: leagueType : team ?? []).Athlete
+              .School
           }}</span>
-          <span class="data-cell-right">{{
-            getRosterValue(pos).Athlete.Jersey
+          <span class="data-cell-right" (click)="navigateTo(pos)">{{
+            (pos | footballRosterPlayerPipe: leagueType : team ?? []).Athlete
+              .Jersey
           }}</span>
-          <span class="data-cell-right">{{
-            getRosterValue(pos).Athlete.Name
+          <span class="data-cell-right" (click)="navigateTo(pos)">{{
+            (pos | footballRosterPlayerPipe: leagueType : team ?? []).Athlete
+              .Name
           }}</span>
           @if (pos == "FTFLEX" || pos == "STFLEX") {
-            <span class="data-cell-right pr-1">FLEX</span>
+            <span class="data-cell-right pr-1" (click)="navigateTo(pos)"
+              >FLEX</span
+            >
           } @else {
-            <span class="data-cell-right pr-1">{{ getPosition(pos) }}</span>
+            <span class="data-cell-right pr-1" (click)="navigateTo(pos)">{{
+              pos | footballRosterPositionPipe: leagueType : team ?? []
+            }}</span>
           }
         </div>
       }
@@ -46,31 +52,53 @@
     @case (SportEnum.Football) {
       @for (pos of positions; track pos) {
         <div
-          (click)="navigateTo(getRosterValue(pos).Athlete.AthleteID)"
           class="flex flex-row align-items-center justify-content-between pt-2 pb-2 border-bottom-1 surface-border text-xs"
           [ngClass]="
-            getRosterValue(pos).RosterPosition ===
-            RosterPositionEnum.FirstString
+            (pos | footballRosterPlayerPipe: leagueType : team ?? [])
+              .RosterPosition === RosterPositionEnum.FirstString ||
+            (pos | footballRosterPlayerPipe: leagueType : team ?? [])
+              .RosterPosition === RosterPositionEnum.FirstStringFlex
               ? 'first-string-background'
-              : getRosterValue(pos).RosterPosition ===
-                  RosterPositionEnum.FirstString
+              : (pos | footballRosterPlayerPipe: leagueType : team ?? [])
+                    .RosterPosition === RosterPositionEnum.SecondString ||
+                  (pos | footballRosterPlayerPipe: leagueType : team ?? [])
+                    .RosterPosition === RosterPositionEnum.SecondStringFlex
                 ? 'second-string-background'
                 : 'bench-background'
           "
         >
-          @if (pos == "FTFLEX" || pos == "STFLEX") {
-            <span class="data-cell-left pl-1">FLEX</span>
-          } @else {
-            <span class="data-cell-left pl-1">{{ getPosition(pos) }}</span>
+          @if (canEditTeam) {
+            <span
+              class="data-cell-left text-xs text-primary border-1 p-1 border-primary border-round mr-2"
+              style="max-width: 4rem"
+              (click)="onEditTeam(pos)"
+              >Edit</span
+            >
           }
-          <span class="data-cell-left">{{
-            getRosterValue(pos).Athlete.Name
+          @if (pos == "FTFLEX" || pos == "STFLEX") {
+            <span class="data-cell-left no-flex pl-1" (click)="navigateTo(pos)"
+              >FLEX</span
+            >
+          } @else {
+            <span
+              class="data-cell-left no-flex pl-1"
+              (click)="navigateTo(pos)"
+              >{{
+                pos | footballRosterPositionPipe: leagueType : team ?? []
+              }}</span
+            >
+          }
+          <span class="data-cell-left" (click)="navigateTo(pos)">{{
+            (pos | footballRosterPlayerPipe: leagueType : team ?? []).Athlete
+              .Name
           }}</span>
-          <span class="data-cell-left">{{
-            getRosterValue(pos).Athlete.Jersey
+          <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
+            (pos | footballRosterPlayerPipe: leagueType : team ?? []).Athlete
+              .Jersey
           }}</span>
-          <span class="data-cell-left">{{
-            getRosterValue(pos).Athlete.School
+          <span class="data-cell-left" (click)="navigateTo(pos)">{{
+            (pos | footballRosterPlayerPipe: leagueType : team ?? []).Athlete
+              .School
           }}</span>
         </div>
       }

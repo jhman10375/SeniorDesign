@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject, takeUntil } from 'rxjs';
 
 import { LeagueAthleteModel } from '../../models/league-athlete.model';
 import { LeaguePlayerModel } from '../../models/league-player.model';
@@ -160,6 +160,21 @@ export class AthleteDLService implements OnDestroy {
         },
         error: (e) => console.error(e),
       });
+  }
+
+  getAthletesAPI(): Observable<Array<LeagueAthleteModel>> {
+    return this.fastApiService.getPlayers().pipe(
+      map((playersAPI) => {
+        const players: Array<LeagueAthleteModel> = [];
+        playersAPI?.forEach((a: PlayerFAPIModel) => {
+          const p: LeagueAthleteModel =
+            GeneralService.FastAPILeagueAthleteModelConverter(a);
+          players.push(p);
+        });
+        return players;
+      }),
+      takeUntil(this.unsubscribe)
+    );
   }
 
   loadBasketballAthletes(): void {

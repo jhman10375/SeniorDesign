@@ -1,6 +1,11 @@
 // This removes all box shadows universally
 * {
   box-shadow: none;
+
+  .p-orderlist-item {
+    // resets padding for orderlist item being dragged. Required to be global due to overlays
+    padding: 0.75rem 1.25rem !important;
+  }
 }
 
 /* You can add global styles to this file, and also import other style files */
