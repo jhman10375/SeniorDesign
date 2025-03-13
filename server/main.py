@@ -195,6 +195,7 @@ async def search_for_players_by_id(player_id : int) -> playerInfo:
 
     return search_player(fullList, player_id)
 
+
 @app.get("/players/search/by_ids", tags=["Player Info"])
 async def search_for_players_by_ids(player_ids = ['']) -> List[playerInfo]:
     print(player_ids)
@@ -203,6 +204,7 @@ async def search_for_players_by_ids(player_ids = ['']) -> List[playerInfo]:
     for id in ids:
         players.append(search_player(fullList, id))
     return players
+
 
 @app.get("/lists/repopulate")
 async def repopulate_player_lists():
@@ -854,6 +856,33 @@ async def predict_player_stats(player_id : str, opponent = "next") -> predictedS
                                field_goals_missed=test_dict["fg_miss"])
     
     return return_stats
+
+
+@app.get("/predict/full_info", tags=["Prediction", "Player Info"])
+async def get_first_string_info_with_predictions(page = 1, page_size= 100) -> list[fbPlayerWithStats]:
+    players = fb_first_strings(firstStrings, page, page_size)
+
+    stats = []
+
+    for player in players:
+        stats.append(fb_predict_season(player.player_id, fullList))
+
+
+    return [fbPlayerWithStats(
+        player_id = plyr[0].player_id,
+        player_name = plyr[0].player_name,
+        player_position = plyr[0].player_position,
+        player_jersey = plyr[0].player_jersey,
+        player_height = plyr[0].player_height,
+        player_weight = plyr[0].player_weight,
+        player_team = plyr[0].player_team,
+        player_year = plyr[0].player_year,
+        team_color = plyr[0].team_color,
+        team_alt_color = plyr[0].team_alt_color,
+        team_logos = plyr[0].team_logos,
+        stats = plyr[1] )
+    
+    for plyr in zip(players, stats)]
 
 
 @app.get("/predict/season/{player_id}", tags=["Prediction"])

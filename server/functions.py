@@ -11,6 +11,8 @@ from utils.cbbpy_utils import _get_id_from_team
 import cbbpy.mens_scraper as s
 from selenium.common.exceptions import NoSuchElementException
 import re
+import pickle
+from sklearn.preprocessing import LabelEncoder
 
 load_dotenv()
 token = os.getenv("CFBD_TOKEN")
@@ -2153,4 +2155,93 @@ def generate_schedule(num_teams : int, num_weeks : int):
         schedule.append(chosen_week)
 
     return schedule[:num_weeks]  # Trim to exact num_weeks
+
+def fb_first_strings(firstStrings : firstStringList, page = 1, page_size= 100) -> list[playerInfo]:
+
+    start = (int(page) - 1)*int(page_size)
+
+    end =  ((int(page) - 1)*int(page_size))+int(page_size)
+
+    all_players = firstStrings.getlist().copy()
+
+    all_players = all_players[start:end]
+
+    return [playerInfo(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_team=player.team,
+                           player_height=player.height, player_weight=player.weight,
+                           player_year=player.year, team_color=player.color, 
+                           team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
+
+def fb_predict_season(player_id : str, fullList : playerList) -> predictedStats:
+    with open('model/my_dumped_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 12
+
+    plyr = search_player(fullList, player_id)
+
+    le = LabelEncoder()
+
+    input_list = [[plyr.player_team.replace("&", "%26"), plyr.player_weight, plyr.player_height,
+              plyr.player_year, plyr.player_position]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'weight', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['pass_TD'] = round(test_results[0][0], 1)
+    test_dict['xp'] = round(test_results[0][1], 1)
+    test_dict['xp_miss'] = round(test_results[0][2], 1)
+    test_dict['fgs'] = round(test_results[0][3], 1)
+    test_dict['fg_miss'] = round(test_results[0][4], 1)
+    test_dict['fumbles'] = round(test_results[0][5], 1)
+    test_dict['ints'] = round(test_results[0][6], 1)
+    test_dict['pass_yds'] = round(test_results[0][7], 1)
+    test_dict['rush_yds'] = round(test_results[0][8], 1)
+    test_dict['rush_TD'] = round(test_results[0][9], 1)
+    test_dict['rec_yds'] = round(test_results[0][10], 1)
+    test_dict['rec_TD'] = round(test_results[0][11], 1)
+    test_dict['receptions'] = round(test_results[0][12], 1)
+
+    for i in test_dict:
+      test_dict[i] = abs(test_dict[i])
+      if test_dict[i] <= 0.1:
+        test_dict[i] = 0
+      if i == 'receptions':
+        test_dict[i] = round(test_dict[i], 0)
+        if test_dict[i] == 0:
+          test_dict["rec_yds"] = 0
+          test_dict["rec_TD"] = 0
+      if i == "xp" or i == 'fgs':
+         test_dict[i] = int(test_dict[i])
+
+
+
+    return_stats = predictedStats(player_name=plyr.player_name,
+                               player_ID=player_id, player_position=plyr.player_position,
+                               pass_TD=round(test_dict["pass_TD"]*NUM_GAMES, 1), 
+                               pass_yds=round(test_dict["pass_yds"]*NUM_GAMES, 1),
+                               interceptions=round(test_dict["ints"]*NUM_GAMES, 1), 
+                               fumbles_lost=round(test_dict["fumbles"]*NUM_GAMES, 1),
+                               rush_yds=round(test_dict["rush_yds"]*NUM_GAMES, 1), 
+                               rush_TD=round(test_dict["rush_TD"]*NUM_GAMES, 1),
+                               reception_yds=round(test_dict["rec_yds"]*NUM_GAMES, 1), 
+                               reception_TD=round(test_dict["rec_TD"]*NUM_GAMES, 1),
+                               receptions=round(test_dict["receptions"]*NUM_GAMES, 1), 
+                               extra_points=round(test_dict["xp"]*NUM_GAMES, 1),
+                               extra_points_missed=round(test_dict["xp_miss"]*NUM_GAMES, 1), 
+                               field_goals=round(test_dict["fgs"]*NUM_GAMES, 1),
+                               field_goals_missed=round(test_dict["fg_miss"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
 

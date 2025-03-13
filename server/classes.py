@@ -250,6 +250,26 @@ class SchedWeek(BaseModel):
   week_matches: list[SchedMatch]
 
 
+class fbPlayerWithStats(BaseModel):
+    
+    player_id : int
+    player_name : str
+    player_position : str
+    player_jersey : int
+    player_height : int
+    player_weight : int
+    player_team : str
+    player_year : int
+    team_color : str
+    team_alt_color : str
+    team_logos : str
+    stats: predictedStats
+
+
+
+
+
+
 class playerList():
 
     def __init__(self):
@@ -1544,6 +1564,7 @@ class bsbPlayers():
                                 player_position=position)
         
         return gameStats
+
 
 class sccPlayers():
     def __init__(self, fullList : playerList):
