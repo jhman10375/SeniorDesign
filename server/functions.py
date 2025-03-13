@@ -1371,7 +1371,10 @@ def scc_team_schedule(team_name, year, sccList : sccPlayers):
               
               if row[0:4] == str(year):
                   continue
-          
+              
+              if row.rfind('/') == -1:
+                  continue
+
               date = row[:row.rfind('/')+5]
               date_list = date.split('/')
               #print(f'{date=}')
@@ -1390,18 +1393,20 @@ def scc_team_schedule(team_name, year, sccList : sccPlayers):
               game_date = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S')
 
               if game_date <= datetime.now():
-                      #print(f'{row.find('-')=}')
-                      result_str = row[row.rfind('-')-2:row.rfind('-')+2]
-                      #print(result_str)
                       
-                      result_index = row.find(result_str)-1
+                      matches = [match.start() for match in re.finditer(r' \d+-\d+', row)]
+                      
+                      if len(matches) > 0:
+                          result_index = matches[-1] - 1
+                      else:
+                          result_index = -1
                   
                       if result_index != -1:
                           opp = row[row.find(date)+len(date):result_index].strip()
                       else:
                           opp = row[row.find(date)+len(date):].strip()
                   
-                      if (opp.find(')') != -1) and (opp.find('(OH)') == -1):
+                      if (opp.find(')') != -1) and (type(re.search(r"\([A-Z]{2}\)", opp)) == type(None)):
                           opp = opp[opp.find(')')+1:].strip()
                   
                       if opp.find('#') != -1:
@@ -1423,7 +1428,7 @@ def scc_team_schedule(team_name, year, sccList : sccPlayers):
                               opp = opp.replace('@', '').strip()
               else:
                   if row.find('TBA') == -1:
-                      opp = row[findnth(row,' ',2):].strip()
+                      opp = row[(row.find(str(datetime.now().year)) + len(str(datetime.now().year))):].strip()
                   else:
                       opp = row[(row.find('TBA')+3):].strip()
       
@@ -1446,10 +1451,13 @@ def scc_team_schedule(team_name, year, sccList : sccPlayers):
 
               opp = opp.replace('@', '').strip()         
               opp = opp.replace('Canceled', '').strip()
-              if (opp.find(')') != -1) and (opp.find('(OH)') == -1):
+              opp = opp.replace('Ppd', '').strip()
+              opp = opp.replace('(1)', '').replace('(2)', '').strip()
+               
+              if (opp.find(')') != -1) and (type(re.search(r"\([A-Z]{2}\)", opp)) == type(None)):
                 opp = opp[:opp.find('(')].strip()
               
-              games.append({"date": str(game_date), "opponent": elongate_name(opp), "home": home})
+              games.append({"date": str(game_date), "opponent": opp, "home": home})
   finally:
       # Close the browser
       driver.quit() 
@@ -1577,8 +1585,10 @@ def scc_last_game(team_name, sccList : sccPlayers):
   games_df.reset_index(drop=True, inplace=True)
 
   last_game = bbGame(game_id=games_df.iloc[0]['game_id'], 
-                      home_id=games_df.iloc[0]['home_id'], home_team=games_df.iloc[0]['home_team'], 
-                      away_team=games_df.iloc[0]['away_team'], start_date=games_df.iloc[0]['start_date'])
+                      home_id=games_df.iloc[0]['home_id'], 
+                      home_team=games_df.iloc[0]['home_team'].replace('(1)', '').replace('(2)', '').strip(), 
+                      away_team=games_df.iloc[0]['away_team'].replace('(1)', '').replace('(2)', '').strip(), 
+                      start_date=games_df.iloc[0]['start_date'])
 
   return last_game
 
@@ -1593,7 +1603,7 @@ def elongate_name(old_name : str) -> str:
     
     return new_name.replace("Ark.", "Arkansas").replace("Ky.", "Kentucky").replace("Ill.", "Illinois")
 
-def get_scc_game_info(player_id, game_date, opp, position, name, resend):
+def get_scc_game_info(player_id, game_date, opp, position, name, resend = False):
     
     try:
             driver = webdriver.Chrome()
@@ -1639,14 +1649,57 @@ def get_scc_game_info(player_id, game_date, opp, position, name, resend):
 
 
 
-        
-            if tables[-1].text.split('\n')[0].find("Totals") != -1:
-                table = tables[-2].text.split('\n')
-                xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
-            else:
-                table = tables[-1].text.split('\n')
-                xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
-            
+            try:
+                if tables[-1].text.split('\n')[0].find("Totals") != -1:
+                    table = tables[-2].text.split('\n')
+                    xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                    alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                else:
+                    table = tables[-1].text.split('\n')
+                    xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                    alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+            except IndexError:
+                try:
+                    invalid_test = driver.find_element(By.XPATH, "/html/body/pre")
+                    return sccStats(goals=0, 
+                                 assists=0,
+                                 shots_on_goal=0,
+                                 shots_off_goal=0,
+                                 fouls=0,
+                                 yellow_cards=0,
+                                 red_cards=0,
+                                 clean_sheet=0,
+                                 goals_allowed=0,
+                                 saves=0,
+                                 player_id=-1,
+                                 player_name="zz-INVALID PLAYER-zz",
+                                 player_position="N/A")
+                except IndexError:
+                     wait = WebDriverWait(driver, 10)
+                     wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/header")))
+                     tables = driver.find_elements(By.TAG_NAME, "table")
+                     if tables[-1].text.split('\n')[0].find("Totals") != -1:
+                         table = tables[-2].text.split('\n')
+                         xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                         alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                     else:
+                         table = tables[-1].text.split('\n')
+                         xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                         alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                except NoSuchElementException:
+                     wait = WebDriverWait(driver, 10)
+                     wait.until(EC.presence_of_element_located((By.XPATH, "/html/body/header")))
+                     tables = driver.find_elements(By.TAG_NAME, "table")
+                     if tables[-1].text.split('\n')[0].find("Totals") != -1:
+                         table = tables[-2].text.split('\n')
+                         xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+                         alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                     else:
+                         table = tables[-1].text.split('\n')
+                         xml_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/table/tbody"
+                         alt_path = "/html/body/div[2]/div/div/div/div/div/div[5]/div/div/div/div[2]/div/div[2]/div[2]/table/tbody"
+
+
             num_rows = 0
     
             for potential_row in table:
@@ -1668,7 +1721,12 @@ def get_scc_game_info(player_id, game_date, opp, position, name, resend):
 
             #print(f'{num_rows=}')
             for index in range(1,num_rows+1):
-                current_date_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[1]')
+                try:
+                    current_date_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[1]')
+                except NoSuchElementException:
+                    xml_path = alt_path
+                    current_date_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[1]')
+
                 current_date = current_date_info.text
     
                 current_team_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[2]')
@@ -1687,13 +1745,16 @@ def get_scc_game_info(player_id, game_date, opp, position, name, resend):
                     current_team = current_team[3:].strip()
                 
                 current_team = current_team.strip()
+                current_team = current_team.replace('(1)', '').replace('(2)', '')
+                current_team = current_team.strip()
                 #print(f'{current_team == opp=}')
                 #print(f'{current_date == game_date=}')
                 #print(f'{current_team.find(opp)=}')
                 #print(f'{current_team=}')
                 #print(f'{GP=}')
     
-                
+                current_date = current_date.replace('(1)', '').replace('(2)', '').strip()
+
                 if (current_date == game_date) and (current_team == opp):
                     found_game = True
                     #print(opp)
@@ -1710,75 +1771,136 @@ def get_scc_game_info(player_id, game_date, opp, position, name, resend):
                             yellows = 0
                             reds = 0
                             
-                            
-                            saves_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
-                            saves = saves_info.text
-                            if saves == '':
-                                saves = '0'
-                            saves = float(saves.replace('/', ''))
-                            
-                            goals_allowed_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
-                            goals_allowed = goals_allowed_info.text
-                            if goals_allowed == '':
-                                goals_allowed = '0'
-                            goals_allowed = float(goals_allowed.replace('/', ''))
+                            try:
+                                saves_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
+                                saves = saves_info.text
+                                if saves == '':
+                                    saves = '0'
+                                saves = float(saves.replace('/', ''))
+                                
+                                goals_allowed_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
+                                goals_allowed = goals_allowed_info.text
+                                if goals_allowed == '':
+                                    goals_allowed = '0'
+                                goals_allowed = float(goals_allowed.replace('/', ''))
 
-                            if goals_allowed == 0:
-                                clean_sheet = 1
-                            else:
+                                if goals_allowed == 0:
+                                    clean_sheet = 1
+                                else:
+                                    clean_sheet = 0
+                            except NoSuchElementException:
+                                goals_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[5]')
+                                goals = goals_info.text
+                                if goals == '':
+                                    goals = '0'
+                                goals = float(goals.replace('/', ''))
+                                
+                                assists_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[6]')
+                                assists = assists_info.text
+                                if assists == '':
+                                    assists = '0'
+                                assists = float(assists.replace('/', ''))
+                                
+                                shots_onG_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
+                                shots_onG = shots_onG_info.text
+                                if shots_onG == '':
+                                    shots_onG = '0'
+                                shots_onG = float(shots_onG.replace('/', ''))
+                                
+                                shots_all_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
+                                shots_all = shots_all_info.text
+                                if shots_all == '':
+                                    shots_all = '0'
+                                shots_all = float(shots_all.replace('/', ''))
+
+                                shots_offG = shots_all - shots_onG
+                                
+                                fouls_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
+                                fouls = fouls_info.text
+                                if fouls == '':
+                                    fouls = '0'
+                                fouls = float(fouls.replace('/', ''))
+                                
+                                yellows_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
+                                yellows = yellows_info.text
+                                if yellows == '':
+                                    yellows = '0'
+                                yellows = float(yellows.replace('/', ''))
+                                
+                                reds_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[10]')
+                                reds = reds_info.text
+                                if reds == '':
+                                    reds = '0'
+                                reds = float(reds.replace('/', ''))
+                                
+        
+                                
+                                saves = 0
+                                goals_allowed = 0
                                 clean_sheet = 0
                             
-                            
                         else:
-                            goals_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[5]')
-                            goals = goals_info.text
-                            if goals == '':
-                                goals = '0'
-                            goals = float(goals.replace('/', ''))
-                            
-                            assists_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[6]')
-                            assists = assists_info.text
-                            if assists == '':
-                                assists = '0'
-                            assists = float(assists.replace('/', ''))
-                            
-                            shots_onG_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
-                            shots_onG = shots_onG_info.text
-                            if shots_onG == '':
-                                shots_onG = '0'
-                            shots_onG = float(shots_onG.replace('/', ''))
-                            
-                            shots_all_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
-                            shots_all = shots_all_info.text
-                            if shots_all == '':
-                                shots_all = '0'
-                            shots_all = float(shots_all.replace('/', ''))
+                            try:
+                                goals_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[5]')
+                                goals = goals_info.text
+                                if goals == '':
+                                    goals = '0'
+                                goals = float(goals.replace('/', ''))
+                                
+                                assists_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[6]')
+                                assists = assists_info.text
+                                if assists == '':
+                                    assists = '0'
+                                assists = float(assists.replace('/', ''))
+                                
+                                shots_onG_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[8]')
+                                shots_onG = shots_onG_info.text
+                                if shots_onG == '':
+                                    shots_onG = '0'
+                                shots_onG = float(shots_onG.replace('/', ''))
+                                
+                                shots_all_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[7]')
+                                shots_all = shots_all_info.text
+                                if shots_all == '':
+                                    shots_all = '0'
+                                shots_all = float(shots_all.replace('/', ''))
 
-                            shots_offG = shots_all - shots_onG
-                            
-                            fouls_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
-                            fouls = fouls_info.text
-                            if fouls == '':
-                                fouls = '0'
-                            fouls = float(fouls.replace('/', ''))
-                            
-                            yellows_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
-                            yellows = yellows_info.text
-                            if yellows == '':
-                                yellows = '0'
-                            yellows = float(yellows.replace('/', ''))
-                            
-                            reds_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[10]')
-                            reds = reds_info.text
-                            if reds == '':
-                                reds = '0'
-                            reds = float(reds.replace('/', ''))
-                            
-    
-                            
-                            saves = 0
-                            goals_allowed = 0
-                            clean_sheet = 0
+                                shots_offG = shots_all - shots_onG
+                                
+                                fouls_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[9]')
+                                fouls = fouls_info.text
+                                if fouls == '':
+                                    fouls = '0'
+                                fouls = float(fouls.replace('/', ''))
+                                
+                                yellows_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[11]')
+                                yellows = yellows_info.text
+                                if yellows == '':
+                                    yellows = '0'
+                                yellows = float(yellows.replace('/', ''))
+                                
+                                reds_info = driver.find_element(By.XPATH, xml_path + f'/tr[{index}]/td[10]')
+                                reds = reds_info.text
+                                if reds == '':
+                                    reds = '0'
+                                reds = float(reds.replace('/', ''))
+                                
+        
+                                
+                                saves = 0
+                                goals_allowed = 0
+                                clean_sheet = 0
+                            except NoSuchElementException:
+                                saves = 0
+                                goals_allowed = 0
+                                clean_sheet = 0
+                                reds = 0
+                                yellows = 0
+                                fouls = 0
+                                shots_offG = 0
+                                shots_onG = 0
+                                assists = 0
+                                goals = 0
                     else:
                         saves = 0
                         goals_allowed = 0
