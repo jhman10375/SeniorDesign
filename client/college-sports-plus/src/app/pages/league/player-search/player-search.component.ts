@@ -16,6 +16,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { LeagueAthleteModel } from '../../../shared/models/league-athlete.model';
+import { LeagueModel } from '../../../shared/models/league.model';
 import { AthleteService } from '../../../shared/services/bl/athlete.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 import { PlayerFilterBase } from './player-filter/player-filter.base.component';
@@ -45,6 +46,10 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
 
   @Input() override set athletes(v: Array<LeagueAthleteModel>) {
     if (v) {
+      v = this.updatePlayerIDs(
+        v,
+        this.leagueService.getLeague(this.leagueID) ?? new LeagueModel()
+      );
       this.playersReadonly = v;
       this.searchPlayers(this.searchText(), v, this.draftMode);
       this._athleteList = v;
@@ -125,6 +130,9 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
   }
 
   navigateTo(athleteID: string): void {
+    const athlete: LeagueAthleteModel =
+      this.athletes.find((x) => x.AthleteID == athleteID) ??
+      new LeagueAthleteModel();
     this.router.navigate(['player', athleteID], {
       relativeTo: this.activatedRoute,
     });
@@ -136,6 +144,31 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
     } else {
       return false;
     }
+  }
+
+  updatePlayerIDs(
+    athletes: Array<LeagueAthleteModel>,
+    league: LeagueModel
+  ): Array<LeagueAthleteModel> {
+    const retVal: Array<LeagueAthleteModel> = [];
+    const leagueAthletes: Array<LeagueAthleteModel> = [];
+    if (league.Season && league.Season.length > 0) {
+      league?.Season[0]?.Games.forEach((game) => {
+        game.AwayTeam.forEach((player) => {
+          player.Athlete.PlayerID = game.AwayTeamPlayerID;
+          leagueAthletes.push(player.Athlete);
+        });
+        game.HomeTeam.forEach((player) => {
+          player.Athlete.PlayerID = game.HomeTeamPlayerID;
+          leagueAthletes.push(player.Athlete);
+        });
+      });
+    }
+    leagueAthletes.forEach((athlete) => {
+      athletes = athletes.filter((x) => x.AthleteID != athlete.AthleteID);
+      retVal.push(athlete);
+    });
+    return retVal.concat(athletes);
   }
 
   checkIfAtParentRoute(): boolean {

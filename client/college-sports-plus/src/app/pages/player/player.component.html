@@ -1,6 +1,14 @@
 @if (isMobile) {
   @if (player) {
-    <player-header [player]="player"></player-header>
+    @if (leaguePlayer) {
+      <player-header
+        [player]="player"
+        [LeaguePlayer]="leaguePlayer"
+        [school]="school"
+      ></player-header>
+    } @else {
+      <player-header [player]="player" [school]="school"></player-header>
+    }
     <div style="overflow-y: auto">
       <div style="height: 200px" class="border-1 border-round mb-2">
         <h2>This div will contain general stats</h2>

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
@@ -8,6 +9,7 @@ import {
 import { Button } from 'primeng/button';
 import { Subject, takeUntil } from 'rxjs';
 
+import { SportEnum } from '../../shared/enums/sport.enum';
 import { LeaguePlayerModel } from '../../shared/models/league-player.model';
 import { LeagueModel } from '../../shared/models/league.model';
 import { AthleteService } from '../../shared/services/bl/athlete.service';
@@ -18,18 +20,22 @@ import { UserService } from '../../shared/services/dl/user.service';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, RouterLink, Button],
+  imports: [CommonModule, RouterOutlet, RouterLink, Button],
   providers: [AthleteService, UserService],
   styleUrls: ['league.component.scss'],
   selector: 'league',
   templateUrl: 'league.component.html',
 })
 export class LeagueComponent implements OnInit, OnDestroy {
+  readonly SportEnum = SportEnum;
+
   isMobile: boolean = false;
 
   myTeam: LeaguePlayerModel | undefined;
 
   activeLeague: LeagueModel | undefined;
+
+  leagueType: SportEnum;
 
   isLeagueManager: boolean = false;
 
@@ -74,6 +80,8 @@ export class LeagueComponent implements OnInit, OnDestroy {
         } else {
           this.isLeagueManager = false;
         }
+
+        this.leagueType = this.activeLeague?.LeagueType ?? SportEnum.Football;
       },
     });
   }

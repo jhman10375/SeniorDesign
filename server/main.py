@@ -59,6 +59,10 @@ async def get_schedule(team_name: str, season : Season) -> list[fbGame]:
 async def get_all_schools() -> list[school]:
    return all_schools()
 
+@app.get("/schools/get_by_name/{team_name}", tags=["School Info"])
+async def get_school_by_name(team_name) -> school | None:
+   return school_by_name(team_name)
+
 @app.get("/team/get_by_id/{team_id}", tags=["Team Info"])
 async def get_team_by_id(team_id):
    return team_by_id(team_id)

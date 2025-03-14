@@ -109,6 +109,51 @@ export class FastAPIService {
       );
   }
 
+  getSchoolByName(name: string): Observable<SchoolModel | null> {
+    return this.httpClient
+      .get<SchoolFAPIModel | null>(this.url + 'schools/get_by_name/' + name)
+      .pipe(
+        map((x) => {
+          if (x != null) {
+            const school: SchoolModel = new SchoolModel();
+            school.Abbreviation = x.abbreviation;
+            school.AltColor = x.alt_color;
+            school.AltName1 = x.alt_name_1;
+            school.AltName2 = x.alt_name_2;
+            school.AltName3 = x.alt_name_3;
+            school.Color = x.color;
+            school.Conference = x.conference;
+            school.Division = x.division;
+            school.ID = x.id;
+            school.Logos = x.logos;
+            school.Mascot = x.mascot;
+            school.School = x.school;
+            school.Twitter = x.twitter;
+            const location: SchoolLocationModel = new SchoolLocationModel();
+            location.Capacity = x.location.capacity;
+            location.City = x.location.city;
+            location.CountryCode = x.location.country_code;
+            location.Dome = x.location.dome;
+            location.Elevation = x.location.elevation;
+            location.Grass = x.location.grass;
+            location.Latitude = x.location.latitude;
+            location.Longitude = x.location.longitude;
+            location.Name = x.location.name;
+            location.State = x.location.state;
+            location.Timezone = x.location.timezone;
+            location.VenueID = x.location.venue_id;
+            location.YearConstructed = x.location.year_constructed;
+            location.Zip = x.location.zip;
+            school.Location = location;
+
+            return school;
+          } else {
+            return null;
+          }
+        })
+      );
+  }
+
   getTeamByID(teamID: string): Observable<SchoolModel> {
     return this.httpClient
       .get<SchoolFAPIModel>(this.url + 'team/get_by_id/' + teamID)
