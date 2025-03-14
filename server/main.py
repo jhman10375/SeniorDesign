@@ -199,6 +199,7 @@ async def search_for_players_by_id(player_id : int) -> playerInfo:
 
     return search_player(fullList, player_id)
 
+
 @app.get("/players/search/by_ids", tags=["Player Info"])
 async def search_for_players_by_ids(player_ids = ['']) -> List[playerInfo]:
     print(player_ids)
@@ -207,6 +208,7 @@ async def search_for_players_by_ids(player_ids = ['']) -> List[playerInfo]:
     for id in ids:
         players.append(search_player(fullList, id))
     return players
+
 
 @app.get("/lists/repopulate")
 async def repopulate_player_lists():
@@ -222,14 +224,22 @@ async def repopulate_player_lists():
     print("Baseball Teams done")
     bsbList.populate_players()
     print("Baseball Players done")
+    bsbList.populate_first_string()
+    print("Baseball First Stringers done")
     sccList.populate()
     print("Soccer Teams done")
+    sccList.populate_players()
+    print("Soccer Players done")
+    sccList.populate_first_string()
+    print("Soccer First Stringers done")
 
 
     if (fullList.populated and firstStrings.populated 
         and bkbList.populated and bkbList.first_string_populated
         and bsbList.populated and bsbList.players_populated
-        and sccList.populated):
+        and sccList.populated and sccList.players_populated
+        and bsbList.first_string_populated
+        and sccList.first_string_populated):
        return "All lists populated!"
     else:
        return "Something went wrong"
@@ -850,6 +860,33 @@ async def predict_player_stats(player_id : str, opponent = "next") -> predictedS
                                field_goals_missed=test_dict["fg_miss"])
     
     return return_stats
+
+
+@app.get("/predict/full_info", tags=["Prediction", "Player Info"])
+async def get_first_string_info_with_predictions(page = 1, page_size= 100) -> list[fbPlayerWithStats]:
+    players = fb_first_strings(firstStrings, page, page_size)
+
+    stats = []
+
+    for player in players:
+        stats.append(fb_predict_season(player.player_id, fullList))
+
+
+    return [fbPlayerWithStats(
+        player_id = plyr[0].player_id,
+        player_name = plyr[0].player_name,
+        player_position = plyr[0].player_position,
+        player_jersey = plyr[0].player_jersey,
+        player_height = plyr[0].player_height,
+        player_weight = plyr[0].player_weight,
+        player_team = plyr[0].player_team,
+        player_year = plyr[0].player_year,
+        team_color = plyr[0].team_color,
+        team_alt_color = plyr[0].team_alt_color,
+        team_logos = plyr[0].team_logos,
+        stats = plyr[1] )
+    
+    for plyr in zip(players, stats)]
 
 
 @app.get("/predict/season/{player_id}", tags=["Prediction"])
@@ -2000,6 +2037,23 @@ async def get_baseball_player_season_stats(player_id : int, season : Season) -> 
 
     return get_bsb_season_info(player_id,season.value,player_details['position'], player_details['name'])
 
+@app.get("/bsb/players/get_first_string", tags=["Baseball", "Baseball - Player Info"]) 
+async def get_all_first_string_baseball_players(page = 1, page_size= 100) -> list[bbPlayer]:
+
+    start = (int(page) - 1)*int(page_size)
+
+    end =  ((int(page) - 1)*int(page_size))+int(page_size)
+
+    all_players = bsbList.first_string_df.copy()
+
+    all_players = all_players[start:end]
+
+    return [bbPlayer(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_team=player.team,
+                           player_height=player.height, player_batting_hand=str(player.bat),
+                           player_throwing_hand=str(player.throw),
+                           player_year=player.year, team_color=player.color, 
+                           team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
 
 #SOCCER ENDPOINTS
 
@@ -2515,6 +2569,24 @@ async def get_soccer_player_season_stats(player_id : int, season : Season) -> sc
     return get_scc_season_info(player_id,season.value,player_details['position'], player_details['name'])
 
 
+@app.get("/scc/players/get_first_string", tags=["Soccer", "Soccer - Player Info"]) 
+async def get_all_first_string_soccer_players(page = 1, page_size= 100) -> list[sccPlayer]:
+
+    start = (int(page) - 1)*int(page_size)
+
+    end =  ((int(page) - 1)*int(page_size))+int(page_size)
+
+    all_players = sccList.first_string_df.copy()
+
+    all_players = all_players[start:end]
+
+    return [sccPlayer(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_team=player.team,
+                           player_height=player.height, 
+                           player_year=player.year, team_color=player.color, 
+                           team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
+
+
 @app.get("/league-tools/generate_schedule/", tags=["League Tools"])
 async def generate_league_schedule(num_teams = 8, num_weeks = 10) -> list[SchedWeek]:
    
@@ -2540,6 +2612,8 @@ async def generate_league_schedule(num_teams = 8, num_weeks = 10) -> list[SchedW
         return_sched.append(SchedWeek(week_num=week_number, week_matches=match_list))
 
    return return_sched
+
+
 
 
 #DRAFT ENDPOINTS

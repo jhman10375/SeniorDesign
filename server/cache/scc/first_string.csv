@@ -1,0 +1,964 @@
+,id,name,year,jersey,position,height,color,alt_color,logos,team
+0,8987032,Duarte Chapelas,4,6,D,75,#532e1f,#8b7f79,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2711.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2711.png']",Western Michigan
+1,8906167,Greyson Mercer,4,17,F,74,#532e1f,#8b7f79,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2711.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2711.png']",Western Michigan
+2,8522361,Carson Hodgson,3,27,M,68,#532e1f,#8b7f79,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2711.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2711.png']",Western Michigan
+3,8758808,Colin Welsh,4,1,GK,74,#532e1f,#8b7f79,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2711.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2711.png']",Western Michigan
+4,8872207,Liam Smith,1,13,FM,70,#532e1f,#8b7f79,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2711.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2711.png']",Western Michigan
+5,8518116,Francisco Ranieri,2,1,GK,73,#00447c,#d31245,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2226.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2226.png']",Florida Atlantic
+6,8977361,Mamadou Diarra,4,35,None Listed,70,#00447c,#d31245,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2226.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2226.png']",Florida Atlantic
+7,8972184,Aboubacar Traore,2,18,M,69,#00447c,#d31245,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2226.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2226.png']",Florida Atlantic
+8,8520095,Jozo Cancar,4,30,D,73,#00447c,#d31245,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2226.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2226.png']",Florida Atlantic
+9,8517023,Noah Kvifte,4,11,F,74,#00447c,#d31245,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2226.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2226.png']",Florida Atlantic
+10,8962865,Emil Jaaskelainen,4,9,F,75,#00285e,#84754e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2006.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2006.png']",Akron
+11,8505473,Dyson Clapier,4,19,M,71,#00285e,#84754e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2006.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2006.png']",Akron
+12,8962904,Brett Kaminski,1,30,GK,72,#00285e,#84754e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2006.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2006.png']",Akron
+13,8506437,Ashton Kamdem,3,27,D,70,#00285e,#84754e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2006.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2006.png']",Akron
+14,8515447,Kamran Acito,3,3,D,75,#013088,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/150.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/150.png']",Duke
+15,8959753,Adam Luckhurst,4,26,F,72,#013088,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/150.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/150.png']",Duke
+16,8523946,Drew Kerr,3,10,M,72,#013088,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/150.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/150.png']",Duke
+17,8506062,Nikolai Bull Jorgensen,2,8,FM,74,#013088,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/150.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/150.png']",Duke
+18,8512627,Sintayehu Clements,4,19,MD,73,#013088,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/150.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/150.png']",Duke
+19,8758868,Wessel Speel,4,1,GK,79,#013088,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/150.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/150.png']",Duke
+20,8511768,Julien Le Bourdoulous,4,10,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Kansas City
+21,8508985,Guille Munoz,2,4,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Kansas City
+22,8956876,Jeremy Francou,2,21,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Kansas City
+23,8509913,Brandon McGaugh,4,0,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Kansas City
+24,8516011,Fabian Straudi,4,21,M,69,#231f20,#d73f09,"['http://a.espncdn.com/i/teamlogos/ncaa/500/204.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/204.png']",Oregon State
+25,8516701,Jacob Zapien,2,6,D,72,#231f20,#d73f09,"['http://a.espncdn.com/i/teamlogos/ncaa/500/204.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/204.png']",Oregon State
+26,8758901,Gandhi Cruz,4,1,GK,72,#231f20,#d73f09,"['http://a.espncdn.com/i/teamlogos/ncaa/500/204.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/204.png']",Oregon State
+27,8956390,Sergi Solans,1,7,F,74,#231f20,#d73f09,"['http://a.espncdn.com/i/teamlogos/ncaa/500/204.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/204.png']",Oregon State
+28,8956364,Shugai Kaliisa,1,18,MD,0,#231f20,#d73f09,"['http://a.espncdn.com/i/teamlogos/ncaa/500/204.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/204.png']",Oregon State
+29,8872664,Ronan Wynne,4,23,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Denver
+30,8522606,Sam Bassett,4,10,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Denver
+31,8523518,Oje Ofunrein,4,8,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Denver
+32,8510281,Isaac Nehme,3,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Denver
+33,8873607,Kyle Blasingame,4,7,M,69,#2b1000,#492000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/189.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/189.png']",Bowling Green
+34,8522278,Gus Peacock,2,20,D,72,#2b1000,#492000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/189.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/189.png']",Bowling Green
+35,8873606,Brendan Graves,4,33,GK,72,#2b1000,#492000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/189.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/189.png']",Bowling Green
+36,8520733,Taylor Dyson,4,6,F,69,#2b1000,#492000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/189.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/189.png']",Bowling Green
+37,8523403,Efetobo Aror,2,8,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Portland
+38,8509951,Oliver Jeppe,3,12,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Portland
+39,8952382,Kendi Bellini,4,28,FM,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Portland
+40,8515379,Joe Highfield,1,24,F,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Portland
+41,8517365,Miguel-Angel Hernandez,2,34,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Portland
+42,8504710,Mikey Johnson,3,28,F,74,#033594,#e8ce31,"['http://a.espncdn.com/i/teamlogos/ncaa/500/48.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/48.png']",Delaware
+43,8511820,Adam Vik,3,1,GK,75,#033594,#e8ce31,"['http://a.espncdn.com/i/teamlogos/ncaa/500/48.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/48.png']",Delaware
+44,8515306,Orri Thorhallsson,4,8,M,75,#033594,#e8ce31,"['http://a.espncdn.com/i/teamlogos/ncaa/500/48.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/48.png']",Delaware
+45,8504750,Thaddeus Glasser,2,23,D,70,#033594,#e8ce31,"['http://a.espncdn.com/i/teamlogos/ncaa/500/48.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/48.png']",Delaware
+46,8955684,Dario Caetano,4,1,GK,75,#004B8D,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2168.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2168.png']",Dayton
+47,8955723,Felix Buabeng,2,34,F,70,#004B8D,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2168.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2168.png']",Dayton
+48,8508766,Joseph Melto Quiah,3,31,M,70,#004B8D,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2168.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2168.png']",Dayton
+49,8509136,Paul Yeboah,4,18,D,73,#004B8D,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2168.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2168.png']",Dayton
+50,8979424,Harry Jolley,4,21,D,71,#5F0000,#e8e8e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2623.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2623.png']",Missouri State
+51,8979522,Jesus Barea,4,10,F,69,#5F0000,#e8e8e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2623.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2623.png']",Missouri State
+52,8523760,Tyler Caton,2,12,M,71,#5F0000,#e8e8e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2623.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2623.png']",Missouri State
+53,8517386,Will Lowry,4,30,GK,72,#5F0000,#e8e8e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2623.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2623.png']",Missouri State
+54,8523792,Connor Miller,2,35,M,68,#d60027,#101010,"['http://a.espncdn.com/i/teamlogos/ncaa/500/172.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/172.png']",Cornell
+55,8521834,Alex Harris,2,9,F,71,#d60027,#101010,"['http://a.espncdn.com/i/teamlogos/ncaa/500/172.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/172.png']",Cornell
+56,8512437,Ryan Friedberg,3,1,GK,77,#d60027,#101010,"['http://a.espncdn.com/i/teamlogos/ncaa/500/172.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/172.png']",Cornell
+57,9008407,Aidan Martin,1,26,D,0,#d60027,#101010,"['http://a.espncdn.com/i/teamlogos/ncaa/500/172.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/172.png']",Cornell
+58,8512868,Leonardo D'Ambrosio,4,10,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Col. of Charleston
+59,8960607,Noah Gold,3,23,None Listed,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Col. of Charleston
+60,8960636,Ryan Watson,1,17,D,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Col. of Charleston
+61,8960474,Stian Bendvold,1,27,F,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Col. of Charleston
+62,8510816,Olly Marshall,3,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Col. of Charleston
+63,8513321,Marko Borkovic,3,7,M,71,#ce1141,#505056,"['http://a.espncdn.com/i/teamlogos/ncaa/500/194.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/194.png']",Ohio State
+64,8870368,David Ajagbe,1,18,F,73,#ce1141,#505056,"['http://a.espncdn.com/i/teamlogos/ncaa/500/194.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/194.png']",Ohio State
+65,8870361,Thomas Gilej,4,6,D,75,#ce1141,#505056,"['http://a.espncdn.com/i/teamlogos/ncaa/500/194.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/194.png']",Ohio State
+66,8503658,Max Trejo,3,1,GK,74,#ce1141,#505056,"['http://a.espncdn.com/i/teamlogos/ncaa/500/194.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/194.png']",Ohio State
+67,8508337,Damian McGregor-Wickham,4,3,D,72,#194896,#990134,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2506.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2506.png']",Presbyterian
+68,8962342,Steven Cordova,3,6,M,70,#194896,#990134,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2506.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2506.png']",Presbyterian
+69,8962355,Loan Marin,3,1,GK,74,#194896,#990134,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2506.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2506.png']",Presbyterian
+70,8507175,Damorney Hutchinson,4,9,F,72,#194896,#990134,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2506.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2506.png']",Presbyterian
+71,8522666,Ramesh Delsouz,3,29,F,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Quinnipiac
+72,8521396,Karl Netzell,3,1,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Quinnipiac
+73,8516255,Noe Cabezas,4,8,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Quinnipiac
+74,8509729,Kevin Clarke,3,31,None Listed,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Quinnipiac
+75,8518083,Jacob Garrigues,2,14,MD,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Quinnipiac
+76,8982411,Pol Mesalles,4,4,D,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Quinnipiac
+77,8513169,Patrick Donovan,3,0,GK,74,#f56600,#522d80,"['http://a.espncdn.com/i/teamlogos/ncaa/500/228.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/228.png']",Clemson
+78,8506634,Joran Gerbet,4,6,M,71,#f56600,#522d80,"['http://a.espncdn.com/i/teamlogos/ncaa/500/228.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/228.png']",Clemson
+79,8968543,Titus Sandy Jr.,4,14,D,72,#f56600,#522d80,"['http://a.espncdn.com/i/teamlogos/ncaa/500/228.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/228.png']",Clemson
+80,8958856,Wahabu Musah,1,7,F,72,#f56600,#522d80,"['http://a.espncdn.com/i/teamlogos/ncaa/500/228.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/228.png']",Clemson
+81,8847281,Luis Maestre,4,31,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Mason
+82,8970841,Quentin Clain,1,17,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Mason
+83,8955252,Marek Gonda,4,9,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Mason
+84,8518823,Jaume Salvado,4,18,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Mason
+85,8513220,James Eliuda,2,8,FM,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Mason
+86,8508107,Erick Serrano,4,10,M,66,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cal St. Fullerton
+87,8964035,Julian Borja,1,5,D,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cal St. Fullerton
+88,8520446,Fitz Williams,2,15,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cal St. Fullerton
+89,8964063,Aiden Bengard,1,16,MD,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cal St. Fullerton
+90,8964034,Brandon Limes,4,1,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cal St. Fullerton
+91,8964056,Yanis Rucquois,2,7,FM,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cal St. Fullerton
+92,8519371,Demian Alvarez,4,23,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seattle U
+93,8758824,Titus Washington,4,13,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seattle U
+94,8960321,Edgar Leon,1,28,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seattle U
+95,8504015,Charlie Lanphier,3,18,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seattle U
+96,8512465,Richy Lapointe-Guevara,4,2,MD,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seattle U
+97,8960337,Yuta Toya,3,12,FM,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seattle U
+98,8503517,Mitch Ferguson,3,2,D,76,#0c2340,#c99700,"['http://a.espncdn.com/i/teamlogos/ncaa/500/87.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/87.png']",Notre Dame
+99,8519624,Wyatt Lewis,2,6,M,73,#0c2340,#c99700,"['http://a.espncdn.com/i/teamlogos/ncaa/500/87.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/87.png']",Notre Dame
+100,8959213,Collin Travasos,4,99,GK,75,#0c2340,#c99700,"['http://a.espncdn.com/i/teamlogos/ncaa/500/87.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/87.png']",Notre Dame
+101,8521440,Jack Flanagan,2,11,F,70,#0c2340,#c99700,"['http://a.espncdn.com/i/teamlogos/ncaa/500/87.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/87.png']",Notre Dame
+102,8506655,Matthew Reed,2,21,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Creighton
+103,8510410,Blake Gillingham,3,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Creighton
+104,8509972,Jackson Castro,4,10,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Creighton
+105,8905875,Amos Boum Nlend,1,9,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Creighton
+106,8518060,Sergio Gonzalez Fernandez,3,6,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Iona
+107,8996702,Bautista Rossi,1,7,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Iona
+108,8972155,Elird Mero,4,2,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Iona
+109,8512759,Loukas Georgiou,3,0,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Iona
+110,8520014,Jaxon Reinhardt,3,19,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],North Florida
+111,8503882,Alex Barnett,3,4,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],North Florida
+112,8505224,Rentaro Miyakawa,4,16,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],North Florida
+113,8960535,Luciano Natoli,2,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],North Florida
+114,8503832,Nicolas Hald Willumsen,3,18,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Santa Barbara
+115,8518688,Filip Basili,3,77,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Santa Barbara
+116,8514100,Haruki Utsumi,4,2,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Santa Barbara
+117,8518507,Henrique Bueno,4,23,FM,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Santa Barbara
+118,8956407,David Mitzner,4,0,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Santa Barbara
+119,8511324,Calle Mollerberg,2,4,MD,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Santa Barbara
+120,8508268,Filippo Dadone,4,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Hofstra
+121,8521450,Teddy Baker,4,23,M,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Hofstra
+122,8957783,Jacob Woznicki,4,21,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Hofstra
+123,8957848,Charlie Blair,1,25,MD,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Hofstra
+124,8513808,Gabriel Pacheco,3,2,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Hofstra
+125,8516161,Jeremi Abonnel,4,28,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Louis
+126,8510085,Matthew Wrobel,3,9,F,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Louis
+127,8954690,Drake Fournier,1,19,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Louis
+128,8513423,Lawson Redmon,4,22,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Louis
+129,8515057,Luis Sahmkow,4,17,F,75,#003263,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/221.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/221.png']",Pittsburgh
+130,8516472,Guilherme Feitosa,4,10,M,72,#003263,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/221.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/221.png']",Pittsburgh
+131,8521882,Cabral Carter,3,0,GK,74,#003263,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/221.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/221.png']",Pittsburgh
+132,8523320,Mateo Maillefaud,4,12,D,67,#003263,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/221.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/221.png']",Pittsburgh
+133,8515104,Josh Lane,2,1,GK,74,#00214D,#a21d2b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2523.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2523.png']",Robert Morris
+134,8968813,Lucas Barsoee,1,23,M,73,#00214D,#a21d2b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2523.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2523.png']",Robert Morris
+135,8967573,Logan Gilley,4,11,F,71,#00214D,#a21d2b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2523.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2523.png']",Robert Morris
+136,8520312,Mats Bramer,2,6,D,72,#00214D,#a21d2b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2523.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2523.png']",Robert Morris
+137,8519381,Victor Koah,3,17,MD,72,#00214D,#a21d2b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2523.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2523.png']",Robert Morris
+138,8522339,Kai McLoughlin,4,16,FM,69,#00214D,#a21d2b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2523.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2523.png']",Robert Morris
+139,8513356,Roman Kedgley,3,7,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Wright State
+140,8521883,Felix Ezekwuka,2,22,F,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Wright State
+141,8506502,Henry Hutchinson,2,26,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Wright State
+142,8516938,Joel Shaw,4,1,GK,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Wright State
+143,8961988,Brayden Tester,1,25,FM,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Wright State
+144,8506101,Chris Album,3,9,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Green Bay
+145,8512368,Oscar Arroyo,2,28,MD,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Green Bay
+146,8523420,Tommy Coughlin,3,17,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Green Bay
+147,8503953,So Nishikawa,4,13,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Green Bay
+148,8522442,Luke Nicholson,2,4,FM,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Green Bay
+149,8951187,Alvaro Rodriguez,4,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Green Bay
+150,8505837,Wyatt Nelson,2,22,GK,75,#2774ae,#f2a900,"['http://a.espncdn.com/i/teamlogos/ncaa/500/26.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/26.png']",UCLA
+151,8521728,Tarun Karumanchi,3,6,M,71,#2774ae,#f2a900,"['http://a.espncdn.com/i/teamlogos/ncaa/500/26.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/26.png']",UCLA
+152,8512328,Philip Naef,2,14,D,71,#2774ae,#f2a900,"['http://a.espncdn.com/i/teamlogos/ncaa/500/26.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/26.png']",UCLA
+153,8956938,Andre Ochoa,4,8,F,69,#2774ae,#f2a900,"['http://a.espncdn.com/i/teamlogos/ncaa/500/26.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/26.png']",UCLA
+154,8959693,Bilal Camara,2,23,M,67,#c9001f,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/97.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/97.png']",Louisville
+155,8508434,Josh Jones,4,16,D,77,#c9001f,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/97.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/97.png']",Louisville
+156,8524029,Gage Guerra,4,9,F,70,#c9001f,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/97.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/97.png']",Louisville
+157,8959646,AJ Piela,1,1,GK,71,#c9001f,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/97.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/97.png']",Louisville
+158,8506155,Joschi Schelb,2,10,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Francis
+159,8987035,Torren Aikens,4,11,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Francis
+160,8758884,Niclas Becker,2,1,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Francis
+161,8515893,Fabian Wagner,2,7,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Francis
+162,8516124,Yaniv Bazini,4,11,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Vermont
+163,8516859,Adrian Schulze Solano,4,5,M,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Vermont
+164,8950412,Zach Barrett,4,28,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Vermont
+165,8950427,Niklas Herceg,4,1,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Vermont
+166,8960630,Liam Bennett,4,3,D,0,#cc0000,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/152.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/152.png']",NC State
+167,8520659,Vusumzi Plamana,4,5,M,70,#cc0000,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/152.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/152.png']",NC State
+168,8960663,Logan Erb,3,1,GK,75,#cc0000,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/152.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/152.png']",NC State
+169,8517728,Jarvis Cleal,4,7,MD,74,#cc0000,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/152.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/152.png']",NC State
+170,8504160,Hakim Karamoko,2,31,F,72,#cc0000,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/152.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/152.png']",NC State
+171,8960642,Junior Nare,4,10,FM,70,#cc0000,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/152.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/152.png']",NC State
+172,8515207,Alec McLachlan,3,0,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. John's
+173,8970901,Nigel Griffith,4,25,F,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. John's
+174,8970924,Thomas Lamaille,4,3,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. John's
+175,8514980,Jackson Gould,3,12,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. John's
+176,8951922,Carter Abbott,4,1,GK,71,#830032,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2230.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2230.png']",Fordham
+177,8522092,Daniel D'Ippolito,3,10,M,71,#830032,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2230.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2230.png']",Fordham
+178,8519969,Jed Dixon,4,12,D,74,#830032,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2230.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2230.png']",Fordham
+179,8758923,Luke Pompliano,4,24,F,73,#830032,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2230.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2230.png']",Fordham
+180,8953076,Jose Angel Luna,1,11,FM,67,#0d1361,#00a3e0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2086.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2086.png']",Butler
+181,8513386,Palmer Ault,3,10,F,70,#0d1361,#00a3e0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2086.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2086.png']",Butler
+182,8505679,Henri Kumwenda,4,17,D,71,#0d1361,#00a3e0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2086.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2086.png']",Butler
+183,8953057,Caleb Norris,4,1,GK,77,#0d1361,#00a3e0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2086.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2086.png']",Butler
+184,8758843,Sam Pitts-Eckersall,3,23,M,71,#0d1361,#00a3e0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2086.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2086.png']",Butler
+185,8953129,Max Padua,1,14,M,66,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],DePaul
+186,8953122,George Wyatt,3,3,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],DePaul
+187,8510211,Liam Mullins,2,9,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],DePaul
+188,8511075,Santiago Davila,4,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],DePaul
+189,8514215,Nate Martinez,3,1,GK,75,#003775,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/290.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/290.png']",Georgia Southern
+190,8521698,Kevin Pierre,4,8,M,73,#003775,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/290.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/290.png']",Georgia Southern
+191,8970646,Alistair Danjon,4,5,D,73,#003775,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/290.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/290.png']",Georgia Southern
+192,8515955,Zachary Martin,3,9,F,73,#003775,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/290.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/290.png']",Georgia Southern
+193,8509515,Ty Wilson,2,23,FM,66,#003775,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/290.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/290.png']",Georgia Southern
+194,8871281,Gabriel Atienza,3,3,D,72,#73000a,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2579.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2579.png']",South Carolina
+195,8758863,Ethan Ballek,3,10,M,72,#73000a,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2579.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2579.png']",South Carolina
+196,8966823,Martin Yahia,4,19,F,75,#73000a,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2579.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2579.png']",South Carolina
+197,8962375,Filip Versterre,1,1,GK,75,#73000a,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2579.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2579.png']",South Carolina
+198,8962419,Charlie Heuer,1,16,F,71,#990000,#edebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/84.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/84.png']",Indiana
+199,8962409,JT Harms,4,1,GK,73,#990000,#edebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/84.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/84.png']",Indiana
+200,8962412,Jansen Miller,4,5,D,74,#990000,#edebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/84.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/84.png']",Indiana
+201,8513157,EJ Dreher,2,29,M,70,#990000,#edebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/84.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/84.png']",Indiana
+202,8974813,Laurin Mack,1,38,GK,73,#D5002B,#ffcd00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/120.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/120.png']",Maryland
+203,8511389,William Kulvik,4,97,D,73,#D5002B,#ffcd00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/120.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/120.png']",Maryland
+204,8758712,Max Rogers,4,11,M,70,#D5002B,#ffcd00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/120.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/120.png']",Maryland
+205,8504261,Colin Griffith,3,9,F,70,#D5002B,#ffcd00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/120.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/120.png']",Maryland
+206,8974756,Chris Steinleitner,3,22,MD,74,#D5002B,#ffcd00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/120.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/120.png']",Maryland
+207,8503805,Steven Ramirez,2,9,F,71,#2f99d4,#2f99d4,"['http://a.espncdn.com/i/teamlogos/ncaa/500/301.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/301.png']",San Diego
+208,8958090,Luca Fava,1,24,M,69,#2f99d4,#2f99d4,"['http://a.espncdn.com/i/teamlogos/ncaa/500/301.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/301.png']",San Diego
+209,8958127,Jack Sandmeyer,4,26,D,76,#2f99d4,#2f99d4,"['http://a.espncdn.com/i/teamlogos/ncaa/500/301.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/301.png']",San Diego
+210,8517878,Donovan Parisian,2,33,GK,76,#2f99d4,#2f99d4,"['http://a.espncdn.com/i/teamlogos/ncaa/500/301.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/301.png']",San Diego
+211,8523501,Owen Riecke,2,15,FM,69,#2f99d4,#2f99d4,"['http://a.espncdn.com/i/teamlogos/ncaa/500/301.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/301.png']",San Diego
+212,8959953,Ryan Berghauer,1,12,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Milwaukee
+213,8959962,Angel Gongora,3,6,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Milwaukee
+214,8510645,Bienvenu Djunga,4,10,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Milwaukee
+215,8513164,Daniel Ibarra,4,30,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Milwaukee
+216,8518119,Ryan Calheira,2,11,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMBC
+217,8523445,Emigdio Lopez,3,1,GK,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMBC
+218,8956808,Joseph Picotto,3,6,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMBC
+219,8517689,Lasse Kelp,3,21,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMBC
+220,8523801,Alex Bamford,4,4,D,74,#00ae42,#be854c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/276.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/276.png']",Marshall
+221,8516138,Theo Godard,2,21,M,69,#00ae42,#be854c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/276.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/276.png']",Marshall
+222,8758873,Aleksa Janjic,3,33,GK,75,#00ae42,#be854c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/276.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/276.png']",Marshall
+223,8975433,Tarik Pannholzer,4,9,F,68,#00ae42,#be854c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/276.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/276.png']",Marshall
+224,8506942,Leo Conneh,2,20,F,67,#071740,#a61f21,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2335.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2335.png']",Liberty
+225,8505725,Owen Moore,3,28,GK,69,#071740,#a61f21,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2335.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2335.png']",Liberty
+226,8506639,Lucas Kelly,2,3,D,72,#071740,#a61f21,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2335.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2335.png']",Liberty
+227,8961146,Gabe Findley,4,11,M,66,#071740,#a61f21,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2335.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2335.png']",Liberty
+228,8971920,Aby Gomez,2,10,M,70,#a7a9ac,#8e959a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2110.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2110.png']",Central Arkansas
+229,8510741,Elijah Bishop,2,4,D,75,#a7a9ac,#8e959a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2110.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2110.png']",Central Arkansas
+230,8515618,Pietro Fontana,3,99,F,71,#a7a9ac,#8e959a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2110.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2110.png']",Central Arkansas
+231,8504408,Javier Ramirez,3,1,GK,73,#a7a9ac,#8e959a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2110.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2110.png']",Central Arkansas
+232,8518317,Devonte Richards,4,3,FM,76,#a7a9ac,#8e959a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2110.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2110.png']",Central Arkansas
+233,8512120,Kaisei Matsudo,2,18,MD,70,#a7a9ac,#8e959a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2110.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2110.png']",Central Arkansas
+234,8965469,Agustin Lopez,1,10,M,69,#0033a0,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/96.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/96.png']",Kentucky
+235,8520481,Logan Dorsey,4,12,F,72,#0033a0,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/96.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/96.png']",Kentucky
+236,8965480,Mateo Franzotti,1,27,D,72,#0033a0,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/96.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/96.png']",Kentucky
+237,8965470,Harald Race,1,11,MD,73,#0033a0,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/96.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/96.png']",Kentucky
+238,8509537,Casper Mols,3,1,GK,76,#0033a0,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/96.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/96.png']",Kentucky
+239,8965467,Eric Onos,1,7,FM,67,#0033a0,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/96.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/96.png']",Kentucky
+240,8758701,Nick Dang,3,2,D,74,#232d4b,#f84c1e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/258.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/258.png']",Virginia
+241,8758700,Hayes Wood,4,7,F,74,#232d4b,#f84c1e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/258.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/258.png']",Virginia
+242,8513489,Joey Batrouni,4,1,GK,73,#232d4b,#f84c1e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/258.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/258.png']",Virginia
+243,8873734,Daniel Mangarov,4,10,M,67,#232d4b,#f84c1e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/258.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/258.png']",Virginia
+244,8758705,Willem Ebbinge,4,16,FM,73,#232d4b,#f84c1e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/258.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/258.png']",Virginia
+245,8522205,Yassine Rhoumar,3,29,MD,72,#232d4b,#f84c1e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/258.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/258.png']",Virginia
+246,8966440,Hubert Deragon,3,3,D,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],ETSU
+247,8515861,Lucas Nordin,2,11,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],ETSU
+248,8966443,Ulysses Hendriks,1,5,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],ETSU
+249,8516183,Marc Kouadio,4,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],ETSU
+250,8521583,Caleb Johnson,2,11,M,70,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/231.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/231.png']",Furman
+251,8963499,Christian Kraus,4,22,F,74,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/231.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/231.png']",Furman
+252,8963582,Gabe Cox,1,33,MD,70,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/231.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/231.png']",Furman
+253,8507578,Slade Starnes,3,5,D,75,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/231.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/231.png']",Furman
+254,8507334,Aaron Salinas,2,1,GK,73,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/231.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/231.png']",Furman
+255,8873628,Noah Adnan,4,2,D,74,#8c1515,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/24.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/24.png']",Stanford
+256,8518495,Zach Bohane,3,10,M,70,#8c1515,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/24.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/24.png']",Stanford
+257,8516518,Rowan Schnebly,2,1,GK,73,#8c1515,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/24.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/24.png']",Stanford
+258,8509268,Liam Doyle,3,17,F,71,#8c1515,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/24.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/24.png']",Stanford
+259,8962259,William Wagner,4,20,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cleveland State
+260,8519741,Caleb Trowbridge,2,4,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cleveland State
+261,8504116,Marko Rimac,4,7,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cleveland State
+262,8521041,Ryan Poling,4,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Cleveland State
+263,8519570,Zain Akhtar,2,13,MD,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Drexel
+264,8523092,Carles Aliberch,4,19,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Drexel
+265,8976141,Omar Jallow,1,12,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Drexel
+266,8971367,Colin Davis,4,25,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Drexel
+267,8971364,Alessandro Capogna,4,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Drexel
+268,8976170,Julian Pittaoulis,3,30,FM,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Drexel
+269,8507628,Jefferson Amaya,3,4,M,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],High Point
+270,8873236,Frankie DeFrancesco,1,11,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],High Point
+271,8758683,Mohammed Seidu,4,24,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],High Point
+272,8516150,Josh Caron,3,37,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],High Point
+273,8873384,Joshua Moore,1,30,MD,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],High Point
+274,8951408,Chris Niblock,1,14,FM,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],High Point
+275,8950768,Sven Merkesdal,1,18,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. Bonaventure
+276,8512347,Umechi Akuazaoku,4,9,F,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. Bonaventure
+277,8509698,Nicolas Pucci,3,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. Bonaventure
+278,8503822,Mattia Ferretti,4,6,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. Bonaventure
+279,8514828,Xaver Ehrlich,4,4,MD,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. Bonaventure
+280,8511543,Andres Javitt,4,11,FM,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],St. Bonaventure
+281,8516897,Foday Bangura,3,4,D,73,#00205b,#13b5ea,"['http://a.espncdn.com/i/teamlogos/ncaa/500/222.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/222.png']",Villanova
+282,8957113,Jason Bouregy,4,8,M,70,#00205b,#13b5ea,"['http://a.espncdn.com/i/teamlogos/ncaa/500/222.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/222.png']",Villanova
+283,8957120,Sebastian Cutler-DeJesus,2,23,GK,72,#00205b,#13b5ea,"['http://a.espncdn.com/i/teamlogos/ncaa/500/222.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/222.png']",Villanova
+284,8508302,Javon Daniels,2,25,F,71,#00205b,#13b5ea,"['http://a.espncdn.com/i/teamlogos/ncaa/500/222.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/222.png']",Villanova
+285,8966812,Jaedon Richardson,1,17,F,71,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3253.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3253.png']",Charlotte
+286,8506476,Luke Husakiwsky,4,30,M,72,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3253.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3253.png']",Charlotte
+287,8510392,Daniel Moore,3,3,D,74,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3253.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3253.png']",Charlotte
+288,8509114,Leo Stritter,3,1,GK,74,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3253.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3253.png']",Charlotte
+289,8505718,Patrick Cayelli,3,31,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Penn
+290,8515206,Connor Dawson,2,20,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Penn
+291,8512319,Phillip Falcon III,2,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Penn
+292,8509978,Stas Korzeniowski,4,9,F,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Penn
+293,8517339,Fraser Brown,3,21,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northeastern
+294,8511751,Kade Tepe,3,12,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northeastern
+295,8520131,Thomas Vold,2,14,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northeastern
+296,8958049,Colby Hegarty,4,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northeastern
+297,8506339,Matthew Fisher,2,3,D,69,#00274c,#ffcb05,"['http://a.espncdn.com/i/teamlogos/ncaa/500/130.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/130.png']",Michigan
+298,8508613,Isaiah Goldson,2,28,GK,72,#00274c,#ffcb05,"['http://a.espncdn.com/i/teamlogos/ncaa/500/130.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/130.png']",Michigan
+299,8523985,Duilio Herrera,2,13,M,70,#00274c,#ffcb05,"['http://a.espncdn.com/i/teamlogos/ncaa/500/130.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/130.png']",Michigan
+300,8758755,Grayson Elmquist,2,29,F,73,#00274c,#ffcb05,"['http://a.espncdn.com/i/teamlogos/ncaa/500/130.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/130.png']",Michigan
+301,8873588,Felix Ewald,3,10,M,74,#002855,#eaaa00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/277.png']",West Virginia
+302,8510388,Marc Bonnaire,4,1,GK,75,#002855,#eaaa00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/277.png']",West Virginia
+303,8523268,Dante Huckaby,4,25,D,73,#002855,#eaaa00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/277.png']",West Virginia
+304,8958874,Sebastian Burke,1,29,MD,72,#002855,#eaaa00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/277.png']",West Virginia
+305,8512519,Marcus Caldeira,3,7,F,74,#002855,#eaaa00,"['http://a.espncdn.com/i/teamlogos/ncaa/500/277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/277.png']",West Virginia
+306,8517337,Josh Copeland,2,11,M,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Detroit Mercy
+307,8516343,Tim Allos,3,7,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Detroit Mercy
+308,8522206,Drew Pierson,2,27,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Detroit Mercy
+309,8511765,Quinn Tews,3,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Detroit Mercy
+310,8966854,Akinjide Awujo,4,17,F,72,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/77.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/77.png']",Northwestern
+311,8511738,Rafael Ponce De Leon,3,1,GK,75,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/77.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/77.png']",Northwestern
+312,8956746,Reese Mayer,4,5,D,74,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/77.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/77.png']",Northwestern
+313,8515015,Paul Son,4,7,M,70,#582c83,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/77.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/77.png']",Northwestern
+314,8971444,Cooper Wenzel,3,25,GK,74,#630031,#cf4520,"['http://a.espncdn.com/i/teamlogos/ncaa/500/259.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/259.png']",Virginia Tech
+315,8523878,Willie Cardona,4,18,D,69,#630031,#cf4520,"['http://a.espncdn.com/i/teamlogos/ncaa/500/259.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/259.png']",Virginia Tech
+316,8508704,Oliver Roche,2,11,F,75,#630031,#cf4520,"['http://a.espncdn.com/i/teamlogos/ncaa/500/259.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/259.png']",Virginia Tech
+317,8505724,Ethan Hackenberg,4,17,FM,69,#630031,#cf4520,"['http://a.espncdn.com/i/teamlogos/ncaa/500/259.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/259.png']",Virginia Tech
+318,8977431,Ian Marcano,1,24,M,64,#630031,#cf4520,"['http://a.espncdn.com/i/teamlogos/ncaa/500/259.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/259.png']",Virginia Tech
+319,8977436,Yonis Kireh,2,22,MD,75,#630031,#cf4520,"['http://a.espncdn.com/i/teamlogos/ncaa/500/259.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/259.png']",Virginia Tech
+320,8952035,Alex Smith,4,2,D,72,#ba9b37,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2116.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2116.png']",UCF
+321,8952050,Lucca Dourado,4,9,F,69,#ba9b37,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2116.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2116.png']",UCF
+322,8508775,Yanis Belatrache,2,8,M,68,#ba9b37,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2116.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2116.png']",UCF
+323,8952034,Jonas Fritschi,4,4,MD,73,#ba9b37,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2116.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2116.png']",UCF
+324,8511832,Juanvi Muñoz,3,31,GK,72,#ba9b37,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2116.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2116.png']",UCF
+325,8506957,Mouhamed Pouye,2,7,FM,67,#ba9b37,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2116.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2116.png']",UCF
+326,8508395,Lucas Beltran,2,1,GK,74,#152532,#e51837,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2166.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2166.png']",Davidson
+327,8510113,Vincent Bennage,4,10,F,70,#152532,#e51837,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2166.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2166.png']",Davidson
+328,8507294,Alonzo Clarke,3,30,M,74,#152532,#e51837,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2166.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2166.png']",Davidson
+329,8514477,Ayman Maadir,2,3,D,74,#152532,#e51837,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2166.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2166.png']",Davidson
+330,8523925,Jackson Nabors,3,11,FM,80,#152532,#e51837,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2166.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2166.png']",Davidson
+331,8965993,Brando Bedolla,1,15,F,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Longwood
+332,8965820,Anthony Vargas,4,5,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Longwood
+333,8965980,Aaron Asamoah,3,7,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Longwood
+334,8966008,Tor Fletcher,1,50,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Longwood
+335,8906239,Segun Afolabi,4,10,F,73,#ff7f29,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2382.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2382.png']",Mercer
+336,8511129,Sekou Agard,4,2,D,72,#ff7f29,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2382.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2382.png']",Mercer
+337,8514704,Fernando Arteaga,3,23,FM,69,#ff7f29,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2382.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2382.png']",Mercer
+338,8906242,Nick Wanzer,4,16,M,72,#ff7f29,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2382.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2382.png']",Mercer
+339,8906228,Trevor McMullen,4,0,GK,73,#ff7f29,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2382.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2382.png']",Mercer
+340,8514953,Tommy Redd,3,5,MD,72,#ff7f29,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2382.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2382.png']",Mercer
+341,8504220,Stacy Holmes,3,3,M,72,#00573C,#cdb97d,"['http://a.espncdn.com/i/teamlogos/ncaa/500/16.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/16.png']",Sacramento State
+342,8955083,Sean Battistessa,1,11,MD,75,#00573C,#cdb97d,"['http://a.espncdn.com/i/teamlogos/ncaa/500/16.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/16.png']",Sacramento State
+343,8503704,Mac Learned,4,1,GK,75,#00573C,#cdb97d,"['http://a.espncdn.com/i/teamlogos/ncaa/500/16.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/16.png']",Sacramento State
+344,8504235,Zac Giles,2,19,D,67,#00573C,#cdb97d,"['http://a.espncdn.com/i/teamlogos/ncaa/500/16.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/16.png']",Sacramento State
+345,8758875,Donovan Sessoms,2,21,F,70,#00573C,#cdb97d,"['http://a.espncdn.com/i/teamlogos/ncaa/500/16.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/16.png']",Sacramento State
+346,8961659,Samuel Fomin,1,26,FM,68,#00573C,#cdb97d,"['http://a.espncdn.com/i/teamlogos/ncaa/500/16.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/16.png']",Sacramento State
+347,8516795,Beto Apolinar,3,8,M,70,#c41230,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/21.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/21.png']",San Diego State
+348,8758871,Robbie Matei,4,7,F,74,#c41230,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/21.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/21.png']",San Diego State
+349,8965029,Andre Puente,4,4,D,73,#c41230,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/21.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/21.png']",San Diego State
+350,8965015,Djibril Doumbia,4,1,GK,74,#c41230,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/21.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/21.png']",San Diego State
+351,8507455,Alex Aitken,3,1,GK,72,#00539c,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2277.png']",Houston Christian
+352,8959216,Rio Pemberton,1,9,M,72,#00539c,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2277.png']",Houston Christian
+353,8959217,Theo Butterworth,1,22,D,72,#00539c,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2277.png']",Houston Christian
+354,8959218,Daniel Ejerenwa,1,25,MD,73,#00539c,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2277.png']",Houston Christian
+355,8503668,Ethan Giwa-McNeil,4,10,F,70,#00539c,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2277.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2277.png']",Houston Christian
+356,8514637,Scott Buie,4,9,D,69,#002855,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/302.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/302.png']",UC Davis
+357,8522038,Zack Lillington,3,23,M,76,#002855,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/302.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/302.png']",UC Davis
+358,8510129,Colton Franklin,2,8,MD,71,#002855,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/302.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/302.png']",UC Davis
+359,8508477,Keegan Walwyn-Bent,4,19,F,74,#002855,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/302.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/302.png']",UC Davis
+360,8966925,Zachary Neuls,1,28,FM,75,#002855,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/302.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/302.png']",UC Davis
+361,8966892,Noah Schwengeler,3,1,GK,77,#002855,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/302.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/302.png']",UC Davis
+362,8518170,Erik Dalaker,2,16,M,71,#990000,#dbdbdb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/108.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/108.png']",Harvard
+363,8516020,Rustin Khosravi,3,12,D,70,#990000,#dbdbdb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/108.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/108.png']",Harvard
+364,8503847,Andreas Savva,2,11,F,70,#990000,#dbdbdb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/108.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/108.png']",Harvard
+365,8505587,Cullen MacNeil,3,1,GK,76,#990000,#dbdbdb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/108.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/108.png']",Harvard
+366,8950831,Jack Donlan,3,3,D,77,#020303,#b59a57,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2210.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2210.png']",Elon
+367,8522432,Tomas Wroblewski,4,1,GK,73,#020303,#b59a57,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2210.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2210.png']",Elon
+368,8950848,Ryan Buckon,1,14,FM,71,#020303,#b59a57,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2210.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2210.png']",Elon
+369,8512913,Petro Klishch,4,9,F,70,#020303,#b59a57,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2210.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2210.png']",Elon
+370,8507165,Sumner Nenninger,3,25,M,71,#020303,#b59a57,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2210.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2210.png']",Elon
+371,8950855,Will Evans,1,24,MD,72,#020303,#b59a57,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2210.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2210.png']",Elon
+372,8961233,Julian Cisneros,4,6,D,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Chicago
+373,8520574,Ben Bischof,3,8,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Chicago
+374,8961293,Hugo Urdiales,3,10,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Chicago
+375,8513069,Aidan Crawford,3,0,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Chicago
+376,8968637,Johan Feilscher,4,7,F,73,#971B2F,#B1B3B3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/113.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/113.png']",Massachusetts
+377,8520129,Matt Fordham,4,3,D,0,#971B2F,#B1B3B3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/113.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/113.png']",Massachusetts
+378,8968649,Layton Purchase,4,27,M,73,#971B2F,#B1B3B3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/113.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/113.png']",Massachusetts
+379,8969835,Sean Fernandez-Davila,1,24,FM,0,#971B2F,#B1B3B3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/113.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/113.png']",Massachusetts
+380,8513433,Alex Geczy,4,1,GK,0,#971B2F,#B1B3B3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/113.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/113.png']",Massachusetts
+381,8512591,Amari Benjamin,2,6,M,0,#E52D37,#eec52b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2678.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2678.png']",VMI
+382,8961008,Conner Reid,2,4,D,0,#E52D37,#eec52b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2678.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2678.png']",VMI
+383,8521683,Zack Murphy,3,1,GK,0,#E52D37,#eec52b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2678.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2678.png']",VMI
+384,8961001,Anthony Huang,1,15,F,0,#E52D37,#eec52b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2678.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2678.png']",VMI
+385,8847220,Aidan Godinho,1,13,M,70,#110E42,#001c58,"['http://a.espncdn.com/i/teamlogos/ncaa/500/46.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/46.png']",Georgetown
+386,8512521,Maximus Jennings,4,2,D,72,#110E42,#001c58,"['http://a.espncdn.com/i/teamlogos/ncaa/500/46.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/46.png']",Georgetown
+387,8847222,Mitchell Baker,1,18,F,76,#110E42,#001c58,"['http://a.espncdn.com/i/teamlogos/ncaa/500/46.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/46.png']",Georgetown
+388,8520815,Tenzing Manske,3,1,GK,73,#110E42,#001c58,"['http://a.espncdn.com/i/teamlogos/ncaa/500/46.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/46.png']",Georgetown
+389,8505702,Chris Meyers,4,7,D,68,#33006f,#e8d3a2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/264.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/264.png']",Washington
+390,8518658,Joe Dale,2,14,M,69,#33006f,#e8d3a2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/264.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/264.png']",Washington
+391,8518401,Charlie Kosakoff,2,9,F,71,#33006f,#e8d3a2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/264.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/264.png']",Washington
+392,8507352,Jadon Bowton,4,1,GK,76,#33006f,#e8d3a2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/264.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/264.png']",Washington
+393,8516963,Andrew Samuels,2,27,GK,76,#152532,#ff6000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/163.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/163.png']",Princeton
+394,8511218,Sam Vigilante,3,18,M,71,#152532,#ff6000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/163.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/163.png']",Princeton
+395,8960222,Dash Papez,1,23,D,73,#152532,#ff6000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/163.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/163.png']",Princeton
+396,8515547,Daniel Ittycheria,3,11,F,74,#152532,#ff6000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/163.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/163.png']",Princeton
+397,8523795,Bardia Hormozi,2,17,FM,70,#152532,#ff6000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/163.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/163.png']",Princeton
+398,8506727,Isaac Powell,3,18,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Irvine
+399,8513442,Brady Treinen,2,19,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Irvine
+400,8906158,Marcus Lee,1,30,F,66,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Irvine
+401,8517997,Luke Pruter,4,1,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Irvine
+402,8523087,Stephen Perno,4,27,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Fairfield
+403,8518096,William Pierce,3,10,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Fairfield
+404,8515259,Viktor Nikolov,3,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Fairfield
+405,8959186,Thomas Drillen,4,19,F,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Fairfield
+406,8509161,Yoshiya Okawa,4,23,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Greensboro
+407,8513382,Arnaud Tattevin,2,26,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Greensboro
+408,8758694,Seth Wilson,2,1,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Greensboro
+409,8955179,Jonathan Beckert,1,12,MD,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Greensboro
+410,8955269,Emmanuel Hagan,4,27,D,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Greensboro
+411,8967639,Caio Cavaletti,1,7,M,67,#e53730,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2368.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2368.png']",Marist
+412,8514485,Nicholas Sanchez,2,2,D,0,#e53730,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2368.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2368.png']",Marist
+413,8506768,Dreni Idrizi,2,31,GK,69,#e53730,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2368.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2368.png']",Marist
+414,8512445,Richard Morel,4,16,F,71,#e53730,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2368.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2368.png']",Marist
+415,8967660,Chris Verheul,1,9,FM,72,#e53730,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2368.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2368.png']",Marist
+416,8510630,Jackson D'Alessandro,2,2,D,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Riverside
+417,8508708,Luka Lukic,4,9,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Riverside
+418,8970870,Tarek Hamideh,1,14,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Riverside
+419,8970834,Carlos Gonzalez,4,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC Riverside
+420,8872417,Sam Delgado,3,15,F,0,#103217,#f6b220,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2729.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2729.png']",William & Mary
+421,8510515,Diogo Branco,3,8,M,69,#103217,#f6b220,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2729.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2729.png']",William & Mary
+422,8503979,Alex Kochell,2,4,D,70,#103217,#f6b220,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2729.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2729.png']",William & Mary
+423,8516355,Ryan Eapen,2,25,GK,75,#103217,#f6b220,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2729.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2729.png']",William & Mary
+424,8966155,Dean Boltz,1,13,F,74,#c4012f,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/275.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/275.png']",Wisconsin
+425,8966143,Birgir Baldvinsson,4,2,D,72,#c4012f,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/275.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/275.png']",Wisconsin
+426,8966152,Matisse Hebert,1,1,GK,76,#c4012f,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/275.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/275.png']",Wisconsin
+427,8758826,Roberto Burlew,4,6,M,72,#c4012f,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/275.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/275.png']",Wisconsin
+428,8971117,Malcolm Zalayet,1,27,F,72,#031522,#ffc423,"['http://a.espncdn.com/i/teamlogos/ncaa/500/25.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/25.png']",California
+429,8510570,Marco Brougher,3,1,GK,76,#031522,#ffc423,"['http://a.espncdn.com/i/teamlogos/ncaa/500/25.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/25.png']",California
+430,8983588,Adrian Jacobs,3,35,M,72,#031522,#ffc423,"['http://a.espncdn.com/i/teamlogos/ncaa/500/25.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/25.png']",California
+431,8970980,Alfredo Ortiz,3,19,D,65,#031522,#ffc423,"['http://a.espncdn.com/i/teamlogos/ncaa/500/25.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/25.png']",California
+432,8971145,Joe Chalwin,1,30,MD,74,#031522,#ffc423,"['http://a.espncdn.com/i/teamlogos/ncaa/500/25.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/25.png']",California
+433,8517856,Tai-Reece Chisholm,4,7,M,71,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2097.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2097.png']",Campbell
+434,8955719,Luc Lavielle,1,23,F,69,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2097.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2097.png']",Campbell
+435,8510253,Teva Lossec,3,3,D,70,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2097.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2097.png']",Campbell
+436,8955726,Max Leviton,1,37,GK,74,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2097.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2097.png']",Campbell
+437,8518901,Julian Beban,3,4,D,75,#0a0a0a,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/107.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/107.png']",Holy Cross
+438,8506680,Tristan Stephani,4,1,GK,76,#0a0a0a,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/107.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/107.png']",Holy Cross
+439,8523146,Jake Williams,4,26,M,69,#0a0a0a,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/107.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/107.png']",Holy Cross
+440,8510688,Ethan Gill,3,22,F,75,#0a0a0a,#080808,"['http://a.espncdn.com/i/teamlogos/ncaa/500/107.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/107.png']",Holy Cross
+441,8518655,Sabri Hanni,2,10,M,67,#0c2340,#f1f2f3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/41.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/41.png']",UConn
+442,8511024,Scott Testori,4,21,F,75,#0c2340,#f1f2f3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/41.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/41.png']",UConn
+443,8516498,Kieran Chandler,2,17,D,69,#0c2340,#f1f2f3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/41.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/41.png']",UConn
+444,8504961,Max Kerkvliet,2,1,GK,77,#0c2340,#f1f2f3,"['http://a.espncdn.com/i/teamlogos/ncaa/500/41.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/41.png']",UConn
+445,8906541,Daniel Escorcia,3,21,M,0,#354ca1,#cc0035,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2567.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2567.png']",SMU
+446,8503494,Bailey Sparks,4,10,F,72,#354ca1,#cc0035,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2567.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2567.png']",SMU
+447,8517124,Kyran Chambron Pinho,4,7,D,71,#354ca1,#cc0035,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2567.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2567.png']",SMU
+448,8508649,Martin Dominguez,3,18,GK,71,#354ca1,#cc0035,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2567.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2567.png']",SMU
+449,8847065,Victor Andersson,1,21,F,76,#051844,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2405.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2405.png']",Monmouth
+450,8522374,Erik Reis,4,8,M,73,#051844,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2405.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2405.png']",Monmouth
+451,8505761,Olle Brorsson,4,3,D,76,#051844,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2405.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2405.png']",Monmouth
+452,8847058,Ian Brunet,2,13,MD,71,#051844,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2405.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2405.png']",Monmouth
+453,8847063,Kevin DeCapua,1,20,FM,70,#051844,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2405.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2405.png']",Monmouth
+454,8523546,Eryk Dymora,4,1,GK,74,#051844,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2405.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2405.png']",Monmouth
+455,8785658,Olsen Aluc,4,9,F,73,#990000,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2619.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2619.png']",Stony Brook
+456,8847457,Rushon Sandy,3,1,GK,73,#990000,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2619.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2619.png']",Stony Brook
+457,8785659,Trevor Harrison,4,18,M,71,#990000,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2619.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2619.png']",Stony Brook
+458,8523924,Benjamin Bern,2,25,D,73,#990000,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2619.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2619.png']",Stony Brook
+459,8967362,Sean Lee,2,26,None Listed,70,#990000,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2619.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2619.png']",Stony Brook
+460,8515812,Matthew Tibbetts,3,32,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],American
+461,8513432,Leo Palomo,4,18,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],American
+462,8504231,Jonah Fogel,3,2,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],American
+463,8523279,Samuel Hershey,4,9,F,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],American
+464,8873102,Lukas Burns,4,1,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Providence
+465,8504830,Pearse O'Brien,2,19,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Providence
+466,8873098,Bernardo Prego,4,24,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Providence
+467,8521894,Landon Cartwright,3,14,MD,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Providence
+468,8873196,Aidan Davock,4,33,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Providence
+469,8512531,Richie Nichols,4,8,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Maryland
+470,8506181,Dylan van der Walt,3,1,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Maryland
+471,8514551,Chris Ogor,2,14,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Maryland
+472,8513585,Jake Sweeney,4,11,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Loyola Maryland
+473,8520797,Erik Lauta,3,1,GK,75,#004990,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/160.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/160.png']",New Hampshire
+474,8977020,Matteo Brossel,4,8,M,69,#004990,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/160.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/160.png']",New Hampshire
+475,8505371,Austin Bush,2,17,FM,73,#004990,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/160.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/160.png']",New Hampshire
+476,8509224,Ibrahim Conde,4,9,F,73,#004990,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/160.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/160.png']",New Hampshire
+477,8506717,Matteo Piccardo,2,32,D,67,#004990,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/160.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/160.png']",New Hampshire
+478,8977053,Adi Hicks,4,23,MD,67,#004990,#c3c4c6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/160.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/160.png']",New Hampshire
+479,8507667,Max Fisher,2,3,D,0,#c12535,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2241.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2241.png']",Gardner-Webb
+480,8523495,Giampaolo Nardi,3,8,M,0,#c12535,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2241.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2241.png']",Gardner-Webb
+481,8971108,Alan Horrocks,3,30,GK,0,#c12535,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2241.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2241.png']",Gardner-Webb
+482,8971054,Aden O'Hara,4,19,F,0,#c12535,#909090,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2241.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2241.png']",Gardner-Webb
+483,8966388,Kai Phillip,4,19,F,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Evansville
+484,8953032,Michal Mroz,1,31,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Evansville
+485,8518664,Audun Engen Vik,2,14,D,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Evansville
+486,8510324,Jacopo Fedrizzi,2,27,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Evansville
+487,8961332,Abdul Al-Rashed,3,22,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oakland
+488,8516786,Andrew Darakdjian,2,9,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oakland
+489,8961240,Evan Combs,1,8,MD,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oakland
+490,8954292,Alex Flowers,4,31,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oakland
+491,8504726,Noah Roka,2,7,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oakland
+492,8953074,Gilles Aurelien,3,5,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Utah Valley
+493,8518900,Tom Dobek-Pietrowski,2,3,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Utah Valley
+494,8523831,Trevor Walk,2,21,FM,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Utah Valley
+495,8520280,Omar Yehya,4,10,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Utah Valley
+496,8953073,Ben Williams,3,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Utah Valley
+497,8960884,Alex Kryazhev,4,9,M,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FDU
+498,8514250,Matt Giraldo,3,15,F,66,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FDU
+499,8961555,Victor Labite,2,4,None Listed,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FDU
+500,8514155,Kevin Ruiz,4,2,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FDU
+501,8512056,Darrell Etienne,2,13,MD,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FDU
+502,8960880,Spencer King,4,25,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FDU
+503,8520071,Francesco Pettinaroli,4,22,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bradley
+504,8516462,Ethan Beauman-Ansah,2,28,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bradley
+505,8515112,Drew Berry,3,0,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bradley
+506,8517475,DJ Koulai,2,13,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bradley
+507,8523573,Alex Nicastro,3,2,MD,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bradley
+508,8971965,Sebastiano Musu,4,9,F,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Manhattan
+509,8971940,John Bernardi,4,22,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Manhattan
+510,8522313,Ayoub Boumelala,3,6,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Manhattan
+511,8971933,Ludvig Malberg,3,1,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Manhattan
+512,8977112,Shane Anderson,4,12,F,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Purdue Fort Wayne
+513,8977136,Adrian Renteria,4,21,D,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Purdue Fort Wayne
+514,8512085,Abe Arellano,3,8,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Purdue Fort Wayne
+515,8507050,Nic Diana,3,1,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Purdue Fort Wayne
+516,8967672,Sam White,4,14,M,70,#152532,#9f8343,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2803.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2803.png']",Bryant
+517,8967711,Miguel Rodeia,1,23,D,73,#152532,#9f8343,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2803.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2803.png']",Bryant
+518,8511607,Jonas Lyshoj,4,17,F,71,#152532,#9f8343,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2803.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2803.png']",Bryant
+519,8906232,Antreas Hadjigavriel,4,88,GK,73,#152532,#9f8343,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2803.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2803.png']",Bryant
+520,8959420,Niklas Thanhofer,3,4,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LIU
+521,8516345,Alan Martinez,4,13,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LIU
+522,8959407,Eoin Gawronski,4,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LIU
+523,8959431,Stephane Njike,1,8,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LIU
+524,8970814,James Snaith,1,34,M,0,#411e09,#949300,"['http://a.espncdn.com/i/teamlogos/ncaa/500/225.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/225.png']",Brown
+525,8522485,Lorenzo Amaral,2,7,F,0,#411e09,#949300,"['http://a.espncdn.com/i/teamlogos/ncaa/500/225.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/225.png']",Brown
+526,8522723,Harri Sprofera,4,4,D,0,#411e09,#949300,"['http://a.espncdn.com/i/teamlogos/ncaa/500/225.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/225.png']",Brown
+527,8513695,Diego Elizalde,2,23,FM,0,#411e09,#949300,"['http://a.espncdn.com/i/teamlogos/ncaa/500/225.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/225.png']",Brown
+528,9003661,Mads Stistrup Petersen,3,12,MD,73,#411e09,#949300,"['http://a.espncdn.com/i/teamlogos/ncaa/500/225.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/225.png']",Brown
+529,8514178,Henrik Weiper,3,1,GK,0,#411e09,#949300,"['http://a.espncdn.com/i/teamlogos/ncaa/500/225.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/225.png']",Brown
+530,8521904,Bryson Hankins,4,8,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSU Bakersfield
+531,8955311,Dejan Aguilar,1,18,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSU Bakersfield
+532,8955314,Aaron Biggerstaff,4,20,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSU Bakersfield
+533,8955295,Zenden Hart,3,1,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSU Bakersfield
+534,8508870,Adrian Jogerst,2,23,FM,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSU Bakersfield
+535,8968539,Dakota Jonke,3,7,F,74,#002D62,#b90b2e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2184.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2184.png']",Duquesne
+536,8968532,Bendix Bennetzen,1,8,M,70,#002D62,#b90b2e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2184.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2184.png']",Duquesne
+537,8968541,Ashwin Menon,2,23,D,70,#002D62,#b90b2e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2184.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2184.png']",Duquesne
+538,8509135,Zoltan Nagy,4,1,GK,78,#002D62,#b90b2e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2184.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2184.png']",Duquesne
+539,8511958,Aysa Hamid,3,14,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Asheville
+540,8519315,Charlie Farrar,4,1,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Asheville
+541,8785463,Brendan Herb,4,10,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Asheville
+542,8510955,Heath Flathau,4,2,MD,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Asheville
+543,8508520,Benian Yao,4,25,D,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Asheville
+544,8511837,Seth Hammond,4,11,FM,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNC Asheville
+545,8962944,Ely Sidibe,4,13,F,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Canisius
+546,8505900,Jack Petrie,4,26,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Canisius
+547,8514761,Kodie Sarkodie,4,4,M,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Canisius
+548,8962937,Riley Wagner,4,5,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Canisius
+549,8520126,Jacobo Sanfeliu,4,7,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],SIUE
+550,8508707,Nic Muench,4,19,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],SIUE
+551,8956914,Patrick Coleman,4,13,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],SIUE
+552,8521231,Ethan Kornas,2,29,GK,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],SIUE
+553,8505419,Stephan Moreira,4,11,FM,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],SIUE
+554,8523135,Ethan Newsome,3,10,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNCW
+555,8518977,Bryan Miralrio,2,14,F,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNCW
+556,8511661,Josef Hefele,4,4,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNCW
+557,8521991,Trey Smiley,2,0,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UNCW
+558,8977249,Abel Ador,3,4,M,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UTRGV
+559,8513267,Keaviano Francis,2,10,F,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UTRGV
+560,8513003,Fernando Carreon,2,99,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UTRGV
+561,8977268,Diogo Mendonca Bastos,3,27,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UTRGV
+562,8758932,Brad Dildy,3,7,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Belmont
+563,8509349,Grant Calvert,4,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Belmont
+564,8513869,Alex Clayton,4,15,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Belmont
+565,8872349,Case Cox,4,18,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Belmont
+566,8967747,Marci Killeen,2,16,M,72,#8c2232,#dbcca6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/103.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/103.png']",Boston College
+567,8516812,Christian Bejar,3,3,D,69,#8c2232,#dbcca6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/103.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/103.png']",Boston College
+568,8967724,Michael Asare,1,14,F,72,#8c2232,#dbcca6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/103.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/103.png']",Boston College
+569,8515224,Jack Burkhardt,2,23,MD,72,#8c2232,#dbcca6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/103.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/103.png']",Boston College
+570,8967720,Brennan Klein,4,1,GK,75,#8c2232,#dbcca6,"['http://a.espncdn.com/i/teamlogos/ncaa/500/103.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/103.png']",Boston College
+571,8957056,Andrew Bennett,4,6,M,74,#00507d,#a1d2f1,"['http://a.espncdn.com/i/teamlogos/ncaa/500/295.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/295.png']",Old Dominion
+572,8957028,Noah Madrigal,4,28,F,73,#00507d,#a1d2f1,"['http://a.espncdn.com/i/teamlogos/ncaa/500/295.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/295.png']",Old Dominion
+573,8509164,Michael Statham,3,1,GK,76,#00507d,#a1d2f1,"['http://a.espncdn.com/i/teamlogos/ncaa/500/295.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/295.png']",Old Dominion
+574,8957054,Evan Watt,3,4,D,74,#00507d,#a1d2f1,"['http://a.espncdn.com/i/teamlogos/ncaa/500/295.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/295.png']",Old Dominion
+575,8972484,Haytham Abdallah,1,33,None Listed,0,#0a5640,#56854e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/56.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/56.png']",Stetson
+576,8972086,Maurice Hauser,1,9,M,0,#0a5640,#56854e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/56.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/56.png']",Stetson
+577,8515451,Ross Appolon,2,4,D,0,#0a5640,#56854e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/56.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/56.png']",Stetson
+578,8516674,Nicolò Radaelli,3,1,GK,74,#0a5640,#56854e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/56.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/56.png']",Stetson
+579,8504866,Afonso Conde,2,7,FM,0,#0a5640,#56854e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/56.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/56.png']",Stetson
+580,8520279,Xavi Csato,2,16,F,68,#0a5640,#56854e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/56.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/56.png']",Stetson
+581,8513027,Ben Augee,3,14,M,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Gonzaga
+582,8953065,Talan Rochelle,1,12,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Gonzaga
+583,8518335,Hudson Brunk,2,19,MD,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Gonzaga
+584,8513566,Farhan Moustafa,2,2,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Gonzaga
+585,8953045,Chema Preciado,2,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Gonzaga
+586,8514185,Ian Silva,2,8,FM,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Gonzaga
+587,8967143,Til Kauschke,1,13,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seton Hall
+588,9018771,Nicolas Baala King Obama,3,7,None Listed,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seton Hall
+589,8967138,Jared Smith,4,11,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seton Hall
+590,8513841,Matias Molina,3,1,GK,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seton Hall
+591,8507836,Tim Ströbeck,4,9,F,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Seton Hall
+592,8977540,Cole Hellert,4,15,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Siena
+593,8517437,Bennet Glinder,2,99,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Siena
+594,8977533,Dren Dobruna,1,3,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Siena
+595,8977508,Isaac Gugel,1,19,MD,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Siena
+596,8509957,Mario Navarro Perez,2,10,F,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Siena
+597,8515839,Alex Balkey,2,12,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Binghamton
+598,8964205,Ryan Gillon,1,23,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Binghamton
+599,8508752,Anthony Randazzo,2,14,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Binghamton
+600,8515405,Gaven Egan,3,21,FM,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Binghamton
+601,8964195,Dylan McDermott,4,1,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Binghamton
+602,8518848,Kevin Larsson,3,11,M,69,#450084,#b5a068,"['http://a.espncdn.com/i/teamlogos/ncaa/500/256.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/256.png']",James Madison
+603,8515184,Evan Southern,4,28,F,70,#450084,#b5a068,"['http://a.espncdn.com/i/teamlogos/ncaa/500/256.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/256.png']",James Madison
+604,8514193,Yanis Lelin,4,10,D,71,#450084,#b5a068,"['http://a.espncdn.com/i/teamlogos/ncaa/500/256.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/256.png']",James Madison
+605,8517502,Sebastian Conlon,3,0,GK,74,#450084,#b5a068,"['http://a.espncdn.com/i/teamlogos/ncaa/500/256.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/256.png']",James Madison
+606,8522783,Freddie Lapworth,3,0,GK,73,#000060,#00316e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2083.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2083.png']",Bucknell
+607,8954520,Drew Roskos,1,3,F,68,#000060,#00316e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2083.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2083.png']",Bucknell
+608,8954510,Noah Handzel,1,13,MD,68,#000060,#00316e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2083.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2083.png']",Bucknell
+609,8521721,Jack Lucas,2,11,D,72,#000060,#00316e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2083.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2083.png']",Bucknell
+610,8972807,Cohen Weaver,3,19,M,68,#000060,#00316e,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2083.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2083.png']",Bucknell
+611,8506704,Atahan Arslan,2,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NIU
+612,8965646,Grant Paskus,1,13,M,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NIU
+613,8518879,Luka Vasic,2,4,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NIU
+614,8513754,Sam Divis,2,11,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NIU
+615,8758676,Gunnar Studenhofft,4,9,F,0,#004A36,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/58.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/58.png']",South Florida
+616,8505345,Pedro Faife,2,8,M,0,#004A36,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/58.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/58.png']",South Florida
+617,8513802,Jemone Barclay,3,26,D,0,#004A36,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/58.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/58.png']",South Florida
+618,8758919,Felix Schaefer,4,30,GK,75,#004A36,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/58.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/58.png']",South Florida
+619,8758916,Mauro Gutierrez,4,15,FM,66,#004A36,#231f20,"['http://a.espncdn.com/i/teamlogos/ncaa/500/58.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/58.png']",South Florida
+620,8964241,Junhwan Park,1,22,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Francisco
+621,8758719,Isaiah Easley,3,9,F,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Francisco
+622,8522043,Eric Waltz,4,32,GK,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Francisco
+623,8758720,Joe Core,4,25,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Francisco
+624,8960152,Michael Acquah,2,18,F,72,#ff6500,#000e54,"['http://a.espncdn.com/i/teamlogos/ncaa/500/183.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/183.png']",Syracuse
+625,8758832,Ernest Bawa,4,10,FM,69,#ff6500,#000e54,"['http://a.espncdn.com/i/teamlogos/ncaa/500/183.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/183.png']",Syracuse
+626,8514714,Andre Cutler-DeJesus,4,3,D,73,#ff6500,#000e54,"['http://a.espncdn.com/i/teamlogos/ncaa/500/183.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/183.png']",Syracuse
+627,8758833,Sam Layton,4,4,M,74,#ff6500,#000e54,"['http://a.espncdn.com/i/teamlogos/ncaa/500/183.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/183.png']",Syracuse
+628,8518198,Tomas Hut,4,25,GK,75,#ff6500,#000e54,"['http://a.espncdn.com/i/teamlogos/ncaa/500/183.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/183.png']",Syracuse
+629,8758828,Ben Rosenblatt,4,15,MD,70,#ff6500,#000e54,"['http://a.espncdn.com/i/teamlogos/ncaa/500/183.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/183.png']",Syracuse
+630,8509348,Dzenan Cerimagic,2,99,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],USC Upstate
+631,8516270,Luke Halkett,3,6,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],USC Upstate
+632,8514468,Anthony Cox,4,17,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],USC Upstate
+633,8520345,Cooper Jennings,2,0,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],USC Upstate
+634,8971014,Aidan Bone,4,31,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Boston U.
+635,8970445,Andrew Wike,4,1,GK,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Boston U.
+636,8510883,Quin DeLaMater,3,14,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Boston U.
+637,8517658,Diego Rived,3,6,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Boston U.
+638,8519519,Trace Alphin,4,1,GK,74,#9E7E38,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/154.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/154.png']",Wake Forest
+639,8506351,Prince Amponsah,4,27,D,71,#9E7E38,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/154.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/154.png']",Wake Forest
+640,8847057,Dylan Borso,1,8,M,71,#9E7E38,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/154.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/154.png']",Wake Forest
+641,8510627,Julian Kennedy,4,21,F,73,#9E7E38,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/154.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/154.png']",Wake Forest
+642,8505576,Ronin Axelson,3,28,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Jose State
+643,8971777,Cameron Cook,1,8,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Jose State
+644,8971751,Diogo Baptista,3,11,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Jose State
+645,8971781,Javier Lopez,3,18,D,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],San Jose State
+646,8506686,Bryson Baker,4,10,F,73,#003a63,#e51937,"['http://a.espncdn.com/i/teamlogos/ncaa/500/47.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/47.png']",Howard
+647,8970342,Brandon Franklin,4,22,D,71,#003a63,#e51937,"['http://a.espncdn.com/i/teamlogos/ncaa/500/47.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/47.png']",Howard
+648,8970350,Peter Gansallo,4,30,M,69,#003a63,#e51937,"['http://a.espncdn.com/i/teamlogos/ncaa/500/47.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/47.png']",Howard
+649,8518359,Liam Keiller,1,0,GK,74,#003a63,#e51937,"['http://a.espncdn.com/i/teamlogos/ncaa/500/47.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/47.png']",Howard
+650,9024949,Romario Simpson,1,35,None Listed,0,#003a63,#e51937,"['http://a.espncdn.com/i/teamlogos/ncaa/500/47.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/47.png']",Howard
+651,8505620,Morgan Lopes,2,30,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northern Kentucky
+652,8511009,Jason Purks,2,17,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northern Kentucky
+653,8961820,Caleb Frakes,1,12,D,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northern Kentucky
+654,8961688,Nico Stoddart,4,11,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northern Kentucky
+655,8961747,Tyler Murphy,4,19,FM,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Northern Kentucky
+656,8966206,Enzo Gindro,1,13,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oral Roberts
+657,8506017,Luis Flores,4,9,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oral Roberts
+658,8966107,Nikola Sljivic,4,19,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oral Roberts
+659,8508096,Joao Mesquita,4,30,GK,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Oral Roberts
+660,8503974,Nico Rosamilia,4,15,F,72,#d21034,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/164.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/164.png']",Rutgers
+661,8955125,Scott Godden,1,6,D,71,#d21034,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/164.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/164.png']",Rutgers
+662,8518718,Curt Calov,4,9,M,69,#d21034,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/164.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/164.png']",Rutgers
+663,8515723,Ciaran Dalton,3,1,GK,74,#d21034,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/164.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/164.png']",Rutgers
+664,8952377,Rui Reis,3,7,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIC
+665,8506713,Bart Muns,4,14,F,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIC
+666,8505116,Kevin Dabrowski,2,77,GK,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIC
+667,8513898,Paul Brauckmann,3,4,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIC
+668,8506139,Cristian Tamayo,1,17,MD,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIC
+669,8521354,Robert Myrick,2,16,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],La Salle
+670,8973113,Andoni Garrogerricaechebarria,4,10,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],La Salle
+671,8973108,Andrew Rosenbaum,4,8,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],La Salle
+672,8508553,Valentin Kneis,3,32,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],La Salle
+673,8505213,Kyrese Lynch-Bailey,2,17,FM,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],La Salle
+674,8522190,Griffin Huff,4,1,GK,76,#790000,#a59474,"['http://a.espncdn.com/i/teamlogos/ncaa/500/322.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/322.png']",Lafayette
+675,8514715,Andrey McIntyre,4,11,F,71,#790000,#a59474,"['http://a.espncdn.com/i/teamlogos/ncaa/500/322.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/322.png']",Lafayette
+676,8505720,Carter Houlihan,4,18,M,72,#790000,#a59474,"['http://a.espncdn.com/i/teamlogos/ncaa/500/322.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/322.png']",Lafayette
+677,8965145,Joseph Lee,1,24,D,74,#790000,#a59474,"['http://a.espncdn.com/i/teamlogos/ncaa/500/322.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/322.png']",Lafayette
+678,8965130,Jackson Vajda,1,20,MD,74,#790000,#a59474,"['http://a.espncdn.com/i/teamlogos/ncaa/500/322.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/322.png']",Lafayette
+679,8509446,Max Fujimori,2,17,FM,70,#790000,#a59474,"['http://a.espncdn.com/i/teamlogos/ncaa/500/322.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/322.png']",Lafayette
+680,8950410,Matthew Acosta,4,5,M,69,#7bafd4,#13294b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/153.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/153.png']",North Carolina
+681,8950416,Martin Vician,4,9,F,76,#7bafd4,#13294b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/153.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/153.png']",North Carolina
+682,8950408,Tate Johnson,1,2,D,68,#7bafd4,#13294b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/153.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/153.png']",North Carolina
+683,8516372,Andrew Cordes,3,1,GK,73,#7bafd4,#13294b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/153.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/153.png']",North Carolina
+684,8507228,Andrew Czech,4,27,MD,71,#7bafd4,#13294b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/153.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/153.png']",North Carolina
+685,8510477,Tate Lorentz,2,32,FM,71,#7bafd4,#13294b,"['http://a.espncdn.com/i/teamlogos/ncaa/500/153.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/153.png']",North Carolina
+686,8971182,Bryan Akongo,4,9,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Rider
+687,8523656,Momo Diop,3,7,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Rider
+688,8971246,Max Schrader,1,21,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Rider
+689,8511972,Adam Salama,3,31,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Rider
+690,8976019,Austin Yowell,4,5,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bellarmine
+691,8523634,Jackson Marks,3,22,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bellarmine
+692,8509035,Colin Elder,1,23,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bellarmine
+693,8758853,Peter Van Euwen,4,0,GK,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Bellarmine
+694,8518667,Vasilis Moiras,2,8,F,69,#005730,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/159.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/159.png']",Dartmouth
+695,8518371,Costi Christodoulou,4,1,GK,74,#005730,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/159.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/159.png']",Dartmouth
+696,8519914,Ben Jenkins,4,3,M,75,#005730,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/159.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/159.png']",Dartmouth
+697,8970539,Panagiotis Karagiorgis,1,5,D,73,#005730,#000000,"['http://a.espncdn.com/i/teamlogos/ncaa/500/159.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/159.png']",Dartmouth
+698,8506546,Simon Adjakple,2,23,FM,73,#004a81,#286dc0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/43.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/43.png']",Yale
+699,8980451,Chris Edwards,4,0,GK,73,#004a81,#286dc0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/43.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/43.png']",Yale
+700,8512470,Diego Zaffanella,3,34,M,71,#004a81,#286dc0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/43.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/43.png']",Yale
+701,8522833,Joseph Farouz,2,9,F,72,#004a81,#286dc0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/43.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/43.png']",Yale
+702,8980486,Sven Meacham,1,2,D,71,#004a81,#286dc0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/43.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/43.png']",Yale
+703,8510491,Eskil Gjerde,3,15,D,72,#005596,#bec0c2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2181.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2181.png']",Drake
+704,8870982,Tomas Butkovic,1,1,GK,72,#005596,#bec0c2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2181.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2181.png']",Drake
+705,8870997,Preston Kipnusu,1,29,F,76,#005596,#bec0c2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2181.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2181.png']",Drake
+706,8870989,Deng Deng,4,2,MD,75,#005596,#bec0c2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2181.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2181.png']",Drake
+707,8517320,Jackson Kirsch,2,13,M,70,#005596,#bec0c2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2181.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2181.png']",Drake
+708,8518562,Erich Legut,4,9,FM,72,#005596,#bec0c2,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2181.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2181.png']",Drake
+709,8971990,Gabriel Christensen,4,7,F,68,#004991,#8e908f,"['http://a.espncdn.com/i/teamlogos/ncaa/500/235.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/235.png']",Memphis
+710,8972020,Cory Pitlik,4,23,M,74,#004991,#8e908f,"['http://a.espncdn.com/i/teamlogos/ncaa/500/235.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/235.png']",Memphis
+711,8972009,Jackson Kim,4,15,D,75,#004991,#8e908f,"['http://a.espncdn.com/i/teamlogos/ncaa/500/235.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/235.png']",Memphis
+712,8971995,Brody Conley,4,29,MD,0,#004991,#8e908f,"['http://a.espncdn.com/i/teamlogos/ncaa/500/235.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/235.png']",Memphis
+713,8972021,Filip Sabatti,3,0,GK,74,#004991,#8e908f,"['http://a.espncdn.com/i/teamlogos/ncaa/500/235.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/235.png']",Memphis
+714,8974192,Ryan Ruguaru,1,21,FM,0,#004991,#8e908f,"['http://a.espncdn.com/i/teamlogos/ncaa/500/235.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/235.png']",Memphis
+715,8519997,Lucas Gelebart,2,7,FM,0,#b10202,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2439.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2439.png']",UNLV
+716,8508872,Tyler Ware,2,23,F,0,#b10202,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2439.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2439.png']",UNLV
+717,8515989,Hugo Lemos,2,1,GK,0,#b10202,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2439.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2439.png']",UNLV
+718,8972053,Nico Lopez,4,15,M,0,#b10202,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2439.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2439.png']",UNLV
+719,8972055,Théo Minard,4,24,D,0,#b10202,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2439.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2439.png']",UNLV
+720,8509758,Mikah Madrid,2,16,MD,0,#b10202,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2439.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2439.png']",UNLV
+721,8515522,Villads Landsperg,2,29,D,72,#533B23,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2747.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2747.png']",Wofford
+722,8961699,Leo Ledin,1,1,GK,77,#533B23,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2747.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2747.png']",Wofford
+723,8509683,Aidan Cardella,4,11,F,70,#533B23,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2747.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2747.png']",Wofford
+724,8961701,Kalle Rahbeck,1,12,M,70,#533B23,#f0f0f0,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2747.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2747.png']",Wofford
+725,8503444,Jorge Lopez,2,8,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Grand Canyon
+726,8503878,Erick Monge,3,17,D,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Grand Canyon
+727,8871209,Ben Assane Fall,4,18,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Grand Canyon
+728,8522462,Leon Schmidt,4,1,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Grand Canyon
+729,8958943,Finn Linas,1,28,F,70,#1E4D2B,#eed897,"['http://a.espncdn.com/i/teamlogos/ncaa/500/13.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/13.png']",Cal Poly
+730,8958812,Cole Aman,1,3,FM,68,#1E4D2B,#eed897,"['http://a.espncdn.com/i/teamlogos/ncaa/500/13.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/13.png']",Cal Poly
+731,8517544,Parker Owens,2,4,D,76,#1E4D2B,#eed897,"['http://a.espncdn.com/i/teamlogos/ncaa/500/13.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/13.png']",Cal Poly
+732,8515633,Diego Guerra,2,8,M,74,#1E4D2B,#eed897,"['http://a.espncdn.com/i/teamlogos/ncaa/500/13.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/13.png']",Cal Poly
+733,8512251,Nicky McCune,3,1,GK,74,#1E4D2B,#eed897,"['http://a.espncdn.com/i/teamlogos/ncaa/500/13.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/13.png']",Cal Poly
+734,8958941,Jack Muoio,4,27,MD,70,#1E4D2B,#eed897,"['http://a.espncdn.com/i/teamlogos/ncaa/500/13.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/13.png']",Cal Poly
+735,8505918,Oscar Olingdahl,3,8,M,72,#4e1e8a,#ffc90a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2710.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2710.png']",Western Illinois
+736,8518644,Marco Presta,3,4,D,74,#4e1e8a,#ffc90a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2710.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2710.png']",Western Illinois
+737,8523698,Liam Gainey,3,9,F,72,#4e1e8a,#ffc90a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2710.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2710.png']",Western Illinois
+738,8846846,Ty Duax,1,25,FM,69,#4e1e8a,#ffc90a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2710.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2710.png']",Western Illinois
+739,8846837,Benjamin Graham,1,3,MD,69,#4e1e8a,#ffc90a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2710.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2710.png']",Western Illinois
+740,8846835,Micah Ramirez,3,1,GK,72,#4e1e8a,#ffc90a,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2710.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2710.png']",Western Illinois
+741,8959021,Kai Sullivan,4,14,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Pacific
+742,8519063,Jose Maria Barrera,3,11,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Pacific
+743,8959023,Ezekiel Padilla,1,18,F,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Pacific
+744,8514636,Joshua Moya,4,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Pacific
+745,8967648,Pablo Alcoba,4,5,M,73,#a40012,#c29472,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2529.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2529.png']",Sacred Heart
+746,8967655,Ivan Morcillo,1,9,F,71,#a40012,#c29472,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2529.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2529.png']",Sacred Heart
+747,8967743,Ivan Breki Sigurdsson,1,22,D,70,#a40012,#c29472,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2529.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2529.png']",Sacred Heart
+748,8967646,Andrew Hammersley,4,1,GK,77,#a40012,#c29472,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2529.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2529.png']",Sacred Heart
+749,8518485,Gianluca Lanzilli,2,30,FM,70,#a40012,#c29472,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2529.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2529.png']",Sacred Heart
+750,8520628,Cason Stafford,3,10,M,71,#821019,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2142.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2142.png']",Colgate
+751,8520104,Jacob Blackwin,4,3,D,74,#821019,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2142.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2142.png']",Colgate
+752,8520827,Timmy Donovan,4,9,F,73,#821019,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2142.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2142.png']",Colgate
+753,8514288,Oliver Townend,4,1,GK,72,#821019,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2142.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2142.png']",Colgate
+754,8516307,Conor Geraghty,2,29,FM,74,#821019,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2142.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2142.png']",Colgate
+755,8518592,Michael Blevins,2,23,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSUN
+756,8959051,"Deryk Jones, Jr.",2,3,D,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSUN
+757,8959049,Dorian Drucks,2,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSUN
+758,8516342,Arturo Reveles,3,10,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],CSUN
+759,8961216,Leo Schorr,2,13,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FGCU
+760,8961211,Victor Lopes,3,11,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FGCU
+761,8955327,Cooper Blay,4,1,GK,78,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FGCU
+762,8961200,Cao Chaves,4,8,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FGCU
+763,8977664,Alex Cunningham,1,8,D,70,#003595,#d0b787,"['http://a.espncdn.com/i/teamlogos/ncaa/500/202.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/202.png']",Tulsa
+764,8960147,Alvaro Torrijos,4,20,M,69,#003595,#d0b787,"['http://a.espncdn.com/i/teamlogos/ncaa/500/202.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/202.png']",Tulsa
+765,8758834,Gijs Hovius,3,9,F,0,#003595,#d0b787,"['http://a.espncdn.com/i/teamlogos/ncaa/500/202.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/202.png']",Tulsa
+766,8504014,Alex Lopez,4,1,GK,70,#003595,#d0b787,"['http://a.espncdn.com/i/teamlogos/ncaa/500/202.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/202.png']",Tulsa
+767,8504122,Lucas Rizzo,2,17,M,72,#003b28,#ffc845,"['http://a.espncdn.com/i/teamlogos/ncaa/500/5.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/5.png']",UAB
+768,8955963,Ole Jessen,1,15,D,0,#003b28,#ffc845,"['http://a.espncdn.com/i/teamlogos/ncaa/500/5.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/5.png']",UAB
+769,8955998,Patrik Fagan,1,19,F,0,#003b28,#ffc845,"['http://a.espncdn.com/i/teamlogos/ncaa/500/5.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/5.png']",UAB
+770,8523976,Jonathan Munteanu,2,30,GK,74,#003b28,#ffc845,"['http://a.espncdn.com/i/teamlogos/ncaa/500/5.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/5.png']",UAB
+771,8523210,Stavros Charalampous,2,8,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],California Baptist
+772,8758908,Dominic De Almeida,4,14,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],California Baptist
+773,8965382,Leo Mendez,4,9,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],California Baptist
+774,8970060,Hugo Do Rego,2,1,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],California Baptist
+775,8965400,Jiro Uchida,1,26,FM,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],California Baptist
+776,8523995,Alvaro Heredia,3,10,M,66,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NJIT
+777,8977283,Raz Amir,4,16,F,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NJIT
+778,8977291,Devin Armstrong,3,1,GK,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NJIT
+779,8977333,Guy Panzner,3,22,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],NJIT
+780,8513825,Lovro Horvat,4,26,D,74,#3D2777,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/399.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/399.png']",UAlbany
+781,8509487,Zach Lind,2,25,F,72,#3D2777,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/399.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/399.png']",UAlbany
+782,8970213,Elias Ehlin,4,6,M,72,#3D2777,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/399.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/399.png']",UAlbany
+783,8517343,Daniel Shannon,4,0,GK,74,#3D2777,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/399.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/399.png']",UAlbany
+784,8512075,Nico Medina,2,20,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Washington
+785,8968933,Louis Crofts,1,14,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Washington
+786,8516635,Jared DeMott,4,5,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Washington
+787,8519801,Richard Raupp,4,0,GK,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],George Washington
+788,8847080,Tyson Aschliman,1,25,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],IU Indy
+789,8758735,Liam Zimmerman,3,18,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],IU Indy
+790,8847081,Kyle Clayton,1,27,FM,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],IU Indy
+791,8758732,Quentin Flowers,3,6,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],IU Indy
+792,8517564,Declan Finnegan,1,35,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],IU Indy
+793,8506836,Isak Oystese,4,9,F,72,#091f3f,#5ab3e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/227.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/227.png']",Rhode Island
+794,8507860,Brett Schwab,2,21,D,72,#091f3f,#5ab3e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/227.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/227.png']",Rhode Island
+795,8505103,Edu Rodriguez,4,1,GK,74,#091f3f,#5ab3e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/227.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/227.png']",Rhode Island
+796,8508914,Ivan Montoro,4,8,M,69,#091f3f,#5ab3e8,"['http://a.espncdn.com/i/teamlogos/ncaa/500/227.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/227.png']",Rhode Island
+797,8871179,Cesar Batres,1,13,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Mary's
+798,8516153,Fynn Allmon,2,2,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Mary's
+799,8871178,Sebastian Barrios,1,37,MD,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Mary's
+800,8871199,Koren Klein,1,31,FM,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Mary's
+801,8871180,Sam Bentley,1,30,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Mary's
+802,8517594,Luke Lawrence,3,5,D,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Mary's
+803,8515142,Caden Grabfelder,2,11,M,72,#041E42,#FFFFFF,"['http://a.espncdn.com/i/teamlogos/ncaa/500/213.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/213.png']",Penn State
+804,8512731,Matthew Henderson,3,3,D,70,#041E42,#FFFFFF,"['http://a.espncdn.com/i/teamlogos/ncaa/500/213.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/213.png']",Penn State
+805,8872010,Aboubacar Camara,4,15,F,70,#041E42,#FFFFFF,"['http://a.espncdn.com/i/teamlogos/ncaa/500/213.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/213.png']",Penn State
+806,8872009,Andrew Cooke,4,1,GK,75,#041E42,#FFFFFF,"['http://a.espncdn.com/i/teamlogos/ncaa/500/213.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/213.png']",Penn State
+807,8520272,Landon Bealer,2,17,MD,67,#6c2b2a,#b69e70,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2329.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2329.png']",Lehigh
+808,8506619,Sam Davis,3,2,D,72,#6c2b2a,#b69e70,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2329.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2329.png']",Lehigh
+809,8980454,Blake Koski,4,1,GK,74,#6c2b2a,#b69e70,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2329.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2329.png']",Lehigh
+810,8970368,Giacomo Zizza,1,15,M,0,#6c2b2a,#b69e70,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2329.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2329.png']",Lehigh
+811,8970374,Shea Coughlin,1,22,None Listed,0,#6c2b2a,#b69e70,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2329.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2329.png']",Lehigh
+812,8970364,Bora Turker,1,13,F,0,#6c2b2a,#b69e70,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2329.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2329.png']",Lehigh
+813,8506608,Beckett Wenger,3,20,FM,70,#6c2b2a,#b69e70,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2329.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2329.png']",Lehigh
+814,8507923,Junee Lee,2,30,M,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Mount St. Mary's
+815,8987053,Markus Nilsen,4,14,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Mount St. Mary's
+816,8961816,Jack Kehoe,1,24,MD,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Mount St. Mary's
+817,8961796,Sherwin Chen,1,17,FM,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Mount St. Mary's
+818,8516066,Bobby Marsteller,3,9,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Mount St. Mary's
+819,8961753,Julian Marcos,3,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Mount St. Mary's
+820,8970041,Nick Aghaian,1,24,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC San Diego
+821,8509282,Max Carvalho,4,23,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC San Diego
+822,8969979,Adam Hillis,3,6,M,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC San Diego
+823,8970005,Cole Barrett,3,20,MD,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC San Diego
+824,8969971,Nolan Premack,4,1,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC San Diego
+825,8516050,Andrew Valverde,4,7,FM,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UC San Diego
+826,8511956,Rodrigo Ferreira,4,6,M,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Winthrop
+827,8516170,Ethan Marks,2,25,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Winthrop
+828,8519161,Sam Pidgeon,4,5,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Winthrop
+829,8506018,Jack Kilstrom,2,1,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Winthrop
+830,8522779,Matt Taylor,3,32,F,70,#1e539a,#ebebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2247.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2247.png']",Georgia State
+831,8871617,Tom Williams,4,11,M,68,#1e539a,#ebebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2247.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2247.png']",Georgia State
+832,8518734,Hideto Gondo,4,27,D,69,#1e539a,#ebebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2247.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2247.png']",Georgia State
+833,8514047,Josh Hangi,4,34,GK,73,#1e539a,#ebebeb,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2247.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2247.png']",Georgia State
+834,8956867,Dominik Danis,4,23,D,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Marquette
+835,8510067,Antonio Costabile,2,7,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Marquette
+836,8956879,Justin Milovanov,4,28,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Marquette
+837,8956795,Marten Brink,1,1,GK,79,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Marquette
+838,8511999,Tristan Ronnestad-Stevens,3,5,MD,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Marquette
+839,8515980,Brett Perkins,2,27,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Omaha
+840,8508864,Naz Astwood,4,18,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Omaha
+841,8977213,Bradley Takamo,1,13,F,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Omaha
+842,8509842,Nathanael Sallah,4,30,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Omaha
+843,8955355,Sean Boyle,2,24,D,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Joseph's
+844,8514993,Truls Braendvang,4,8,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Joseph's
+845,8506779,Blake Driehuis,4,9,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Joseph's
+846,8511456,Lars Haavie,4,1,GK,78,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Joseph's
+847,8975219,Salvatore Zani,1,18,F,72,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2771.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2771.png']",Merrimack
+848,8972136,Samuel Biven,4,10,D,74,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2771.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2771.png']",Merrimack
+849,8975226,Ignacio Canales Chamizo,1,27,None Listed,0,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2771.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2771.png']",Merrimack
+850,8975214,Jonathan Kratz,1,11,FM,74,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2771.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2771.png']",Merrimack
+851,8975212,John Labelle,1,7,MD,71,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2771.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2771.png']",Merrimack
+852,8504303,Bennet Morrill,4,14,M,70,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2771.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2771.png']",Merrimack
+853,8517732,Nelton Semedo,4,1,GK,72,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2771.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2771.png']",Merrimack
+854,8521874,Charlie Kriel,4,12,D,71,#00225b,#b5a67c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2426.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2426.png']",Navy
+855,8508732,Pierce Holbrook,4,30,GK,76,#00225b,#b5a67c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2426.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2426.png']",Navy
+856,8507764,Nate Stewart,2,15,M,72,#00225b,#b5a67c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2426.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2426.png']",Navy
+857,8512918,A.J. Schuetz,3,23,F,70,#00225b,#b5a67c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2426.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2426.png']",Navy
+858,8504588,Noah Ward,4,13,FM,69,#00225b,#b5a67c,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2426.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2426.png']",Navy
+859,8515956,Kotaro Natsume,4,2,D,66,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMass Lowell
+860,8962734,Matteo Costa,1,22,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMass Lowell
+861,8952375,JR Gawel,3,32,GK,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMass Lowell
+862,8962713,Yanis Lakhlifi,4,9,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UMass Lowell
+863,8870417,Kai Thomas,1,20,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Army West Point
+864,8522189,Jubril Bamgbala,2,10,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Army West Point
+865,8506383,Kelly Cooper,2,5,D,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Army West Point
+866,8870387,Blair Camargo,1,0,GK,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Army West Point
+867,8964621,Samo Hassoun,1,7,F,67,#152532,#bebab9,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2197.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2197.png']",Eastern Illinois
+868,8508552,Jake Pollock,2,18,M,70,#152532,#bebab9,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2197.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2197.png']",Eastern Illinois
+869,8964653,Patrick Osilaja,1,23,D,72,#152532,#bebab9,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2197.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2197.png']",Eastern Illinois
+870,8514424,Chad Smith,4,1,GK,73,#152532,#bebab9,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2197.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2197.png']",Eastern Illinois
+871,8970951,Javanne Smith,4,12,F,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Lipscomb
+872,8970952,Keegan Yorke,4,13,D,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Lipscomb
+873,8519474,Caleb Davis,2,28,MD,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Lipscomb
+874,8507099,Tyler Stinnett,2,21,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Lipscomb
+875,8970959,Noah Kump,2,22,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Lipscomb
+876,8517903,Dominic Cintra,2,20,F,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Niagara
+877,8505176,Jamie Barry,3,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Niagara
+878,8961130,Kevin Payne,4,23,D,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Niagara
+879,8521355,Gianluca Del Priore,2,22,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Niagara
+880,8523812,Lucas Fontana,4,0,GK,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Chicago State
+881,8954457,Victor Herrera,1,7,M,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Chicago State
+882,8954467,Aidan Lopez,1,27,F,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Chicago State
+883,8503671,Zephyn Brockert-Kress,3,16,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Chicago State
+884,8519834,Adrian Barosen,4,19,D,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FIU
+885,8506682,Bernardo Dos Santos Monteiro,4,7,F,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FIU
+886,8505850,Diego Castillo,4,10,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FIU
+887,8952577,Nigel Van Haveren,2,48,GK,78,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],FIU
+888,8953102,Emmanuel Monserrat,2,14,M,66,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3101.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3101.png']",Utah Tech
+889,8506045,Anthony Godinez,3,3,D,70,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3101.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3101.png']",Utah Tech
+890,8507948,Sami Cuevas,2,7,F,66,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3101.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3101.png']",Utah Tech
+891,8517207,Stockton Short,3,12,GK,75,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3101.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3101.png']",Utah Tech
+892,8953103,Daichi Saito,3,15,FM,68,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3101.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3101.png']",Utah Tech
+893,8505187,Angel Saldana,4,21,MD,70,#152532,#c8caca,"['http://a.espncdn.com/i/teamlogos/ncaa/500/3101.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/3101.png']",Utah Tech
+894,8975476,Steven Anderson,4,7,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LMU
+895,8511030,Alejandro Fuentesal-Atalaya,2,19,F,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LMU
+896,8523875,Lewis Clutton,3,10,FM,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LMU
+897,8975479,Massimo Oedekoven Pomponi,4,31,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LMU
+898,8975482,Jayden Gonsalves,3,4,D,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],LMU
+899,8504513,Jeremy Sharp,3,17,D,71,#18453b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/127.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/127.png']",Michigan State
+900,8515233,Cristiano Bruletti,3,12,M,71,#18453b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/127.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/127.png']",Michigan State
+901,8955386,Mohamed Saad,1,9,F,74,#18453b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/127.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/127.png']",Michigan State
+902,8511099,Zac Kelly,4,30,GK,72,#18453b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/127.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/127.png']",Michigan State
+903,8522245,Fabrizio Bernal de la Garza,4,17,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Xavier
+904,8960498,Eli Dulle,4,5,M,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Xavier
+905,8511626,Matthew Senanou,3,18,D,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Xavier
+906,8519805,Jonny Mennell,3,1,GK,77,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Xavier
+907,8516451,Ethan Agyare-Danso,2,16,F,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Central Conn. State
+908,8505495,Zane Brown,4,7,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Central Conn. State
+909,8513982,Justin Rivas,4,21,D,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Central Conn. State
+910,8960133,Michel Pinoncely,4,1,GK,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Central Conn. State
+911,8522933,Evan Howard,3,19,F,77,#007073,#876447,"['http://a.espncdn.com/i/teamlogos/ncaa/500/324.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/324.png']",Coastal Carolina
+912,8505599,Anton Bjarkason,2,27,D,69,#007073,#876447,"['http://a.espncdn.com/i/teamlogos/ncaa/500/324.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/324.png']",Coastal Carolina
+913,8513155,Doug Hainer,3,10,M,71,#007073,#876447,"['http://a.espncdn.com/i/teamlogos/ncaa/500/324.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/324.png']",Coastal Carolina
+914,8515110,Tristan Himes,2,0,GK,78,#007073,#876447,"['http://a.espncdn.com/i/teamlogos/ncaa/500/324.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/324.png']",Coastal Carolina
+915,8758726,Florian Deletioglu,4,7,M,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Santa Clara
+916,8512064,Itamar Efrat,2,16,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Santa Clara
+917,8758728,Tyler Tipton,3,14,F,74,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Santa Clara
+918,8955137,Jackson Ozburn,3,1,GK,75,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Santa Clara
+919,8970255,Nicolas Aanensen Karlson,3,27,FM,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Jacksonville
+920,8519675,Olivier Correa,4,10,M,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Jacksonville
+921,8514205,Christian Sekanina,3,1,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Jacksonville
+922,8758706,Matthew Skinner,4,3,D,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Jacksonville
+923,8509710,Owen Guske,4,5,MD,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Jacksonville
+924,8522224,Carson Wood,4,11,F,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Jacksonville
+925,8511411,Lyon Atiencia,2,18,FM,64,#174785,#004b85,"['http://a.espncdn.com/i/teamlogos/ncaa/500/171.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/171.png']",Columbia
+926,8509909,Joao Lima,3,10,M,70,#174785,#004b85,"['http://a.espncdn.com/i/teamlogos/ncaa/500/171.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/171.png']",Columbia
+927,8957847,Will Carnoy,1,29,MD,72,#174785,#004b85,"['http://a.espncdn.com/i/teamlogos/ncaa/500/171.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/171.png']",Columbia
+928,8522148,Carmine Falco,3,2,D,69,#174785,#004b85,"['http://a.espncdn.com/i/teamlogos/ncaa/500/171.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/171.png']",Columbia
+929,8522494,Cy Sokolowski,3,15,F,75,#174785,#004b85,"['http://a.espncdn.com/i/teamlogos/ncaa/500/171.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/171.png']",Columbia
+930,8504699,Dean Kelliher,3,30,GK,74,#174785,#004b85,"['http://a.espncdn.com/i/teamlogos/ncaa/500/171.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/171.png']",Columbia
+931,8506442,Akos Tajtyi,2,15,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Radford
+932,8968961,Carson Danner,1,33,D,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Radford
+933,8969013,Cesar Rubio,3,37,F,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Radford
+934,8969023,Florian Senst,3,7,FM,72,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Radford
+935,9041757,Zak Jamraki,0,38,None Listed,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Radford
+936,8517163,Alex Eydelman,4,42,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Radford
+937,8758750,Sadock Kilosho,3,25,MD,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Radford
+938,8515653,William Ansah,4,2,D,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIW
+939,8516266,Cesar Elizalde,3,23,M,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIW
+940,8953631,Emmanuel Martinez,1,20,F,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIW
+941,8953538,Alejandro DeLaTorre,4,99,GK,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIW
+942,8953578,Diego Robles,1,28,None Listed,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIW
+943,8953535,Francisco Segura,4,11,FM,0,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],UIW
+944,8965312,Deniss Hayes,1,23,F,70,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],VCU
+945,8517681,Hayato Miyano,3,26,D,68,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],VCU
+946,8965315,Mohammed Ibrahim,1,30,M,67,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],VCU
+947,8512792,John Ermini,4,0,GK,76,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],VCU
+948,8509409,Pedro Alves,4,1,GK,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Peter's
+949,8974569,Harry Davison,1,6,D,73,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Peter's
+950,8523394,Kaloyan Somov,4,25,F,71,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Peter's
+951,8508233,Harvey Ormerod,4,12,M,69,#152532,#c8caca,[https://drive.google.com/drive-viewer/AKGpihaYb1Y1nEr1OtOU6402JARAiPa-6Moru1jZuz7Br_szY168Xq1E7MkBQHN6cMihX7ULokKQfUyKQP-JYZ05J_cdQ6JL1EKAPaM=w1920-h912],Saint Peter's
+952,8981016,Andrei Bulankou,1,5,D,74,#004a7b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2005.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2005.png']",Air Force
+953,8980993,Menes Ajyeman,1,25,FM,72,#004a7b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2005.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2005.png']",Air Force
+954,8513108,Ryan Daunt,3,11,M,69,#004a7b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2005.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2005.png']",Air Force
+955,8521952,Carter Rizzo,4,7,F,72,#004a7b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2005.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2005.png']",Air Force
+956,8518918,Josh Spence,3,23,GK,75,#004a7b,#ffffff,"['http://a.espncdn.com/i/teamlogos/ncaa/500/2005.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/2005.png']",Air Force
+957,8515338,Elias Betancourt,2,14,M,69,#A80532,#a7a9ac,"['http://a.espncdn.com/i/teamlogos/ncaa/500/218.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/218.png']",Temple
+958,8962718,Elliot Rigbert,1,15,F,71,#A80532,#a7a9ac,"['http://a.espncdn.com/i/teamlogos/ncaa/500/218.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/218.png']",Temple
+959,8962742,Flannan Riley,4,30,GK,72,#A80532,#a7a9ac,"['http://a.espncdn.com/i/teamlogos/ncaa/500/218.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/218.png']",Temple
+960,8962680,Diego Diaz,2,4,D,73,#A80532,#a7a9ac,"['http://a.espncdn.com/i/teamlogos/ncaa/500/218.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/218.png']",Temple
+961,8522255,Rocco Haeufglockner,3,11,MD,69,#A80532,#a7a9ac,"['http://a.espncdn.com/i/teamlogos/ncaa/500/218.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/218.png']",Temple
+962,8962725,Chase Jackson,1,18,FM,71,#A80532,#a7a9ac,"['http://a.espncdn.com/i/teamlogos/ncaa/500/218.png', 'http://a.espncdn.com/i/teamlogos/ncaa/500-dark/218.png']",Temple

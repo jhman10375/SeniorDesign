@@ -1,42 +1,42 @@
-index,id,name,conference
+,id,name,conference
 0,596420,Texas A&M,SEC
-1,596643,Oregon St.,Pac-12
+1,596643,Oregon State,Pac-12
 2,596677,South Carolina,SEC
 3,596721,Tennessee,SEC
 4,596429,Troy,Sun Belt
 5,596441,Wake Forest,ACC
-6,596714,Oklahoma St.,Big 12
+6,596714,Oklahoma State,Big 12
 7,596614,North Carolina,ACC
 8,596554,Georgia,SEC
 9,596553,Georgia Tech,ACC
-10,596634,Northern Ky.,Horizon
+10,596634,Northern Kentucky,Horizon
 11,596450,William & Mary,CAA
 12,596513,UC Irvine,Big West
 13,596534,Delaware,CAA
 14,596628,NC State,ACC
 15,596638,Oakland,Horizon
-16,596545,Florida St.,ACC
+16,596545,Florida State,ACC
 17,596705,High Point,Big South
 18,596583,LSU,SEC
 19,596709,Evansville,MVC
 20,596572,Jacksonville,ASUN
 21,596524,Coastal Carolina,Sun Belt
-22,596682,Southern Ill.,MVC
+22,596682,Southern Illinois,MVC
 23,596713,Nicholls,Southland
-24,596574,Kansas St.,Big 12
-25,596610,Morehead St.,OVC
+24,596574,Kansas State,Big 12
+25,596610,Morehead State,OVC
 26,596521,Cincinnati,Big 12
 27,596516,Campbell,CAA
 28,596704,Wofford,SoCon
 29,596536,ETSU,SoCon
 30,596439,Virginia,ACC
 31,596540,Fairfield,MAAC
-32,596639,Ohio St.,Big Ten
+32,596639,Ohio State,Big Ten
 33,596641,Oklahoma,Big 12
 34,596497,Bowling Green,MAC
-35,596605,Mississippi St.,SEC
+35,596605,Mississippi State,SEC
 36,596659,Rider,MAAC
-37,596718,Southeast Mo. St.,OVC
+37,596718,Southeast Mo. State,OVC
 38,596423,Texas Tech,Big 12
 39,596436,VCU,Atlantic 10
 40,596523,Clemson,ACC
@@ -49,12 +49,12 @@ index,id,name,conference
 47,596487,Arkansas,SEC
 48,596631,Northeastern,CAA
 49,596459,Col. of Charleston,CAA
-50,596685,Missouri St.,MVC
+50,596685,Missouri State,MVC
 51,596617,UNCW,CAA
 52,596711,LIU,NEC
 53,596701,Tulane,AAC
 54,596649,Pittsburgh,ACC
-55,596453,Wright St.,Horizon
+55,596453,Wright State,Horizon
 56,596577,Kentucky,SEC
 57,596708,Duke,ACC
 58,596559,Holy Cross,Patriot
@@ -66,14 +66,14 @@ index,id,name,conference
 64,596715,Oral Roberts,Summit League
 65,596624,New Orleans,Southland
 66,596438,Virginia Tech,ACC
-67,596612,Murray St.,MVC
+67,596612,Murray State,MVC
 68,596623,New Mexico,Mountain West
 69,596592,UMBC,America East
 70,596541,FDU,NEC
 71,596563,Illinois,Big Ten
 72,596566,Indiana,Big Ten
 73,596437,VMI,SoCon
-74,596448,Western Mich.,MAC
+74,596448,Western Michigan,MAC
 75,596579,Lamar University,Southland
 76,596654,Quinnipiac,MAAC
 77,596668,Samford,SoCon
@@ -93,20 +93,20 @@ index,id,name,conference
 91,596569,Iowa,Big Ten
 92,596454,Xavier,Big East
 93,596589,Manhattan,MAAC
-94,596543,Fla. Atlantic,AAC
+94,596543,Florida Atlantic,AAC
 95,596575,Kansas,Big 12
 96,596532,Dayton,Atlantic 10
-97,596686,Texas St.,Sun Belt
+97,596686,Texas State,Sun Belt
 98,596477,Abilene Christian,WAC
 99,596600,Miami,FL
 100,596661,Sacred Heart,NEC
 101,596484,App State,Sun Belt
-102,596485,Arizona St.,Pac-12
-103,596527,Coppin St.,NEC
-104,596576,Kent St.,MAC
+102,596485,Arizona State,Pac-12
+103,596527,Coppin State,NEC
+104,596576,Kent State,MAC
 105,596472,Lipscomb,ASUN
 106,596427,Toledo,MAC
-107,596551,Ga. Southern,Sun Belt
+107,596551,Georgia Southern,Sun Belt
 108,596593,Maryland,Big Ten
 109,596651,Prairie View,SWAC
 110,596422,Texas Southern,SWAC
@@ -118,26 +118,26 @@ index,id,name,conference
 116,596531,Davidson,Atlantic 10
 117,596464,Presbyterian,Big South
 118,596684,Southern U.,SWAC
-119,596552,Georgia St.,Sun Belt
+119,596552,Georgia State,Sun Belt
 120,596473,FGCU,ASUN
-121,596570,Jackson St.,SWAC
-122,596463,Kennesaw St.,ASUN
+121,596570,Jackson State,SWAC
+122,596463,Kennesaw State,ASUN
 123,596535,East Carolina,AAC
 124,596469,USC Upstate,Big South
 125,596573,James Madison,Sun Belt
 126,596481,UAB,AAC
 127,596615,Charlotte,AAC
-128,596565,Indiana St.,MVC
+128,596565,Indiana State,MVC
 129,596582,Longwood,Big South
-130,596622,New Mexico St.,CUSA
+130,596622,New Mexico State,CUSA
 131,596717,St. John's,NY
 132,596482,UAlbany,America East
 133,596680,Southeastern La.,Southland
 134,596444,West Virginia,Big 12
-135,596533,Delaware St.,NEC
+135,596533,Delaware State,NEC
 136,596496,Boston College,ACC
 137,596670,San Diego,WCC
-138,596599,Miami (OH),OH
+138,596599,Miami,OH
 139,596663,Saint Joseph's,Atlantic 10
 140,596561,Houston,Big 12
 141,596445,Western Caro.,SoCon
@@ -155,35 +155,35 @@ index,id,name,conference
 153,596460,Elon,CAA
 154,596633,NIU,MAC
 155,596658,Richmond,Atlantic 10
-156,596679,South Fla.,AAC
+156,596679,South Florida,AAC
 157,596425,Texas,Big 12
 158,596526,UConn,Big East
 159,596468,UIW,Southland
-160,596447,Western Ky.,CUSA
+160,596447,Western Kentucky,CUSA
 161,596675,Siena,MAAC
 162,596604,Minnesota,Big Ten
 163,596664,Saint Louis,Atlantic 10
 164,596502,Bucknell,Patriot
-165,596647,Penn St.,Big Ten
-166,596479,Alabama St.,SWAC
-167,596635,Northwestern St.,Southland
+165,596647,Penn State,Big Ten
+166,596479,Alabama State,SWAC
+167,596635,Northwestern State,Southland
 168,596645,Pacific,WCC
 169,596650,Portland,WCC
 170,596657,Rice,AAC
-171,596457,Central Ark.,ASUN
+171,596457,Central Arkansas,ASUN
 172,596499,BYU,Big 12
-173,596509,Sacramento St.,WAC
+173,596509,Sacramento State,WAC
 174,596619,UNLV,Mountain West
 175,596613,UNC Asheville,Big South
 176,596478,Alabama A&M,SWAC
 177,596586,UMass Lowell,America East
-178,596672,San Jose St.,Mountain West
-179,596491,Ball St.,MAC
+178,596672,San Jose State,Mountain West
+179,596491,Ball State,MAC
 180,596703,DBU,CUSA
 181,596585,Louisville,ACC
-182,596449,Wichita St.,AAC
+182,596449,Wichita State,AAC
 183,596514,UCLA,Pac-12
-184,596486,Arkansas St.,Sun Belt
+184,596486,Arkansas State,Sun Belt
 185,596587,LMU,CA
 186,596419,Akron,MAC
 187,596461,Gardner-Webb,Big South
@@ -193,13 +193,13 @@ index,id,name,conference
 191,596434,Vanderbilt,SEC
 192,596706,Arizona,Pac-12
 193,596511,California,Pac-12
-194,596538,Eastern Ky.,ASUN
+194,596538,Eastern Kentucky,ASUN
 195,596671,San Francisco,WCC
 196,596432,Utah,Pac-12
 197,596470,Belmont,MVC
 198,596596,McNeese,Southland
 199,596503,Butler,Big East
-200,596601,Michigan St.,Big Ten
+200,596601,Michigan State,Big Ten
 201,596467,North Florida,ASUN
 202,596492,Charleston So.,Big South
 203,596632,Northern Colo.,Summit League
@@ -208,7 +208,7 @@ index,id,name,conference
 206,596665,Saint Mary's,CA
 207,596673,Santa Clara,WCC
 208,596433,Valparaiso,MVC
-209,596571,Jacksonville St.,CUSA
+209,596571,Jacksonville State,CUSA
 210,596595,Massachusetts,Atlantic 10
 211,596608,Missouri,SEC
 212,596435,Villanova,Big East
@@ -217,19 +217,19 @@ index,id,name,conference
 215,596430,Air Force,Mountain West
 216,596636,Northwestern,Big Ten
 217,596558,Hofstra,CAA
-218,596629,North Dakota St.,Summit League
+218,596629,North Dakota State,Summit League
 219,596493,Baylor,Big 12
 220,596517,Canisius,MAAC
 221,596431,Navy,Patriot
 222,596421,TCU,Big 12
-223,596446,Western Ill.,OVC
-224,596466,Ark.-Pine Bluff,SWAC
+223,596446,Western Illinois,OVC
+224,596466,Arkansas-Pine Bluff,SWAC
 225,596656,Rhode Island,Atlantic 10
 226,596692,UT Martin,OVC
-227,596539,Eastern Mich.,MAC
-228,596707,Fresno St.,Mountain West
-229,596562,Illinois St.,MVC
-230,596507,Long Beach St.,Big West
+227,596539,Eastern Michigan,MAC
+228,596707,Fresno State,Mountain West
+229,596562,Illinois State,MVC
+230,596507,Long Beach State,Big West
 231,596424,UT Arlington,WAC
 232,596687,Louisiana,Sun Belt
 233,596642,Old Dominion,Sun Belt
@@ -239,11 +239,11 @@ index,id,name,conference
 237,596443,Washington,Pac-12
 238,596475,North Ala.,ASUN
 239,596666,Saint Peter's,MAAC
-240,596520,Central Mich.,MAC
-241,596456,Youngstown St.,Horizon
+240,596520,Central Michigan,MAC
+241,596456,Youngstown State,Horizon
 242,596506,Cal St. Fullerton,Big West
 243,596476,California Baptist,WAC
-244,596537,Eastern Ill.,OVC
+244,596537,Eastern Illinois,OVC
 245,596488,Little Rock,OVC
 246,596618,Omaha,Summit League
 247,596683,SIUE,OVC
@@ -260,25 +260,25 @@ index,id,name,conference
 258,596495,Binghamton,America East
 259,596500,Brown,Ivy League
 260,596452,Milwaukee,Horizon
-261,596626,Norfolk St.,NEC
+261,596626,Norfolk State,NEC
 262,596627,N.C. A&T,CAA
 263,596578,Lafayette,Patriot
 264,596426,UTSA,AAC
-265,596518,Central Conn. St.,NEC
-266,596442,Washington St.,Pac-12
+265,596518,Central Conn. State,NEC
+266,596442,Washington State,Pac-12
 267,596547,Fordham,Atlantic 10
 268,596428,Towson,CAA
 269,596662,St. Bonaventure,Atlantic 10
 270,596525,Columbia,Ivy League
 271,596498,Bradley,MVC
 272,596568,Iona,MAAC
-273,596678,South Dakota St.,Summit League
+273,596678,South Dakota State,Summit League
 274,596555,Gonzaga,WCC
 275,596515,UC Riverside,Big West
 276,596652,Princeton,Ivy League
 277,596548,George Mason,Atlantic 10
 278,596609,Monmouth,CAA
-279,596669,San Diego St.,Mountain West
+279,596669,San Diego State,Mountain West
 280,596594,UMES,NEC
 281,596674,Seton Hall,Big East
 282,596530,Dartmouth,Ivy League
