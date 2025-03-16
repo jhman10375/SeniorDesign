@@ -19,6 +19,7 @@ class DraftManager:
         self.draft_users: Dict[str, List[str]] = {}
         self.allow_draft_entry: Dict[str, bool] = {}
         self.draft_orders: Dict[str, List[DraftOrderData]] = {}
+        self.pick_orders: Dict[str, List[DraftOrderData]] = {}
         self.draft_results: Dict[str, List[DraftResultData]] = {}
         self.players: Dict[str, List[str]] = {}
 
@@ -31,6 +32,7 @@ class DraftManager:
                 self.allow_draft_entry[draft_key] = False
                 self.draft_users[draft_key] = []
                 self.draft_orders[draft_key] = []
+                self.pick_orders[draft_key] = []
                 self.draft_results[draft_key] = []
                 # self.players[draft_key] = [
                 #     {"id": "0", "name": "John Smith", "number": "55", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
@@ -85,7 +87,13 @@ class DraftManager:
                     for index, x in enumerate(data.user_ids):
                         d: DraftOrderData = DraftOrderData(x, i, index)
                         self.draft_orders[draft_key].append(d)
+        
+        self.pick_orders[draft_key] = [d for d in self.draft_orders[draft_key] if d.round == 0]
         return self.draft_orders[draft_key]
+    
+    def get_pick_order(self, draft_key) -> Dict[str, any]:
+        """Return JSON serialized draft_order"""
+        return [obj.GetJSONData() for obj in self.pick_orders[draft_key]]
     
     def get_draft_order(self, draft_key) -> Dict[str, any]:
         """Return JSON serialized draft_order"""

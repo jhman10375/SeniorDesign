@@ -88,7 +88,11 @@ export class LeagueDLService implements OnDestroy {
     league.ID = '0';
     league.Name = "smith's league";
     league.ManagerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
-    league.PlayerIDs = ['9vnblV3TFHb7XNisPvkX2tTTkhj2', '1', '2'];
+    league.PlayerIDs = [
+      '9vnblV3TFHb7XNisPvkX2tTTkhj2',
+      'pMRYKuzti6N1DdXTTPfs12SWXQ73',
+      '2',
+    ];
     league.SettingsID = '0';
     league.DraftDate = draftDate;
     league.LeagueType = SportEnum.Football;

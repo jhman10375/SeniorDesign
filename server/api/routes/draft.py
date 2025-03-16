@@ -37,6 +37,7 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
         "connected_users": draft_manager.draft_users[draft_key],
         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
         "draft_order": draft_manager.get_draft_order(draft_key),
+        "pick_order": draft_manager.get_pick_order(draft_key),
         # "connected_users": list(draft_manager.client_usernames.values())
     })
 
@@ -54,7 +55,8 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "selected_by": player_id,
                         "players": draft_manager.players[draft_key],
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
-                        "connected_users": draft_manager.draft_users[draft_key]
+                        "connected_users": draft_manager.draft_users[draft_key],
+                        "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())
                     })
                 else:
@@ -62,7 +64,8 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "type": "error",
                         "message": f"Player '{player_id}' is already selected.",
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
-                        "connected_users": draft_manager.draft_users[draft_key]
+                        "connected_users": draft_manager.draft_users[draft_key],
+                        "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())
                     })
             elif action == "get_draft_order":
@@ -70,7 +73,8 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "type": "get_draft_order",
                         "draft_order": draft_manager.get_draft_order(draft_key),
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
-                        "connected_users": draft_manager.draft_users[draft_key]
+                        "connected_users": draft_manager.draft_users[draft_key],
+                        "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())
                     })
             elif action == "start_draft":
@@ -78,7 +82,8 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                 await draft_manager.broadcast(draft_key, {
                         "type": "start_draft",
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
-                        "connected_users": draft_manager.draft_users[draft_key]
+                        "connected_users": draft_manager.draft_users[draft_key],
+                        "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())
                     })
             elif action == "update_draft_order":
@@ -94,6 +99,7 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "draft_results": draft_manager.get_draft_results(draft_key),
                         "draft_athletes": draft_manager.players[draft_key],
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
+                        "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())
                     })
             else:
@@ -104,7 +110,8 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "username": connected_username,
                         "message": data,
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
-                        "connected_users": draft_manager.draft_users[draft_key]
+                        "connected_users": draft_manager.draft_users[draft_key],
+                        "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())
                     }
                 )

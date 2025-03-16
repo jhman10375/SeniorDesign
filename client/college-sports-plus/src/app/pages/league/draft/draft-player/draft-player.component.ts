@@ -1,13 +1,110 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  Input,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
+import { take } from 'rxjs';
+
+import { SubLoadingComponent } from '../../../../shared/components/shared/sub-loading/sub-loading.component';
+import { SportEnum } from '../../../../shared/enums/sport.enum';
+import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.model';
+import { BaseballPlayerStatsModel } from '../../../../shared/models/stats/baseball-player-stats.model';
+import { BasketballPlayerStatsModel } from '../../../../shared/models/stats/basketball-player-stats.model';
+import { FootballPlayerStatsModel } from '../../../../shared/models/stats/football-player-stats.model';
+import { SoccerPlayerStatsModel } from '../../../../shared/models/stats/soccer-player-stats.model';
+import { AthleteService } from '../../../../shared/services/bl/athlete.service';
+import { BaseballPlayerStatsComponent } from '../../../player/stats/baseball-player/baseball-player.component';
+import { BasketballPlayerStatsComponent } from '../../../player/stats/basketball-player/basketball-player.component';
+import { FootballPlayerStatsComponent } from '../../../player/stats/football-player/football-player.component';
+import { SoccerPlayerStatsComponent } from '../../../player/stats/soccer-player/soccer-player.component';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    FootballPlayerStatsComponent,
+    BaseballPlayerStatsComponent,
+    BasketballPlayerStatsComponent,
+    SoccerPlayerStatsComponent,
+    SubLoadingComponent,
+  ],
   selector: 'draft-player',
   templateUrl: 'draft-player.component.html',
 })
 export class DraftPlayerComponent implements OnInit {
-  constructor() {}
+  readonly SportEnum = SportEnum;
+
+  @Input() set player(v: LeagueAthleteModel) {
+    this.isLoading.set(true);
+    if (v && v.AthleteID.length > 0) {
+      switch (this.leagueType) {
+        case SportEnum.Football:
+          this.athleteService
+            .getFootballAthleteStatsByID(v.AthleteID)
+            .pipe(take(1))
+            .subscribe({
+              next: (x) => {
+                this.footballPlayerStats = x;
+                this.isLoading.set(false);
+              },
+            });
+          break;
+        case SportEnum.Baseball:
+          this.athleteService
+            .getBaseballAthleteStatsByID(v.AthleteID)
+            .pipe(take(1))
+            .subscribe({
+              next: (x) => {
+                this.baseballPlayerStats = x;
+                this.isLoading.set(false);
+              },
+            });
+          break;
+        case SportEnum.Basketball:
+          this.athleteService
+            .getBasketballAthleteStatsByID(v.AthleteID)
+            .pipe(take(1))
+            .subscribe({
+              next: (x) => {
+                this.basketballPlayerStats = x;
+                this.isLoading.set(false);
+              },
+            });
+          break;
+        case SportEnum.Soccer:
+          this.athleteService
+            .getSoccerAthleteStatsByID(v.AthleteID)
+            .pipe(take(1))
+            .subscribe({
+              next: (x) => {
+                this.soccerPlayerStats = x;
+                this.isLoading.set(false);
+              },
+            });
+
+          break;
+      }
+    }
+  }
+
+  @Input() leagueType: SportEnum;
+
+  isLoading: WritableSignal<boolean> = signal(true);
+
+  footballPlayerStats: FootballPlayerStatsModel;
+
+  baseballPlayerStats: BaseballPlayerStatsModel;
+
+  basketballPlayerStats: BasketballPlayerStatsModel;
+
+  soccerPlayerStats: SoccerPlayerStatsModel;
+
+  constructor(private athleteService: AthleteService) {
+    this.isLoading.set(true);
+  }
 
   ngOnInit() {}
 }

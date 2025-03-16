@@ -58,8 +58,8 @@ export class PlayerDLService {
     leaguePlayers.push(player);
 
     const player2: LeaguePlayerModel = new LeaguePlayerModel();
-    player2.ID = '1';
-    player2.PlayerID = '1';
+    player2.ID = 'pMRYKuzti6N1DdXTTPfs12SWXQ73';
+    player2.PlayerID = 'pMRYKuzti6N1DdXTTPfs12SWXQ73';
     player2.Name = 'Zach Herman';
     player2.DraftPickSortOrder = -1;
     player2.TeamName = "Zach's Rockstars";

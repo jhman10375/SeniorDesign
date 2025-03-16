@@ -101,7 +101,7 @@ export class GeneralService {
     p.AthleteID = a.player_id.toString();
     p.Color = a.team_color;
     p.Height = a.player_height;
-    p.Jersey = a.player_jersey;
+    p.Jersey = a.player_jersey > 0 ? a.player_jersey : 0;
     try {
       if (typeof a.team_logos === 'string' && a.team_logos.startsWith('[')) {
         const cleanInput = a.team_logos.replace(/'/g, '"');

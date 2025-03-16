@@ -7,7 +7,7 @@ import { LeagueModel } from '../../../shared/models/league.model';
 import { PipesModule } from '../../../shared/pipes/pipes.module';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
-import { UserService } from '../../../shared/services/dl/user.service';
+import { UserService } from '../../../shared/services/bl/user.service';
 import { FootballSettingsViewEditComponent } from './sports/football/football-settings-view-edit.component';
 
 @Component({
@@ -37,7 +37,7 @@ export class SettingsComponent implements OnInit {
     if (leagueID) {
       this.league = this.leagueService.getLeague(leagueID) ?? undefined;
       this.isLeagueManager =
-        this.league?.Manager.PlayerID === this.userService.getUser()?.ID;
+        this.league?.Manager.PlayerID === this.userService.getCurrentUser()?.ID;
     }
   }
 

@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { SportEnum } from '../../enums/sport.enum';
 import { LeagueAthleteModel } from '../../models/league-athlete.model';
 import { LeaguePlayerModel } from '../../models/league-player.model';
+import { BaseballPlayerStatsModel } from '../../models/stats/baseball-player-stats.model';
+import { BasketballPlayerStatsModel } from '../../models/stats/basketball-player-stats.model';
+import { FootballPlayerStatsModel } from '../../models/stats/football-player-stats.model';
+import { SoccerPlayerStatsModel } from '../../models/stats/soccer-player-stats.model';
 import { AthleteDLService } from '../dl/athlete-dl.service';
 import { FastAPIService } from '../fastAPI/fast-api.service';
 import { PlayerFAPIModel } from '../fastAPI/models/player-fapi.model';
@@ -21,7 +26,10 @@ export class AthleteService extends AthleteDLService {
     // this.loadPlayers();
   }
 
-  override getTeam(leaguePlayer: LeaguePlayerModel): Array<LeagueAthleteModel> {
+  override getTeam(
+    leaguePlayer: LeaguePlayerModel,
+    leagueType: SportEnum
+  ): Array<LeagueAthleteModel> {
     // const athletes: Array<LeagueAthleteModel> = [];
     // leaguePlayer.TeamPlayerIDs.forEach((x) => {
     //   const player = this._players.value.find((p) => p.AthleteID === x);
@@ -31,11 +39,42 @@ export class AthleteService extends AthleteDLService {
     // });
     // return athletes;
 
-    return super.getTeam(leaguePlayer);
+    return super.getTeam(leaguePlayer, leagueType);
   }
 
-  override getAthleteByID(id: string): Observable<PlayerFAPIModel> {
-    return super.getAthleteByID(id);
+  override getAthleteByID(
+    id: string,
+    leagueType: SportEnum
+  ): Observable<PlayerFAPIModel | undefined> {
+    return super.getAthleteByID(id, leagueType);
+  }
+
+  override getBaseballAthleteStatsByID(
+    playerID: string,
+    season?: number
+  ): Observable<BaseballPlayerStatsModel> {
+    return super.getBaseballAthleteStatsByID(playerID);
+  }
+
+  override getBasketballAthleteStatsByID(
+    playerID: string,
+    season?: number
+  ): Observable<BasketballPlayerStatsModel> {
+    return super.getBasketballAthleteStatsByID(playerID);
+  }
+
+  override getFootballAthleteStatsByID(
+    playerID: string,
+    season?: number
+  ): Observable<FootballPlayerStatsModel> {
+    return super.getFootballAthleteStatsByID(playerID);
+  }
+
+  override getSoccerAthleteStatsByID(
+    playerID: string,
+    season?: number
+  ): Observable<SoccerPlayerStatsModel> {
+    return super.getSoccerAthleteStatsByID(playerID);
   }
 
   // getPlayer(id: string): LeagueAthleteModel {

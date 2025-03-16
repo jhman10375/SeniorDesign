@@ -12,11 +12,10 @@ export class DraftGeneralService {
   ): LeagueAthleteModel {
     const leagueAthlete: LeagueAthleteModel = new LeagueAthleteModel();
     leagueAthlete.AltColor = athlete.alt_color;
-    leagueAthlete.AthleteID = athlete.id;
+    leagueAthlete.AthleteID = athlete.id.toString();
     leagueAthlete.Color = athlete.color;
     leagueAthlete.Height = athlete.height;
-    leagueAthlete.Jersey = athlete.jersey;
-    leagueAthlete.Logos = athlete.logos;
+    leagueAthlete.Jersey = athlete.jersey > 0 ? athlete.jersey : 0;
     leagueAthlete.Name = athlete.name;
     leagueAthlete.Position = athlete.position;
     leagueAthlete.School = athlete.school;
@@ -24,6 +23,7 @@ export class DraftGeneralService {
     leagueAthlete.PlayerID = athlete.user_id;
     leagueAthlete.Weight = athlete.weight;
     leagueAthlete.Year = athlete.year;
+    // console.log(athlete);
     return leagueAthlete;
   }
 }

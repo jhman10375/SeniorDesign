@@ -20,6 +20,12 @@ import { PlayerSortComponent } from '../../player-search/player-filter/player-so
   templateUrl: 'draft-main.component.html',
 })
 export class DraftMainComponent extends PlayerFilterBase implements OnInit {
+  // @Input() override set athletes(v: Array<LeagueAthleteModel>) {
+  //   if (v) {
+  //     this.playersReadonly = v;
+  //   }
+  // }
+
   @Input() queue: Array<LeagueAthleteModel> = [];
 
   @Input() currentlyPicking: boolean = false;

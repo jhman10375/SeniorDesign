@@ -10,11 +10,112 @@
       <player-header [player]="player" [school]="school"></player-header>
     }
     <div style="overflow-y: auto">
-      <div style="height: 200px" class="border-1 border-round mb-2">
-        <h2>This div will contain general stats</h2>
+      <div
+        class="border-round mb-2 p-2"
+        [ngClass]="
+          leagueType == SportEnum.Football
+            ? 'football-border-1'
+            : leagueType == SportEnum.Basketball
+              ? 'basketball-border-1'
+              : leagueType == SportEnum.Soccer
+                ? 'soccer-border-1'
+                : 'baseball-border-1'
+        "
+      >
+        <div class="flex flex-row justify-content-center mb-2">
+          <span
+            class="text-xl"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-bottom-border-1'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-bottom-border-1'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-bottom-border-1'
+                    : 'baseball-bottom-border-1'
+            "
+            >Player Stats</span
+          >
+        </div>
+        <div class="flex flex-row justify-content-between align-items-center">
+          <span>Team:</span>
+          <span>{{ player.School }}</span>
+        </div>
+        <div class="flex flex-row justify-content-between align-items-center">
+          <span>Height:</span>
+          <span>{{ player.Height | heightPipe: "feet" }}</span>
+        </div>
+        <div class="flex flex-row justify-content-between align-items-center">
+          <span>Weight:</span>
+          <span>{{ player.Weight }} lbs</span>
+        </div>
+        <div class="flex flex-row justify-content-between align-items-center">
+          <span>Year:</span>
+          @switch (player.Year) {
+            @case (1) {
+              <span>Freshman</span>
+            }
+            @case (2) {
+              <span>Sophomore</span>
+            }
+            @case (3) {
+              <span>Junior</span>
+            }
+            @case (4) {
+              <span>Senior</span>
+            }
+          }
+        </div>
       </div>
-      <div style="height: 700px" class="border-1 border-round">
-        <h2>This div will contain fantasy season stats</h2>
+      <div
+        class="border-round p-2"
+        [ngClass]="
+          leagueType == SportEnum.Football
+            ? 'football-border-1'
+            : leagueType == SportEnum.Basketball
+              ? 'basketball-border-1'
+              : leagueType == SportEnum.Soccer
+                ? 'soccer-border-1'
+                : 'baseball-border-1'
+        "
+      >
+        <div class="flex flex-row justify-content-center mb-2">
+          <span
+            class="text-xl"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-bottom-border-1'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-bottom-border-1'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-bottom-border-1'
+                    : 'baseball-bottom-border-1'
+            "
+            >Season Stats</span
+          >
+        </div>
+        @switch (leagueType) {
+          @case (SportEnum.Football) {
+            <football-player-stats
+              [player]="footballPlayerStats"
+            ></football-player-stats>
+          }
+          @case (SportEnum.Basketball) {
+            <basketball-player-stats
+              [player]="basketballPlayerStats"
+            ></basketball-player-stats>
+          }
+          @case (SportEnum.Baseball) {
+            <baseball-player-stats
+              [player]="baseballPlayerStats"
+            ></baseball-player-stats>
+          }
+          @case (SportEnum.Soccer) {
+            <soccer-player-stats
+              [player]="soccerPlayerStats"
+            ></soccer-player-stats>
+          }
+        }
       </div>
     </div>
   } @else {
