@@ -1,0 +1,216 @@
+,team,height,bat_hand,throw_hand,year,position,name,player_id,opponent,win,saves,innings,earned_runs_allowed,singles,doubles,triples,home_runs,runs,runs_batted_in,walks,hits_by_pitch,stolen_bases,caught_stealing
+0,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Elon,1.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+1,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+2,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+3,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,McNeese,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+4,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Cal Poly,1.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+5,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Cal Poly,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+6,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Cal Poly,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Texas State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+8,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Arizona,0.0,0.0,6.1,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+9,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Oklahoma State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+10,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Rice,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+11,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,UTSA,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+12,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Texas Southern,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+13,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,New Mexico State,1.0,0.0,7.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+14,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,New Mexico State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+15,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,New Mexico State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+16,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Prairie View,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+17,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Alabama,0.0,0.0,7.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+18,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+19,Texas A&M,75.0,LEFT,LEFT,4.0,P,Ryan Prager,8881633.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+20,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+21,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+22,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+23,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,McNeese,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+24,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Cal Poly,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+25,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Cal Poly,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0
+26,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Cal Poly,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+27,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Texas State,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0
+28,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Arizona,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+29,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Oklahoma State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+30,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Rice,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0
+31,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,UTSA,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+32,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Texas Southern,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0
+33,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,New Mexico State,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,2.0,0.0,1.0,1.0,0.0,0.0
+34,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,New Mexico State,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,2.0,0.0,0.0,1.0,0.0,0.0
+35,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,New Mexico State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+36,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Prairie View,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0
+37,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Alabama,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,2.0,0.0,0.0,0.0
+38,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Alabama,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,2.0,0.0,1.0,0.0
+39,Texas A&M,76.0,BOTH,RIGHT,1.0,INF,Sawyer Farr,9107762.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+40,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+41,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+42,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+43,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,McNeese,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+44,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Cal Poly,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+45,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Cal Poly,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+46,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Cal Poly,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+47,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Texas State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+48,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Arizona,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+49,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Oklahoma State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+50,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Rice,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+51,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,UTSA,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+52,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Texas Southern,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+53,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,New Mexico State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+54,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,New Mexico State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+55,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,New Mexico State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+56,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Prairie View,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+57,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+58,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+59,Texas A&M,72.0,BOTH,RIGHT,1.0,C,Hayden Crites,9107770.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+60,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0
+61,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Elon,1.0,0.0,0.0,0.0,2.0,0.0,0.0,2.0,3.0,5.0,1.0,0.0,0.0,0.0
+62,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Elon,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,2.0,2.0,0.0,1.0,0.0
+63,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,McNeese,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+64,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Cal Poly,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,2.0,1.0,2.0,0.0,0.0,0.0
+65,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Cal Poly,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+66,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Cal Poly,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,2.0,0.0,0.0,0.0
+67,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Texas State,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0
+68,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Arizona,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,2.0,1.0,0.0,0.0
+69,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Oklahoma State,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+70,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Rice,1.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,2.0,1.0,1.0,0.0,1.0,0.0
+71,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,UTSA,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+72,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Texas Southern,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,1.0,0.0,0.0,0.0
+73,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,New Mexico State,1.0,0.0,0.0,0.0,2.0,0.0,0.0,1.0,3.0,4.0,1.0,0.0,0.0,0.0
+74,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,New Mexico State,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+75,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,New Mexico State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+76,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Prairie View,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,2.0,2.0,0.0,1.0,0.0,0.0
+77,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Alabama,0.0,0.0,0.0,0.0,2.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0
+78,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0
+79,Texas A&M,78.0,LEFT,LEFT,3.0,OF,Jace Laviolette,8902739.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+80,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,2.0,0.0,0.0,0.0
+81,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Elon,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,1.0,2.0,0.0,0.0,0.0,0.0
+82,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Elon,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,2.0,0.0,1.0,0.0,1.0,0.0
+83,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,McNeese,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+84,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Cal Poly,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0
+85,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Cal Poly,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0
+86,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Cal Poly,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+87,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Texas State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+88,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Arizona,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+89,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Oklahoma State,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+90,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Rice,1.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,2.0,3.0,0.0,0.0,0.0,0.0
+91,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,UTSA,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+92,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Texas Southern,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0
+93,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,New Mexico State,1.0,0.0,0.0,0.0,3.0,2.0,0.0,0.0,1.0,2.0,0.0,0.0,0.0,0.0
+94,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,New Mexico State,1.0,0.0,0.0,0.0,2.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0
+95,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,New Mexico State,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+96,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Prairie View,1.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,2.0,2.0,0.0,0.0,2.0,0.0
+97,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Alabama,0.0,0.0,0.0,0.0,3.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0
+98,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0
+99,Texas A&M,73.0,BOTH,RIGHT,1.0,UT,Terrence Kiel II,9107761.0,Alabama,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+100,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Elon,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0
+101,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Elon,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,0.0
+102,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Elon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+103,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,McNeese,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+104,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Cal Poly,1.0,0.0,0.0,0.0,3.0,1.0,0.0,0.0,1.0,0.0,0.0,2.0,0.0,0.0
+105,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Cal Poly,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0
+106,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Cal Poly,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0
+107,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Texas State,0.0,0.0,0.0,0.0,3.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0
+108,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Arizona,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,2.0,1.0,1.0,0.0,0.0
+109,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Oklahoma State,0.0,0.0,0.0,0.0,2.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+110,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Rice,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,2.0,0.0,0.0,0.0,0.0
+111,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,UTSA,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+112,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Texas Southern,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0
+113,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,New Mexico State,1.0,0.0,0.0,0.0,2.0,0.0,0.0,1.0,3.0,2.0,2.0,0.0,0.0,0.0
+114,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,New Mexico State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+115,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,New Mexico State,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+116,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Prairie View,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,2.0,2.0,1.0,0.0,1.0,0.0
+117,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Alabama,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+118,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Alabama,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+119,Texas A&M,73.0,RIGHT,RIGHT,4.0,3B,Wyatt Henseler,9107774.0,Alabama,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+120,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Xavier,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0
+121,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,UNLV,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0
+122,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Indiana,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0
+123,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Xavier,1.0,0.0,0.0,0.0,3.0,0.0,0.0,2.0,4.0,7.0,1.0,0.0,0.0,0.0
+124,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Houston,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+125,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Virginia,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0
+126,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Oklahoma,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0
+127,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Minnesota,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+128,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Baylor,1.0,0.0,0.0,0.0,2.0,0.0,0.0,1.0,1.0,2.0,0.0,0.0,0.0,0.0
+129,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Auburn,0.0,0.0,0.0,0.0,2.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0
+130,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Ohio State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+131,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+132,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,San Diego,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+133,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+134,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+135,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Washington State,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,2.0,2.0,1.0,0.0,0.0,0.0
+136,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Grand Canyon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+137,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Santa Clara,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,2.0,0.0,0.0,0.0
+138,Oregon State,77.0,RIGHT,RIGHT,3.0,INF,Jacob Krieg,8874113.0,Grand Canyon,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0
+139,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Xavier,1.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+140,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,UNLV,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+141,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Indiana,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+142,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Xavier,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+143,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Houston,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+144,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Virginia,1.0,0.0,4.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+145,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Oklahoma,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+146,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Minnesota,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+147,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Baylor,1.0,0.0,4.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+148,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Auburn,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+149,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Ohio State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+150,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,San Diego,1.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+151,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+152,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+153,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+154,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+155,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Grand Canyon,1.0,0.0,6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+156,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Santa Clara,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+157,Oregon State,76.0,LEFT,LEFT,3.0,P,Nelson Keljo,8881304.0,Grand Canyon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+158,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Xavier,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+159,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,UNLV,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+160,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Indiana,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+161,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Xavier,1.0,0.0,0.0,0.0,0.1,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0
+162,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Houston,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+163,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Virginia,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+164,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Oklahoma,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+165,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Minnesota,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+166,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Baylor,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+167,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Auburn,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+168,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Ohio State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+169,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+170,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+171,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+172,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Washington State,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,2.0,0.0,0.0,0.0
+173,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+174,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Grand Canyon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+175,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Santa Clara,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+176,Oregon State,74.0,RIGHT,RIGHT,1.0,UT,Adam Haight,9107049.0,Grand Canyon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+177,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Xavier,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+178,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,UNLV,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+179,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Indiana,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+180,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Xavier,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+181,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Houston,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+182,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Virginia,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+183,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Oklahoma,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+184,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Minnesota,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+185,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Baylor,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+186,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Auburn,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+187,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Ohio State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+188,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+189,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+190,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,San Diego,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+191,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+192,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+193,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Grand Canyon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+194,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Santa Clara,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+195,Oregon State,70.0,RIGHT,RIGHT,1.0,C,Kailand Halstead,9107051.0,Grand Canyon,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+196,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Xavier,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,2.0,0.0,0.0,0.0
+197,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,UNLV,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,2.0,1.0,0.0,0.0,0.0
+198,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Indiana,1.0,0.0,0.0,0.0,2.0,0.0,0.0,1.0,2.0,4.0,2.0,0.0,0.0,0.0
+199,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Xavier,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,1.0,1.0,0.0,0.0
+200,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Houston,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+201,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Virginia,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0
+202,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Oklahoma,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+203,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Minnesota,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+204,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Baylor,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+205,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Auburn,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,2.0,0.0,0.0,0.0,0.0
+206,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Ohio State,1.0,0.0,0.0,0.0,2.0,0.0,0.0,1.0,2.0,5.0,0.0,0.0,1.0,0.0
+207,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,San Diego,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0,2.0,0.0,0.0,1.0
+208,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,San Diego,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+209,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,San Diego,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+210,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,2.0,0.0,0.0,0.0
+211,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Washington State,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
+212,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Grand Canyon,1.0,0.0,0.0,0.0,2.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0
+213,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Santa Clara,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,2.0,0.0,1.0,0.0,0.0,0.0
+214,Oregon State,73.0,RIGHT,RIGHT,3.0,OF,Gavin Turley,8886401.0,Grand Canyon,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0
