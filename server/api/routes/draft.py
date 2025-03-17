@@ -8,7 +8,7 @@ draft_manager = DraftManager()
 
 # Endpoint to create a new draft
 @router.post("/create-draft")
-def create_draft(data: CreateDraftData):
+async def create_draft(data: CreateDraftData):
     draft_key = draft_manager.create_draft(data)
     return {"draft_key": draft_key}
 
@@ -53,7 +53,7 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "type": "player_selected",
                         "player": athlete_id,
                         "selected_by": player_id,
-                        "players": draft_manager.players[draft_key],
+                        "players": draft_manager.get_players(draft_key),
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
                         "connected_users": draft_manager.draft_users[draft_key],
                         "pick_order": draft_manager.get_pick_order(draft_key),
@@ -97,7 +97,7 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "draft_order": draft_manager.get_draft_order(draft_key),
                         "connected_users": draft_manager.draft_users[draft_key],
                         "draft_results": draft_manager.get_draft_results(draft_key),
-                        "draft_athletes": draft_manager.players[draft_key],
+                        "draft_athletes": draft_manager.get_players(draft_key),
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
                         "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())

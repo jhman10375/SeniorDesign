@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.model';
@@ -5,7 +6,7 @@ import { PipesModule } from '../../../../shared/pipes/pipes.module';
 
 @Component({
   standalone: true,
-  imports: [PipesModule],
+  imports: [CommonModule, PipesModule],
   selector: 'player-search-view',
   styleUrls: ['../player-search.component.scss'],
   templateUrl: 'player-search-view.component.html',

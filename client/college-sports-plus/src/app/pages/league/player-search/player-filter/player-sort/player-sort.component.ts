@@ -7,21 +7,29 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: 'player-sort.component.html',
 })
 export class PlayerSortComponent implements OnInit {
-  @Input() sortFunction: 'School' | 'Name' | 'Number' | 'None' = 'None';
+  @Input() sortFunction: 'School' | 'Name' | 'Number' | 'Proj PPG' | 'None' =
+    'None';
 
   @Input() currentSortType: 'Up' | 'Down' | 'None' = 'None';
 
-  @Input() currentSortFunction: 'School' | 'Name' | 'Number' | 'None' = 'None';
+  @Input() currentSortFunction:
+    | 'School'
+    | 'Name'
+    | 'Number'
+    | 'Proj PPG'
+    | 'None' = 'None';
 
   @Output() sortFunctionEmitter = new EventEmitter<
-    'School' | 'Name' | 'Number'
+    'School' | 'Name' | 'Number' | 'Proj PPG'
   >();
 
   constructor() {}
 
   ngOnInit() {}
 
-  setSortFunction(sortFunction: 'School' | 'Name' | 'Number' | 'None'): void {
+  setSortFunction(
+    sortFunction: 'School' | 'Name' | 'Number' | 'Proj PPG' | 'None'
+  ): void {
     if (sortFunction != 'None') {
       this.sortFunctionEmitter.emit(sortFunction);
     }

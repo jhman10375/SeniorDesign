@@ -7,7 +7,7 @@
     >
   } @else if (!draftStarted) {
     <draft-otp
-      [isLeagueManager]="activeLeague?.Manager?.ID == activeUser?.ID"
+      [isLeagueManager]="activeLeague?.Manager?.PlayerID == activeUser?.ID"
       [draftKey]="draftKey"
       [displayWaitingRoom]="inWaitingRoom()"
       [connectedUsers]="connectedUsers"
@@ -46,8 +46,8 @@
                 [athletes]="(athletes$ | async) ?? []"
                 [queue]="(queue$ | async) ?? []"
                 [currentlyPicking]="
-                  (currentPick | async)?.Player?.ID
-                    ? (currentPick | async)?.Player?.ID == activeUser?.ID
+                  (currentPick | async)?.Player?.PlayerID
+                    ? (currentPick | async)?.Player?.PlayerID == activeUser?.ID
                       ? true
                       : false
                     : false
@@ -69,8 +69,8 @@
                 [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
                 [athletes]="(queue$ | async) ?? []"
                 [currentlyPicking]="
-                  (currentPick | async)?.Player?.ID
-                    ? (currentPick | async)?.Player?.ID == activeUser?.ID
+                  (currentPick | async)?.Player?.PlayerID
+                    ? (currentPick | async)?.Player?.PlayerID == activeUser?.ID
                       ? true
                       : false
                     : false
@@ -124,57 +124,127 @@
 >
   <ng-template pTemplate="header">
     <div class="inline-flex align-items-center justify-content-center gap-2">
-      <p-avatar [image]="playerDialogPlayer().Logos[0]" shape="circle" />
+      <p-avatar
+        [image]="playerDialogPlayer().Athlete.Logos[0]"
+        shape="circle"
+      />
       <span class="font-bold white-space-nowrap">
-        {{ playerDialogPlayer().Name }}
+        {{ playerDialogPlayer().Athlete.Name }}
       </span>
     </div>
   </ng-template>
-  <player-header
-    [player]="playerDialogPlayer()"
-    [draftModal]="true"
-  ></player-header>
-  <div
-    class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2"
-  >
-    <span>Team:</span>
-    <span>{{ playerDialogPlayer().School }}</span>
-  </div>
-  <div
-    class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
-  >
-    <span>Height:</span>
-    <span>{{ playerDialogPlayer().Height | heightPipe: "feet" }}</span>
-  </div>
-  <div
-    class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
-  >
-    <span>Weight:</span>
-    <span>{{ playerDialogPlayer().Weight }} lbs</span>
-  </div>
-  <div
-    class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
-  >
-    <span>Year:</span>
-    @switch (playerDialogPlayer().Year) {
-      @case (1) {
-        <span>Freshman</span>
-      }
-      @case (2) {
-        <span>Sophomore</span>
-      }
-      @case (3) {
-        <span>Junior</span>
-      }
-      @case (4) {
-        <span>Senior</span>
-      }
-    }
-  </div>
-  <draft-player
-    [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
-    [player]="playerDialogPlayer()"
-  ></draft-player>
+  @if (playerDialogPlayer() && playerDialogPlayer().Athlete) {
+    <!-- <player-header
+      [player]="playerDialogPlayer().Athlete"
+      [draftModal]="true"
+    ></player-header> -->
+    <div>
+      <div
+        class="border-round mb-2 mt-2 p-2"
+        [ngClass]="
+          (activeLeague?.LeagueType ?? SportEnum.None) == SportEnum.Football
+            ? 'football-border-1'
+            : (activeLeague?.LeagueType ?? SportEnum.None) ==
+                SportEnum.Basketball
+              ? 'basketball-border-1'
+              : (activeLeague?.LeagueType ?? SportEnum.None) == SportEnum.Soccer
+                ? 'soccer-border-1'
+                : 'baseball-border-1'
+        "
+      >
+        <div class="flex flex-row justify-content-center mb-2">
+          <span
+            class="text-xl"
+            [ngClass]="
+              (activeLeague?.LeagueType ?? SportEnum.None) == SportEnum.Football
+                ? 'football-bottom-border-1'
+                : (activeLeague?.LeagueType ?? SportEnum.None) ==
+                    SportEnum.Basketball
+                  ? 'basketball-bottom-border-1'
+                  : (activeLeague?.LeagueType ?? SportEnum.None) ==
+                      SportEnum.Soccer
+                    ? 'soccer-bottom-border-1'
+                    : 'baseball-bottom-border-1'
+            "
+            >Player Info</span
+          >
+        </div>
+        <div
+          class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2"
+        >
+          <span>Team:</span>
+          <span>{{ playerDialogPlayer().Athlete.School }}</span>
+        </div>
+        <div
+          class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
+        >
+          <span>Height:</span>
+          <span>{{
+            playerDialogPlayer().Athlete.Height | heightPipe: "feet"
+          }}</span>
+        </div>
+        <div
+          class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
+        >
+          <span>Weight:</span>
+          <span>{{ playerDialogPlayer().Athlete.Weight }} lbs</span>
+        </div>
+        <div
+          class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
+        >
+          <span>Year:</span>
+          @switch (playerDialogPlayer().Athlete.Year) {
+            @case (1) {
+              <span>Freshman</span>
+            }
+            @case (2) {
+              <span>Sophomore</span>
+            }
+            @case (3) {
+              <span>Junior</span>
+            }
+            @case (4) {
+              <span>Senior</span>
+            }
+          }
+        </div>
+      </div>
+    </div>
+    <div
+      class="border-round p-2"
+      [ngClass]="
+        (activeLeague?.LeagueType ?? SportEnum.None) == SportEnum.Football
+          ? 'football-border-1'
+          : (activeLeague?.LeagueType ?? SportEnum.None) == SportEnum.Basketball
+            ? 'basketball-border-1'
+            : (activeLeague?.LeagueType ?? SportEnum.None) == SportEnum.Soccer
+              ? 'soccer-border-1'
+              : 'baseball-border-1'
+      "
+    >
+      <div class="flex flex-row justify-content-center mb-2">
+        <span
+          class="text-xl"
+          [ngClass]="
+            (activeLeague?.LeagueType ?? SportEnum.None) == SportEnum.Football
+              ? 'football-bottom-border-1'
+              : (activeLeague?.LeagueType ?? SportEnum.None) ==
+                  SportEnum.Basketball
+                ? 'basketball-bottom-border-1'
+                : (activeLeague?.LeagueType ?? SportEnum.None) ==
+                    SportEnum.Soccer
+                  ? 'soccer-bottom-border-1'
+                  : 'baseball-bottom-border-1'
+          "
+          >Projected Season Stats</span
+        >
+      </div>
+      <draft-player
+        [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
+        [footballDraftPlayer]="playerDialogPlayer()"
+      ></draft-player>
+    </div>
+  }
 </p-dialog>
 
 <p-dialog
@@ -199,8 +269,8 @@
     [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
     [athletes]="searchAthletes()"
     [myPick]="
-      (currentPick | async)?.Player?.ID
-        ? (currentPick | async)?.Player?.ID == activeUser?.ID
+      (currentPick | async)?.Player?.PlayerID
+        ? (currentPick | async)?.Player?.PlayerID == activeUser?.ID
           ? true
           : false
         : false

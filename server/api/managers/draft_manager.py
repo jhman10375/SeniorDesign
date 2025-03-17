@@ -4,12 +4,29 @@ import uuid
 import random
 
 from pandas import DataFrame
+import pandas as pd
 
 from api.models.CreateDraftData import CreateDraftData
 from api.models.DraftOrderData import DraftOrderData
 from api.models.DraftResultData import DraftResultData
 #from api.models.DraftPlayerData import DraftPlayerData
-from classes import firstStringList, playerInfo, playerList
+from classes import fbPlayerWithStats, firstStringList, playerInfo, playerList
+from functions import fb_first_string_info_with_predictions
+from api.models.DraftPlayerStatsData import DraftPlayerStatsData
+
+# 
+# 
+# 
+# 
+#       NEED TO CREATE A PLAYER MODEL AND CREATE THE JSONOBJ
+# 
+#       Need to get draft to return player stats
+# 
+# 
+# 
+
+
+
 
 class DraftManager:
     def __init__(self):
@@ -21,7 +38,7 @@ class DraftManager:
         self.draft_orders: Dict[str, List[DraftOrderData]] = {}
         self.pick_orders: Dict[str, List[DraftOrderData]] = {}
         self.draft_results: Dict[str, List[DraftResultData]] = {}
-        self.players: Dict[str, List[str]] = {}
+        self.players: Dict[str, List[DraftPlayerStatsData]] = {}
 
     def create_draft(self, data: CreateDraftData) -> str:
         """Generate a unique 6-digit numeric draft key."""
@@ -53,16 +70,51 @@ class DraftManager:
                 return draft_key
     
     def generate_players(self, draft_key):
+        
         pl: playerList = playerList()
         fsl: firstStringList = firstStringList(pl)
+        fsls: list[fbPlayerWithStats] = fb_first_string_info_with_predictions(fsl,pl,1,9999999)
         generatedAthletes = []
-        if (fsl.populated):
-            athletes = fsl.getlist().to_dict('records')
-            for athlete in athletes:
-                # a: DraftPlayerData = DraftPlayerData(**athlete)
-                athlete['user_id']= None
-                generatedAthletes.append(athlete)
-        self.players[draft_key] = generatedAthletes
+        # if (fsl.populated):
+        # athletes = fsl.getlist().to_dict('records')
+        # athletes = pd.DataFrame(fsls).to_dict('records')
+        # for athlete in athletes:
+        #     # a: DraftPlayerData = DraftPlayerData(**athlete)
+        #     athlete['user_id']= None
+        #     generatedAthletes.append(athlete)
+        #     # athletes = fsl.getlist().to_dict('records')
+        #     # for athlete in athletes:
+        #     #     # a: DraftPlayerData = DraftPlayerData(**athlete)
+        #     #     athlete['user_id']= None
+        #     #     generatedAthletes.append(athlete)
+
+        self.players[draft_key] = list(map(lambda x: DraftPlayerStatsData(
+            x.player_id,
+            x.player_name,
+            x.player_position,
+            x.player_jersey,
+            x.player_height,
+            x.player_weight,
+            x.player_team,
+            x.player_year,
+            x.team_color,
+            x.team_alt_color,
+            x.team_logos,
+            x.stats.pass_TD,
+            x.stats.pass_yds,
+            x.stats.interceptions,
+            x.stats.fumbles_lost,
+            x.stats.rush_yds,
+            x.stats.rush_TD,
+            x.stats.reception_yds,
+            x.stats.reception_TD,
+            x.stats.receptions,
+            x.stats.extra_points,
+            x.stats.extra_points_missed,
+            x.stats.field_goals,
+            x.stats.field_goals_missed,
+            ), fsls))
+        # self.players[draft_key] = generatedAthletes
             # print(generatedAthletes)
             
     def generate_draft_order(self, draft_key, data: CreateDraftData) -> Dict[str, int]:
@@ -91,8 +143,12 @@ class DraftManager:
         self.pick_orders[draft_key] = [d for d in self.draft_orders[draft_key] if d.round == 0]
         return self.draft_orders[draft_key]
     
+    def get_players(self, draft_key) -> Dict[str, any]:
+        """Return JSON serialized pick_order"""
+        return [obj.GetJSONData() for obj in self.players[draft_key]]
+    
     def get_pick_order(self, draft_key) -> Dict[str, any]:
-        """Return JSON serialized draft_order"""
+        """Return JSON serialized pick_order"""
         return [obj.GetJSONData() for obj in self.pick_orders[draft_key]]
     
     def get_draft_order(self, draft_key) -> Dict[str, any]:
@@ -147,7 +203,7 @@ class DraftManager:
         # Send list of players and currently connected users to the new client
         await websocket.send_json({
             "type": "players_list",
-            "players": self.players[draft_key],
+            "players": self.get_players(draft_key),
             "connected_users": self.draft_users[draft_key]
         })
         return username
@@ -159,8 +215,9 @@ class DraftManager:
 
     async def select_player(self, draft_key: str, athlete_id: str, player_id: str):
         """Mark a player as selected by a user and notify others."""
-        for player in self.players[draft_key]:
-            if player["id"] == athlete_id and player["user_id"] is None:
+        for player in self.get_players(draft_key):
+            print(player)
+            if player["player_id"] == athlete_id and player["user_id"] is None:
                 player["user_id"] = player_id
                 return True  # Successfully selected player
         return False  # Player already selected

@@ -47,13 +47,13 @@
           [currentFilter]="currentPositionFilter()"
           (setFilterEmitter)="setFilterss('Position', $event)"
         ></player-filter>
-        <player-filter
+        <!-- <player-filter
           class="header-item"
           [filterName]="'General'"
           [filters]="[]"
           [currentFilter]="null"
           (setFilterEmitter)="setFilterss('General', $event)"
-        ></player-filter>
+        ></player-filter> -->
       </div>
       <div
         class="flex flex-row align-items-center justify-content-between surface-border"
@@ -86,6 +86,15 @@
           [currentSortType]="currentSortType()"
           (sortFunctionEmitter)="setSortFunction($event)"
         ></player-sort>
+        @if (draftMode && !endDraft) {
+          <player-sort
+            class="header-item"
+            [sortFunction]="'Proj PPG'"
+            [currentSortFunction]="currentSortFunction()"
+            [currentSortType]="currentSortType()"
+            (sortFunctionEmitter)="setSortFunction($event)"
+          ></player-sort>
+        }
       </div>
     </div>
 

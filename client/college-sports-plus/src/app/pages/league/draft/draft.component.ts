@@ -38,9 +38,10 @@ import { DraftSelectionsComponent } from './draft-selections/draft-selections.co
 import { DraftNavEnum } from './enums/draft-nav.enum';
 import { DraftCreatePickOrderDataWSModel } from './models/draft-create-pick-order-data.model';
 import { DraftOrderPlayerWSModel } from './models/draft-order-player-ws.model';
-import { DraftPlayerWSModel } from './models/draft-player-ws.model';
+import { DraftPlayerStatsWSModel } from './models/draft-player-stats-ws.model';
 import { DraftResultPlayerWSModel } from './models/draft-results-player-ws.model';
 import { DraftSelectionModel } from './models/draft-selection.model';
+import { FootballDraftPlayerModel } from './models/sport-player/football.model';
 import { DraftGeneralService } from './services/draft-general.service';
 import { DraftPickOrderService } from './services/draft-pick-order.service';
 import { DraftWebSocketService } from './services/draft-web-socket.service';
@@ -112,8 +113,8 @@ export class DraftComponent implements OnInit {
 
   inWaitingRoom: WritableSignal<boolean> = signal(false);
 
-  playerDialogPlayer: WritableSignal<LeagueAthleteModel> = signal(
-    new LeagueAthleteModel()
+  playerDialogPlayer: WritableSignal<FootballDraftPlayerModel> = signal(
+    new FootballDraftPlayerModel()
   );
 
   searchAthletes: WritableSignal<Array<LeagueAthleteModel>> = signal([]);
@@ -143,6 +144,8 @@ export class DraftComponent implements OnInit {
   playerDialogVisible: boolean = false;
 
   searchDialogVisible: boolean = false;
+
+  footballDraftPlayers: Array<FootballDraftPlayerModel> = [];
 
   connectedUsers: string[] = []; // TODO: used to see who all is connected, need to integrate this with an auto pick solution
 
@@ -203,8 +206,9 @@ export class DraftComponent implements OnInit {
 
     this.activeLeague = this.leagueService.getLeague(leagueID ?? '-1');
     this.activeTeam =
-      this.activeLeague?.Players.find((x) => x.ID == this.activeUser?.ID) ??
-      new LeaguePlayerModel();
+      this.activeLeague?.Players.find(
+        (x) => x.PlayerID == this.activeUser?.ID
+      ) ?? new LeaguePlayerModel();
     const draftKey = localStorage.getItem('dk');
     const dk = draftKey?.substring(7);
     if (draftKey && dk && dk == this.activeLeague?.ID) {
@@ -228,14 +232,18 @@ export class DraftComponent implements OnInit {
   }
 
   showDialog(player: LeagueAthleteModel): void {
-    if (player.AthleteID && player.AthleteID.length > 0) {
+    const p: FootballDraftPlayerModel =
+      this.footballDraftPlayers.find(
+        (x) => x.Athlete.AthleteID === player.AthleteID
+      ) ?? new FootballDraftPlayerModel();
+    if (p.Athlete && p.Athlete.AthleteID && p.Athlete.AthleteID.length > 0) {
       this.schoolService
-        .getSchoolByName(player.Team)
+        .getSchoolByName(p.Athlete.Team)
         .pipe(take(1))
         .subscribe({
           next: (s) => {
-            player.Logos = s?.Logos ?? [];
-            this.playerDialogPlayer.set(player);
+            p.Athlete.Logos = s?.Logos ?? [];
+            this.playerDialogPlayer.set(p);
             this.playerDialogVisible = true;
           },
         });
@@ -308,7 +316,7 @@ export class DraftComponent implements OnInit {
     const dop: DraftOrderPlayerWSModel = new DraftOrderPlayerWSModel();
     this.draftPickOrderService.currentPick.pipe(take(1)).subscribe({
       next: (p) => {
-        dop.user_id = p.Player.ID.toString();
+        dop.user_id = p.Player.PlayerID.toString();
         dop.index = p.SortOrder.SortOrder;
         dop.round = p.SortOrder.Round;
         dop.player_id = this._pickMade.value.AthleteID ?? null;
@@ -329,7 +337,7 @@ export class DraftComponent implements OnInit {
     const pickOrder: Array<string> = [];
 
     this.activeLeague?.Players.forEach((player) => {
-      pickOrder.push(player.ID);
+      pickOrder.push(player.PlayerID);
     });
 
     const createPickOrderData: DraftCreatePickOrderDataWSModel =
@@ -350,7 +358,7 @@ export class DraftComponent implements OnInit {
 
   onJoinDraft(joinKey: string) {
     this.draftWebSocketService
-      .connect(joinKey, `${this.activeTeam?.Name ?? ''}`)
+      .connect(joinKey, `${this.activeTeam?.Name ?? 'apple'}`)
       .subscribe({
         next: (message) => {
           this.handleMessage(message);
@@ -378,7 +386,7 @@ export class DraftComponent implements OnInit {
     let pickOrder: Array<DraftOrderModel> = [];
     draftOrder.forEach((dop) => {
       const player = this.activeLeague?.Players.find(
-        (x) => x.ID === dop.user_id.toString()
+        (x) => x.PlayerID === dop.user_id.toString()
       );
       if (player) {
         const pickOrderModel: DraftOrderModel = new DraftOrderModel();
@@ -406,7 +414,7 @@ export class DraftComponent implements OnInit {
     let pickOrder: Array<DraftOrderModel> = [];
     draftOrder.forEach((dop) => {
       const player = this.activeLeague?.Players.find(
-        (x) => x.ID === dop.user_id.toString()
+        (x) => x.PlayerID === dop.user_id.toString()
       );
       if (player) {
         const pickOrderModel: DraftOrderModel = new DraftOrderModel();
@@ -514,18 +522,29 @@ export class DraftComponent implements OnInit {
       dop.round = d.round;
       draftOrderUpdated.push(dop);
     });
-    let athletes: Array<LeagueAthleteModel> = [];
-    athletes = message.draft_athletes.map((a: DraftPlayerWSModel) => {
-      const p: LeagueAthleteModel =
-        DraftGeneralService.DraftPlayerWSConverter(a);
-      return p;
-    });
     this.setDraftOrder(draftOrderUpdated);
+    // athletes = message.draft_athletes.map((a: DraftPlayerWSModel) => {
+    //   const p: LeagueAthleteModel =
+    //     DraftGeneralService.DraftPlayerWSConverter(a);
+    //   return p;
+    // });
+    let draftFootballPlayers: Array<FootballDraftPlayerModel> = [];
+    draftFootballPlayers = message.draft_athletes.map(
+      (a: DraftPlayerStatsWSModel) => {
+        const p: FootballDraftPlayerModel =
+          DraftGeneralService.DraftPlayerStatsWSConverter(a);
+        return p;
+      }
+    );
+    this.footballDraftPlayers = draftFootballPlayers;
+
+    let athletes: Array<LeagueAthleteModel> = [];
+    athletes = draftFootballPlayers.map((x) => x.Athlete);
 
     const draftResponseUpdated: Array<DraftSelectionModel> = [];
     this.activeLeague?.Players.forEach((player) => {
       const d: DraftSelectionModel = new DraftSelectionModel();
-      d.ID = player.ID;
+      d.ID = player.PlayerID;
       d.Name = player.Name;
       message.draft_results.forEach((result: DraftResultPlayerWSModel) => {
         if (result.user_id === d.ID) {
@@ -598,13 +617,24 @@ export class DraftComponent implements OnInit {
   }
 
   private playersList(message: any): void {
-    let players: Array<LeagueAthleteModel> = [];
-    players = message.players.map((a: DraftPlayerWSModel) => {
-      const p: LeagueAthleteModel =
-        DraftGeneralService.DraftPlayerWSConverter(a);
+    // players = message.players.map((a: DraftPlayerWSModel) => {
+    //   const p: LeagueAthleteModel =
+    //     DraftGeneralService.DraftPlayerWSConverter(a);
+    //   return p;
+    // });
+
+    let draftFootballPlayers: Array<FootballDraftPlayerModel> = [];
+    draftFootballPlayers = message.players.map((a: DraftPlayerStatsWSModel) => {
+      const p: FootballDraftPlayerModel =
+        DraftGeneralService.DraftPlayerStatsWSConverter(a);
       return p;
     });
-    players = players.filter((x) => x.PlayerID == null);
+    this.footballDraftPlayers = draftFootballPlayers;
+
+    let players: Array<LeagueAthleteModel> = [];
+    players = draftFootballPlayers.map((x) => x.Athlete);
+
+    players = players.filter((x) => x.PlayerID == null || x.PlayerID == '');
     this._athletes$.next(players);
     if (this.searchDialogVisible) {
       this.onSearch();
@@ -619,7 +649,7 @@ export class DraftComponent implements OnInit {
     const draftResponseUpdated: Array<DraftSelectionModel> = [];
     this.activeLeague?.Players.forEach((player) => {
       const d: DraftSelectionModel = new DraftSelectionModel();
-      d.ID = player.ID;
+      d.ID = player.PlayerID;
       d.Name = player.Name;
       draftResponseUpdated.push(d);
     });
@@ -628,14 +658,24 @@ export class DraftComponent implements OnInit {
   }
 
   private playerSelected(message: any): void {
-    let players: Array<LeagueAthleteModel> = [];
-    players = message.players.map((a: DraftPlayerWSModel) => {
-      const p: LeagueAthleteModel =
-        DraftGeneralService.DraftPlayerWSConverter(a);
+    // players = message.players.map((a: DraftPlayerWSModel) => {
+    //   const p: LeagueAthleteModel =
+    //     DraftGeneralService.DraftPlayerWSConverter(a);
+    //   return p;
+    // });
+
+    let draftFootballPlayers: Array<FootballDraftPlayerModel> = [];
+    draftFootballPlayers = message.players.map((a: DraftPlayerStatsWSModel) => {
+      const p: FootballDraftPlayerModel =
+        DraftGeneralService.DraftPlayerStatsWSConverter(a);
       return p;
     });
+    this.footballDraftPlayers = draftFootballPlayers;
 
-    players = players.filter((x) => x.PlayerID == null);
+    let players: Array<LeagueAthleteModel> = [];
+    players = draftFootballPlayers.map((x) => x.Athlete);
+
+    players = players.filter((x) => x.PlayerID == null || x.PlayerID == '');
     this._athletes$.next(players);
 
     if (this.searchDialogVisible) {

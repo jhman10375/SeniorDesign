@@ -85,8 +85,9 @@ export class PlayerFilterBase implements OnInit {
 
   currentSortType: WritableSignal<'Up' | 'Down' | 'None'> = signal('None');
 
-  currentSortFunction: WritableSignal<'Name' | 'Number' | 'School' | 'None'> =
-    signal('None');
+  currentSortFunction: WritableSignal<
+    'Name' | 'Number' | 'Proj PPG' | 'School' | 'None'
+  > = signal('None');
 
   searchText: WritableSignal<string> = signal('');
 
@@ -128,7 +129,9 @@ export class PlayerFilterBase implements OnInit {
     this.updateAthletes();
   }
 
-  setSortFunction(sortFunction: 'Name' | 'Number' | 'School'): void {
+  setSortFunction(
+    sortFunction: 'Name' | 'Number' | 'Proj PPG' | 'School'
+  ): void {
     if (
       this.currentSortFunction() == 'None' ||
       this.currentSortFunction() != sortFunction
@@ -187,7 +190,8 @@ export class PlayerFilterBase implements OnInit {
             x.School.toLocaleLowerCase().includes(
               this.searchText().toLocaleLowerCase()
             ) ||
-            x.Jersey.toString().includes(this.searchText())
+            x.Jersey.toString().includes(this.searchText()) ||
+            x.PredictedScore.toString().includes(this.searchText())
         );
         arr = f;
       } else {
@@ -239,6 +243,16 @@ export class PlayerFilterBase implements OnInit {
               return a.School.localeCompare(b.School);
             } else {
               return b.School.localeCompare(a.School);
+            }
+          });
+          break;
+        case 'Proj PPG':
+          arr = arr.sort((a, b) => {
+            // console.log(typeof a.School, typeof b.School);
+            if (this.currentSortType() == 'Up') {
+              return a.PredictedScore - b.PredictedScore;
+            } else {
+              return b.PredictedScore - a.PredictedScore;
             }
           });
           break;

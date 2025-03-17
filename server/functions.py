@@ -2241,6 +2241,31 @@ def fb_first_strings(firstStrings : firstStringList, page = 1, page_size= 100) -
                            player_year=player.year, team_color=player.color, 
                            team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
 
+def fb_first_string_info_with_predictions(firstStrings, fullList, page = 1, page_size= 100) -> list[fbPlayerWithStats]:
+    players = fb_first_strings(firstStrings, page, page_size)
+
+    stats = []
+
+    for player in players:
+        stats.append(fb_predict_season(player.player_id, fullList))
+
+
+    return [fbPlayerWithStats(
+        player_id = plyr[0].player_id,
+        player_name = plyr[0].player_name,
+        player_position = plyr[0].player_position,
+        player_jersey = plyr[0].player_jersey,
+        player_height = plyr[0].player_height,
+        player_weight = plyr[0].player_weight,
+        player_team = plyr[0].player_team,
+        player_year = plyr[0].player_year,
+        team_color = plyr[0].team_color,
+        team_alt_color = plyr[0].team_alt_color,
+        team_logos = plyr[0].team_logos,
+        stats = plyr[1] )
+    
+    for plyr in zip(players, stats)]
+
 def fb_predict_season(player_id : str, fullList : playerList) -> predictedStats:
     with open('model/my_dumped_classifier.pkl', 'rb') as fid:
       model = pickle.load(fid)
