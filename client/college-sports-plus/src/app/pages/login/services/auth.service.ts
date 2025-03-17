@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { LoadingService } from '../../../shared/services/bl/loading.service';
+import { UserService } from '../../../shared/services/bl/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -13,7 +14,8 @@ export class AuthService {
   constructor(
     private angularFireAuth: AngularFireAuth,
     private router: Router,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private currentUserService: UserService
   ) {
     this.currentUser = this._currentUser.asObservable();
   }
@@ -37,6 +39,11 @@ export class AuthService {
           console.log((result as any)?.user?._delegate?.stsToken);
           result.user?.getIdToken().then((x) => {
             console.log(x);
+          });
+          this.currentUserService.setCurrentUser({
+            Name: result.user?.displayName ?? '',
+            ID: result.user?.uid ?? '',
+            LeagueIDs: ['0'],
           });
           this._currentUser.next(result);
           this.router.navigate(['/home']);

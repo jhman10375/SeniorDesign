@@ -3,11 +3,30 @@
     @if (activeLeague) {
       <div class="header">
         <div
-          class="flex align-items-center justify-content-between border-bottom-1 surface-border"
+          style="position: absolute; top: 0; left: 0; width: 100vw"
+          class="flex align-items-center justify-content-between p-2 border-bottom-1 surface-border"
+          [ngClass]="
+            leagueType == SportEnum.Football
+              ? 'football-background'
+              : leagueType == SportEnum.Basketball
+                ? 'basketball-background'
+                : leagueType == SportEnum.Soccer
+                  ? 'bg-primary'
+                  : 'baseball-background'
+          "
         >
           @if (checkIfAtParentRoute()) {
             <div
-              class="flex align-items-center justify-content-start text-primary"
+              class="flex align-items-center justify-content-start"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-text'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-text'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-text'
+                      : 'baseball-text'
+              "
               [routerLink]="['/home']"
             >
               <i class="pi pi-angle-left"></i>
@@ -15,7 +34,17 @@
             </div>
           } @else {
             <div
-              class="flex align-items-center justify-content-start text-primary"
+              class="flex align-items-center justify-content-start"
+              class="flex align-items-center justify-content-start"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-text'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-text'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-text'
+                      : 'baseball-text'
+              "
               (click)="goBack()"
             >
               <i class="pi pi-angle-left"></i>
@@ -23,15 +52,55 @@
             </div>
           }
 
-          <span class="text-xl" [routerLink]="['/league', activeLeague.ID]">
+          <span
+            class="text-xl"
+            [routerLink]="['/league', activeLeague.ID]"
+            class="flex align-items-center justify-content-start"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-text'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-text'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-text'
+                    : 'baseball-text'
+            "
+          >
             {{ activeLeague.Name }}
           </span>
           @if (hasDraftOccurred) {
-            <span class="text-green" (click)="navigateTo('standings')">
+            <!-- need to update, rankings used to be green -->
+            <span
+              (click)="navigateTo('standings')"
+              class="flex align-items-center justify-content-start"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-text'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-text'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-text'
+                      : 'baseball-text'
+              "
+            >
               <i class="pi pi-chart-line"></i> Rankings</span
             >
           } @else {
-            <span (click)="navigateTo('')"> Help</span>
+            <span
+              (click)="navigateTo('')"
+              class="flex align-items-center justify-content-start"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-text'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-text'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-text'
+                      : 'baseball-text'
+              "
+            >
+              Help</span
+            >
           }
         </div>
       </div>
@@ -40,45 +109,114 @@
         @if (checkIfAtParentRoute()) {
           @if (!hasDraftOccurred) {
             <div
-              class="mt-2 mb-2 p-2 border-1 surface-border"
+              class="mt-2 mb-2 p-2"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-border-1'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-border-1'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-border-1'
+                      : 'baseball-border-1'
+              "
               (click)="navigateTo('draft')"
             >
-              <span class="text-xl">Draft</span>
+              <span class="text-xl"
+                >Draft: Starts
+                {{
+                  activeLeague.Settings.DraftSettingsModel.Date
+                    | date: "h:mm a, M/d/yy"
+                }}</span
+              >
             </div>
           }
           <div
-            class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('team', '9vnblV3TFHb7XNisPvkX2tTTkhj2')"
+            class="mt-2 mb-2 p-2"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-border-1'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-border-1'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-border-1'
+                    : 'baseball-border-1'
+            "
+            (click)="navigateTo('team', myTeam?.ID)"
           >
             <span class="text-xl">My Team: {{ myTeam?.TeamName }}</span>
           </div>
           <div
-            class="mt-2 mb-2 p-2 border-1 surface-border"
+            class="mt-2 mb-2 p-2"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-border-1'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-border-1'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-border-1'
+                    : 'baseball-border-1'
+            "
             (click)="navigateTo('player-search')"
           >
             <span class="text-xl">Transfer Portal</span>
           </div>
           <div
-            class="mt-2 mb-2 p-2 border-1 surface-border"
+            class="mt-2 mb-2 p-2"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-border-1'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-border-1'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-border-1'
+                    : 'baseball-border-1'
+            "
             (click)="navigateTo('current-games', '0')"
           >
             <span class="text-xl">Current Games</span> </div
           ><div
-            class="mt-2 mb-2 p-2 border-1 surface-border"
+            class="mt-2 mb-2 p-2"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-border-1'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-border-1'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-border-1'
+                    : 'baseball-border-1'
+            "
             (click)="navigateTo('history', myTeam?.PlayerID ?? '-1')"
           >
-            <span class="text-xl">Game History</span>
+            <span class="text-xl">Schedule</span>
           </div>
-          <!-- @if (hasDraftOccurred) { -->
+          @if (hasDraftOccurred) {
+            <div
+              class="mt-2 mb-2 p-2"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-border-1'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-border-1'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-border-1'
+                      : 'baseball-border-1'
+              "
+              (click)="navigateTo('draft-results')"
+            >
+              <span class="text-xl">Draft Results</span>
+            </div>
+          }
           <div
-            class="mt-2 mb-2 p-2 border-1 surface-border"
-            (click)="navigateTo('draft-results')"
-          >
-            <span class="text-xl">Draft Results</span>
-          </div>
-          <!-- } -->
-          <div
-            class="mt-2 mb-2 p-2 border-1 surface-border"
+            class="mt-2 mb-2 p-2"
+            [ngClass]="
+              leagueType == SportEnum.Football
+                ? 'football-border-1'
+                : leagueType == SportEnum.Basketball
+                  ? 'basketball-border-1'
+                  : leagueType == SportEnum.Soccer
+                    ? 'soccer-border-1'
+                    : 'baseball-border-1'
+            "
             (click)="navigateTo('league-settings')"
           >
             @if (isLeagueManager) {
@@ -87,26 +225,48 @@
               <span class="text-xl">League Information</span>
             }
           </div>
-          <!-- @if (hasDraftOccurred) { -->
-          <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
-            <span class="text-xl">High Scoring Players</span>
-            <span (click)="navigateTo('player')">Player info 1</span>
-            <span (click)="navigateTo('player')">Player info 2</span>
-            <span (click)="navigateTo('player')">Player info 3</span>
-          </div>
-          <div class="flex flex-column mt-2 mb-2 p-2 border-1 surface-border">
-            <span class="text-xl">Low Scoring Players</span>
-            <div>
-              <span (click)="navigateTo('player', '0')">Player info 1</span>
-            </div>
-            <div>
-              <span (click)="navigateTo('player', '1')">Player info 2</span>
-            </div>
-            <div>
+          @if (hasDraftOccurred) {
+            <div
+              class="flex flex-column mt-2 mb-2 p-2"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-border-1'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-border-1'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-border-1'
+                      : 'baseball-border-1'
+              "
+            >
+              <span class="text-xl">High Scoring Players</span>
+              <span (click)="navigateTo('player')">Player info 1</span>
+              <span (click)="navigateTo('player')">Player info 2</span>
               <span (click)="navigateTo('player')">Player info 3</span>
             </div>
-          </div>
-          <!-- } -->
+            <div
+              class="flex flex-column mt-2 mb-2 p-2"
+              [ngClass]="
+                leagueType == SportEnum.Football
+                  ? 'football-border-1'
+                  : leagueType == SportEnum.Basketball
+                    ? 'basketball-border-1'
+                    : leagueType == SportEnum.Soccer
+                      ? 'soccer-border-1'
+                      : 'baseball-border-1'
+              "
+            >
+              <span class="text-xl">Low Scoring Players</span>
+              <div>
+                <span (click)="navigateTo('player', '0')">Player info 1</span>
+              </div>
+              <div>
+                <span (click)="navigateTo('player', '1')">Player info 2</span>
+              </div>
+              <div>
+                <span (click)="navigateTo('player')">Player info 3</span>
+              </div>
+            </div>
+          }
         }
         <router-outlet></router-outlet>
       </div>

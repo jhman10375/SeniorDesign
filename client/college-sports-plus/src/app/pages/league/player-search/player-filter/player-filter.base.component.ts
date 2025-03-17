@@ -19,7 +19,10 @@ import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.mod
 export class PlayerFilterBase implements OnInit {
   @Input() set athletes(v: Array<LeagueAthleteModel>) {
     if (v) {
-      this._athletes = v;
+      if (!this.playersReadonly) {
+        // Initialize playersReadonly on first set
+        this.playersReadonly = [...v];
+      }
       if (
         this.currentPositionFilter() != null ||
         this.currentSortFunction() != 'None'
@@ -28,6 +31,7 @@ export class PlayerFilterBase implements OnInit {
       } else {
         this._athleteSelection.next(v);
       }
+      this._athletes = v;
     }
   }
 
@@ -81,8 +85,9 @@ export class PlayerFilterBase implements OnInit {
 
   currentSortType: WritableSignal<'Up' | 'Down' | 'None'> = signal('None');
 
-  currentSortFunction: WritableSignal<'Name' | 'Number' | 'School' | 'None'> =
-    signal('None');
+  currentSortFunction: WritableSignal<
+    'Name' | 'Number' | 'Proj PPG' | 'School' | 'None'
+  > = signal('None');
 
   searchText: WritableSignal<string> = signal('');
 
@@ -124,7 +129,9 @@ export class PlayerFilterBase implements OnInit {
     this.updateAthletes();
   }
 
-  setSortFunction(sortFunction: 'Name' | 'Number' | 'School'): void {
+  setSortFunction(
+    sortFunction: 'Name' | 'Number' | 'Proj PPG' | 'School'
+  ): void {
     if (
       this.currentSortFunction() == 'None' ||
       this.currentSortFunction() != sortFunction
@@ -168,7 +175,7 @@ export class PlayerFilterBase implements OnInit {
   ): void {
     let arr: Array<LeagueAthleteModel> = [];
     if (this.searchFilter) {
-      const p = athletes ? this.playersReadonly : this.athletes;
+      const p = athletes ? [...this.playersReadonly] : [...this.athletes];
       if (
         ((this.searchText().length >= 3 || Number(this.searchText())) &&
           draftMode) ||
@@ -183,7 +190,8 @@ export class PlayerFilterBase implements OnInit {
             x.School.toLocaleLowerCase().includes(
               this.searchText().toLocaleLowerCase()
             ) ||
-            x.Jersey.toString().includes(this.searchText())
+            x.Jersey.toString().includes(this.searchText()) ||
+            x.PredictedScore.toString().includes(this.searchText())
         );
         arr = f;
       } else {
@@ -201,14 +209,16 @@ export class PlayerFilterBase implements OnInit {
       arr = arr.filter((x) => x.Position === this.currentPositionFilter());
     } else {
       if (!this.searchFilter) {
-        arr = athletes ? athletes : structuredClone(this.athletes);
+        arr = athletes ? athletes : [...this.athletes];
       }
     }
+    // console.log(arr);
 
     if (this.currentSortFunction() != 'None') {
       switch (this.currentSortFunction()) {
         case 'Name':
           arr = arr.sort((a, b) => {
+            // console.log(typeof a.Name, typeof b.Name);
             if (this.currentSortType() == 'Up') {
               return a.Name.localeCompare(b.Name);
             } else {
@@ -218,6 +228,7 @@ export class PlayerFilterBase implements OnInit {
           break;
         case 'Number':
           arr = arr.sort((a, b) => {
+            // console.log(typeof a.Jersey, typeof b.Jersey);
             if (this.currentSortType() == 'Up') {
               return a.Jersey - b.Jersey;
             } else {
@@ -227,6 +238,7 @@ export class PlayerFilterBase implements OnInit {
           break;
         case 'School':
           arr = arr.sort((a, b) => {
+            // console.log(typeof a.School, typeof b.School);
             if (this.currentSortType() == 'Up') {
               return a.School.localeCompare(b.School);
             } else {
@@ -234,10 +246,28 @@ export class PlayerFilterBase implements OnInit {
             }
           });
           break;
+        case 'Proj PPG':
+          arr = arr.sort((a, b) => {
+            // console.log(typeof a.School, typeof b.School);
+            if (this.currentSortType() == 'Up') {
+              return a.PredictedScore - b.PredictedScore;
+            } else {
+              return b.PredictedScore - a.PredictedScore;
+            }
+          });
+          break;
       }
+    } else {
+      // arr = athletes
+      //   ? [...athletes]
+      //   : this.playersReadonly
+      //     ? [...this.playersReadonly]
+      //     : [...this.athletes];
     }
+    // console.log(arr);
 
     this._athleteSelection.next(arr);
+    // this._athleteSelection.next(arr.slice(0, 50));
   }
 
   private updateSortType(): void {

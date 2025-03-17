@@ -9,7 +9,7 @@ export class DraftPlayerWSModel {
   color: string;
   height: number;
   jersey: number;
-  logos: Array<string>;
+  logos: string;
   name: string;
   position:
     | FootballPositionEnum
@@ -28,7 +28,7 @@ export class DraftPlayerWSModel {
     this.color = '';
     this.height = 0;
     this.jersey = 0;
-    this.logos = [];
+    this.logos = '';
     this.name = '';
     this.position = 0;
     this.school = '';

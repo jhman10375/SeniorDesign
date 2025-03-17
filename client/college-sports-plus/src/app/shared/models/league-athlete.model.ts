@@ -17,6 +17,7 @@ export class LeagueAthleteModel {
     | BaseballPositionEnum
     | BasketballPositionEnum
     | SoccerRosterModel;
+  PredictedScore: number;
   School: string;
   Team: string;
   Weight: number;
@@ -32,6 +33,7 @@ export class LeagueAthleteModel {
     this.Name = '';
     this.PlayerID = null;
     this.Position = 0;
+    this.PredictedScore = 0;
     this.School = '';
     this.Team = '';
     this.Weight = 0;

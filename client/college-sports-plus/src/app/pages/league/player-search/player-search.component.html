@@ -47,13 +47,13 @@
           [currentFilter]="currentPositionFilter()"
           (setFilterEmitter)="setFilterss('Position', $event)"
         ></player-filter>
-        <player-filter
+        <!-- <player-filter
           class="header-item"
           [filterName]="'General'"
           [filters]="[]"
           [currentFilter]="null"
           (setFilterEmitter)="setFilterss('General', $event)"
-        ></player-filter>
+        ></player-filter> -->
       </div>
       <div
         class="flex flex-row align-items-center justify-content-between surface-border"
@@ -86,46 +86,30 @@
           [currentSortType]="currentSortType()"
           (sortFunctionEmitter)="setSortFunction($event)"
         ></player-sort>
+        @if (draftMode && !endDraft) {
+          <player-sort
+            class="header-item"
+            [sortFunction]="'Proj PPG'"
+            [currentSortFunction]="currentSortFunction()"
+            [currentSortType]="currentSortType()"
+            (sortFunctionEmitter)="setSortFunction($event)"
+          ></player-sort>
+        }
       </div>
     </div>
 
     <div class="body overflow-hiden">
       <div class="flex flex-column mt-2">
-        @for (player of athleteSelection | async; track player) {
-          <div
-            class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
-          >
-            @if (!endDraft && draftMode) {
-              <div class="data-cell">
-                @if (myPick) {
-                  <span
-                    class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
-                    (click)="addToRoster(player)"
-                    >Pick</span
-                  >
-                } @else {
-                  @if (inQueue(player)) {
-                    <span
-                      class="grid-item text-xs text-primary border-1 p-1 border-primary border-round p-disabled"
-                      >Reserved</span
-                    >
-                  } @else {
-                    <span
-                      class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
-                      (click)="addToQueue(player)"
-                      >Reserve</span
-                    >
-                  }
-                }
-              </div>
-            }
-            <div class="data-cell" (click)="onPlayerSelected(player)">{{
-              player.Name
-            }}</div>
-            <div class="data-cell">{{ player.Jersey }}</div>
-            <div class="data-cell">{{ player.School }}</div>
-          </div>
-        }
+        <player-search-view
+          [athleteSelection]="(athleteSelection | async) ?? []"
+          [draftMode]="draftMode"
+          [endDraft]="endDraft"
+          [myPick]="myPick"
+          [queue]="queue"
+          (addToQueueFromSearchEmitter)="addToQueue($event)"
+          (addToRosterFromSearchEmitter)="addToRoster($event)"
+          (dialogPlayerEmitter)="onPlayerSelected($event)"
+        ></player-search-view>
       </div>
     </div>
   </div>

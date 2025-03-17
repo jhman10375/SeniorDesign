@@ -37,6 +37,7 @@ export class DraftPickOrderService {
 
   stopDraft(): void {
     this._endDraft.next(true);
+    localStorage.removeItem('dk');
   }
 
   setPickOrder(pickOrder: Array<DraftOrderModel>): void {

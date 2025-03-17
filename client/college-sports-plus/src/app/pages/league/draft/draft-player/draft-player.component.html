@@ -1,1 +1,28 @@
-<h2>Player</h2>
+@if (!isLoading()) {
+  <div class="pt-2">
+    @switch (leagueType) {
+      @case (SportEnum.Football) {
+        <football-player-stats
+          [player]="footballPlayerStats"
+        ></football-player-stats>
+      }
+      @case (SportEnum.Baseball) {
+        <baseball-player-stats
+          [player]="baseballPlayerStats"
+        ></baseball-player-stats>
+      }
+      @case (SportEnum.Basketball) {
+        <basketball-player-stats
+          [player]="basketballPlayerStats"
+        ></basketball-player-stats>
+      }
+      @case (SportEnum.Soccer) {
+        <soccer-player-stats [player]="soccerPlayerStats"></soccer-player-stats>
+      }
+    }
+  </div>
+} @else {
+  <div class="mt-4">
+    <sub-loading></sub-loading>
+  </div>
+}

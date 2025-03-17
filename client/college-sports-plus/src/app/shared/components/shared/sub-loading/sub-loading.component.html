@@ -1,0 +1,29 @@
+<div class="loading-screen">
+  <div class="icon-wrapper">
+    <div class="loading-icon">
+      @switch (currentIconIndex()) {
+        @case (0) {
+          <span class="material-icons fade" style="width: 24px; color: brown"
+            >sports_football</span
+          >
+        }
+        @case (1) {
+          <span class="material-icons fade" style="width: 24px; color: #f88158"
+            >sports_basketball</span
+          >
+        }
+        @case (2) {
+          <span class="material-icons fade" style="width: 24px"
+            >sports_baseball</span
+          >
+        }
+        @case (3) {
+          <span class="material-icons text-primary fade" style="width: 24px"
+            >sports_soccer</span
+          >
+        }
+      }
+    </div>
+    <p class="loading-text">Loading</p>
+  </div>
+</div>

@@ -24,6 +24,13 @@
         [currentSortType]="currentSortType()"
         (sortFunctionEmitter)="setSortFunction($event)"
       ></player-sort>
+      <player-sort
+        class="header-item text-xxs"
+        [sortFunction]="'Proj PPG'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
     </div>
   </div>
 
@@ -37,6 +44,9 @@
         }}</div>
         <div class="data-cell">{{ athlete.Jersey }}</div>
         <div class="data-cell">{{ athlete.School }}</div>
+        <div class="data-cell">{{
+          athlete.PredictedScore | number: "1.1-2"
+        }}</div>
       </div>
     }
   </div>

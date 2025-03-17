@@ -15,6 +15,7 @@ import { WeekStatusEnum } from '../../enums/week-status.enum';
 import { CurrentUserModel } from '../../models/current-user.model';
 import { FootballLeagueSettingsModel } from '../../models/football-league-settings/football-league-settings.model';
 import { LeagueAthleteModel } from '../../models/league-athlete.model';
+import { LeaguePlayerModel } from '../../models/league-player.model';
 import { LeagueRosterAthleteModel } from '../../models/league-roster-athlete.model';
 import { LeagueScorboardModel } from '../../models/league-scoreboard.model';
 import { LeagueSearchModel } from '../../models/league-search.model';
@@ -447,6 +448,47 @@ export class LeagueService implements OnDestroy {
     this.leagueDLService._league.next(leagues);
     this.initializeLeagueScoreBoards();
   }
+
+  CheckAthleteOnTeam(
+    leagueID: string,
+    athleteID: string
+  ): LeaguePlayerModel | undefined {
+    const league: LeagueModel =
+      this.leagueDLService._league.value.find((x) => x.ID == leagueID) ??
+      new LeagueModel();
+    let retVal: LeaguePlayerModel = new LeaguePlayerModel();
+    league.Season[0]?.Games.forEach((game) => {
+      if (game.AwayTeam.find((x) => x.Athlete.AthleteID == athleteID)) {
+        retVal =
+          league.Players.find((x) => x.PlayerID == game.AwayTeamPlayerID) ??
+          new LeaguePlayerModel();
+      } else if (game.HomeTeam.find((x) => x.Athlete.AthleteID == athleteID)) {
+        retVal =
+          league.Players.find((x) => x.PlayerID == game.HomeTeamPlayerID) ??
+          new LeaguePlayerModel();
+      }
+    });
+
+    if (retVal.ID.length > 0) {
+      return retVal;
+    } else {
+      return undefined;
+    }
+  }
+
+  // updatePlayerIDs(
+  //   athletes: Array<LeagueAthleteModel>,
+  //   league: LeagueModel
+  // ): Array<LeagueAthleteModel> {
+  //   const retVal: Array<LeagueAthleteModel> = [];
+  //   const leagueAthletes: Array<LeagueAthleteModel> = [];
+
+  //   leagueAthletes.forEach((athlete) => {
+  //     athletes = athletes.filter((x) => x.AthleteID != athlete.AthleteID);
+  //     retVal.push(athlete);
+  //   });
+  //   return retVal.concat(athletes);
+  // }
 
   // private updateRoster(
   //   leagueType: SportEnum,

@@ -3,24 +3,34 @@
     <div
       class="flex flex-row mb-1 align-items-center justify-content-between border-bottom-1 surface-border"
     >
-      <span class="header-item"
-        ><i class="pi pi-search" (click)="onSearch()"></i
-      ></span>
-      <span class="header-item">Filters:</span>
+      <span class="header-item" (click)="onSearch()"
+        ><i class="pi pi-search"></i><span class="ml-1">Search</span></span
+      >
+      <div class="header-item">
+        <span class="mr-2">Filters:</span>
+        <player-filter
+          class=""
+          [filterName]="'Position'"
+          [filters]="positionFilters"
+          [currentFilter]="currentPositionFilter()"
+          (setFilterEmitter)="setFilterss('Position', $event)"
+        ></player-filter>
+      </div>
+      <!-- <span class="header-item">Filters:</span>
       <player-filter
         class="header-item"
         [filterName]="'Position'"
         [filters]="positionFilters"
         [currentFilter]="currentPositionFilter()"
         (setFilterEmitter)="setFilterss('Position', $event)"
-      ></player-filter>
-      <player-filter
+      ></player-filter> -->
+      <!-- <player-filter
         class="header-item"
         [filterName]="'General'"
         [filters]="[]"
         [currentFilter]="null"
         (setFilterEmitter)="setFilterss('General', $event)"
-      ></player-filter>
+      ></player-filter> -->
     </div>
     <div
       class="flex flex-row mb-2 align-items-center justify-content-between border-bottom-1 surface-border"
@@ -45,6 +55,14 @@
       <player-sort
         class="header-item"
         [sortFunction]="'School'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
+      <!-- <span class="header-item text-xxs">Proj. PPG</span> -->
+      <player-sort
+        class="header-item text-xxs"
+        [sortFunction]="'Proj PPG'"
         [currentSortFunction]="currentSortFunction()"
         [currentSortType]="currentSortType()"
         (sortFunctionEmitter)="setSortFunction($event)"
@@ -87,6 +105,9 @@
         }}</div>
         <div class="data-cell">{{ athlete.Jersey }}</div>
         <div class="data-cell">{{ athlete.School }}</div>
+        <div class="data-cell">{{
+          athlete.PredictedScore | number: "1.1-2"
+        }}</div>
       </div>
     }
   </div>

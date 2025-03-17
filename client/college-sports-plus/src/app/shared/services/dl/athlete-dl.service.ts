@@ -1,9 +1,14 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, map, Observable, Subject, takeUntil } from 'rxjs';
 
+import { SportEnum } from '../../enums/sport.enum';
 import { LeagueAthleteModel } from '../../models/league-athlete.model';
 import { LeaguePlayerModel } from '../../models/league-player.model';
 import { LeagueModel } from '../../models/league.model';
+import { BaseballPlayerStatsModel } from '../../models/stats/baseball-player-stats.model';
+import { BasketballPlayerStatsModel } from '../../models/stats/basketball-player-stats.model';
+import { FootballPlayerStatsModel } from '../../models/stats/football-player-stats.model';
+import { SoccerPlayerStatsModel } from '../../models/stats/soccer-player-stats.model';
 import { GeneralService } from '../bl/general-service.service';
 import { FastAPIService } from '../fastAPI/fast-api.service';
 import { PlayerFAPIModel } from '../fastAPI/models/player-fapi.model';
@@ -102,11 +107,14 @@ export class AthleteDLService implements OnDestroy {
     return this._players.value;
   }
 
-  getTeam(leaguePlayer: LeaguePlayerModel): Array<LeagueAthleteModel> {
+  getTeam(
+    leaguePlayer: LeaguePlayerModel,
+    leagueType: SportEnum
+  ): Array<LeagueAthleteModel> {
     const athletes: Array<LeagueAthleteModel> = [];
     leaguePlayer.DraftTeamPlayerIDs.forEach((x) => {
       this.fastApiService
-        .getPlayerByID(x)
+        .getFootballPlayerByID(x)
         .pipe(takeUntil(this.unsubscribe))
         .subscribe({
           next: (a) => {
@@ -125,8 +133,11 @@ export class AthleteDLService implements OnDestroy {
     return athletes;
   }
 
-  getAthleteByID(id: string): Observable<PlayerFAPIModel> {
-    return this.fastApiService.getPlayerByID(id);
+  getAthleteByID(
+    playerID: string,
+    leagueType: SportEnum
+  ): Observable<PlayerFAPIModel | undefined> {
+    return this.fastApiService.getPlayerByID(playerID, leagueType);
   }
 
   getAthletesByIDs(
@@ -142,6 +153,34 @@ export class AthleteDLService implements OnDestroy {
     });
 
     return athletes;
+  }
+
+  getFootballAthleteStatsByID(
+    playerID: string,
+    season: number = 2024
+  ): Observable<FootballPlayerStatsModel> {
+    return this.fastApiService.getFootballPlayerStatsByID(playerID, season);
+  }
+
+  getBaseballAthleteStatsByID(
+    playerID: string,
+    season: number = 2024
+  ): Observable<BaseballPlayerStatsModel> {
+    return this.fastApiService.getBaseballPlayerStatsByID(playerID, season);
+  }
+
+  getBasketballAthleteStatsByID(
+    playerID: string,
+    season: number = 2024
+  ): Observable<BasketballPlayerStatsModel> {
+    return this.fastApiService.getBasketballPlayerStatsByID(playerID, season);
+  }
+
+  getSoccerAthleteStatsByID(
+    playerID: string,
+    season: number = 2024
+  ): Observable<SoccerPlayerStatsModel> {
+    return this.fastApiService.getSoccerPlayerStatsByID(playerID, season);
   }
 
   loadAthletes(): void {

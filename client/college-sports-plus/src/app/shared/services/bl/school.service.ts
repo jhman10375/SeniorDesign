@@ -31,6 +31,7 @@ export class SchoolService implements OnDestroy {
           this._schools.next(s);
         },
       });
+
     // const schools: Array<SchoolModel> = [];
     // const UniversityOfCincinnati: SchoolModel = new SchoolModel();
     // UniversityOfCincinnati.ID = '0';
@@ -54,6 +55,10 @@ export class SchoolService implements OnDestroy {
     // schools.push(UniversityOfOregon);
 
     // this.schools = schools;
+  }
+
+  getSchoolByName(school: string): Observable<SchoolModel | null> {
+    return this.fastAPIService.getSchoolByName(school);
   }
 
   getSchool(schoolName: SchoolNameEnum): SchoolModel {

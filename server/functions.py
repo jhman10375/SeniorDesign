@@ -106,6 +106,75 @@ def all_schools():
             ) for i in teams_df.itertuples()]
     return school_data
 
+def school_by_name(school_name) -> school | None:
+    url = f"https://api.collegefootballdata.com/teams/fbs"
+
+    headers = {"Authorization": f"Bearer {token}"}
+
+    teams_response = requests.get(url, headers=headers)
+
+    teams_json = json.loads(teams_response.text)
+    # print(teams_json)
+
+    teams_df = pd.json_normalize(teams_json)
+
+    teams_df = teams_df.fillna(value=0)
+
+    teams_df['venue_id'] = teams_df['location.venue_id'].apply(lambda x: x)
+    teams_df['name'] = teams_df['location.name'].apply(lambda x: x)
+    teams_df['city'] = teams_df['location.city'].apply(lambda x: x)
+    teams_df['state'] = teams_df['location.state'].apply(lambda x: x)
+    teams_df['zip'] = teams_df['location.zip'].apply(lambda x: x)
+    teams_df['country_code'] = teams_df['location.country_code'].apply(lambda x: x)
+    teams_df['timezone'] = teams_df['location.timezone'].apply(lambda x: x)
+    teams_df['latitude'] = teams_df['location.latitude'].apply(lambda x: x)
+    teams_df['longitude'] = teams_df['location.longitude'].apply(lambda x: x)
+    teams_df['elevation'] = teams_df['location.elevation'].apply(lambda x: x)
+    teams_df['capacity'] = teams_df['location.capacity'].apply(lambda x: x)
+    teams_df['year_constructed'] = teams_df['location.year_constructed'].apply(lambda x: x)
+    teams_df['grass'] = teams_df['location.grass'].apply(lambda x: x)
+    teams_df['dome'] = teams_df['location.dome'].apply(lambda x: x)
+
+    teams_df.query(f'school == "{school_name}"', inplace = True)
+
+    school_data = [school(
+                id=str(i.id), 
+                school=str(i.school), 
+                mascot=str(i.mascot), 
+                abbreviation=str(i.abbreviation), 
+                alt_name_1=str(i.alt_name1),
+                alt_name_2=str(i.alt_name2), 
+                alt_name_3=str(i.alt_name3), 
+                conference=str(i.conference), 
+                division=str(i.division), 
+                color=str(i.color), 
+                alt_color=str(i.alt_color), 
+                logos=i.logos, 
+                twitter=str(i.twitter), 
+                location=
+                    location(
+                venue_id=i.venue_id, 
+                name=str(i.name), 
+                city=str(i.city), 
+                state=str(i.state), 
+                zip=str(i.zip), 
+                country_code=str(i.country_code), 
+                timezone=str(i.timezone), 
+                latitude=i.latitude, 
+                longitude=i.longitude, 
+                elevation=i.elevation, 
+                capacity=i.capacity, 
+                year_constructed=i.year_constructed, 
+                grass=i.grass, 
+                dome=i.dome)
+                
+                ) for i in teams_df.itertuples()]
+    
+    if school_data and school_data[0]:    
+        return school_data[0]
+    else:
+        return None
+
 def team_by_id(team_id):
     url = f"https://api.collegefootballdata.com/teams/fbs"
 
@@ -2171,6 +2240,31 @@ def fb_first_strings(firstStrings : firstStringList, page = 1, page_size= 100) -
                            player_height=player.height, player_weight=player.weight,
                            player_year=player.year, team_color=player.color, 
                            team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
+
+def fb_first_string_info_with_predictions(firstStrings, fullList, page = 1, page_size= 100) -> list[fbPlayerWithStats]:
+    players = fb_first_strings(firstStrings, page, page_size)
+
+    stats = []
+
+    for player in players:
+        stats.append(fb_predict_season(player.player_id, fullList))
+
+
+    return [fbPlayerWithStats(
+        player_id = plyr[0].player_id,
+        player_name = plyr[0].player_name,
+        player_position = plyr[0].player_position,
+        player_jersey = plyr[0].player_jersey,
+        player_height = plyr[0].player_height,
+        player_weight = plyr[0].player_weight,
+        player_team = plyr[0].player_team,
+        player_year = plyr[0].player_year,
+        team_color = plyr[0].team_color,
+        team_alt_color = plyr[0].team_alt_color,
+        team_logos = plyr[0].team_logos,
+        stats = plyr[1] )
+    
+    for plyr in zip(players, stats)]
 
 def fb_predict_season(player_id : str, fullList : playerList) -> predictedStats:
     with open('model/my_dumped_classifier.pkl', 'rb') as fid:

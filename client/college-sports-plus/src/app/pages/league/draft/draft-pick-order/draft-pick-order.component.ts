@@ -45,7 +45,7 @@ export class DraftPickOrderComponent implements OnInit, OnDestroy {
   }
 
   @Input() set currentPick(v: DraftOrderModel | null) {
-    if (v != null && v.Player.ID) {
+    if (v != null && v.Player && v.Player.PlayerID) {
       if (this.currentRound() != v.SortOrder.Round) {
         this.currentRound.update(() => v.SortOrder.Round);
       }

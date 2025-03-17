@@ -4,6 +4,7 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
   ViewChild,
@@ -14,13 +15,16 @@ import { ButtonModule } from 'primeng/button';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
+import { Subject, takeUntil } from 'rxjs';
 
 import { LeagueAthleteModel } from '../../../shared/models/league-athlete.model';
+import { LeagueModel } from '../../../shared/models/league.model';
 import { AthleteService } from '../../../shared/services/bl/athlete.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 import { PlayerFilterBase } from './player-filter/player-filter.base.component';
 import { PlayerFilterComponent } from './player-filter/player-filter/player-filter.component';
 import { PlayerSortComponent } from './player-filter/player-sort/player-sort.component';
+import { PlayerSearchViewComponent } from './player-search-view/player-search-view.component';
 
 @Component({
   standalone: true,
@@ -34,17 +38,26 @@ import { PlayerSortComponent } from './player-filter/player-sort/player-sort.com
     ButtonModule,
     PlayerFilterComponent,
     PlayerSortComponent,
+    PlayerSearchViewComponent,
   ],
   providers: [],
   selector: 'player-search',
   styleUrls: ['player-search.component.scss'],
   templateUrl: 'player-search.component.html',
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
+export class PlayerSearchComponent
+  extends PlayerFilterBase
+  implements OnInit, OnDestroy
+{
   @ViewChild('mySearchBox') mySearchBox: ElementRef;
 
   @Input() override set athletes(v: Array<LeagueAthleteModel>) {
     if (v) {
+      v = this.updatePlayerIDs(
+        v,
+        this.leagueService.getLeague(this.leagueID) ?? new LeagueModel()
+      );
       this.playersReadonly = v;
       this.searchPlayers(this.searchText(), v, this.draftMode);
       this._athleteList = v;
@@ -75,15 +88,26 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
 
   leagueID: string;
 
+  athleteSelectionDisplay: Array<LeagueAthleteModel> = [];
+
   private _athleteList: Array<LeagueAthleteModel> = [];
+
+  private unsubscribe = new Subject<void>();
 
   constructor(
     private leagueService: LeagueService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private athleteService: AthleteService
+    // private cdr: ChangeDetectorRef
   ) {
     super();
+    this.athleteSelection.pipe(takeUntil(this.unsubscribe)).subscribe({
+      next: (l) => {
+        this.athleteSelectionDisplay = l;
+        // this.cdr.markForCheck();
+      },
+    });
   }
 
   override ngOnInit() {
@@ -94,6 +118,7 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
     if (!this.draftMode && leagueID) {
       const activeLeague = this.leagueService.getLeague(leagueID);
       if (activeLeague) {
+        this.leagueType = activeLeague.LeagueType;
         if (activeLeague.Athletes && activeLeague.Athletes.length > 0) {
           this.athletes = activeLeague.Athletes;
         } else {
@@ -101,6 +126,10 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
         }
       }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
   }
 
   onClearFilter() {
@@ -125,17 +154,37 @@ export class PlayerSearchComponent extends PlayerFilterBase implements OnInit {
   }
 
   navigateTo(athleteID: string): void {
+    const athlete: LeagueAthleteModel =
+      this.athletes.find((x) => x.AthleteID == athleteID) ??
+      new LeagueAthleteModel();
     this.router.navigate(['player', athleteID], {
       relativeTo: this.activatedRoute,
     });
   }
 
-  inQueue(athlete: LeagueAthleteModel): boolean {
-    if (this.queue.find((x) => x.AthleteID === athlete.AthleteID)) {
-      return true;
-    } else {
-      return false;
+  updatePlayerIDs(
+    athletes: Array<LeagueAthleteModel>,
+    league: LeagueModel
+  ): Array<LeagueAthleteModel> {
+    const retVal: Array<LeagueAthleteModel> = [];
+    const leagueAthletes: Array<LeagueAthleteModel> = [];
+    if (league.Season && league.Season.length > 0) {
+      league?.Season[0]?.Games.forEach((game) => {
+        game.AwayTeam.forEach((player) => {
+          player.Athlete.PlayerID = game.AwayTeamPlayerID;
+          leagueAthletes.push(player.Athlete);
+        });
+        game.HomeTeam.forEach((player) => {
+          player.Athlete.PlayerID = game.HomeTeamPlayerID;
+          leagueAthletes.push(player.Athlete);
+        });
+      });
     }
+    leagueAthletes.forEach((athlete) => {
+      athletes = athletes.filter((x) => x.AthleteID != athlete.AthleteID);
+      retVal.push(athlete);
+    });
+    return retVal.concat(athletes);
   }
 
   checkIfAtParentRoute(): boolean {

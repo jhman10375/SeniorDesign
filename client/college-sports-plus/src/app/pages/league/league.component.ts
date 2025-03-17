@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
@@ -8,28 +9,33 @@ import {
 import { Button } from 'primeng/button';
 import { Subject, takeUntil } from 'rxjs';
 
+import { SportEnum } from '../../shared/enums/sport.enum';
+import { CurrentUserModel } from '../../shared/models/current-user.model';
 import { LeaguePlayerModel } from '../../shared/models/league-player.model';
 import { LeagueModel } from '../../shared/models/league.model';
 import { AthleteService } from '../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../shared/services/bl/league.service';
-import { UserModel } from '../../shared/services/dl/models/user.model';
-import { UserService } from '../../shared/services/dl/user.service';
+import { UserService } from '../../shared/services/bl/user.service';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet, RouterLink, Button],
-  providers: [AthleteService, UserService],
+  imports: [CommonModule, RouterOutlet, RouterLink, Button],
+  providers: [AthleteService],
   styleUrls: ['league.component.scss'],
   selector: 'league',
   templateUrl: 'league.component.html',
 })
 export class LeagueComponent implements OnInit, OnDestroy {
+  readonly SportEnum = SportEnum;
+
   isMobile: boolean = false;
 
   myTeam: LeaguePlayerModel | undefined;
 
   activeLeague: LeagueModel | undefined;
+
+  leagueType: SportEnum;
 
   isLeagueManager: boolean = false;
 
@@ -60,20 +66,33 @@ export class LeagueComponent implements OnInit, OnDestroy {
         this.activeLeague = this.leagueService.getLeague(
           this.currentId ?? '-1'
         );
-        const currentUser: UserModel | undefined = this.userService.getUser();
+        const currentUser: CurrentUserModel | undefined =
+          this.userService.getCurrentUser();
         if (currentUser) {
           this.myTeam = this.activeLeague?.Players.find(
             (x) => x.PlayerID === currentUser.ID
           );
         }
-        this.hasDraftOccurred =
-          (this.activeLeague?.DraftDate.getTime() ?? 0) < new Date().getTime();
+
+        if (
+          this.activeLeague?.Players.find(
+            (x) => x.DraftTeamPlayerIDs && x.DraftTeamPlayerIDs.length > 0
+          )
+        ) {
+          this.hasDraftOccurred = true;
+        } else {
+          this.hasDraftOccurred = false;
+        }
+        // this.hasDraftOccurred =
+        //   (this.activeLeague?.DraftDate.getTime() ?? 0) < new Date().getTime();
 
         if (this.myTeam?.ID === this.activeLeague?.Manager?.ID) {
           this.isLeagueManager = true;
         } else {
           this.isLeagueManager = false;
         }
+
+        this.leagueType = this.activeLeague?.LeagueType ?? SportEnum.Football;
       },
     });
   }

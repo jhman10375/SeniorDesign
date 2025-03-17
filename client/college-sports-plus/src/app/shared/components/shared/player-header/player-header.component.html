@@ -1,4 +1,4 @@
-@if (player) {
+@if (player && school) {
   <div class="flex flex-row justify-content-between mb-2">
     <div class="mr-2">
       <number-logo [player]="player" [school]="school"></number-logo>
@@ -21,9 +21,14 @@
         <div
           class="inline-flex align-items-center justify-content-end gap-2 pt-1 mt-2 border-top-1"
         >
+          @if (LeaguePlayer) {
+            <p-tag>{{ LeaguePlayer.TeamName }}</p-tag>
+          } @else {
+            <p-tag severity="danger">Not Drafted</p-tag>
+          }
           <p-avatar [image]="player.Logos[0]" shape="circle" />
           <span class="text-4xl" style="text-wrap: wrap; text-align: right">{{
-            player.School
+            school.Abbreviation
           }}</span>
         </div>
       }
