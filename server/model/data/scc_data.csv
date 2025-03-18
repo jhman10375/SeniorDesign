@@ -1,0 +1,106 @@
+,team,height,year,position,name,player_id,opponent,goals,assists,shots_on_goal,shots_off_goal,fouls,yellow_cards,red_cards,clean_sheet,goals_allowed,saves
+0,Western Michigan,75,4,D,Duarte Chapelas,8987032,Vermont,0,0,0,0,0,0,0,0,0,0
+1,Western Michigan,75,4,D,Duarte Chapelas,8987032,New Hampshire,0,0,0,0,0,0,0,0,0,0
+2,Western Michigan,75,4,D,Duarte Chapelas,8987032,Akron,0,0,0,0,0,0,0,0,0,0
+3,Western Michigan,75,4,D,Duarte Chapelas,8987032,Villanova,0,0,0,0,0,0,0,0,0,0
+4,Western Michigan,75,4,D,Duarte Chapelas,8987032,Northwestern,0,0,0,0,0,0,0,0,0,0
+5,Western Michigan,75,4,D,Duarte Chapelas,8987032,Air Force,0,0,0,0,0,0,0,0,0,0
+6,Western Michigan,75,4,D,Duarte Chapelas,8987032,Belmont,0,0,1,0,1,0,0,0,0,0
+7,Western Michigan,75,4,D,Duarte Chapelas,8987032,Dayton,0,0,1,0,0,0,0,0,0,0
+8,Western Michigan,75,4,D,Duarte Chapelas,8987032,Evansville,0,0,0,0,0,1,0,0,0,0
+9,Western Michigan,75,4,D,Duarte Chapelas,8987032,Missouri St.,0,0,0,0,2,0,0,0,0,0
+10,Western Michigan,75,4,D,Duarte Chapelas,8987032,Olivet,0,0,0,0,0,1,0,0,0,0
+11,Western Michigan,75,4,D,Duarte Chapelas,8987032,Drake,0,0,0,0,0,0,0,0,0,0
+12,Western Michigan,75,4,D,Duarte Chapelas,8987032,NIU,0,0,0,2,0,0,0,0,0,0
+13,Western Michigan,75,4,D,Duarte Chapelas,8987032,Green Bay,0,0,0,0,0,1,0,0,0,0
+14,Western Michigan,75,4,D,Duarte Chapelas,8987032,Detroit Mercy,0,0,0,0,0,0,0,0,0,0
+15,Western Michigan,75,4,D,Duarte Chapelas,8987032,Bradley,0,0,0,1,0,0,0,0,0,0
+16,Western Michigan,75,4,D,Duarte Chapelas,8987032,Bowling Green,0,0,1,0,1,1,0,0,0,0
+17,Western Michigan,75,4,D,Duarte Chapelas,8987032,UIC,0,0,1,1,3,0,0,0,0,0
+18,Western Michigan,75,4,D,Duarte Chapelas,8987032,Evansville,0,0,0,0,2,1,0,0,0,0
+19,Western Michigan,75,4,D,Duarte Chapelas,8987032,SIUE,1,0,1,0,0,0,0,0,0,0
+20,Western Michigan,75,4,D,Duarte Chapelas,8987032,Ohio St.,0,0,1,0,0,0,0,0,0,0
+21,Western Michigan,74,4,F,Greyson Mercer,8906167,Vermont,2,0,2,0,2,0,0,0,0,0
+22,Western Michigan,74,4,F,Greyson Mercer,8906167,New Hampshire,0,0,1,2,1,1,0,0,0,0
+23,Western Michigan,74,4,F,Greyson Mercer,8906167,Akron,0,0,0,1,0,0,0,0,0,0
+24,Western Michigan,74,4,F,Greyson Mercer,8906167,Villanova,2,2,2,2,0,0,0,0,0,0
+25,Western Michigan,74,4,F,Greyson Mercer,8906167,Northwestern,0,0,0,0,1,0,0,0,0,0
+26,Western Michigan,74,4,F,Greyson Mercer,8906167,Air Force,0,1,1,2,0,0,0,0,0,0
+27,Western Michigan,74,4,F,Greyson Mercer,8906167,Belmont,0,0,0,0,2,0,0,0,0,0
+28,Western Michigan,74,4,F,Greyson Mercer,8906167,Dayton,0,1,1,1,0,0,0,0,0,0
+29,Western Michigan,74,4,F,Greyson Mercer,8906167,Evansville,0,0,0,1,0,0,0,0,0,0
+30,Western Michigan,74,4,F,Greyson Mercer,8906167,Missouri St.,0,0,0,3,1,0,0,0,0,0
+31,Western Michigan,74,4,F,Greyson Mercer,8906167,Olivet,1,0,2,1,0,0,0,0,0,0
+32,Western Michigan,74,4,F,Greyson Mercer,8906167,Drake,0,0,0,0,1,0,0,0,0,0
+33,Western Michigan,74,4,F,Greyson Mercer,8906167,NIU,0,0,2,1,3,0,0,0,0,0
+34,Western Michigan,74,4,F,Greyson Mercer,8906167,Green Bay,0,0,0,0,0,0,0,0,0,0
+35,Western Michigan,74,4,F,Greyson Mercer,8906167,Detroit Mercy,1,0,2,1,0,0,0,0,0,0
+36,Western Michigan,74,4,F,Greyson Mercer,8906167,Bradley,0,0,2,2,0,1,0,0,0,0
+37,Western Michigan,74,4,F,Greyson Mercer,8906167,Bowling Green,0,0,0,1,3,0,0,0,0,0
+38,Western Michigan,74,4,F,Greyson Mercer,8906167,UIC,0,0,1,0,3,0,0,0,0,0
+39,Western Michigan,74,4,F,Greyson Mercer,8906167,Evansville,0,0,0,3,3,0,0,0,0,0
+40,Western Michigan,74,4,F,Greyson Mercer,8906167,SIUE,2,0,3,2,0,0,0,0,0,0
+41,Western Michigan,74,4,F,Greyson Mercer,8906167,Ohio St.,0,1,0,2,0,0,0,0,0,0
+42,Western Michigan,68,3,M,Carson Hodgson,8522361,Vermont,0,1,2,1,4,0,0,0,0,0
+43,Western Michigan,68,3,M,Carson Hodgson,8522361,New Hampshire,0,0,0,1,1,0,0,0,0,0
+44,Western Michigan,68,3,M,Carson Hodgson,8522361,Akron,0,0,1,0,1,0,0,0,0,0
+45,Western Michigan,68,3,M,Carson Hodgson,8522361,Villanova,0,0,1,2,1,0,0,0,0,0
+46,Western Michigan,68,3,M,Carson Hodgson,8522361,Northwestern,1,0,2,0,0,0,0,0,0,0
+47,Western Michigan,68,3,M,Carson Hodgson,8522361,Air Force,1,0,1,0,2,0,0,0,0,0
+48,Western Michigan,68,3,M,Carson Hodgson,8522361,Belmont,0,0,0,1,3,0,0,0,0,0
+49,Western Michigan,68,3,M,Carson Hodgson,8522361,Dayton,0,0,0,0,1,0,0,0,0,0
+50,Western Michigan,68,3,M,Carson Hodgson,8522361,Evansville,1,0,3,1,1,0,0,0,0,0
+51,Western Michigan,68,3,M,Carson Hodgson,8522361,Missouri St.,0,0,0,1,1,0,0,0,0,0
+52,Western Michigan,68,3,M,Carson Hodgson,8522361,Olivet,0,3,1,1,0,0,0,0,0,0
+53,Western Michigan,68,3,M,Carson Hodgson,8522361,Drake,0,0,0,0,0,0,0,0,0,0
+54,Western Michigan,68,3,M,Carson Hodgson,8522361,NIU,0,0,0,3,2,0,0,0,0,0
+55,Western Michigan,68,3,M,Carson Hodgson,8522361,Green Bay,0,1,0,0,3,1,0,0,0,0
+56,Western Michigan,68,3,M,Carson Hodgson,8522361,Detroit Mercy,3,0,4,1,4,0,0,0,0,0
+57,Western Michigan,68,3,M,Carson Hodgson,8522361,Bradley,0,0,1,1,2,0,0,0,0,0
+58,Western Michigan,68,3,M,Carson Hodgson,8522361,Bowling Green,0,0,0,1,1,0,0,0,0,0
+59,Western Michigan,68,3,M,Carson Hodgson,8522361,UIC,0,0,1,3,2,0,0,0,0,0
+60,Western Michigan,68,3,M,Carson Hodgson,8522361,Evansville,0,0,0,2,1,0,0,0,0,0
+61,Western Michigan,68,3,M,Carson Hodgson,8522361,SIUE,0,3,1,0,3,0,0,0,0,0
+62,Western Michigan,68,3,M,Carson Hodgson,8522361,Ohio St.,0,0,0,1,3,0,0,0,0,0
+63,Western Michigan,74,4,GK,Colin Welsh,8758808,Vermont,0,0,0,0,0,0,0,0,1,2
+64,Western Michigan,74,4,GK,Colin Welsh,8758808,New Hampshire,0,0,0,0,0,0,0,1,0,5
+65,Western Michigan,74,4,GK,Colin Welsh,8758808,Akron,0,0,0,0,0,0,0,0,1,7
+66,Western Michigan,74,4,GK,Colin Welsh,8758808,Villanova,0,0,0,0,0,0,0,0,1,1
+67,Western Michigan,74,4,GK,Colin Welsh,8758808,Northwestern,0,0,0,0,0,0,0,1,0,3
+68,Western Michigan,74,4,GK,Colin Welsh,8758808,Air Force,0,0,0,0,0,0,0,0,1,3
+69,Western Michigan,74,4,GK,Colin Welsh,8758808,Belmont,0,0,0,0,0,0,0,0,1,2
+70,Western Michigan,74,4,GK,Colin Welsh,8758808,Dayton,0,0,0,0,0,0,0,0,1,3
+71,Western Michigan,74,4,GK,Colin Welsh,8758808,Evansville,0,0,0,0,0,0,0,0,1,2
+72,Western Michigan,74,4,GK,Colin Welsh,8758808,Missouri St.,0,0,0,0,0,0,0,0,1,6
+73,Western Michigan,74,4,GK,Colin Welsh,8758808,Olivet,0,0,0,0,0,0,0,0,0,0
+74,Western Michigan,74,4,GK,Colin Welsh,8758808,Drake,0,0,0,0,0,0,0,0,1,2
+75,Western Michigan,74,4,GK,Colin Welsh,8758808,NIU,0,0,0,0,0,0,0,0,1,2
+76,Western Michigan,74,4,GK,Colin Welsh,8758808,Green Bay,0,0,0,0,0,0,0,1,0,3
+77,Western Michigan,74,4,GK,Colin Welsh,8758808,Detroit Mercy,0,0,0,0,0,0,0,0,1,5
+78,Western Michigan,74,4,GK,Colin Welsh,8758808,Bradley,0,0,0,0,0,0,0,1,0,5
+79,Western Michigan,74,4,GK,Colin Welsh,8758808,Bowling Green,0,0,0,0,0,0,0,0,3,6
+80,Western Michigan,74,4,GK,Colin Welsh,8758808,UIC,0,0,0,0,0,0,0,0,1,5
+81,Western Michigan,74,4,GK,Colin Welsh,8758808,Evansville,0,0,0,0,0,0,0,0,2,8
+82,Western Michigan,74,4,GK,Colin Welsh,8758808,SIUE,0,0,0,0,0,0,0,0,1,5
+83,Western Michigan,74,4,GK,Colin Welsh,8758808,Ohio St.,0,0,0,0,0,0,0,0,2,3
+84,Western Michigan,70,1,FM,Liam Smith,8872207,Vermont,0,0,0,0,0,0,0,0,0,0
+85,Western Michigan,70,1,FM,Liam Smith,8872207,New Hampshire,0,0,0,0,0,0,0,0,0,0
+86,Western Michigan,70,1,FM,Liam Smith,8872207,Akron,0,0,0,0,0,0,0,0,0,0
+87,Western Michigan,70,1,FM,Liam Smith,8872207,Villanova,0,0,0,0,0,0,0,0,0,0
+88,Western Michigan,70,1,FM,Liam Smith,8872207,Northwestern,0,0,0,0,0,0,0,0,0,0
+89,Western Michigan,70,1,FM,Liam Smith,8872207,Air Force,0,0,0,0,0,0,0,0,0,0
+90,Western Michigan,70,1,FM,Liam Smith,8872207,Belmont,0,0,0,0,0,0,0,0,0,0
+91,Western Michigan,70,1,FM,Liam Smith,8872207,Dayton,0,0,0,0,0,0,0,0,0,0
+92,Western Michigan,70,1,FM,Liam Smith,8872207,Evansville,0,0,0,0,0,0,0,0,0,0
+93,Western Michigan,70,1,FM,Liam Smith,8872207,Missouri St.,0,0,0,0,0,0,0,0,0,0
+94,Western Michigan,70,1,FM,Liam Smith,8872207,Olivet,0,0,0,0,0,0,0,0,0,0
+95,Western Michigan,70,1,FM,Liam Smith,8872207,Drake,0,0,0,0,0,0,0,0,0,0
+96,Western Michigan,70,1,FM,Liam Smith,8872207,NIU,0,0,0,0,0,0,0,0,0,0
+97,Western Michigan,70,1,FM,Liam Smith,8872207,Green Bay,0,0,0,0,0,0,0,0,0,0
+98,Western Michigan,70,1,FM,Liam Smith,8872207,Detroit Mercy,0,0,0,0,0,0,0,0,0,0
+99,Western Michigan,70,1,FM,Liam Smith,8872207,Bradley,0,0,0,0,0,0,0,0,0,0
+100,Western Michigan,70,1,FM,Liam Smith,8872207,Bowling Green,0,0,0,0,0,0,0,0,0,0
+101,Western Michigan,70,1,FM,Liam Smith,8872207,UIC,0,0,0,0,0,0,0,0,0,0
+102,Western Michigan,70,1,FM,Liam Smith,8872207,Evansville,0,0,0,0,0,0,0,0,0,0
+103,Western Michigan,70,1,FM,Liam Smith,8872207,SIUE,0,0,0,0,0,0,0,0,0,0
+104,Western Michigan,70,1,FM,Liam Smith,8872207,Ohio St.,0,0,0,0,0,0,0,0,0,0
