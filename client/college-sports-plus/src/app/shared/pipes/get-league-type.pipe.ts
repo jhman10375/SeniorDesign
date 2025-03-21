@@ -7,7 +7,7 @@ import { FootballLeagueSettingsModel } from '../models/football-league-settings/
   name: 'leagueTypePipe',
 })
 export class LeagueTypePipe implements PipeTransform {
-  transform(value: any, leagueType: SportEnum): any {
+  transform(value: any, leagueType: SportEnum | undefined): any {
     switch (leagueType) {
       case SportEnum.Football:
         return value as FootballLeagueSettingsModel;

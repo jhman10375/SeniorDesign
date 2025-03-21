@@ -9,6 +9,7 @@ import { LeaguePlayerModel } from '../../../../models/league-player.model';
 import { LeagueWeekModel } from '../../../../models/league-week.model';
 import { LeagueModel } from '../../../../models/league.model';
 import { LeagueService } from '../../../../services/bl/league.service';
+import { SchoolService } from '../../../../services/bl/school.service';
 import { UserService } from '../../../../services/bl/user.service';
 
 @Component({
@@ -24,8 +25,8 @@ export class MobileGameInformationScoreboardComponent implements OnInit {
       this.currentGame =
         v.Games.find(
           (x) =>
-            x.HomeTeamPlayerID === this.currentUser.ID ||
-            x.AwayTeamPlayerID === this.currentUser.ID
+            x.HomeTeamPlayerID === this.myTeam.ID ||
+            x.AwayTeamPlayerID === this.myTeam.ID
         ) ?? new LeagueGameModel();
       this.setTeams();
       this._LeagueWeek = v;
@@ -44,6 +45,8 @@ export class MobileGameInformationScoreboardComponent implements OnInit {
 
   homeTeam: LeaguePlayerModel | undefined;
 
+  private myTeam: LeaguePlayerModel;
+
   private currentUser: CurrentUserModel;
 
   private leagueID: string;
@@ -54,12 +57,9 @@ export class MobileGameInformationScoreboardComponent implements OnInit {
     private userService: UserService,
     private leagueService: LeagueService,
     private activatedRoute: ActivatedRoute,
+    private schoolService: SchoolService,
     private router: Router
   ) {
-    this.userService.CurrentUser.pipe(take(1)).subscribe({
-      next: (user) => (this.currentUser = user),
-    });
-
     const urlTree = this.router.parseUrl(this.router.url);
     const segments = urlTree.root.children['primary']?.segments;
     if (segments.length > 5) {
@@ -68,6 +68,17 @@ export class MobileGameInformationScoreboardComponent implements OnInit {
     } else {
       this.leagueID = this.activatedRoute.parent?.snapshot.params['leagueID'];
     }
+
+    this.userService.CurrentUser.pipe(take(1)).subscribe({
+      next: (user) => {
+        this.currentUser = user;
+        this.myTeam =
+          this.leagueService
+            .getLeague(this.leagueID)
+            ?.Players.find((x) => x.PlayerID == this.currentUser.ID) ??
+          new LeaguePlayerModel();
+      },
+    });
   }
 
   ngOnInit() {}
@@ -81,6 +92,26 @@ export class MobileGameInformationScoreboardComponent implements OnInit {
     this.awayTeam = currentLeague.Players.find(
       (x) => x.ID === this.currentGame.AwayTeamPlayerID
     );
+    this.schoolService
+      .getSchoolByName(this.homeTeam?.School?.School ?? '')
+      .subscribe({
+        next: (school) => {
+          if (this.homeTeam) {
+            this.homeTeam.School = school ?? this.homeTeam?.School;
+            this.homeTeam.Logos = this.homeTeam?.School.Logos;
+          }
+        },
+      });
+    this.schoolService
+      .getSchoolByName(this.awayTeam?.School?.School ?? '')
+      .subscribe({
+        next: (school) => {
+          if (this.awayTeam) {
+            this.awayTeam.School = school ?? this.awayTeam?.School;
+            this.awayTeam.Logos = this.awayTeam?.School.Logos;
+          }
+        },
+      });
   }
 
   switchGame(direction: 'Left' | 'Right', currentGame: LeagueGameModel) {

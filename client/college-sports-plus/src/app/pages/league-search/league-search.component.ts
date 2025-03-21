@@ -17,9 +17,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 
+import { SportEnum } from '../../shared/enums/sport.enum';
+import { CurrentUserModel } from '../../shared/models/current-user.model';
 import { LeagueSearchModel } from '../../shared/models/league-search.model';
-import { LeagueModel } from '../../shared/models/league.model';
-import { AthleteService } from '../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../shared/services/bl/league.service';
 import { UserService } from '../../shared/services/bl/user.service';
@@ -42,7 +42,7 @@ import { CurrentLeaguePlayersPipe } from './pipes/current-league-players.pipe';
     CanJoinLeaguePipe,
     CurrentLeaguePlayersPipe,
   ],
-  providers: [AthleteService, DialogService, MessageService],
+  providers: [DialogService, MessageService],
   selector: 'league-search',
   styleUrls: ['league-search.component.scss'],
   templateUrl: 'league-search.component.html',
@@ -62,6 +62,8 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
 
   private _leagues = new BehaviorSubject<Array<LeagueSearchModel>>([]);
 
+  private currentUser: CurrentUserModel;
+
   private unsubscribe = new Subject<void>();
 
   constructor(
@@ -74,23 +76,24 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
     this.isMobile = GeneralService.isMobile();
 
     this.leagues = this._leagues.asObservable();
-    let lt: number = -1;
+    let lt: SportEnum = SportEnum.None;
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe))
       .subscribe({
         next: (query) => {
-          lt = query['lt'] as number;
+          lt = query['lt'] as SportEnum;
+          this.leagueService.getLeaguesForSearch(lt);
         },
       });
 
     this.userService.CurrentUser.pipe(takeUntil(this.unsubscribe)).subscribe({
       next: (user) => {
         this.myLeagues = user.LeagueIDs;
+        this.currentUser = user;
       },
     });
 
-    this.leagueService
-      .getLeaguesForSearch(Number(lt))
+    this.leagueService.leaguesForSearch
       .pipe(takeUntil(this.unsubscribe))
       .subscribe({
         next: (x) => {
@@ -122,15 +125,15 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
   }
 
   joinLeague(leagueSearch: LeagueSearchModel): void {
-    const league: LeagueModel | undefined = this.leagueService.getLeague(
-      leagueSearch.ID
-    );
-    if (league) {
+    // const league: LeagueModel | undefined = this.leagueService.getLeague(
+    //   leagueSearch.ID
+    // );
+    if (leagueSearch) {
       const leagueJoinComponent = this.dialogService.open(LeagueJoinComponent, {
         header: 'Join League',
         width: this.isMobile ? '100vw' : '33vw',
         data: {
-          passcodeRequired: !league.Settings.GeneralSettingsModel.PublicLeague,
+          passcodeRequired: !leagueSearch.Settings.GSM.PL,
         },
       });
 
@@ -138,12 +141,12 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
         next: (data) => {
           if (data?.player) {
             let canJoinLeague: boolean = false;
-            if (league.Settings.GeneralSettingsModel.PublicLeague) {
+            if (leagueSearch.Settings.GSM.PL) {
               canJoinLeague = true;
             } else if (
-              !league.Settings.GeneralSettingsModel.PublicLeague &&
+              !leagueSearch.Settings.GSM.PL &&
               data.passcode &&
-              data.passcode == league.Settings.GeneralSettingsModel.Passcode
+              data.passcode == leagueSearch.Settings.GSM.P
             ) {
               canJoinLeague = true;
             } else {
@@ -154,10 +157,17 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
               });
             }
             if (canJoinLeague) {
-              data.player.LeagueID = league.ID;
-              league.Players.push(data.player);
-              this.leagueService.updateLeague(league);
-              console.log(league);
+              data.player.LeagueID = leagueSearch.ID;
+              data.player.ID = this.leagueService.generateID();
+              this.leagueService.addPlayerToLeague(
+                leagueSearch.ID,
+                data.player
+              );
+              // league.Players.push(data.player);
+              // this.leagueService.updateLeague(league);
+              // console.log(league);
+              this.currentUser.LeagueIDs.push(leagueSearch.ID);
+              this.userService.updateCurrentUser(this.currentUser);
               this.messageService.add({
                 severity: 'success',
                 detail: 'You Have Joined The League',

@@ -1,12 +1,20 @@
 import { SportEnum } from '../../../enums/sport.enum';
 import { HasID } from '../../firebase/interfaces/has-id.interface';
+import { BaseballLeagueSettingsDLModel } from './settings/Baseball/baseball-league-settings-dl.model';
+import { BasketballLeagueSettingsDLModel } from './settings/Basketball/basketball-league-settings-dl.model';
+import { FootballLeagueSettingsDLModel } from './settings/Football/football-league-settings-dl.model';
+import { SoccerLeagueSettingsDLModel } from './settings/Soccer/soccer-league-settings-dl.model';
 
 export class LeagueDLModel implements HasID {
   ID: string;
   ManagerID: string;
   Name: string;
   DraftDate: Date;
-  SettingsID: string;
+  Settings:
+    | FootballLeagueSettingsDLModel
+    | SoccerLeagueSettingsDLModel
+    | BaseballLeagueSettingsDLModel
+    | BasketballLeagueSettingsDLModel;
   PlayerIDs: Array<string>;
   LeagueType: SportEnum;
   Season: Array<string>;
@@ -16,7 +24,6 @@ export class LeagueDLModel implements HasID {
     this.Name = '';
     this.ManagerID = '';
     this.DraftDate = new Date();
-    this.SettingsID = '';
     this.PlayerIDs = [];
     this.LeagueType = SportEnum.None;
     this.Season = [];

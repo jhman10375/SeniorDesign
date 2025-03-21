@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { CurrentUserModel } from '../../../shared/models/current-user.model';
 import { LoadingService } from '../../../shared/services/bl/loading.service';
 import { UserService } from '../../../shared/services/bl/user.service';
 
@@ -28,23 +29,25 @@ export class AuthService {
     this.angularFireAuth
       .signInWithEmailAndPassword(username, password)
       .then((result) => {
-        if (result) {
+        if (result && result.user) {
           localStorage.setItem(
             'lt',
             // (new Date().getTime() + 30000).toString() //set timeout time for auth systems 30 seconds (devmode)
             (new Date().getTime() + 3600000).toString() //set timeout time for auth systems 1 hour (production)
           );
 
-          localStorage.setItem('uid', result.user?.uid ?? '');
+          localStorage.setItem('uid', result.user.uid);
           console.log((result as any)?.user?._delegate?.stsToken);
           result.user?.getIdToken().then((x) => {
             console.log(x);
           });
-          this.currentUserService.setCurrentUser({
-            Name: result.user?.displayName ?? '',
-            ID: result.user?.uid ?? '',
-            LeagueIDs: ['0'],
-          });
+          this.currentUserService.getCurrentUserData(result.user.uid);
+          // PRE FIREBASE
+          // this.currentUserService.setCurrentUser({
+          //   Name: result.user?.displayName ?? '',
+          //   ID: result.user?.uid ?? '',
+          //   LeagueIDs: ['0'],
+          // });
           this._currentUser.next(result);
           this.router.navigate(['/home']);
         } else {
@@ -59,22 +62,32 @@ export class AuthService {
       .createUserWithEmailAndPassword(username, password)
       .then((result) => {
         this.loadingService.setIsLoading(true);
-        if (result) {
+        if (result && result.user) {
           result.user
-            ?.updateProfile({
+            .updateProfile({
               displayName: name,
             })
             .then((v) => {
-              localStorage.setItem(
-                'lt',
-                // (new Date().getTime() + 30000).toString() //set timeout time for auth systems 30 seconds (devmode)
-                (new Date().getTime() + 3600000).toString() //set timeout time for auth systems 1 hour (production)
-              );
-              localStorage.setItem('uid', result.user?.uid ?? '');
-              this.loadingService.setIsLoading(false);
-              this._currentUser.next(result.user);
+              if (result && result.user) {
+                localStorage.setItem(
+                  'lt',
+                  // (new Date().getTime() + 30000).toString() //set timeout time for auth systems 30 seconds (devmode)
+                  (new Date().getTime() + 3600000).toString() //set timeout time for auth systems 1 hour (production)
+                );
+                localStorage.setItem('uid', result.user?.uid ?? '');
+                this.loadingService.setIsLoading(false);
+                this.currentUserService.createUser({
+                  Name: result.user.displayName ?? '',
+                  ID: result.user.uid,
+                  LeagueIDs: [],
+                });
+                // PRE FIREBASE
+                // this._currentUser.next(result.user);
 
-              this.router.navigate(['/home']);
+                this.router.navigate(['/home']);
+              } else {
+                this.router.navigate(['/login']);
+              }
             });
         } else {
           this.router.navigate(['/login']);
@@ -83,8 +96,24 @@ export class AuthService {
       .catch((e) => console.error(e));
   }
 
+  updateUser(user: CurrentUserModel): void {
+    this.angularFireAuth.currentUser
+      .then((result) => {
+        if (result) {
+          result
+            .updateProfile({ displayName: user.Name })
+            .then((u) => {
+              this.currentUserService.updateCurrentUser(user);
+            })
+            .catch((e) => console.error(e));
+        }
+      })
+      .catch((e) => console.error(e));
+  }
+
   logout(): void {
     this.angularFireAuth.signOut().then((t) => {
+      localStorage.clear();
       this.router.navigate(['/login']);
     });
   }

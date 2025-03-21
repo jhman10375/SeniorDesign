@@ -34,7 +34,7 @@ import { SoccerPlayerStatsComponent } from './stats/soccer-player/soccer-player.
     BaseballPlayerStatsComponent,
     FootballPlayerStatsComponent,
   ],
-  providers: [AthleteService],
+  providers: [],
   selector: 'player',
   templateUrl: 'player.component.html',
 })

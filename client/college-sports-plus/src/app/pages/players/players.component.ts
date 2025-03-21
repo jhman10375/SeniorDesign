@@ -17,7 +17,7 @@ import { AthleteService } from '../../shared/services/bl/athlete.service';
     InputTextModule,
     FormsModule,
   ],
-  providers: [AthleteService],
+  providers: [],
   selector: 'players',
   templateUrl: 'players.component.html',
 })

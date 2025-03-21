@@ -22,7 +22,7 @@ export class LeagueToolsService {
           const weekModel = new LeagueWeekModel();
           weekModel.Week = week.week_num;
           weekModel.Status =
-            index == 1 ? WeekStatusEnum.Current : WeekStatusEnum.Future;
+            index == 0 ? WeekStatusEnum.Current : WeekStatusEnum.Future;
           const games: Array<LeagueGameModel> = [];
           week.week_matches.forEach((match) => {
             const game: LeagueGameModel = new LeagueGameModel();

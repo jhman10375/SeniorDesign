@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
 
 import { SportEnum } from '../../../shared/enums/sport.enum';
 import { LeagueModel } from '../../../shared/models/league.model';
@@ -36,9 +37,14 @@ export class SettingsComponent implements OnInit {
       this.activatedRoute.parent?.snapshot.params['leagueID'];
     if (leagueID) {
       this.league = this.leagueService.getLeague(leagueID) ?? undefined;
-      this.isLeagueManager =
-        this.league?.Manager.PlayerID === this.userService.getCurrentUser()?.ID;
     }
+
+    this.userService.CurrentUser.pipe(take(1)).subscribe({
+      next: (user) => {
+        this.isLeagueManager =
+          this.league?.Manager?.PlayerID === user.ID ?? false;
+      },
+    });
   }
 
   ngOnInit() {}

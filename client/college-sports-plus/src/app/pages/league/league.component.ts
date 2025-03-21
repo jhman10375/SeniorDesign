@@ -13,7 +13,6 @@ import { SportEnum } from '../../shared/enums/sport.enum';
 import { CurrentUserModel } from '../../shared/models/current-user.model';
 import { LeaguePlayerModel } from '../../shared/models/league-player.model';
 import { LeagueModel } from '../../shared/models/league.model';
-import { AthleteService } from '../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../shared/services/bl/league.service';
 import { UserService } from '../../shared/services/bl/user.service';
@@ -21,7 +20,7 @@ import { UserService } from '../../shared/services/bl/user.service';
 @Component({
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink, Button],
-  providers: [AthleteService],
+  providers: [],
   styleUrls: ['league.component.scss'],
   selector: 'league',
   templateUrl: 'league.component.html',

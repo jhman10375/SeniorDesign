@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   FormArray,
   FormGroup,
@@ -34,6 +35,7 @@ import { SeedingTypeEnum } from '../../../../shared/enums/seeding-type.enum';
 import { SportEnum } from '../../../../shared/enums/sport.enum';
 import { TieBreakerTypeEnum } from '../../../../shared/enums/tie-breaker-type.enum';
 import { TransferPortalDeadlineTypeEnum } from '../../../../shared/enums/transfer-portal-deadline-type.enum';
+import { CurrentUserModel } from '../../../../shared/models/current-user.model';
 import { FootballLeagueSettingsModel } from '../../../../shared/models/football-league-settings/football-league-settings.model';
 import { LeaguePlayerModel } from '../../../../shared/models/league-player.model';
 import { LeagueModel } from '../../../../shared/models/league.model';
@@ -166,6 +168,8 @@ export class NewFootballLeagueComponent
     },
   ];
 
+  private currentUser: CurrentUserModel;
+
   private publicLeague: Subscription;
 
   private numberOfTeams: Subscription;
@@ -179,7 +183,7 @@ export class NewFootballLeagueComponent
     private confirmationService: ConfirmationService,
     private fastAPIService: FastAPIService,
     private userService: UserService,
-    // private angularFirestore: AngularFirestore,
+    private angularFirestore: AngularFirestore,
     private leagueService: LeagueService,
     private leagueToolsService: LeagueToolsService,
     private playerService: PlayerService,
@@ -191,6 +195,7 @@ export class NewFootballLeagueComponent
 
     this.userService.CurrentUser.pipe(takeUntil(this.unsubscribe)).subscribe({
       next: (user) => {
+        this.currentUser = user;
         if (this.teamForm) {
           this.teamForm.patchValue({ Name: user.Name });
           this.teamForm.patchValue({ PlayerID: user.ID });
@@ -203,10 +208,11 @@ export class NewFootballLeagueComponent
   }
 
   ngOnInit() {
-    this.team.LeagueID = GeneralService
-      .GenerateID
-      // this.angularFirestore
-      ();
+    // this.team.LeagueID = GeneralService
+    //   .GenerateID
+    //   // this.angularFirestore
+    //   ();
+    this.team.LeagueID = this.angularFirestore.createId();
     this.buildTeamForm();
     this.buildFootballLeague();
   }
@@ -275,7 +281,7 @@ export class NewFootballLeagueComponent
           // league.Season = [];
           this.leagueToolsService
             .getLeagueSchedules(
-              this.team.PlayerID,
+              this.team.ID,
               league.Settings.GeneralSettingsModel.NumberOfTeams,
               league.Settings.SeasonModel.RegularSeasonSettings
                 .RegularSeasonGames
@@ -285,6 +291,14 @@ export class NewFootballLeagueComponent
               next: (schedule) => {
                 league.Season = schedule;
                 league.Athletes = athletes;
+                league.Season.forEach(
+                  (x) => (x.ID = this.angularFirestore.createId())
+                );
+                this.currentUser.LeagueIDs = [
+                  ...this.currentUser.LeagueIDs,
+                  this.team.LeagueID,
+                ];
+                this.userService.updateCurrentUser(this.currentUser);
                 this.leagueService.addLeague(league);
                 this.loadingService.setIsLoading(false);
               },
@@ -731,6 +745,7 @@ export class NewFootballLeagueComponent
       LeagueID: [this.team.LeagueID],
       DraftTeamPlayerIDs: [this.team.DraftTeamPlayerIDs],
       DraftRoster: [this.team.DraftRoster],
+      ID: [this.angularFirestore.createId()],
     });
   }
 
