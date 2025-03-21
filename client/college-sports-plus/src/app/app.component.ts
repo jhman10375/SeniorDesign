@@ -63,7 +63,6 @@ export class AppComponent implements OnDestroy {
           this.logoService.loadLogos();
           this.schoolsService.schools.pipe(skip(1), take(1)).subscribe({
             next: (schools) => {
-              //////////////////////////////////////// This is to test joint combination of all athletes to make limited calls....
               combineLatest([
                 this.currentUserService.CurrentUser,
                 this.athleteService.players,
@@ -80,14 +79,6 @@ export class AppComponent implements OnDestroy {
                     );
                   },
                 });
-              ////////////////////////////////////////
-
-              // this.athleteService.players.pipe(take(1)).subscribe({
-              //   next: (athletes) => {
-              //     this.leagueService.convertLeagues(athletes, schools);
-              //     this.loadingService.setIsLoading(false);
-              //   },
-              // });
             },
           });
         }

@@ -67,15 +67,6 @@ export class GameHistoryComponent implements OnInit, OnDestroy {
             this.season = currentLeague.Season;
             this.season = this.season.sort((a, b) => a.Week - b.Week);
           }
-          //   this.leagueWeek =
-          //     currentLeague?.Season.find(
-          //       (y) => y.Status == WeekStatusEnum.Current
-          //     ) ?? new LeagueWeekModel();
-          //   this.currentGame =
-          //     this.leagueWeek.Games.find(
-          //       (x) =>
-          //         x.AwayTeamPlayerID === teamID || x.HomeTeamPlayerID === teamID
-          //     ) ?? new LeagueGameModel();
         },
       });
     }

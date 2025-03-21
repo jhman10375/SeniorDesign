@@ -44,7 +44,6 @@ import { PlayerSearchViewComponent } from './player-search-view/player-search-vi
   selector: 'player-search',
   styleUrls: ['player-search.component.scss'],
   templateUrl: 'player-search.component.html',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerSearchComponent
   extends PlayerFilterBase
@@ -99,13 +98,11 @@ export class PlayerSearchComponent
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private athleteService: AthleteService
-    // private cdr: ChangeDetectorRef
   ) {
     super();
     this.athleteSelection.pipe(takeUntil(this.unsubscribe)).subscribe({
       next: (l) => {
         this.athleteSelectionDisplay = l;
-        // this.cdr.markForCheck();
       },
     });
   }

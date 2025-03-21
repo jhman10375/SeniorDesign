@@ -163,9 +163,6 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
                 leagueSearch.ID,
                 data.player
               );
-              // league.Players.push(data.player);
-              // this.leagueService.updateLeague(league);
-              // console.log(league);
               this.currentUser.LeagueIDs.push(leagueSearch.ID);
               this.userService.updateCurrentUser(this.currentUser);
               this.messageService.add({

@@ -110,9 +110,9 @@ export class PlayerComponent implements OnInit {
                         }
                         this.player = p;
                         this.footballPlayerStats = stats;
-                        console.log(stats);
-                        console.log(this.player);
-                        console.log(school);
+                        // console.log(stats);
+                        // console.log(this.player);
+                        // console.log(school);
                         this.loadingService.setIsLoading(false);
                       },
                     });
@@ -150,9 +150,9 @@ export class PlayerComponent implements OnInit {
                         }
                         this.player = p;
                         this.baseballPlayerStats = stats;
-                        console.log(stats);
-                        console.log(this.player);
-                        console.log(school);
+                        // console.log(stats);
+                        // console.log(this.player);
+                        // console.log(school);
                         this.loadingService.setIsLoading(false);
                       },
                     });
@@ -190,9 +190,9 @@ export class PlayerComponent implements OnInit {
                         }
                         this.player = p;
                         this.basketballPlayerStats = stats;
-                        console.log(stats);
-                        console.log(this.player);
-                        console.log(school);
+                        // console.log(stats);
+                        // console.log(this.player);
+                        // console.log(school);
                         this.loadingService.setIsLoading(false);
                       },
                     });
@@ -230,9 +230,9 @@ export class PlayerComponent implements OnInit {
                         }
                         this.player = p;
                         this.soccerPlayerStats = stats;
-                        console.log(stats);
-                        console.log(this.player);
-                        console.log(school);
+                        // console.log(stats);
+                        // console.log(this.player);
+                        // console.log(school);
                         this.loadingService.setIsLoading(false);
                       },
                     });
@@ -242,39 +242,8 @@ export class PlayerComponent implements OnInit {
             });
           break;
       }
-      // this.athleteService
-      //   .getAthleteByID(currentID, this.leagueType)
-      //   .pipe(take(1))
-      //   .subscribe({
-      //     next: (a: PlayerFAPIModel | undefined) => {
-      //       if (a) {
-      //         const p = GeneralService.FastAPILeagueAthleteModelConverter(a);
-      //         this.schoolService
-      //           .getSchoolByName(p.Team)
-      //           .pipe(take(1))
-      //           .subscribe({
-      //             next: (school) => {
-      //               if (school != null) {
-      //                 this.school = school;
-      //               }
-      //               this.leaguePlayer = this.leagueService.CheckAthleteOnTeam(
-      //                 leagueID,
-      //                 currentID
-      //               );
-      //               if (this.leaguePlayer && p) {
-      //                 p.PlayerID = this.leaguePlayer.ID;
-      //               }
-      //               this.player = p;
-      //               console.log(this.player);
-      //               console.log(school);
-      //             },
-      //           });
-      //       }
-      //     },
-      //     error: (e) => console.error(e),
-      //   });
     }
-    console.log(this.player);
+    // console.log(this.player);
   }
 
   ngOnInit() {}

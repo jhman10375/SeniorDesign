@@ -147,19 +147,6 @@ export class PlayerFilterBase implements OnInit {
     players: Array<LeagueAthleteModel> | undefined = undefined,
     draftMode: boolean = false
   ): void {
-    // const p = players ? this.playersReadonly : this.athletes;
-    // if (text.length >= 3 || Number(text)) {
-    //   const f = p.filter(
-    //     (x) =>
-    //       x.Name.toLocaleLowerCase().includes(text.toLocaleLowerCase()) ||
-    //       x.School.toLocaleLowerCase().includes(text.toLocaleLowerCase()) ||
-    //       x.Jersey.toString().includes(text)
-    //   );
-    //   this.updateAthletes(f);
-    // } else {
-    //   this.updateAthletes([]);
-    // }
-
     if (players) {
       this.searchText.set(text);
       this.updateAthletes(players, draftMode);
@@ -212,13 +199,11 @@ export class PlayerFilterBase implements OnInit {
         arr = athletes ? athletes : [...this.athletes];
       }
     }
-    // console.log(arr);
 
     if (this.currentSortFunction() != 'None') {
       switch (this.currentSortFunction()) {
         case 'Name':
           arr = arr.sort((a, b) => {
-            // console.log(typeof a.Name, typeof b.Name);
             if (this.currentSortType() == 'Up') {
               return a.Name.localeCompare(b.Name);
             } else {
@@ -228,7 +213,6 @@ export class PlayerFilterBase implements OnInit {
           break;
         case 'Number':
           arr = arr.sort((a, b) => {
-            // console.log(typeof a.Jersey, typeof b.Jersey);
             if (this.currentSortType() == 'Up') {
               return a.Jersey - b.Jersey;
             } else {
@@ -238,7 +222,6 @@ export class PlayerFilterBase implements OnInit {
           break;
         case 'School':
           arr = arr.sort((a, b) => {
-            // console.log(typeof a.School, typeof b.School);
             if (this.currentSortType() == 'Up') {
               return a.School.localeCompare(b.School);
             } else {
@@ -248,7 +231,6 @@ export class PlayerFilterBase implements OnInit {
           break;
         case 'Proj PPG':
           arr = arr.sort((a, b) => {
-            // console.log(typeof a.School, typeof b.School);
             if (this.currentSortType() == 'Up') {
               return a.PredictedScore - b.PredictedScore;
             } else {
@@ -264,10 +246,8 @@ export class PlayerFilterBase implements OnInit {
       //     ? [...this.playersReadonly]
       //     : [...this.athletes];
     }
-    // console.log(arr);
 
     this._athleteSelection.next(arr);
-    // this._athleteSelection.next(arr.slice(0, 50));
   }
 
   private updateSortType(): void {

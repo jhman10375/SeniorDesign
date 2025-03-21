@@ -33,16 +33,18 @@ export class UserService {
   }
 
   getCurrentUserData(userID: string): void {
-    console.log(userID);
-    this.userDlService
-      .getUser(userID)
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe({
-        next: (user) => {
-          console.log(user);
-          this.setCurrentUser(user);
-        },
-      });
+    if (this._CurrentUser.value.ID != userID) {
+      // console.log(userID);
+      this.userDlService
+        .getUser(userID)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe({
+          next: (user) => {
+            // console.log(user);
+            this.setCurrentUser(user);
+          },
+        });
+    }
   }
 
   setCurrentUser(user: CurrentUserModel): void {

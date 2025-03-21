@@ -42,53 +42,7 @@ export class AthleteDLService implements OnDestroy {
     this.unsubscribe.next();
   }
 
-  initializeAthletes(): void {
-    ///////////////////////////////////////////////////////////////////// potentially able to remove this entirely!!!
-    // // const players: Array<LeagueAthleteModel> = [];
-    // // const johnSmith: LeagueAthleteModel = new LeagueAthleteModel();
-    // // johnSmith.AthleteID = '0';
-    // // johnSmith.Name = 'John Smith';
-    // // johnSmith.Number = '55';
-    // // johnSmith.School = this.schoolService.getSchool(
-    // //   SchoolNameEnum.OhioStateUniversity
-    // // );
-    // // players.push(johnSmith);
-    // // const geneSmith: LeagueAthleteModel = new LeagueAthleteModel();
-    // // geneSmith.AthleteID = '1';
-    // // geneSmith.Name = 'Gene Smith';
-    // // geneSmith.Number = '1';
-    // // geneSmith.School = this.schoolService.getSchool(
-    // //   SchoolNameEnum.UniversityOfCincinnati
-    // // );
-    // // players.push(geneSmith);
-    // this.fastApiService
-    //   .getPlayers()
-    //   .pipe(takeUntil(this.unsubscribe))
-    //   .subscribe({
-    //     next: (playersAPI) => {
-    //       const players: Array<LeagueAthleteModel> = [];
-    //       playersAPI?.forEach((a: PlayerFAPIModel) => {
-    //         const p: LeagueAthleteModel = new LeagueAthleteModel();
-    //         p.AltColor = a.team_alt_color;
-    //         p.AthleteID = a.player_id.toString();
-    //         p.Color = a.team_color;
-    //         p.Height = a.player_height;
-    //         p.Jersey = a.player_jersey;
-    //         p.Logos = a.team_logos;
-    //         p.Name = a.player_name;
-    //         p.Position = a.player_position;
-    //         p.School = a.player_team;
-    //         p.Team = a.player_team;
-    //         p.Weight = a.player_weight;
-    //         p.Year = a.player_year;
-    //         players.push(p);
-    //       });
-    //       this._players.next(players);
-    //     },
-    //     error: (e) => console.log(e),
-    //   });
-    // // this._players.next(players);
-  }
+  initializeAthletes(): void {}
 
   initializeLeagueAthletes(league: LeagueModel): Array<LeagueAthleteModel> {
     const leagueAthletes: Array<LeagueAthleteModel> = this.getAllAthletes();

@@ -62,16 +62,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.leagueList = this.leagueService.leagueScoreboard;
 
-    this.leagueService.leagueScoreboard.subscribe({
-      next: (l) => console.log(l),
-    });
+    // this.leagueService.leagueScoreboard.subscribe({
+    //   next: (l) => console.log(l),
+    // });
 
     ////////////// Dummy calls for testing purposes
     this.fastAPIService.getStatus();
-    this.fastAPIService.getTeams('ohio');
+    // this.fastAPIService.getTeams('ohio');
 
     this.loadingService.setIsLoading(true);
-    this.fastAPIService.getLogos();
+    // this.fastAPIService.getLogos();
     // this.fastAPIService.getPlayers();
   }
   ngOnInit() {}

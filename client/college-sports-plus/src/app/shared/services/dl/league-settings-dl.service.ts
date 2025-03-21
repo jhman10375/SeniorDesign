@@ -29,39 +29,6 @@ import { SoccerLeagueSettingsDLModel } from './models/settings/Soccer/soccer-lea
 export class LeagueSettingsDLService {
   constructor() {}
 
-  //Need to acutally initialize settings, and manufacture the get operation
-  // getSettingsModel(
-  //   id: string,
-  //   leagueType: SportEnum
-  // ):
-  //   | FootballLeagueSettingsModel
-  //   | SoccerLeagueSettingsModel
-  //   | BaseballLeagueSettingsModel
-  //   | BasketballLeagueSettingsModel {
-  //   const settingsModel =
-  //     GeneralService.GetLeagueSettingsModelMap().get(leagueType);
-  //   const leaguePlayerModel = new LeaguePlayerModel();
-  //   leaguePlayerModel.Name = 'John Smith';
-  //   if (settingsModel) {
-  //     if (leagueType === SportEnum.Football) {
-  //       (
-  //         settingsModel as FootballLeagueSettingsModel
-  //       ).GeneralSettingsModel.PrimaryColor = '#e00122';
-  //       (
-  //         settingsModel as FootballLeagueSettingsModel
-  //       ).GeneralSettingsModel.SecondaryColor = '#000000';
-  //     }
-  //     settingsModel.GeneralSettingsModel.Name = `smith's league`;
-  //     settingsModel.GeneralSettingsModel.LeagueManager = leaguePlayerModel;
-  //     settingsModel.DraftSettingsModel.SelectionTime = 10;
-  //     settingsModel.DraftSettingsModel.PickOrderType =
-  //       DraftPickOrderTypeEnum.RandomSnake;
-  //     return settingsModel;
-  //   } else {
-  //     return new FootballLeagueSettingsModel();
-  //   }
-  // }
-
   FootballSettingsDLtoBL(
     leagueSettings: FootballLeagueSettingsDLModel
   ): FootballLeagueSettingsModel {

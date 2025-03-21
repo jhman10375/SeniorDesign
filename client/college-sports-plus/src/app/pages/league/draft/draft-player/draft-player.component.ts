@@ -36,59 +36,6 @@ import { FootballDraftPlayerModel } from '../models/sport-player/football.model'
 export class DraftPlayerComponent implements OnInit {
   readonly SportEnum = SportEnum;
 
-  // @Input() set player(v: LeagueAthleteModel) {
-  //   this.isLoading.set(true);
-  //   if (v && v.AthleteID.length > 0) {
-  //     switch (this.leagueType) {
-  //       case SportEnum.Football:
-  //         this.athleteService
-  //           .getFootballAthleteStatsByID(v.AthleteID)
-  //           .pipe(take(1))
-  //           .subscribe({
-  //             next: (x) => {
-  //               this.footballPlayerStats = x;
-  //               this.isLoading.set(false);
-  //             },
-  //           });
-  //         break;
-  //       case SportEnum.Baseball:
-  //         this.athleteService
-  //           .getBaseballAthleteStatsByID(v.AthleteID)
-  //           .pipe(take(1))
-  //           .subscribe({
-  //             next: (x) => {
-  //               this.baseballPlayerStats = x;
-  //               this.isLoading.set(false);
-  //             },
-  //           });
-  //         break;
-  //       case SportEnum.Basketball:
-  //         this.athleteService
-  //           .getBasketballAthleteStatsByID(v.AthleteID)
-  //           .pipe(take(1))
-  //           .subscribe({
-  //             next: (x) => {
-  //               this.basketballPlayerStats = x;
-  //               this.isLoading.set(false);
-  //             },
-  //           });
-  //         break;
-  //       case SportEnum.Soccer:
-  //         this.athleteService
-  //           .getSoccerAthleteStatsByID(v.AthleteID)
-  //           .pipe(take(1))
-  //           .subscribe({
-  //             next: (x) => {
-  //               this.soccerPlayerStats = x;
-  //               this.isLoading.set(false);
-  //             },
-  //           });
-
-  //         break;
-  //     }
-  //   }
-  // }
-
   @Input() set footballDraftPlayer(v: FootballDraftPlayerModel) {
     this.isLoading.set(true);
     if (v && v.Athlete && v.Athlete.AthleteID.length > 0) {

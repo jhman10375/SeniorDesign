@@ -31,30 +31,6 @@ export class SchoolService implements OnDestroy {
           this._schools.next(s);
         },
       });
-
-    // const schools: Array<SchoolModel> = [];
-    // const UniversityOfCincinnati: SchoolModel = new SchoolModel();
-    // UniversityOfCincinnati.ID = '0';
-    // UniversityOfCincinnati.Name = SchoolNameEnum.UniversityOfCincinnati;
-    // UniversityOfCincinnati.PrimaryColor = 'red';
-    // UniversityOfCincinnati.SecondaryColor = 'black';
-    // schools.push(UniversityOfCincinnati);
-
-    // const OhioStateUniversity: SchoolModel = new SchoolModel();
-    // OhioStateUniversity.ID = '1';
-    // OhioStateUniversity.Name = SchoolNameEnum.OhioStateUniversity;
-    // OhioStateUniversity.PrimaryColor = '#ba0c2f';
-    // OhioStateUniversity.SecondaryColor = 'grey';
-    // schools.push(OhioStateUniversity);
-
-    // const UniversityOfOregon: SchoolModel = new SchoolModel();
-    // UniversityOfOregon.ID = '2';
-    // UniversityOfOregon.Name = SchoolNameEnum.UniversityOfOregon;
-    // UniversityOfOregon.PrimaryColor = '#154733';
-    // UniversityOfOregon.SecondaryColor = '#FEE123';
-    // schools.push(UniversityOfOregon);
-
-    // this.schools = schools;
   }
 
   getSchoolByName(school: string): Observable<SchoolModel | null> {

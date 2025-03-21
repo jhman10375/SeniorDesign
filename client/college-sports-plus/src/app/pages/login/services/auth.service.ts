@@ -42,12 +42,6 @@ export class AuthService {
             console.log(x);
           });
           this.currentUserService.getCurrentUserData(result.user.uid);
-          // PRE FIREBASE
-          // this.currentUserService.setCurrentUser({
-          //   Name: result.user?.displayName ?? '',
-          //   ID: result.user?.uid ?? '',
-          //   LeagueIDs: ['0'],
-          // });
           this._currentUser.next(result);
           this.router.navigate(['/home']);
         } else {
@@ -81,8 +75,6 @@ export class AuthService {
                   ID: result.user.uid,
                   LeagueIDs: [],
                 });
-                // PRE FIREBASE
-                // this._currentUser.next(result.user);
 
                 this.router.navigate(['/home']);
               } else {

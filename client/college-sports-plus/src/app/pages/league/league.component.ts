@@ -75,7 +75,7 @@ export class LeagueComponent implements OnInit, OnDestroy {
 
         if (
           this.activeLeague?.Players.find(
-            (x) => x.DraftTeamPlayerIDs && x.DraftTeamPlayerIDs.length > 0
+            (x) => x.DraftTeamPlayerIDs && x.DraftTeamPlayerIDs.length > 0 // need to find a way to update this for if draft complete (how to mark complete?)
           )
         ) {
           this.hasDraftOccurred = true;

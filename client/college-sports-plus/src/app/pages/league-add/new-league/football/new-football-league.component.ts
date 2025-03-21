@@ -208,10 +208,6 @@ export class NewFootballLeagueComponent
   }
 
   ngOnInit() {
-    // this.team.LeagueID = GeneralService
-    //   .GenerateID
-    //   // this.angularFirestore
-    //   ();
     this.team.LeagueID = this.angularFirestore.createId();
     this.buildTeamForm();
     this.buildFootballLeague();

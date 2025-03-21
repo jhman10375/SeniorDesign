@@ -137,28 +137,6 @@ export class LeagueDLService
     this.unsubscribe.next();
   }
 
-  // initializeLeagues(): void {
-  //   //uncomment to setup pre draftdate
-  //   const draftDate: Date = new Date(); //remove this later, it is used to set up dummy draft date/times
-  //   draftDate.setHours(23, 59);
-
-  //   //uncomment to setup post draftdate
-  //   // const draftDate: Date = new Date(); //remove this later, it is used to set up dummy draft date/time
-  //   // draftDate.setDate(draftDate.getDate() - 1);
-  //   // draftDate.setHours(23, 59);
-
-  //   const league: LeagueDLModel = new LeagueDLModel();
-  //   league.ID = '0';
-  //   league.Name = "smith's league";
-  //   league.ManagerID = '9vnblV3TFHb7XNisPvkX2tTTkhj2';
-  //   league.PlayerIDs = ['0', 'pMRYKuzti6N1DdXTTPfs12SWXQ73', '2'];
-  //   // league.SettingsID = '0';
-  //   league.DraftDate = draftDate;
-  //   league.LeagueType = SportEnum.Football;
-
-  //   this._leagueDL.next([league]);
-  // }
-
   addPlayerToLeague(leagueID: string, playerID: string): void {
     this.queryGroupSingleWhereConditionNoLimit(
       CollectionsEnum.League,
@@ -180,7 +158,7 @@ export class LeagueDLService
               .pipe(take(1))
               .subscribe({
                 next: ([user, fbPlayers, bkballPlayers]) => {
-                  console.log([user, fbPlayers, bkballPlayers]);
+                  // console.log([user, fbPlayers, bkballPlayers]);
                   this.convertLeagues2([...user.LeagueIDs], fbPlayers, schools);
                 },
               });
@@ -238,11 +216,11 @@ export class LeagueDLService
     const league: Array<LeagueModel> = [];
     this.getLeaguesWithIDs(leagueIDs).then((leagues) => {
       leagues.docs.forEach((leagueDoc) => {
-        console.log(leagueDoc.data());
+        // console.log(leagueDoc.data());
         let l = [leagueDoc.data() as any];
         const x: Array<LeagueDLModel> = l;
         x.forEach((leagueDL) => {
-          console.log(leagueDL);
+          // console.log(leagueDL);
           // this.leagueSettingsDLService.FootballSettingsDLtoBL(
           //   x.Settings as FootballLeagueSettingsDLModel
           // )
@@ -258,7 +236,7 @@ export class LeagueDLService
               this.playerDLService
                 .getPlayers(leagueDL.PlayerIDs)
                 .pipe(
-                  tap((x) => console.log(x)),
+                  // tap((x) => console.log(x)),
                   map((x) => {
                     x.forEach((y) => {
                       this.fastAPIService
@@ -338,7 +316,7 @@ export class LeagueDLService
                     //   lDL.LeagueType,
                     //   athletes
                     // );
-                    console.log(l.Season);
+                    // console.log(l.Season);
                     //Will probably have an error since l is not really defined here at all
                     l.Athletes = athletes;
                     league.push(l);
@@ -347,8 +325,8 @@ export class LeagueDLService
                     );
                     leagueFiltered.push(l);
                     this._league.next(leagueFiltered);
-                    console.log(players);
-                    console.log(leagueFiltered);
+                    // console.log(players);
+                    // console.log(leagueFiltered);
                     // player.DraftRoster.forEach((y) => {
                     //   const p = x.find(
                     //     (z) => z.player_id.toString() === y.Athlete.AthleteID
@@ -364,155 +342,7 @@ export class LeagueDLService
         });
       });
     });
-    // this.leagueSeasonDLService
-    //   .getSeason('jYmkrqTjWKb0zQkfuyEO')
-    //   .then((seasonDocs) =>
-    //     seasonDocs.forEach((x) => {
-    //       console.log(x.data());
-
-    //     })
-    //   );
-    // leagueDL.map((lDL) => {
-    //   this.leagueSeasonDLService.getSeason(lDL.ID).then((seasonDocs) =>
-    //     seasonDocs.docs.forEach((season) => {
-    //       // console.log(y.data());
-    //       this.playerDLService
-    //         .getPlayers(lDL.PlayerIDs)
-    //         .pipe(
-    //           tap((x) => console.log(x))
-    //           // map((x) => {
-    //           //   // x.forEach((y) => {
-    //           //   //   this.fastAPIService
-    //           //   //     .getSchoolByID(y.School.ID)
-    //           //   //     .pipe(tap((school) => (y.School = school ?? y.School)));
-    //           //   // });
-    //           //   return x;
-    //           // })
-    //         )
-    //         .subscribe({
-    //           next: (players) => {
-    //             const l: LeagueModel = new LeagueModel();
-    //             l.ID = lDL.ID;
-    //             l.DraftDate = lDL.DraftDate;
-    //             l.Name = lDL.Name;
-    //             l.LeagueType = lDL.LeagueType;
-    //             // l.Settings = this.leagueSettingsDLService.getSettingsModel(
-    //             //   lDL.ID,
-    //             //   lDL.LeagueType
-    //             // );
-    //             l.Players = players.filter((x) => x.ID && x.ID.length > 0);
-    //             // l.Players.forEach((p) => {
-    //             //   this.fastAPIService
-    //             //     .getSchoolByID(p.School.ID)
-    //             //     .pipe(tap((t) => (p.School = t ?? p.School)));
-    //             // });
-    //             // l.Players = this.playerDLService.getLeague(lDL.PlayerIDs, schools);
-    //             const manager = l.Players.find((x) => x.ID == lDL.ManagerID);
-    //             if (manager) {
-    //               l.Manager = manager;
-    //             }
-    //             l.Season = season.data();
-    //             // l.Season = this.leagueSeasonDLService.getSeason(
-    //             //   lDL.ID,
-    //             //   lDL.LeagueType,
-    //             //   athletes
-    //             // );
-    //             console.log(l.Season);
-    //             //Will probably have an error since l is not really defined here at all
-    //             l.Athletes = athletes;
-    //             league.push(l);
-    //             this._league.next(league);
-    //             console.log(players);
-    //             console.log(league);
-    //             // player.DraftRoster.forEach((y) => {
-    //             //   const p = x.find(
-    //             //     (z) => z.player_id.toString() === y.Athlete.AthleteID
-    //             //   );
-    //             //   if (p) {
-    //             //     y.Athlete = GeneralService.FastAPILeagueAthleteModelConverter(p);
-    //             //   }
-    //             // });
-    //           },
-    //         });
-    //     })
-    //   );
-    // });
-
-    //   const leagueDL: Array<LeagueDLModel> = this._leagueDL.value;
-
-    //   return forkJoin(
-    //     leagueDL.map((lDL) => {
-    //       return this.playerDLService.getPlayers(lDL.PlayerIDs).pipe(
-    //         map((playersList) => {
-    //           const l: LeagueModel = new LeagueModel();
-    //           l.ID = lDL.ID;
-    //           l.DraftDate = lDL.DraftDate;
-    //           l.Name = lDL.Name;
-    //           l.LeagueType = lDL.LeagueType;
-    //           l.Settings = this.leagueSettingsDLService.getSettingsModel(
-    //             lDL.ID,
-    //             lDL.LeagueType
-    //           );
-    //           l.Players = playersList;
-    //           const manager = l.Players.find((x) => x.ID == lDL.ManagerID);
-    //           if (manager) {
-    //             l.Manager = manager;
-    //           }
-    //           l.Season = this.leagueSeasonDLService.getSeason(
-    //             lDL.ID,
-    //             lDL.LeagueType,
-    //             athletes
-    //           );
-    //           l.Athletes = athletes;
-    //           console.warn(l);
-    //           return l;
-    //         })
-    //       );
-    //     })
-    //   );
-
-    //   // return forkJoin(leagueObservables);
   }
-
-  // convertLeagues(
-  //   athletes: Array<LeagueAthleteModel>,
-  //   schools: Array<SchoolModel>
-  // ): Observable<Array<LeagueModel>> {
-  //   const leagueDL: Array<LeagueDLModel> = this._leagueDL.value;
-  //   const league: Array<LeagueModel> = [];
-  //   leagueDL.map((lDL) => {
-  //     const l: LeagueModel = new LeagueModel();
-  //     l.ID = lDL.ID;
-  //     l.DraftDate = lDL.DraftDate;
-  //     l.Name = lDL.Name;
-  //     l.LeagueType = lDL.LeagueType;
-  //     l.Settings = this.leagueSettingsDLService.getSettingsModel(
-  //       lDL.ID,
-  //       lDL.LeagueType
-  //     );
-  //     // l.Players = playersList;
-  //     l.Players = this.playerDLService.getLeague(lDL.PlayerIDs, schools);
-  //     const manager = l.Players.find((x) => x.ID == lDL.ManagerID);
-  //     if (manager) {
-  //       l.Manager = manager;
-  //     }
-  //     l.Season = this.leagueSeasonDLService.getSeason(
-  //       lDL.ID,
-  //       lDL.LeagueType,
-  //       athletes
-  //     );
-  //     console.log(l.Season);
-  //     //Will probably have an error since l is not really defined here at all
-  //     l.Athletes = athletes;
-
-  //     league.push(l);
-  //     // this._league.next(league);
-  //     // return of(league);
-  //     return league;
-  //   });
-  //   this._league.next(league);
-  //   return of(league);
-  // }
 
   createLeague(league: LeagueModel): void {
     const settingsMap = new Map<

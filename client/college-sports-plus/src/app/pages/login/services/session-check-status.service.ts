@@ -29,39 +29,24 @@ export class SessionCheckStatusService implements OnDestroy {
   }
 
   checkSessionStatus(): void {
-    this.angularFireAuth.authState
-      .pipe(
-        take(1)
-        //   map((user) => {
-        //     if (user && lt && parseInt(lt) > new Date().getTime()) {
-        //       return true;
-        //     } else {
-        //       this.authService.logout();
-        //       return false;
-        //     }
-        //   })
-        // map((user) => {
-        //   return lt && parseInt(lt) > new Date().getTime(); // Return true/false directly
-        // })
-      )
-      .subscribe({
-        next: (value) => {
-          //   console.log(value);
-          const lt = localStorage.getItem('lt');
-          const uid = localStorage.getItem('uid');
-          const loginPage = this.loginRoutes.includes(this.location.path());
+    this.angularFireAuth.authState.pipe(take(1)).subscribe({
+      next: (value) => {
+        //   console.log(value);
+        const lt = localStorage.getItem('lt');
+        const uid = localStorage.getItem('uid');
+        const loginPage = this.loginRoutes.includes(this.location.path());
 
-          if (
-            (lt && parseInt(lt) > new Date().getTime() && value?.uid == uid) ||
-            loginPage
-          ) {
-            // if (value && lt && parseInt(lt) > new Date().getTime()) {
-            if (isDevMode()) console.log('stay logged in');
-          } else {
-            if (isDevMode()) console.log('log out');
-            this.authService.logout();
-          }
-        },
-      });
+        if (
+          (lt && parseInt(lt) > new Date().getTime() && value?.uid == uid) ||
+          loginPage
+        ) {
+          // if (value && lt && parseInt(lt) > new Date().getTime()) {
+          if (isDevMode()) console.log('stay logged in');
+        } else {
+          if (isDevMode()) console.log('log out');
+          this.authService.logout();
+        }
+      },
+    });
   }
 }
