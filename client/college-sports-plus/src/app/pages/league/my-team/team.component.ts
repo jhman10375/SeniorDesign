@@ -14,6 +14,7 @@ import { FootballRosterPlayerPipe } from '../../../shared/pipes/roster-pipes/foo
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 import { PlayerService } from '../../../shared/services/bl/player.service';
+import { SchoolService } from '../../../shared/services/bl/school.service';
 import { TransferDialogCloseTypeEnum } from './enums/transfer-dialog-close-type.enum';
 import { MyTeamHelperService } from './services/my-team-helper.service';
 import { TeamSettingsComponent } from './team-settings/team-settings.component';
@@ -60,7 +61,8 @@ export class TeamComponent implements OnInit, OnDestroy {
     private leagueService: LeagueService,
     private dialogService: DialogService,
     private playerService: PlayerService,
-    private myTeamHelperService: MyTeamHelperService
+    private myTeamHelperService: MyTeamHelperService,
+    private schoolService: SchoolService
   ) {
     this.isMobile = GeneralService.isMobile();
 
@@ -79,8 +81,16 @@ export class TeamComponent implements OnInit, OnDestroy {
           this.currentPlayer =
             leagues
               .find((x) => x.ID === leagueID)
-              ?.Players?.find((y) => y.PlayerID === teamID) ??
+              ?.Players?.find((y) => y.ID === teamID) ??
             new LeaguePlayerModel();
+          this.schoolService
+            .getSchoolByName(this.currentPlayer.School.School)
+            .subscribe({
+              next: (school) => {
+                this.currentPlayer.School = school ?? this.currentPlayer.School;
+                this.currentPlayer.Logos = this.currentPlayer.School.Logos;
+              },
+            });
           console.log(this.team);
         },
       });

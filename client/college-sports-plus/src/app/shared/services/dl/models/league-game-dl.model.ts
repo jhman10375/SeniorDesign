@@ -6,18 +6,8 @@ export class LeagueGameDLModel implements HasID {
   WeekNumber: number;
   HomeTeamPlayerID: string;
   HomeTeam: Array<LeagueRosterAthleteDLModel>;
-  // HomeTeam:
-  //   | BaseballRosterDLModel
-  //   | BasketballRosterDLModel
-  //   | FootballRosterDLModel
-  //   | SoccerRosterDLModel;
   AwayTeamPlayerID: string;
   AwayTeam: Array<LeagueRosterAthleteDLModel>;
-  // AwayTeam:
-  //   | BaseballRosterDLModel
-  //   | BasketballRosterDLModel
-  //   | FootballRosterDLModel
-  //   | SoccerRosterDLModel;
 
   constructor() {
     this.ID = '';

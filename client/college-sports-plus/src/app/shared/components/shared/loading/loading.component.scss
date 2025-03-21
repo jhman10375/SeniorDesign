@@ -11,13 +11,6 @@
   --vh: 1vh;
 }
 
-// .root-container loading {
-//   display: flex;
-//   flex-direction: column;
-//   // height: calc(var(--vh, 1vh) * 100); // Use dynamically calculated height
-//   height: calc(100vh - 16px); // Full viewport height
-// }
-
 .loading-screen {
   display: flex;
   justify-content: center;

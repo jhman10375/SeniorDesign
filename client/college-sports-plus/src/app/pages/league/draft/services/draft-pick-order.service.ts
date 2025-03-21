@@ -5,23 +5,23 @@ import { DraftOrderModel } from '../../../../shared/models/draft-order.model';
 
 @Injectable()
 export class DraftPickOrderService {
-  currentPick: Observable<DraftOrderModel>; // Keep
+  currentPick: Observable<DraftOrderModel>;
 
   endDraft: Observable<boolean>;
 
   pickUpdated: Observable<boolean>;
 
-  draftOrder: Observable<Array<DraftOrderModel>>; // Keep
+  draftOrder: Observable<Array<DraftOrderModel>>;
 
-  pickOrder: Observable<Array<DraftOrderModel>>; // Keep
+  pickOrder: Observable<Array<DraftOrderModel>>;
 
-  private _currentPick = new BehaviorSubject<DraftOrderModel>( // Keep
+  private _currentPick = new BehaviorSubject<DraftOrderModel>(
     new DraftOrderModel()
   );
 
-  private _draftOrder = new BehaviorSubject<Array<DraftOrderModel>>([]); // Keep
+  private _draftOrder = new BehaviorSubject<Array<DraftOrderModel>>([]);
 
-  private _pickOrder = new BehaviorSubject<Array<DraftOrderModel>>([]); // Keep
+  private _pickOrder = new BehaviorSubject<Array<DraftOrderModel>>([]);
 
   private _endDraft = new BehaviorSubject<boolean>(false);
 
@@ -29,10 +29,10 @@ export class DraftPickOrderService {
 
   constructor() {
     this.currentPick = this._currentPick.asObservable();
-    this.draftOrder = this._draftOrder.asObservable(); // Keep
-    this.pickOrder = this._pickOrder.asObservable(); // Keep
-    this.endDraft = this._endDraft.asObservable(); // Keep
-    this.pickUpdated = this._pickUpdated.asObservable(); // Keep
+    this.draftOrder = this._draftOrder.asObservable();
+    this.pickOrder = this._pickOrder.asObservable();
+    this.endDraft = this._endDraft.asObservable();
+    this.pickUpdated = this._pickUpdated.asObservable();
   }
 
   stopDraft(): void {

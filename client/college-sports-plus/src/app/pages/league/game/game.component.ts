@@ -36,6 +36,8 @@ export class GameComponent implements OnInit, OnDestroy {
 
   teamID: string;
 
+  playerID: string;
+
   LeagueID: string;
 
   weekID: string;
@@ -62,8 +64,10 @@ export class GameComponent implements OnInit, OnDestroy {
       teamID = this.activatedRoute.snapshot.params['teamID'];
       leagueID = this.activatedRoute.parent?.snapshot.params['leagueID'];
     }
+
+    this.playerID = teamID;
     if (leagueID) {
-      this.teamID = teamID;
+      // this.teamID = teamID;
       this.LeagueID = leagueID;
       this.leagueService.league.pipe(takeUntil(this.unsubscribe)).subscribe({
         next: (leagues) => {
@@ -72,6 +76,8 @@ export class GameComponent implements OnInit, OnDestroy {
 
           const currentLeague: LeagueModel =
             leagues.find((x) => x.ID === leagueID) ?? new LeagueModel();
+          this.teamID =
+            currentLeague.Players.find((x) => x.PlayerID == teamID)?.ID ?? '';
           if (this.weekID) {
             this.leagueWeek =
               currentLeague?.Season.find(
@@ -86,7 +92,8 @@ export class GameComponent implements OnInit, OnDestroy {
           this.currentGame =
             this.leagueWeek.Games.find(
               (x) =>
-                x.AwayTeamPlayerID === teamID || x.HomeTeamPlayerID === teamID
+                x.AwayTeamPlayerID === this.teamID ||
+                x.HomeTeamPlayerID === this.teamID
             ) ?? new LeagueGameModel();
         },
       });
@@ -109,9 +116,9 @@ export class GameComponent implements OnInit, OnDestroy {
     const currentUrl = this.router.url;
     let parentRoute: string = '';
     if (this.weekID) {
-      parentRoute = `/league/${this.LeagueID}/history/${this.teamID}/past-game/${this.weekID}`; // Construct the parent route dynamically
+      parentRoute = `/league/${this.LeagueID}/history/${this.playerID}/past-game/${this.weekID}`; // Construct the parent route dynamically
     } else {
-      parentRoute = `/league/${this.LeagueID}/current-games/${this.teamID}`; // Construct the parent route dynamically
+      parentRoute = `/league/${this.LeagueID}/current-games/${this.playerID}`; // Construct the parent route dynamically
     }
 
     // Check if the current URL is the parent route (i.e., /app/:id and not any child route)

@@ -116,7 +116,7 @@ export class GeneralService {
       }
     } catch (error) {
       p.Logos = [];
-      console.log(a);
+      // console.log(a);
       console.error('Error parsing array:', error);
     }
     p.Name = a.player_name;

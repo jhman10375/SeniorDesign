@@ -88,6 +88,8 @@ export class LeagueJoinComponent implements OnInit, OnDestroy {
         Name: [this.team.Name],
         PlayerID: [this.team.PlayerID],
         LeagueID: [this.team.LeagueID],
+        DraftPickSOrtOrder: [-1],
+        DraftRoster: [[]],
       }),
     });
     this.leagueJoinForm.updateValueAndValidity();
@@ -109,7 +111,8 @@ export class LeagueJoinComponent implements OnInit, OnDestroy {
         .pipe(take(1))
         .subscribe({
           next: (school) => {
-            this.leagueJoinForm.patchValue({ School: school });
+            this.leagueJoinForm.get('player')?.patchValue({ School: school });
+            this.leagueJoinForm.updateValueAndValidity();
           },
         });
     }

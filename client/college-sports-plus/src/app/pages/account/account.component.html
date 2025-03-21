@@ -10,6 +10,21 @@
   </div>
 
   <div class="body">
-    <h1>ACCOUNT WORKS</h1>
+    <span class="text-2xl font-semibold">Update Account Info</span>
+    <div class="field p-fluid mt-4">
+      <p-floatLabel>
+        <input
+          pInputText
+          [ngModel]="displayName"
+          (ngModelChange)="onTextChanges($event)"
+          id="team-name"
+          type="text"
+        />
+        <label for="team-name">Display Name</label>
+      </p-floatLabel>
+    </div>
+    @if (showSaveButton()) {
+      <p-button label="Save Changes" (onClick)="saveChanges()"></p-button>
+    }
   </div>
 </div>

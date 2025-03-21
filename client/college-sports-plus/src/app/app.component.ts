@@ -14,6 +14,7 @@ import { LeagueService } from './shared/services/bl/league.service';
 import { LoadingService } from './shared/services/bl/loading.service';
 import { logoService } from './shared/services/bl/logo.service';
 import { SchoolService } from './shared/services/bl/school.service';
+import { UserService } from './shared/services/bl/user.service';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +42,8 @@ export class AppComponent implements OnDestroy {
     private schoolsService: SchoolService,
     private angularFireAuth: AngularFireAuth,
     private sessionCheckService: SessionCheckStatusService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private currentUserService: UserService
   ) {
     this.isMobile = GeneralService.isMobile();
 
@@ -61,25 +63,22 @@ export class AppComponent implements OnDestroy {
           this.logoService.loadLogos();
           this.schoolsService.schools.pipe(skip(1), take(1)).subscribe({
             next: (schools) => {
-              //////////////////////////////////////// This is to test joint combination of all athletes to make limited calls....
               combineLatest([
+                this.currentUserService.CurrentUser,
                 this.athleteService.players,
                 this.athleteService.basketballPlayers,
               ])
                 .pipe(take(1))
                 .subscribe({
-                  next: (x) => {
-                    console.log(x);
+                  next: ([user, fbPlayers, bkballPlayers]) => {
+                    console.log([user, fbPlayers, bkballPlayers]);
+                    this.leagueService.convertLeagues(
+                      [...user.LeagueIDs],
+                      fbPlayers,
+                      schools
+                    );
                   },
                 });
-              ////////////////////////////////////////
-
-              this.athleteService.players.pipe(take(1)).subscribe({
-                next: (athletes) => {
-                  this.leagueService.convertLeagues(athletes, schools);
-                  this.loadingService.setIsLoading(false);
-                },
-              });
             },
           });
         }

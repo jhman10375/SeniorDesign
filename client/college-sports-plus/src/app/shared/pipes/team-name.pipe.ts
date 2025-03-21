@@ -7,8 +7,6 @@ import { LeagueModel } from '../models/league.model';
 })
 export class TeamNamePipe implements PipeTransform {
   transform(teamID: string | undefined, league: LeagueModel): any {
-    return (
-      league.Players.find((x) => x.PlayerID === teamID)?.TeamName ?? 'Not Set'
-    );
+    return league.Players.find((x) => x.ID === teamID)?.TeamName ?? 'Not Set';
   }
 }

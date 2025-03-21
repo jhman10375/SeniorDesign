@@ -23,6 +23,8 @@ import { LeagueService } from '../../../shared/services/bl/league.service';
 export class GameHistoryComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
 
+  playerID: string;
+
   teamID: string;
 
   LeagueID: string;
@@ -48,7 +50,7 @@ export class GameHistoryComponent implements OnInit, OnDestroy {
     const leagueID: string =
       this.activatedRoute.parent?.snapshot.params['leagueID'];
     if (leagueID) {
-      this.teamID = teamID;
+      this.playerID = teamID;
       this.LeagueID = leagueID;
       this.leagueService.league.pipe(takeUntil(this.unsubscribe)).subscribe({
         next: (leagues) => {
@@ -59,18 +61,12 @@ export class GameHistoryComponent implements OnInit, OnDestroy {
             leagues.find((x) => x.ID === leagueID) ?? new LeagueModel();
           this.league = currentLeague;
           if (currentLeague) {
+            this.teamID =
+              currentLeague.Players.find((x) => x.PlayerID === this.playerID)
+                ?.ID ?? '';
             this.season = currentLeague.Season;
             this.season = this.season.sort((a, b) => a.Week - b.Week);
           }
-          //   this.leagueWeek =
-          //     currentLeague?.Season.find(
-          //       (y) => y.Status == WeekStatusEnum.Current
-          //     ) ?? new LeagueWeekModel();
-          //   this.currentGame =
-          //     this.leagueWeek.Games.find(
-          //       (x) =>
-          //         x.AwayTeamPlayerID === teamID || x.HomeTeamPlayerID === teamID
-          //     ) ?? new LeagueGameModel();
         },
       });
     }
@@ -88,7 +84,7 @@ export class GameHistoryComponent implements OnInit, OnDestroy {
 
   checkIfAtParentRoute(): boolean {
     const currentUrl = this.router.url;
-    const parentRoute = `/league/${this.LeagueID}/history/${this.teamID}`; // Construct the parent route dynamically
+    const parentRoute = `/league/${this.LeagueID}/history/${this.playerID}`; // Construct the parent route dynamically
 
     // Check if the current URL is the parent route (i.e., /app/:id and not any child route)
     this.isAtParentRoute = currentUrl.length == parentRoute.length;

@@ -171,7 +171,7 @@
                     ? 'soccer-border-1'
                     : 'baseball-border-1'
             "
-            (click)="navigateTo('current-games', '0')"
+            (click)="navigateTo('current-games', myTeam?.PlayerID ?? '')"
           >
             <span class="text-xl">Current Games</span> </div
           ><div

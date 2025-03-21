@@ -19,7 +19,6 @@ import { LeagueAthleteModel } from '../../../shared/models/league-athlete.model'
 import { LeaguePlayerModel } from '../../../shared/models/league-player.model';
 import { LeagueModel } from '../../../shared/models/league.model';
 import { PipesModule } from '../../../shared/pipes/pipes.module';
-import { AthleteService } from '../../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 import { LoadingService } from '../../../shared/services/bl/loading.service';
@@ -68,7 +67,6 @@ import { DraftWebSocketService } from './services/draft-web-socket.service';
     PlayerSearchComponent,
   ],
   providers: [
-    AthleteService,
     DraftPickOrderService,
     DraftWebSocketService,
     FastAPIService,
