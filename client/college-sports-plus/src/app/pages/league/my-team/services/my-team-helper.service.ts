@@ -48,6 +48,26 @@ export class MyTeamHelperService {
     return retVal;
   }
 
+  getBasketballPositions(pos: string): Array<string> {
+    const retVal: Array<string> = [];
+    switch (true) {
+      case pos.includes('C'):
+        retVal.push('FTC');
+        retVal.push('STC');
+        break;
+      case pos.includes('F'):
+        retVal.push('FTF');
+        retVal.push('FTF');
+        break;
+      case pos.includes('G'):
+        retVal.push('FTG');
+        retVal.push('FTG');
+        break;
+    }
+
+    return retVal;
+  }
+
   updateTeam(
     leagueType: SportEnum,
     positionsToUpdate: Array<string>,

@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { SportEnum } from '../enums/sport.enum';
+import { BasketballLeagueSettingsModel } from '../models/basketball-league-settings/basketball-league-settings.model';
 import { FootballLeagueSettingsModel } from '../models/football-league-settings/football-league-settings.model';
 
 @Pipe({
@@ -13,6 +14,7 @@ export class LeagueTypePipe implements PipeTransform {
         return value as FootballLeagueSettingsModel;
       case SportEnum.Baseball:
       case SportEnum.Basketball:
+        return value as BasketballLeagueSettingsModel;
       case SportEnum.Soccer:
     }
   }

@@ -6,7 +6,7 @@ import { RosterPositionEnum } from '../../../enums/roster-position.enum';
 import { SportEnum } from '../../../enums/sport.enum';
 import { LeagueRosterAthleteModel } from '../../../models/league-roster-athlete.model';
 import { PipesModule } from '../../../pipes/pipes.module';
-import { FootballRosterPlayerPipe } from '../../../pipes/roster-pipes/football-roster-player.pipe';
+import { RosterPlayerPipe } from '../../../pipes/roster-pipes/roster-player.pipe';
 import { GeneralService } from '../../../services/bl/general-service.service';
 
 @Component({
@@ -42,7 +42,24 @@ export class RosterComponent implements OnInit {
     Array<string>
   >([
     [SportEnum.Baseball, new Array<string>()],
-    [SportEnum.Basketball, new Array<string>()],
+    [
+      SportEnum.Basketball,
+      [
+        'FTC',
+        'STC',
+        'FTF',
+        'STF',
+        'FTG',
+        'STG',
+        'B1',
+        'B2',
+        'B3',
+        'B4',
+        'B5',
+        'B6',
+        'IR',
+      ],
+    ],
     [
       SportEnum.Football,
       [
@@ -95,7 +112,7 @@ export class RosterComponent implements OnInit {
   }
 
   getPlayer(pos: string): LeagueRosterAthleteModel {
-    const footballRosterPositionPipe = new FootballRosterPlayerPipe();
+    const footballRosterPositionPipe = new RosterPlayerPipe();
     return footballRosterPositionPipe.transform(
       pos,
       this.leagueType,

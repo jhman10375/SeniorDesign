@@ -235,19 +235,19 @@ export class FastAPIService {
 
   getBasketballPlayerByID(id: string): Observable<PlayerFAPIModel> {
     return this.httpClient.get<PlayerFAPIModel>(
-      this.url + 'players/search/by_id/' + id + '?player_id=' + id
+      this.url + 'bkb/players/search/by_id/' + id + '?player_id=' + id
     );
   }
 
   getBaseballPlayerByID(id: string): Observable<PlayerFAPIModel> {
     return this.httpClient.get<PlayerFAPIModel>(
-      this.url + 'players/search/by_id/' + id + '?player_id=' + id
+      this.url + 'bsb/players/search/by_id/' + id + '?player_id=' + id
     );
   }
 
   getSoccerPlayerByID(id: string): Observable<PlayerFAPIModel> {
     return this.httpClient.get<PlayerFAPIModel>(
-      this.url + 'players/search/by_id/' + id + '?player_id=' + id
+      this.url + 'scc/players/search/by_id/' + id + '?player_id=' + id
     );
   }
 

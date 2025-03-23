@@ -14,13 +14,13 @@
           <tr>
             <td>Round {{ i }}</td>
             @for (team of selections; track team) {
-              @if (team.Players[i]) {
+              @if (team.Players[i - 1]) {
                 <td>
                   <span
                     class="text-base"
-                    (click)="onPlayerSelected(team.Players[i])"
-                    >{{ team.Players[i]?.Position }}
-                    {{ team.Players[i]?.Name }}</span
+                    (click)="onPlayerSelected(team.Players[i - 1])"
+                    >{{ team.Players[i - 1]?.Position }}
+                    {{ team.Players[i - 1]?.Name }}</span
                   ></td
                 >
               }

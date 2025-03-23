@@ -10,11 +10,17 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { SportEnum } from '../../shared/enums/sport.enum';
+import { NewBasketballLeagueComponent } from './new-league/basketball/new-basketball-league.component';
 import { NewFootballLeagueComponent } from './new-league/football/new-football-league.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, NewFootballLeagueComponent, RouterLink],
+  imports: [
+    CommonModule,
+    NewFootballLeagueComponent,
+    NewBasketballLeagueComponent,
+    RouterLink,
+  ],
   selector: 'league-add',
   styleUrls: ['league-add.component.scss'],
   templateUrl: 'league-add.component.html',

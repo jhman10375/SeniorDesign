@@ -87,11 +87,17 @@ export class LeagueService implements OnDestroy {
 
   convertLeagues(
     leagueIDs: Array<string>,
-    athletes: Array<LeagueAthleteModel>,
+    footballAthletes: Array<LeagueAthleteModel>,
+    basketballAthletes: Array<LeagueAthleteModel>,
     schools: Array<SchoolModel>
   ): void {
     // this.leagueDLService.convertLeagues(athletes, schools);
-    this.leagueDLService.convertLeagues2(leagueIDs, athletes, schools);
+    this.leagueDLService.convertLeagues2(
+      leagueIDs,
+      footballAthletes,
+      basketballAthletes,
+      schools
+    );
     this.initializeLeagueScoreBoards();
   }
 
@@ -118,7 +124,7 @@ export class LeagueService implements OnDestroy {
               (newScoreboard.SecondaryColor = (
                 league.Settings as FootballLeagueSettingsModel
               ).GeneralSettingsModel.SecondaryColor),
-              (newScoreboard.Sport = SportEnum.Football),
+              (newScoreboard.Sport = league.LeagueType),
               (newScoreboard.Team =
                 league.Players.find((x) => x.PlayerID === this.currentUser.ID)
                   ?.TeamName ?? '');

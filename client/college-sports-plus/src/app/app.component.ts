@@ -75,6 +75,7 @@ export class AppComponent implements OnDestroy {
                     this.leagueService.convertLeagues(
                       [...user.LeagueIDs],
                       fbPlayers,
+                      bkballPlayers,
                       schools
                     );
                   },

@@ -1,14 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+import { BasketballPositionEnum } from '../../enums/position/basketball-position.enum';
 import { FootballPositionEnum } from '../../enums/position/football-position.enum';
 import { RosterPositionEnum } from '../../enums/roster-position.enum';
 import { SportEnum } from '../../enums/sport.enum';
 import { LeagueRosterAthleteModel } from '../../models/league-roster-athlete.model';
 
 @Pipe({
-  name: 'footballRosterPlayerPipe',
+  name: 'rosterPlayerPipe',
 })
-export class FootballRosterPlayerPipe implements PipeTransform {
+export class RosterPlayerPipe implements PipeTransform {
   transform(
     position: string,
     leagueType: SportEnum,
@@ -19,6 +20,102 @@ export class FootballRosterPlayerPipe implements PipeTransform {
       case SportEnum.Baseball:
         break;
       case SportEnum.Basketball:
+        switch (position) {
+          case 'FTC':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == BasketballPositionEnum.Center
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTF':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == BasketballPositionEnum.Forward
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTG':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == BasketballPositionEnum.Guard
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STC':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == BasketballPositionEnum.Center
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STF':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == BasketballPositionEnum.Forward
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STG':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == BasketballPositionEnum.Guard
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'B1':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B1) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B2':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B2) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B3':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B3) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B4':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B4) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B5':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B5) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B6':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B6) ??
+              new LeagueRosterAthleteModel();
+            break;
+          case 'IR':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.IR) ??
+              new LeagueRosterAthleteModel();
+            break;
+        }
         break;
       case SportEnum.Football:
         switch (position) {

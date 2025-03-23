@@ -1,6 +1,6 @@
 import { DraftPickOrderTypeEnum } from '../../../../../enums/draft-pick-order-type.enum';
 
-export class DraftSettingsModel {
+export class DraftSettingsDLModel {
   POT: DraftPickOrderTypeEnum;
   ST: number;
   D: Date;

@@ -215,24 +215,34 @@ export class LeagueSeasonDLService
     athletes: Array<LeagueAthleteModel>
   ): Array<LeagueRosterAthleteModel> {
     const retRoster: Array<LeagueRosterAthleteModel> = [];
-    switch (leagueType) {
-      case SportEnum.Baseball:
-      case SportEnum.Basketball:
-      case SportEnum.Football:
-        roster.forEach((athlete) => {
-          const rosterAthleteModel: LeagueRosterAthleteModel =
-            new LeagueRosterAthleteModel();
-          rosterAthleteModel.RosterBackup = athlete.RosterBackup;
-          rosterAthleteModel.RosterPosition = athlete.RosterPosition;
-          rosterAthleteModel.Athlete =
-            athletes.find((x) => x.AthleteID === athlete.AthleteID) ??
-            new LeagueAthleteModel();
-          retRoster.push(rosterAthleteModel);
-        });
-        break;
-      case SportEnum.Soccer:
-      default:
-    }
+    // switch (leagueType) {
+    //   case SportEnum.Baseball:
+    //   case SportEnum.Basketball:
+    //   case SportEnum.Football:
+    //     roster.forEach((athlete) => {
+    //       const rosterAthleteModel: LeagueRosterAthleteModel =
+    //         new LeagueRosterAthleteModel();
+    //       rosterAthleteModel.RosterBackup = athlete.RosterBackup;
+    //       rosterAthleteModel.RosterPosition = athlete.RosterPosition;
+    //       rosterAthleteModel.Athlete =
+    //         athletes.find((x) => x.AthleteID === athlete.AthleteID) ??
+    //         new LeagueAthleteModel();
+    //       retRoster.push(rosterAthleteModel);
+    //     });
+    //     break;
+    //   case SportEnum.Soccer:
+    //   default:
+    // }
+    roster.forEach((athlete) => {
+      const rosterAthleteModel: LeagueRosterAthleteModel =
+        new LeagueRosterAthleteModel();
+      rosterAthleteModel.RosterBackup = athlete.RosterBackup;
+      rosterAthleteModel.RosterPosition = athlete.RosterPosition;
+      rosterAthleteModel.Athlete =
+        athletes.find((x) => x.AthleteID === athlete.AthleteID) ??
+        new LeagueAthleteModel();
+      retRoster.push(rosterAthleteModel);
+    });
     return retRoster ?? [];
   }
 

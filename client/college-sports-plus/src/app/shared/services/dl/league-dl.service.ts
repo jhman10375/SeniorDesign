@@ -159,7 +159,12 @@ export class LeagueDLService
               .subscribe({
                 next: ([user, fbPlayers, bkballPlayers]) => {
                   // console.log([user, fbPlayers, bkballPlayers]);
-                  this.convertLeagues2([...user.LeagueIDs], fbPlayers, schools);
+                  this.convertLeagues2(
+                    [...user.LeagueIDs],
+                    fbPlayers,
+                    bkballPlayers,
+                    schools
+                  );
                 },
               });
           },
@@ -208,7 +213,8 @@ export class LeagueDLService
 
   convertLeagues2(
     leagueIDs: Array<string>,
-    athletes: Array<LeagueAthleteModel>,
+    footballAthletes: Array<LeagueAthleteModel>,
+    basketballAthletes: Array<LeagueAthleteModel>,
     schools: Array<SchoolModel>
   ): void {
     //  Observable<Array<LeagueModel>>
@@ -306,19 +312,38 @@ export class LeagueDLService
                       l.Manager = manager;
                     }
                     // l.Season = fullSeason;
-                    l.Season = this.leagueSeasonDLService.buildSeason(
-                      fullSeason,
-                      leagueDL.LeagueType,
-                      athletes
-                    );
+                    switch (l.LeagueType) {
+                      case SportEnum.Football:
+                        l.Season = this.leagueSeasonDLService.buildSeason(
+                          fullSeason,
+                          leagueDL.LeagueType,
+                          footballAthletes
+                        );
+                        //Will probably have an error since l is not really defined here at all
+                        l.Athletes = footballAthletes;
+                        break;
+                      case SportEnum.Baseball:
+                        break;
+                      case SportEnum.Basketball:
+                        l.Season = this.leagueSeasonDLService.buildSeason(
+                          fullSeason,
+                          leagueDL.LeagueType,
+                          basketballAthletes
+                        );
+                        //Will probably have an error since l is not really defined here at all
+                        l.Athletes = basketballAthletes;
+                        break;
+                      case SportEnum.Soccer:
+                        break;
+                      default:
+                        break;
+                    }
                     // l.Season = this.leagueSeasonDLService.getSeason(
                     //   lDL.ID,
                     //   lDL.LeagueType,
                     //   athletes
                     // );
                     // console.log(l.Season);
-                    //Will probably have an error since l is not really defined here at all
-                    l.Athletes = athletes;
                     league.push(l);
                     const leagueFiltered: Array<LeagueModel> = league.filter(
                       (x) => x.ID != l.ID

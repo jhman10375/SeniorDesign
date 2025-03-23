@@ -269,18 +269,25 @@ export class NewFootballLeagueComponent
           league.Settings =
             this.formGroup.getRawValue() as FootballLeagueSettingsModel;
           league.ID = this.team.LeagueID;
-          league.Name = league.Settings.GeneralSettingsModel.Name;
+          league.Name = (
+            league.Settings as FootballLeagueSettingsModel
+          ).GeneralSettingsModel.Name;
           league.LeagueType = SportEnum.Football;
-          league.Manager = league.Settings.GeneralSettingsModel.LeagueManager;
+          league.Manager = (
+            league.Settings as FootballLeagueSettingsModel
+          ).GeneralSettingsModel.LeagueManager;
           league.Players = [this.team];
-          league.DraftDate = league.Settings.DraftSettingsModel.Date;
+          league.DraftDate = (
+            league.Settings as FootballLeagueSettingsModel
+          ).DraftSettingsModel.Date;
           // league.Season = [];
           this.leagueToolsService
             .getLeagueSchedules(
               this.team.ID,
-              league.Settings.GeneralSettingsModel.NumberOfTeams,
-              league.Settings.SeasonModel.RegularSeasonSettings
-                .RegularSeasonGames
+              (league.Settings as FootballLeagueSettingsModel)
+                .GeneralSettingsModel.NumberOfTeams,
+              (league.Settings as FootballLeagueSettingsModel).SeasonModel
+                .RegularSeasonSettings.RegularSeasonGames
             )
             .pipe(take(1))
             .subscribe({

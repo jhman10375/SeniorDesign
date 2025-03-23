@@ -10,7 +10,7 @@ import { SportEnum } from '../../../shared/enums/sport.enum';
 import { LeaguePlayerModel } from '../../../shared/models/league-player.model';
 import { LeagueRosterAthleteModel } from '../../../shared/models/league-roster-athlete.model';
 import { FootballRosterModel } from '../../../shared/models/roster/football-roster.model';
-import { FootballRosterPlayerPipe } from '../../../shared/pipes/roster-pipes/football-roster-player.pipe';
+import { RosterPlayerPipe } from '../../../shared/pipes/roster-pipes/roster-player.pipe';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 import { PlayerService } from '../../../shared/services/bl/player.service';
@@ -170,6 +170,11 @@ export class TeamComponent implements OnInit, OnDestroy {
           this.myTeamHelperService.getFootballPositions(pos)
         );
         break;
+      case SportEnum.Basketball:
+        positions = positions.concat(
+          this.myTeamHelperService.getBasketballPositions(pos)
+        );
+        break;
     }
     const b1Player = this.getPlayer('B1');
     if (
@@ -280,7 +285,7 @@ export class TeamComponent implements OnInit, OnDestroy {
   }
 
   private getPlayer(pos: string): LeagueRosterAthleteModel {
-    const footballRosterPositionPipe = new FootballRosterPlayerPipe();
+    const footballRosterPositionPipe = new RosterPlayerPipe();
     return footballRosterPositionPipe.transform(
       pos,
       this.leagueType,

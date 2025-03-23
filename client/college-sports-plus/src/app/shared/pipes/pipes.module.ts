@@ -7,8 +7,8 @@ import { InQueuePlayerSearchPipe } from './get-in-queue-player-search.pipe';
 import { PlayoffSeedingTypePipe } from './get-playoff-seeding-type.pipe';
 import { PlayoffTieBreakerTypePipe } from './get-playoff-tie-breaker-type.pipe';
 import { TransferPortalDeadlineTypePipe } from './get-transfer-portal-deadline-type-pipe.pipe';
-import { FootballRosterPlayerPipe } from './roster-pipes/football-roster-player.pipe';
-import { FootballRosterPositionPipe } from './roster-pipes/football-roster-position.pipe';
+import { RosterPlayerPipe } from './roster-pipes/roster-player.pipe';
+import { RosterPositionPipe } from './roster-pipes/roster-position.pipe';
 import { TeamNamePipe } from './team-name.pipe';
 
 @NgModule({
@@ -20,8 +20,8 @@ import { TeamNamePipe } from './team-name.pipe';
     PlayoffTieBreakerTypePipe,
     TransferPortalDeadlineTypePipe,
     TeamNamePipe,
-    FootballRosterPlayerPipe,
-    FootballRosterPositionPipe,
+    RosterPlayerPipe,
+    RosterPositionPipe,
     InQueuePlayerSearchPipe,
     HeightPipe,
   ],
@@ -32,8 +32,8 @@ import { TeamNamePipe } from './team-name.pipe';
     PlayoffTieBreakerTypePipe,
     TransferPortalDeadlineTypePipe,
     TeamNamePipe,
-    FootballRosterPlayerPipe,
-    FootballRosterPositionPipe,
+    RosterPlayerPipe,
+    RosterPositionPipe,
     InQueuePlayerSearchPipe,
     HeightPipe,
   ],

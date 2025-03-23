@@ -51,6 +51,8 @@ export class DraftResultsComponent implements OnInit {
         break;
       case SportEnum.Baseball:
       case SportEnum.Basketball:
+        this.numberOfRounds = 16;
+        break;
       case SportEnum.Soccer:
         break;
       default:
