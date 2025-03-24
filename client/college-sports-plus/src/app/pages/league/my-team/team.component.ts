@@ -180,6 +180,11 @@ export class TeamComponent implements OnInit, OnDestroy {
           this.myTeamHelperService.getBaseballPositions(pos)
         );
         break;
+      case SportEnum.Soccer:
+        positions = positions.concat(
+          this.myTeamHelperService.getSoccerPositions(pos)
+        );
+        break;
     }
     const b1Player = this.getPlayer('B1');
     if (

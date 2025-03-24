@@ -110,6 +110,48 @@ export class MyTeamHelperService {
     return retVal;
   }
 
+  getSoccerPositions(pos: string): Array<string> {
+    const retVal: Array<string> = [];
+    switch (true) {
+      case pos.includes('F'):
+        retVal.push('FTF1');
+        retVal.push('FTF2');
+        retVal.push('FTF3');
+        retVal.push('STF1');
+        retVal.push('STF2');
+        retVal.push('STF3');
+        break;
+      case pos.includes('MD'):
+        retVal.push('FTMD1');
+        retVal.push('FTMD2');
+        retVal.push('STMD1');
+        retVal.push('STMD2');
+        break;
+      case pos.includes('D'):
+        retVal.push('FTD1');
+        retVal.push('FTD2');
+        retVal.push('FTD3');
+        retVal.push('STD2');
+        retVal.push('STD2');
+        retVal.push('STD3');
+        break;
+      case pos.includes('FM'):
+        retVal.push('FTFM');
+        retVal.push('STFM');
+        break;
+      case pos.includes('M'):
+        retVal.push('FTM');
+        retVal.push('STM');
+        break;
+      case pos.includes('GK'):
+        retVal.push('FTGK');
+        retVal.push('STGK');
+        break;
+    }
+
+    return retVal;
+  }
+
   updateTeam(
     leagueType: SportEnum,
     positionsToUpdate: Array<string>,

@@ -82,7 +82,7 @@ export class PlayerFilterBase implements OnInit {
           this.positionFilters = ['None', 'C', 'F', 'G'];
           break;
         case SportEnum.Soccer:
-          this.positionFilters = ['None'];
+          this.positionFilters = ['None', 'F', 'MD', 'D', 'FM', 'M', 'GK'];
           break;
       }
     }

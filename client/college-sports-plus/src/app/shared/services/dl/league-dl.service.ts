@@ -155,16 +155,24 @@ export class LeagueDLService
               this.athleteService.players,
               this.athleteService.basketballPlayers,
               this.athleteService.baseballPlayers,
+              this.athleteService.soccerPlayers,
             ])
               .pipe(take(1))
               .subscribe({
-                next: ([user, fbPlayers, bkballPlayers, bsballPlayers]) => {
+                next: ([
+                  user,
+                  fbPlayers,
+                  bkballPlayers,
+                  bsballPlayers,
+                  sccPlayers,
+                ]) => {
                   // console.log([user, fbPlayers, bkballPlayers]);
                   this.convertLeagues2(
                     [...user.LeagueIDs],
                     fbPlayers,
                     bkballPlayers,
                     bsballPlayers,
+                    sccPlayers,
                     schools
                   );
                 },
@@ -218,6 +226,7 @@ export class LeagueDLService
     footballAthletes: Array<LeagueAthleteModel>,
     basketballAthletes: Array<LeagueAthleteModel>,
     baseballAthletes: Array<LeagueAthleteModel>,
+    soccerAthletes: Array<LeagueAthleteModel>,
     schools: Array<SchoolModel>
   ): void {
     //  Observable<Array<LeagueModel>>
@@ -344,6 +353,13 @@ export class LeagueDLService
                         l.Athletes = basketballAthletes;
                         break;
                       case SportEnum.Soccer:
+                        l.Season = this.leagueSeasonDLService.buildSeason(
+                          fullSeason,
+                          leagueDL.LeagueType,
+                          soccerAthletes
+                        );
+                        //Will probably have an error since l is not really defined here at all
+                        l.Athletes = soccerAthletes;
                         break;
                       default:
                         break;

@@ -19,7 +19,12 @@
           [view]="isLeagueManager"
         ></basketball-settings-view-edit>
       }
-      @case (SportEnum.Soccer) {}
+      @case (SportEnum.Soccer) {
+        <soccer-settings-view-edit
+          [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
+          [view]="isLeagueManager"
+        ></soccer-settings-view-edit>
+      }
     }
   }
 }

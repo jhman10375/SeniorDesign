@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { BaseballPositionEnum } from '../../enums/position/baseball-position.enum';
 import { BasketballPositionEnum } from '../../enums/position/basketball-position.enum';
 import { FootballPositionEnum } from '../../enums/position/football-position.enum';
+import { SoccerPositionEnum } from '../../enums/position/soccer-position.enum';
 import { RosterPositionEnum } from '../../enums/roster-position.enum';
 import { SportEnum } from '../../enums/sport.enum';
 import { LeagueRosterAthleteModel } from '../../models/league-roster-athlete.model';
@@ -34,6 +35,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == false &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -44,6 +46,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == true &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -54,6 +57,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == false &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.OF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -64,6 +68,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == true &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.OF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -73,6 +78,7 @@ export class RosterPlayerPipe implements PipeTransform {
               team?.find(
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
                   x.RosterThird == true &&
                   x.Athlete.Position == BaseballPositionEnum.OF
               ) ?? new LeagueRosterAthleteModel();
@@ -129,6 +135,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == false &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -139,6 +146,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == true &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -149,6 +157,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == false &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.OF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -159,6 +168,7 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == true &&
+                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.OF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -168,6 +178,7 @@ export class RosterPlayerPipe implements PipeTransform {
               team?.find(
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
                   x.RosterThird == true &&
                   x.Athlete.Position == BaseballPositionEnum.OF
               ) ?? new LeagueRosterAthleteModel();
@@ -559,6 +570,277 @@ export class RosterPlayerPipe implements PipeTransform {
         }
         break;
       case SportEnum.Soccer:
+        switch (position) {
+          case 'FTD1':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.D
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+          case 'FTD2':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.D
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTD3':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == true &&
+                  x.Athlete.Position == SoccerPositionEnum.D
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTMD1':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.MD
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTMD2':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.MD
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTF1':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.F
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTF2':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.F
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTF3':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == true &&
+                  x.Athlete.Position == SoccerPositionEnum.F
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTGK':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == SoccerPositionEnum.GK
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTFM':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == SoccerPositionEnum.FM
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'FTM':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.FirstString &&
+                  x.Athlete.Position == SoccerPositionEnum.M
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STD1':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.D
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STD2':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.D
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STD3':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == true &&
+                  x.Athlete.Position == SoccerPositionEnum.D
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STMD1':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.MD
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STMD2':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.MD
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STF1':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.F
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STF2':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.Athlete.Position == SoccerPositionEnum.F
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STF3':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.RosterBackup == false &&
+                  x.RosterThird == true &&
+                  x.Athlete.Position == SoccerPositionEnum.F
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STGK':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == SoccerPositionEnum.GK
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STFM':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == SoccerPositionEnum.FM
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'STM':
+            athlete =
+              team?.find(
+                (x) =>
+                  x.RosterPosition == RosterPositionEnum.SecondString &&
+                  x.Athlete.Position == SoccerPositionEnum.M
+              ) ?? new LeagueRosterAthleteModel();
+            break;
+
+          case 'B1':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B1) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B2':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B2) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B3':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B3) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B4':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B4) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B5':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B5) ??
+              new LeagueRosterAthleteModel();
+            break;
+
+          case 'B6':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.B6) ??
+              new LeagueRosterAthleteModel();
+            break;
+          case 'IR':
+            athlete =
+              team?.find((x) => x.RosterPosition == RosterPositionEnum.IR) ??
+              new LeagueRosterAthleteModel();
+            break;
+        }
         break;
     }
 

@@ -1,7 +1,7 @@
 import { BaseballPositionEnum } from '../../../enums/position/baseball-position.enum';
 import { BasketballPositionEnum } from '../../../enums/position/basketball-position.enum';
 import { FootballPositionEnum } from '../../../enums/position/football-position.enum';
-import { SoccerRosterModel } from '../../../models/roster/soccer-roster.model';
+import { SoccerPositionEnum } from '../../../enums/position/soccer-position.enum';
 
 export class PlayerFAPIModel {
   player_id: string;
@@ -15,7 +15,7 @@ export class PlayerFAPIModel {
     | FootballPositionEnum
     | BaseballPositionEnum
     | BasketballPositionEnum
-    | SoccerRosterModel;
+    | SoccerPositionEnum;
   player_team: string;
   player_weight: number;
   player_year: number;

@@ -4,6 +4,7 @@ import { SportEnum } from '../enums/sport.enum';
 import { BaseballLeagueSettingsModel } from '../models/baseball-league-settings/baseball-league-settings.model';
 import { BasketballLeagueSettingsModel } from '../models/basketball-league-settings/basketball-league-settings.model';
 import { FootballLeagueSettingsModel } from '../models/football-league-settings/football-league-settings.model';
+import { SoccerLeagueSettingsModel } from '../models/soccer-league-settings/soccer-league-settings.model';
 
 @Pipe({
   name: 'leagueTypePipe',
@@ -18,6 +19,7 @@ export class LeagueTypePipe implements PipeTransform {
       case SportEnum.Basketball:
         return value as BasketballLeagueSettingsModel;
       case SportEnum.Soccer:
+        return value as SoccerLeagueSettingsModel;
     }
   }
 }

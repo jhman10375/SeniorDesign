@@ -1,7 +1,7 @@
 import { BaseballPositionEnum } from '../enums/position/baseball-position.enum';
 import { BasketballPositionEnum } from '../enums/position/basketball-position.enum';
 import { FootballPositionEnum } from '../enums/position/football-position.enum';
-import { SoccerRosterModel } from './roster/soccer-roster.model';
+import { SoccerPositionEnum } from '../enums/position/soccer-position.enum';
 
 export class LeagueAthleteModel {
   AthleteID: string;
@@ -16,7 +16,7 @@ export class LeagueAthleteModel {
     | FootballPositionEnum
     | BaseballPositionEnum
     | BasketballPositionEnum
-    | SoccerRosterModel;
+    | SoccerPositionEnum;
   PredictedScore: number;
   School: string;
   Team: string;

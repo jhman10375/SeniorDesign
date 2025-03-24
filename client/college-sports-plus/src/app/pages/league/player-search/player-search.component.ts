@@ -169,11 +169,11 @@ export class PlayerSearchComponent
     const leagueAthletes: Array<LeagueAthleteModel> = [];
     if (league.Season && league.Season.length > 0) {
       league?.Season[0]?.Games.forEach((game) => {
-        game.AwayTeam.forEach((player) => {
+        game?.AwayTeam.forEach((player) => {
           player.Athlete.PlayerID = game.AwayTeamPlayerID;
           leagueAthletes.push(player.Athlete);
         });
-        game.HomeTeam.forEach((player) => {
+        game?.HomeTeam.forEach((player) => {
           player.Athlete.PlayerID = game.HomeTeamPlayerID;
           leagueAthletes.push(player.Athlete);
         });

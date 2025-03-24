@@ -12,6 +12,7 @@ import { UserService } from '../../../shared/services/bl/user.service';
 import { BaseballSettingsViewEditComponent } from './sports/baseball/baseball-settings-view-edit.component';
 import { BasketballSettingsViewEditComponent } from './sports/basketball/basketball-settings-view-edit.component';
 import { FootballSettingsViewEditComponent } from './sports/football/football-settings-view-edit.component';
+import { SoccerSettingsViewEditComponent } from './sports/soccer/soccer-settings-view-edit.component';
 
 @Component({
   standalone: true,
@@ -21,6 +22,7 @@ import { FootballSettingsViewEditComponent } from './sports/football/football-se
     FootballSettingsViewEditComponent,
     BasketballSettingsViewEditComponent,
     BaseballSettingsViewEditComponent,
+    SoccerSettingsViewEditComponent,
   ],
   selector: 'settings',
   templateUrl: 'settings.component.html',

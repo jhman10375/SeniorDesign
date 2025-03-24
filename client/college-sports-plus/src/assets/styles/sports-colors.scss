@@ -4,16 +4,16 @@
 
 .baseball-background {
   // need to set
-  background-color: brown;
+  background-color: black;
 }
 
 .basketball-background {
   background-color: #f88158;
 }
 
-.baseball-background {
+.soccer-background {
   // need to set
-  background-color: brown;
+  // @include(bg-primary)
 }
 
 .football-text {
@@ -21,7 +21,7 @@
 }
 
 .baseball-text {
-  color: black;
+  color: white;
 }
 
 .basketball-text {
@@ -29,7 +29,7 @@
 }
 
 .soccer-text {
-  color: black;
+  color: white;
 }
 
 .football-border-1 {
@@ -41,7 +41,7 @@
 .baseball-border-1 {
   border-width: 1px;
   border-style: solid;
-  border-color: brown;
+  border-color: black;
 }
 
 .soccer-border-1 {
