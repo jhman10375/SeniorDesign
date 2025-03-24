@@ -1,0 +1,307 @@
+<div class="flex flex-column">
+  <div class="mb-2">
+    <p-card header="General League Settings">
+      @if (view) {
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>League Name</span>
+          <span>{{ leagueSettings.GeneralSettingsModel.Name }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>League Manager</span>
+          <span>{{
+            leagueSettings.GeneralSettingsModel.LeagueManager.Name
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Number of Teams</span>
+          <span>{{ leagueSettings.GeneralSettingsModel.NumberOfTeams }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Primary Color</span>
+          <span
+            class="w-1 h-1"
+            [style.background-color]="
+              leagueSettings.GeneralSettingsModel.PrimaryColor
+            "
+          ></span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Secondary Color</span>
+          <span
+            class="w-1 h-1"
+            [style.background-color]="
+              leagueSettings.GeneralSettingsModel.SecondaryColor
+            "
+          ></span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Public League</span>
+          <span>{{
+            leagueSettings.GeneralSettingsModel.PublicLeague ? "Yes" : "No"
+          }}</span>
+        </div>
+        @if (!leagueSettings.GeneralSettingsModel.PublicLeague) {
+          <div
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          >
+            <span>Passcode</span>
+            <span>{{ leagueSettings.GeneralSettingsModel.Passcode }}</span>
+          </div>
+        }
+      } @else {
+        <!-- Add edit view form functions -->
+      }
+    </p-card>
+  </div>
+  <div class="mb-2">
+    <p-card header="Draft Settings">
+      @if (view) {
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Draft Date</span>
+          <span>{{
+            leagueSettings.DraftSettingsModel.Date | date: "M-d-yyyy hh:mma"
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Selection Time</span>
+          <span>{{ leagueSettings.DraftSettingsModel.SelectionTime }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Include Bench in Draft</span>
+          <span>{{
+            leagueSettings.DraftSettingsModel.IncludeBenchInDraft ? "Yes" : "No"
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Draft Order Type</span>
+          <span>{{
+            leagueSettings.DraftSettingsModel.PickOrderType | draftOrderTypePipe
+          }}</span>
+        </div>
+      } @else {
+        <!-- Add edit view form functions -->
+      }
+    </p-card>
+  </div>
+  <div class="mb-2">
+    <p-card header="Position Settings">
+      @if (view) {
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Max Pitcher's Per Team</span>
+          <span>{{ leagueSettings.PositionModel.PMax }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Max In-Fielder's Per Team</span>
+          <span>{{ leagueSettings.PositionModel.INFMax }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Max Catcher's Per Team</span>
+          <span>{{ leagueSettings.PositionModel.CMax }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Max Out-Fielder's Per Team</span>
+          <span>{{ leagueSettings.PositionModel.OFMax }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Max Utility player's Per Team</span>
+          <span>{{ leagueSettings.PositionModel.UTMax }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Max Third Base player's Per Team</span>
+          <span>{{ leagueSettings.PositionModel.B3Max }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Max First Base players's Per Team</span>
+          <span>{{ leagueSettings.PositionModel.B1Max }}</span>
+        </div>
+      } @else {
+        <!-- Add edit view form functions -->
+      }
+    </p-card>
+  </div>
+  <div class="mb-2">
+    <p-card header="Season Settings" class="">
+      <span class="text-xl">Regular Season</span>
+      @if (view) {
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Regular Season Start</span>
+          <span>{{
+            leagueSettings.SeasonModel.RegularSeasonSettings.RegularSeasonStart
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Regular Season Games</span>
+          <span>{{
+            leagueSettings.SeasonModel.RegularSeasonSettings.RegularSeasonGames
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Weeks per Game</span>
+          <span>{{
+            leagueSettings.SeasonModel.RegularSeasonSettings.WeeksPerGame
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Home Field Advantage</span>
+          <span>{{
+            leagueSettings.SeasonModel.RegularSeasonSettings.HomeFieldAdvantage
+              ? "Yes"
+              : "No"
+          }}</span>
+        </div>
+        @if (
+          leagueSettings.SeasonModel.RegularSeasonSettings.HomeFieldAdvantage
+        ) {
+          <div
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          >
+            <span>Point Benefit</span>
+            <span>{{
+              leagueSettings.SeasonModel.RegularSeasonSettings.PointBenefit
+            }}</span>
+          </div>
+        }
+      } @else {
+        <!-- Add edit view form functions -->
+      }
+      <p-divider />
+      <span class="text-xl">College Football Playoffs</span>
+      @if (view) {
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Playoff Teams</span>
+          <span>{{
+            leagueSettings.SeasonModel.PlayoffSeasonSettings.PlayoffTeams
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Weeks in Semifinals</span>
+          <span>{{
+            leagueSettings.SeasonModel.PlayoffSeasonSettings
+              .WeeksInSemifinalGame
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Weeks in Championship</span>
+          <span>{{
+            leagueSettings.SeasonModel.PlayoffSeasonSettings
+              .WeeksInChampionshipGame
+          }}</span>
+        </div>
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Seeding Type</span>
+          <span>{{
+            leagueSettings.SeasonModel.PlayoffSeasonSettings.SeedingType
+              | playoffSeedingTypePipe
+          }}</span>
+        </div>
+        @if (
+          leagueSettings.SeasonModel.PlayoffSeasonSettings.SeedingType ===
+            SeedingTypeEnum.BestByConference ||
+          leagueSettings.SeasonModel.PlayoffSeasonSettings.SeedingType ===
+            SeedingTypeEnum.BestOverall
+        ) {
+          <div
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          >
+            <span>Seeding Type</span>
+            <span>{{
+              leagueSettings.SeasonModel.PlayoffSeasonSettings.TieBreakerType
+                | playoffTieBreakerTypePipe
+            }}</span>
+          </div>
+        }
+      } @else {
+        <!-- Add edit view form functions -->
+      }
+    </p-card>
+  </div>
+  <div class="mb-2">
+    <p-card header="Other League Settings">
+      @if (view) {
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Number of Conferences</span>
+          <span>
+            {{ leagueSettings.LeagueSettingsModel.NumberOfConferences }}
+          </span>
+        </div>
+        @for (
+          conference of leagueSettings.LeagueSettingsModel.Conferences;
+          track conference;
+          let id = $index
+        ) {
+          <div
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          >
+            <span>Conference {{ id + 1 }}</span>
+            <span>{{ conference.ConferenceName }}</span>
+          </div>
+        }
+        <div
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+        >
+          <span>Transfer Portal Deadline</span>
+          <span>
+            {{
+              leagueSettings.LeagueSettingsModel.TransferPortalDeadline
+                | transferPortalDeadlineTypePipe
+            }}
+          </span>
+        </div>
+      } @else {
+        <!-- Add edit view form functions -->
+      }
+    </p-card>
+  </div>
+</div>

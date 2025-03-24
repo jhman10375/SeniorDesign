@@ -175,6 +175,11 @@ export class TeamComponent implements OnInit, OnDestroy {
           this.myTeamHelperService.getBasketballPositions(pos)
         );
         break;
+      case SportEnum.Baseball:
+        positions = positions.concat(
+          this.myTeamHelperService.getBaseballPositions(pos)
+        );
+        break;
     }
     const b1Player = this.getPlayer('B1');
     if (
@@ -285,11 +290,7 @@ export class TeamComponent implements OnInit, OnDestroy {
   }
 
   private getPlayer(pos: string): LeagueRosterAthleteModel {
-    const footballRosterPositionPipe = new RosterPlayerPipe();
-    return footballRosterPositionPipe.transform(
-      pos,
-      this.leagueType,
-      this.team ?? []
-    );
+    const rosterPositionPipe = new RosterPlayerPipe();
+    return rosterPositionPipe.transform(pos, this.leagueType, this.team ?? []);
   }
 }

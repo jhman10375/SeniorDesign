@@ -393,6 +393,13 @@ export class FastAPIService {
     );
   }
 
+  // Basketball
+  getBaseballPlayers(): Observable<Array<PlayerFAPIModel>> {
+    return this.httpClient.get<Array<PlayerFAPIModel>>(
+      this.url + 'bsb/players/get_first_string?page=1&page_size=999999'
+    );
+  }
+
   // League Tools
   getLeagueSchedule(
     numTeams: number = 8,

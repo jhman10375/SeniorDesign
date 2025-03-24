@@ -89,6 +89,7 @@ export class LeagueService implements OnDestroy {
     leagueIDs: Array<string>,
     footballAthletes: Array<LeagueAthleteModel>,
     basketballAthletes: Array<LeagueAthleteModel>,
+    baseballAthletes: Array<LeagueAthleteModel>,
     schools: Array<SchoolModel>
   ): void {
     // this.leagueDLService.convertLeagues(athletes, schools);
@@ -96,6 +97,7 @@ export class LeagueService implements OnDestroy {
       leagueIDs,
       footballAthletes,
       basketballAthletes,
+      baseballAthletes,
       schools
     );
     this.initializeLeagueScoreBoards();

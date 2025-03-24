@@ -119,7 +119,9 @@ export class PlayerSearchComponent
         if (activeLeague.Athletes && activeLeague.Athletes.length > 0) {
           this.athletes = activeLeague.Athletes;
         } else {
-          this.athletes = this.athleteService.getAllAthletes();
+          this.athletes = this.athleteService.getAllAthletes(
+            activeLeague.LeagueType
+          );
         }
       }
     }

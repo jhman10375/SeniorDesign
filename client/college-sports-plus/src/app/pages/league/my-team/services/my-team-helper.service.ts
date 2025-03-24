@@ -57,11 +57,53 @@ export class MyTeamHelperService {
         break;
       case pos.includes('F'):
         retVal.push('FTF');
-        retVal.push('FTF');
+        retVal.push('STF');
         break;
       case pos.includes('G'):
         retVal.push('FTG');
-        retVal.push('FTG');
+        retVal.push('STG');
+        break;
+    }
+
+    return retVal;
+  }
+
+  getBaseballPositions(pos: string): Array<string> {
+    const retVal: Array<string> = [];
+    switch (true) {
+      case pos.includes('UT'):
+        retVal.push('FTUT');
+        retVal.push('STUT');
+        break;
+      case pos.includes('INF'):
+        retVal.push('FTINF1');
+        retVal.push('FTINF2');
+        retVal.push('STINF1');
+        retVal.push('STINF2');
+        break;
+      case pos.includes('OF'):
+        retVal.push('FTOF1');
+        retVal.push('FTOF2');
+        retVal.push('FTOF3');
+        retVal.push('STOF1');
+        retVal.push('STOF2');
+        retVal.push('STOF3');
+        break;
+      case pos.includes('C'):
+        retVal.push('FTC');
+        retVal.push('STC');
+        break;
+      case pos.includes('P'):
+        retVal.push('FTP');
+        retVal.push('STP');
+        break;
+      case pos.includes('1B'):
+        retVal.push('FT1B');
+        retVal.push('ST1B');
+        break;
+      case pos.includes('3B'):
+        retVal.push('FT3B');
+        retVal.push('ST3B');
         break;
     }
 

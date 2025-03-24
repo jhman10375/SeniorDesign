@@ -9,6 +9,7 @@ import { PipesModule } from '../../../shared/pipes/pipes.module';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
 import { UserService } from '../../../shared/services/bl/user.service';
+import { BaseballSettingsViewEditComponent } from './sports/baseball/baseball-settings-view-edit.component';
 import { BasketballSettingsViewEditComponent } from './sports/basketball/basketball-settings-view-edit.component';
 import { FootballSettingsViewEditComponent } from './sports/football/football-settings-view-edit.component';
 
@@ -19,6 +20,7 @@ import { FootballSettingsViewEditComponent } from './sports/football/football-se
     PipesModule,
     FootballSettingsViewEditComponent,
     BasketballSettingsViewEditComponent,
+    BaseballSettingsViewEditComponent,
   ],
   selector: 'settings',
   templateUrl: 'settings.component.html',

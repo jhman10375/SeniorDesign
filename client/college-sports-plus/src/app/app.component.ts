@@ -59,6 +59,7 @@ export class AppComponent implements OnDestroy {
           this.loadingService.setIsLoading(true);
           this.athleteService.loadAthletes();
           this.athleteService.loadBasketballAthletes();
+          this.athleteService.loadBaseballAthletes();
           this.schoolsService.loadSchools();
           this.logoService.loadLogos();
           this.schoolsService.schools.pipe(skip(1), take(1)).subscribe({
@@ -67,15 +68,22 @@ export class AppComponent implements OnDestroy {
                 this.currentUserService.CurrentUser,
                 this.athleteService.players,
                 this.athleteService.basketballPlayers,
+                this.athleteService.baseballPlayers,
               ])
                 .pipe(take(1))
                 .subscribe({
-                  next: ([user, fbPlayers, bkballPlayers]) => {
-                    console.log([user, fbPlayers, bkballPlayers]);
+                  next: ([user, fbPlayers, bkballPlayers, bsballPlayers]) => {
+                    console.log([
+                      user,
+                      fbPlayers,
+                      bkballPlayers,
+                      bsballPlayers,
+                    ]);
                     this.leagueService.convertLeagues(
                       [...user.LeagueIDs],
                       fbPlayers,
                       bkballPlayers,
+                      bsballPlayers,
                       schools
                     );
                   },
