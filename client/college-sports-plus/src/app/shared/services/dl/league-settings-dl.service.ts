@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import { BaseballLeagueSettingsModel } from '../../models/baseball-league-settings/baseball-league-settings.model';
+import * as BaseballDraftSettingsModel from '../../models/baseball-league-settings/league-settings-draft-settings.model';
+import * as BaseballGeneralSettingsModel from '../../models/baseball-league-settings/league-settings-general-settings.model';
+import * as BaseballSettingsLeagueSettingsModel from '../../models/baseball-league-settings/league-settings-league-settings.model';
+import * as BaseballPositionModel from '../../models/baseball-league-settings/league-settings-position.model';
+import * as BaseballSeasonModel from '../../models/baseball-league-settings/league-settings-season.model';
+import * as BaseballSeasonSettingsPlayoffSeasonModel from '../../models/baseball-league-settings/season-settings-playoff-season.model';
+import * as BaseballSeasonSettingsRegularSeasonModel from '../../models/baseball-league-settings/season-settings-regular-season.model';
 import { BasketballLeagueSettingsModel } from '../../models/basketball-league-settings/basketball-league-settings.model';
 import * as BasketballDraftSettingsModel from '../../models/basketball-league-settings/league-settings-draft-settings.model';
 import * as BasketballGeneralSettingsModel from '../../models/basketball-league-settings/league-settings-general-settings.model';
@@ -18,8 +25,22 @@ import * as FootballSeasonModel from '../../models/football-league-settings/leag
 import * as FootballSeasonSettingsPlayoffSeasonModel from '../../models/football-league-settings/season-settings-playoff-season.model';
 import * as FootballSeasonSettingsRegularSeasonModel from '../../models/football-league-settings/season-settings-regular-season.model';
 import { LeagueConferenceModel } from '../../models/league-conference.model';
+import * as SoccerDraftSettingsModel from '../../models/soccer-league-settings/league-settings-draft-settings.model';
+import * as SoccerGeneralSettingsModel from '../../models/soccer-league-settings/league-settings-general-settings.model';
+import * as SoccerSettingsLeagueSettingsModel from '../../models/soccer-league-settings/league-settings-league-settings.model';
+import * as SoccerPositionModel from '../../models/soccer-league-settings/league-settings-position.model';
+import * as SoccerSeasonModel from '../../models/soccer-league-settings/league-settings-season.model';
+import * as SoccerSeasonSettingsPlayoffSeasonModel from '../../models/soccer-league-settings/season-settings-playoff-season.model';
+import * as SoccerSeasonSettingsRegularSeasonModel from '../../models/soccer-league-settings/season-settings-regular-season.model';
 import { SoccerLeagueSettingsModel } from '../../models/soccer-league-settings/soccer-league-settings.model';
 import { BaseballLeagueSettingsDLModel } from './models/settings/Baseball/baseball-league-settings-dl.model';
+import * as BaseballDraftSettingsDLModel from './models/settings/Baseball/league-settings-draft-settings-dl.model';
+import * as BaseballGeneralSettingsDLModel from './models/settings/Baseball/league-settings-general-settings-dl.model';
+import * as BaseballSettingsLeagueSettingsDLModel from './models/settings/Baseball/league-settings-league-settings-dl.model';
+import * as BaseballPositionDLModel from './models/settings/Baseball/league-settings-position-dl.model';
+import * as BaseballSeasonDLModel from './models/settings/Baseball/league-settings-season-dl.model';
+import * as BaseballSeasonSettingsPlayoffSeasonDLModel from './models/settings/Baseball/season-settings-playoff-season-dl.model';
+import * as BaseballSeasonSettingsRegularSeasonDLModel from './models/settings/Baseball/season-settings-regular-season-dl.model';
 import { BasketballLeagueSettingsDLModel } from './models/settings/Basketball/basketball-league-settings-dl.model';
 import * as BasketballDraftSettingsDLModel from './models/settings/Basketball/league-settings-draft-settings-dl.model';
 import * as BasketballGeneralSettingsDLModel from './models/settings/Basketball/league-settings-general-settings-dl.model';
@@ -37,6 +58,13 @@ import * as FootballSeasonDLModel from './models/settings/Football/league-settin
 import * as FootballSeasonSettingsPlayoffSeasonDLModel from './models/settings/Football/season-settings-playoff-season-dl.model';
 import * as FootballSeasonSettingsRegularSeasonDLModel from './models/settings/Football/season-settings-regular-season-dl.model';
 import { LeagueConferenceDLModel } from './models/settings/league-conference-dl.model';
+import * as SoccerDraftSettingsDLModel from './models/settings/Soccer/league-settings-draft-settings-dl.model';
+import * as SoccerGeneralSettingsDLModel from './models/settings/Soccer/league-settings-general-settings-dl.model';
+import * as SoccerSettingsLeagueSettingsDLModel from './models/settings/Soccer/league-settings-league-settings-dl.model';
+import * as SoccerPositionDLModel from './models/settings/Soccer/league-settings-position-dl.model';
+import * as SoccerSeasonDLModel from './models/settings/Soccer/league-settings-season-dl.model';
+import * as SoccerSeasonSettingsPlayoffSeasonDLModel from './models/settings/Soccer/season-settings-playoff-season-dl.model';
+import * as SoccerSeasonSettingsRegularSeasonDLModel from './models/settings/Soccer/season-settings-regular-season-dl.model';
 import { SoccerLeagueSettingsDLModel } from './models/settings/Soccer/soccer-league-settings-dl.model';
 
 @Injectable({ providedIn: 'root' })
@@ -212,20 +240,175 @@ export class LeagueSettingsDLService {
     return footballLeagueSettingsDLModel;
   }
 
-  BaseballSettingsBLtoDL(
-    leagueSettings: BaseballLeagueSettingsModel
-  ): BaseballLeagueSettingsDLModel {
-    const baseballLeagueSettingsDLModel: BaseballLeagueSettingsDLModel =
-      new BaseballLeagueSettingsDLModel();
-    return baseballLeagueSettingsDLModel;
-  }
-
   BaseballSettingsDLtoBL(
     leagueSettings: BaseballLeagueSettingsDLModel
   ): BaseballLeagueSettingsModel {
     const baseballLeagueSettingsModel: BaseballLeagueSettingsModel =
       new BaseballLeagueSettingsModel();
+    baseballLeagueSettingsModel.ID = leagueSettings.ID;
+    baseballLeagueSettingsModel.LeagueID = leagueSettings.LID;
+    baseballLeagueSettingsModel.DraftSettingsModel =
+      new BaseballDraftSettingsModel.DraftSettingsModel();
+    baseballLeagueSettingsModel.DraftSettingsModel.Date = new Date(
+      leagueSettings.DSM.D
+    );
+    baseballLeagueSettingsModel.DraftSettingsModel.IncludeBenchInDraft =
+      leagueSettings.DSM.IBID;
+    baseballLeagueSettingsModel.DraftSettingsModel.PickOrderType =
+      leagueSettings.DSM.POT;
+    baseballLeagueSettingsModel.DraftSettingsModel.SelectionTime =
+      leagueSettings.DSM.ST;
+    baseballLeagueSettingsModel.GeneralSettingsModel =
+      new BaseballGeneralSettingsModel.GeneralSettingsModel();
+    baseballLeagueSettingsModel.GeneralSettingsModel.LeagueManager.ID =
+      leagueSettings.GSM.LMID;
+    baseballLeagueSettingsModel.GeneralSettingsModel.Name =
+      leagueSettings.GSM.N;
+    baseballLeagueSettingsModel.GeneralSettingsModel.NumberOfTeams =
+      leagueSettings.GSM.NOT;
+    baseballLeagueSettingsModel.GeneralSettingsModel.Passcode =
+      leagueSettings.GSM.P;
+    baseballLeagueSettingsModel.GeneralSettingsModel.PrimaryColor =
+      leagueSettings.GSM.PC;
+    baseballLeagueSettingsModel.GeneralSettingsModel.PublicLeague =
+      leagueSettings.GSM.PL;
+    baseballLeagueSettingsModel.GeneralSettingsModel.SecondaryColor =
+      leagueSettings.GSM.SC;
+    baseballLeagueSettingsModel.LeagueSettingsModel =
+      new BaseballSettingsLeagueSettingsModel.LeagueSettingsModel();
+    baseballLeagueSettingsModel.LeagueSettingsModel.Conferences =
+      leagueSettings.LSM.C.map((x) => {
+        const c = new LeagueConferenceModel();
+        c.ConferenceName = x.CN;
+        c.ID = x.ID;
+        c.LeagueID = x.LID;
+        return c;
+      });
+    baseballLeagueSettingsModel.LeagueSettingsModel.NumberOfConferences =
+      leagueSettings.LSM.NOC;
+    baseballLeagueSettingsModel.LeagueSettingsModel.TransferPortalDeadline =
+      leagueSettings.LSM.TPD;
+    baseballLeagueSettingsModel.PositionModel =
+      new BaseballPositionModel.PositionModel();
+    baseballLeagueSettingsModel.PositionModel.B1Max = leagueSettings.PM.B1M;
+    baseballLeagueSettingsModel.PositionModel.B3Max = leagueSettings.PM.B3M;
+    baseballLeagueSettingsModel.PositionModel.CMax = leagueSettings.PM.CM;
+    baseballLeagueSettingsModel.PositionModel.INFMax = leagueSettings.PM.INFM;
+    baseballLeagueSettingsModel.PositionModel.OFMax = leagueSettings.PM.OFM;
+    baseballLeagueSettingsModel.PositionModel.PMax = leagueSettings.PM.PM;
+    baseballLeagueSettingsModel.PositionModel.UTMax = leagueSettings.PM.UTM;
+    baseballLeagueSettingsModel.SeasonModel =
+      new BaseballSeasonModel.SeasonModel();
+    baseballLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings =
+      new BaseballSeasonSettingsPlayoffSeasonModel.SeasonSettingsPlayoffSeasonModel();
+    baseballLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.PlayoffTeams =
+      leagueSettings.SM.PSS.PT;
+    baseballLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.SeedingType =
+      leagueSettings.SM.PSS.ST;
+    baseballLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.TieBreakerType =
+      leagueSettings.SM.PSS.TBT;
+    baseballLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.WeeksInChampionshipGame =
+      leagueSettings.SM.PSS.WICG;
+    baseballLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.WeeksInSemifinalGame =
+      leagueSettings.SM.PSS.WISG;
+    baseballLeagueSettingsModel.SeasonModel.RegularSeasonSettings =
+      new BaseballSeasonSettingsRegularSeasonModel.SeasonSettingsRegularSeasonModel();
+    baseballLeagueSettingsModel.SeasonModel.RegularSeasonSettings.HomeFieldAdvantage =
+      leagueSettings.SM.RSS.HFA;
+    baseballLeagueSettingsModel.SeasonModel.RegularSeasonSettings.PointBenefit =
+      leagueSettings.SM.RSS.PB;
+    baseballLeagueSettingsModel.SeasonModel.RegularSeasonSettings.RegularSeasonGames =
+      leagueSettings.SM.RSS.RSG;
+    baseballLeagueSettingsModel.SeasonModel.RegularSeasonSettings.RegularSeasonStart =
+      leagueSettings.SM.RSS.RSS;
+    baseballLeagueSettingsModel.SeasonModel.RegularSeasonSettings.WeeksPerGame =
+      leagueSettings.SM.RSS.WPG;
     return baseballLeagueSettingsModel;
+  }
+
+  BaseballSettingsBLtoDL(
+    leagueSettings: BaseballLeagueSettingsModel
+  ): BaseballLeagueSettingsDLModel {
+    const baseballLeagueSettingsDLModel: BaseballLeagueSettingsDLModel =
+      new BaseballLeagueSettingsDLModel();
+    baseballLeagueSettingsDLModel.ID = leagueSettings.ID;
+    baseballLeagueSettingsDLModel.LID = leagueSettings.LeagueID;
+    baseballLeagueSettingsDLModel.DSM =
+      new BaseballDraftSettingsDLModel.DraftSettingsDLModel();
+    baseballLeagueSettingsDLModel.DSM.D =
+      leagueSettings.DraftSettingsModel.Date;
+    baseballLeagueSettingsDLModel.DSM.IBID =
+      leagueSettings.DraftSettingsModel.IncludeBenchInDraft;
+    baseballLeagueSettingsDLModel.DSM.POT =
+      leagueSettings.DraftSettingsModel.PickOrderType;
+    baseballLeagueSettingsDLModel.DSM.ST =
+      leagueSettings.DraftSettingsModel.SelectionTime;
+    baseballLeagueSettingsDLModel.GSM =
+      new BaseballGeneralSettingsDLModel.GeneralSettingsDLModel();
+    baseballLeagueSettingsDLModel.GSM.LMID =
+      leagueSettings.GeneralSettingsModel.LeagueManager.ID;
+    baseballLeagueSettingsDLModel.GSM.N =
+      leagueSettings.GeneralSettingsModel.Name;
+    baseballLeagueSettingsDLModel.GSM.NOT =
+      leagueSettings.GeneralSettingsModel.NumberOfTeams;
+    baseballLeagueSettingsDLModel.GSM.P =
+      leagueSettings.GeneralSettingsModel.Passcode;
+    baseballLeagueSettingsDLModel.GSM.PC =
+      leagueSettings.GeneralSettingsModel.PrimaryColor;
+    baseballLeagueSettingsDLModel.GSM.PL =
+      leagueSettings.GeneralSettingsModel.PublicLeague;
+    baseballLeagueSettingsDLModel.GSM.SC =
+      leagueSettings.GeneralSettingsModel.SecondaryColor;
+    baseballLeagueSettingsDLModel.LSM =
+      new BaseballSettingsLeagueSettingsDLModel.LeagueSettingsDLModel();
+    baseballLeagueSettingsDLModel.LSM.C =
+      leagueSettings.LeagueSettingsModel.Conferences.map((x) => {
+        const c = new LeagueConferenceDLModel();
+        c.CN = x.ConferenceName;
+        c.ID = x.ID;
+        c.LID = x.LeagueID;
+        return c;
+      });
+    baseballLeagueSettingsDLModel.LSM.NOC =
+      leagueSettings.LeagueSettingsModel.NumberOfConferences;
+    baseballLeagueSettingsDLModel.LSM.TPD =
+      leagueSettings.LeagueSettingsModel.TransferPortalDeadline;
+    baseballLeagueSettingsDLModel.PM =
+      new BaseballPositionDLModel.PositionDLModel();
+    baseballLeagueSettingsDLModel.PM.B1M = leagueSettings.PositionModel.B1Max;
+    baseballLeagueSettingsDLModel.PM.B3M = leagueSettings.PositionModel.B3Max;
+    baseballLeagueSettingsDLModel.PM.CM = leagueSettings.PositionModel.CMax;
+    baseballLeagueSettingsDLModel.PM.INFM = leagueSettings.PositionModel.INFMax;
+    baseballLeagueSettingsDLModel.PM.OFM = leagueSettings.PositionModel.OFMax;
+    baseballLeagueSettingsDLModel.PM.PM = leagueSettings.PositionModel.PMax;
+    baseballLeagueSettingsDLModel.PM.UTM = leagueSettings.PositionModel.UTMax;
+    baseballLeagueSettingsDLModel.SM =
+      new BaseballSeasonDLModel.SeasonDLModel();
+    baseballLeagueSettingsDLModel.SM.PSS =
+      new BaseballSeasonSettingsPlayoffSeasonDLModel.SeasonSettingsPlayoffSeasonDLModel();
+    baseballLeagueSettingsDLModel.SM.PSS.PT =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.PlayoffTeams;
+    baseballLeagueSettingsDLModel.SM.PSS.ST =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.SeedingType;
+    baseballLeagueSettingsDLModel.SM.PSS.TBT =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.TieBreakerType;
+    baseballLeagueSettingsDLModel.SM.PSS.WICG =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.WeeksInChampionshipGame;
+    baseballLeagueSettingsDLModel.SM.PSS.WISG =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.WeeksInSemifinalGame;
+    baseballLeagueSettingsDLModel.SM.RSS =
+      new BaseballSeasonSettingsRegularSeasonDLModel.SeasonSettingsRegularSeasonDLModel();
+    baseballLeagueSettingsDLModel.SM.RSS.HFA =
+      leagueSettings.SeasonModel.RegularSeasonSettings.HomeFieldAdvantage;
+    baseballLeagueSettingsDLModel.SM.RSS.PB =
+      leagueSettings.SeasonModel.RegularSeasonSettings.PointBenefit;
+    baseballLeagueSettingsDLModel.SM.RSS.RSG =
+      leagueSettings.SeasonModel.RegularSeasonSettings.RegularSeasonGames;
+    baseballLeagueSettingsDLModel.SM.RSS.RSS =
+      leagueSettings.SeasonModel.RegularSeasonSettings.RegularSeasonStart;
+    baseballLeagueSettingsDLModel.SM.RSS.WPG =
+      leagueSettings.SeasonModel.RegularSeasonSettings.WeeksPerGame;
+    return baseballLeagueSettingsDLModel;
   }
 
   BasketballSettingsDLtoBL(
@@ -391,19 +574,168 @@ export class LeagueSettingsDLService {
     return basketballLeagueSettingsDLModel;
   }
 
-  SoccerSettingsBLtoDL(
-    leagueSettings: SoccerLeagueSettingsModel
-  ): SoccerLeagueSettingsDLModel {
-    const soccerLeagueSettingsDLModel: SoccerLeagueSettingsDLModel =
-      new SoccerLeagueSettingsDLModel();
-    return soccerLeagueSettingsDLModel;
-  }
-
   SoccerSettingsDLtoBL(
     leagueSettings: SoccerLeagueSettingsDLModel
   ): SoccerLeagueSettingsModel {
     const soccerLeagueSettingsModel: SoccerLeagueSettingsModel =
       new SoccerLeagueSettingsModel();
+    soccerLeagueSettingsModel.ID = leagueSettings.ID;
+    soccerLeagueSettingsModel.LeagueID = leagueSettings.LID;
+    soccerLeagueSettingsModel.DraftSettingsModel =
+      new SoccerDraftSettingsModel.DraftSettingsModel();
+    soccerLeagueSettingsModel.DraftSettingsModel.Date = new Date(
+      leagueSettings.DSM.D
+    );
+    soccerLeagueSettingsModel.DraftSettingsModel.IncludeBenchInDraft =
+      leagueSettings.DSM.IBID;
+    soccerLeagueSettingsModel.DraftSettingsModel.PickOrderType =
+      leagueSettings.DSM.POT;
+    soccerLeagueSettingsModel.DraftSettingsModel.SelectionTime =
+      leagueSettings.DSM.ST;
+    soccerLeagueSettingsModel.GeneralSettingsModel =
+      new SoccerGeneralSettingsModel.GeneralSettingsModel();
+    soccerLeagueSettingsModel.GeneralSettingsModel.LeagueManager.ID =
+      leagueSettings.GSM.LMID;
+    soccerLeagueSettingsModel.GeneralSettingsModel.Name = leagueSettings.GSM.N;
+    soccerLeagueSettingsModel.GeneralSettingsModel.NumberOfTeams =
+      leagueSettings.GSM.NOT;
+    soccerLeagueSettingsModel.GeneralSettingsModel.Passcode =
+      leagueSettings.GSM.P;
+    soccerLeagueSettingsModel.GeneralSettingsModel.PrimaryColor =
+      leagueSettings.GSM.PC;
+    soccerLeagueSettingsModel.GeneralSettingsModel.PublicLeague =
+      leagueSettings.GSM.PL;
+    soccerLeagueSettingsModel.GeneralSettingsModel.SecondaryColor =
+      leagueSettings.GSM.SC;
+    soccerLeagueSettingsModel.LeagueSettingsModel =
+      new SoccerSettingsLeagueSettingsModel.LeagueSettingsModel();
+    soccerLeagueSettingsModel.LeagueSettingsModel.Conferences =
+      leagueSettings.LSM.C.map((x) => {
+        const c = new LeagueConferenceModel();
+        c.ConferenceName = x.CN;
+        c.ID = x.ID;
+        c.LeagueID = x.LID;
+        return c;
+      });
+    soccerLeagueSettingsModel.LeagueSettingsModel.NumberOfConferences =
+      leagueSettings.LSM.NOC;
+    soccerLeagueSettingsModel.LeagueSettingsModel.TransferPortalDeadline =
+      leagueSettings.LSM.TPD;
+    soccerLeagueSettingsModel.PositionModel =
+      new SoccerPositionModel.PositionModel();
+    soccerLeagueSettingsModel.PositionModel.DMax = leagueSettings.PM.DM;
+    soccerLeagueSettingsModel.PositionModel.FMax = leagueSettings.PM.FM;
+    soccerLeagueSettingsModel.PositionModel.FMMax = leagueSettings.PM.FMM;
+    soccerLeagueSettingsModel.PositionModel.GKMax = leagueSettings.PM.GKM;
+    soccerLeagueSettingsModel.PositionModel.MDMax = leagueSettings.PM.MDM;
+    soccerLeagueSettingsModel.PositionModel.MMax = leagueSettings.PM.MM;
+    soccerLeagueSettingsModel.SeasonModel = new SoccerSeasonModel.SeasonModel();
+    soccerLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings =
+      new SoccerSeasonSettingsPlayoffSeasonModel.SeasonSettingsPlayoffSeasonModel();
+    soccerLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.PlayoffTeams =
+      leagueSettings.SM.PSS.PT;
+    soccerLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.SeedingType =
+      leagueSettings.SM.PSS.ST;
+    soccerLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.TieBreakerType =
+      leagueSettings.SM.PSS.TBT;
+    soccerLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.WeeksInChampionshipGame =
+      leagueSettings.SM.PSS.WICG;
+    soccerLeagueSettingsModel.SeasonModel.PlayoffSeasonSettings.WeeksInSemifinalGame =
+      leagueSettings.SM.PSS.WISG;
+    soccerLeagueSettingsModel.SeasonModel.RegularSeasonSettings =
+      new SoccerSeasonSettingsRegularSeasonModel.SeasonSettingsRegularSeasonModel();
+    soccerLeagueSettingsModel.SeasonModel.RegularSeasonSettings.HomeFieldAdvantage =
+      leagueSettings.SM.RSS.HFA;
+    soccerLeagueSettingsModel.SeasonModel.RegularSeasonSettings.PointBenefit =
+      leagueSettings.SM.RSS.PB;
+    soccerLeagueSettingsModel.SeasonModel.RegularSeasonSettings.RegularSeasonGames =
+      leagueSettings.SM.RSS.RSG;
+    soccerLeagueSettingsModel.SeasonModel.RegularSeasonSettings.RegularSeasonStart =
+      leagueSettings.SM.RSS.RSS;
+    soccerLeagueSettingsModel.SeasonModel.RegularSeasonSettings.WeeksPerGame =
+      leagueSettings.SM.RSS.WPG;
     return soccerLeagueSettingsModel;
+  }
+
+  SoccerSettingsBLtoDL(
+    leagueSettings: SoccerLeagueSettingsModel
+  ): SoccerLeagueSettingsDLModel {
+    const soccerLeagueSettingsDLModel: SoccerLeagueSettingsDLModel =
+      new SoccerLeagueSettingsDLModel();
+    soccerLeagueSettingsDLModel.ID = leagueSettings.ID;
+    soccerLeagueSettingsDLModel.LID = leagueSettings.LeagueID;
+    soccerLeagueSettingsDLModel.DSM =
+      new SoccerDraftSettingsDLModel.DraftSettingsDLModel();
+    soccerLeagueSettingsDLModel.DSM.D = leagueSettings.DraftSettingsModel.Date;
+    soccerLeagueSettingsDLModel.DSM.IBID =
+      leagueSettings.DraftSettingsModel.IncludeBenchInDraft;
+    soccerLeagueSettingsDLModel.DSM.POT =
+      leagueSettings.DraftSettingsModel.PickOrderType;
+    soccerLeagueSettingsDLModel.DSM.ST =
+      leagueSettings.DraftSettingsModel.SelectionTime;
+    soccerLeagueSettingsDLModel.GSM =
+      new SoccerGeneralSettingsDLModel.GeneralSettingsDLModel();
+    soccerLeagueSettingsDLModel.GSM.LMID =
+      leagueSettings.GeneralSettingsModel.LeagueManager.ID;
+    soccerLeagueSettingsDLModel.GSM.N =
+      leagueSettings.GeneralSettingsModel.Name;
+    soccerLeagueSettingsDLModel.GSM.NOT =
+      leagueSettings.GeneralSettingsModel.NumberOfTeams;
+    soccerLeagueSettingsDLModel.GSM.P =
+      leagueSettings.GeneralSettingsModel.Passcode;
+    soccerLeagueSettingsDLModel.GSM.PC =
+      leagueSettings.GeneralSettingsModel.PrimaryColor;
+    soccerLeagueSettingsDLModel.GSM.PL =
+      leagueSettings.GeneralSettingsModel.PublicLeague;
+    soccerLeagueSettingsDLModel.GSM.SC =
+      leagueSettings.GeneralSettingsModel.SecondaryColor;
+    soccerLeagueSettingsDLModel.LSM =
+      new SoccerSettingsLeagueSettingsDLModel.LeagueSettingsDLModel();
+    soccerLeagueSettingsDLModel.LSM.C =
+      leagueSettings.LeagueSettingsModel.Conferences.map((x) => {
+        const c = new LeagueConferenceDLModel();
+        c.CN = x.ConferenceName;
+        c.ID = x.ID;
+        c.LID = x.LeagueID;
+        return c;
+      });
+    soccerLeagueSettingsDLModel.LSM.NOC =
+      leagueSettings.LeagueSettingsModel.NumberOfConferences;
+    soccerLeagueSettingsDLModel.LSM.TPD =
+      leagueSettings.LeagueSettingsModel.TransferPortalDeadline;
+    soccerLeagueSettingsDLModel.PM =
+      new SoccerPositionDLModel.PositionDLModel();
+    soccerLeagueSettingsDLModel.PM.DM = leagueSettings.PositionModel.DMax;
+    soccerLeagueSettingsDLModel.PM.FM = leagueSettings.PositionModel.FMax;
+    soccerLeagueSettingsDLModel.PM.FMM = leagueSettings.PositionModel.FMMax;
+    soccerLeagueSettingsDLModel.PM.GKM = leagueSettings.PositionModel.GKMax;
+    soccerLeagueSettingsDLModel.PM.MDM = leagueSettings.PositionModel.MDMax;
+    soccerLeagueSettingsDLModel.PM.MM = leagueSettings.PositionModel.MMax;
+    soccerLeagueSettingsDLModel.SM = new SoccerSeasonDLModel.SeasonDLModel();
+    soccerLeagueSettingsDLModel.SM.PSS =
+      new SoccerSeasonSettingsPlayoffSeasonDLModel.SeasonSettingsPlayoffSeasonDLModel();
+    soccerLeagueSettingsDLModel.SM.PSS.PT =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.PlayoffTeams;
+    soccerLeagueSettingsDLModel.SM.PSS.ST =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.SeedingType;
+    soccerLeagueSettingsDLModel.SM.PSS.TBT =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.TieBreakerType;
+    soccerLeagueSettingsDLModel.SM.PSS.WICG =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.WeeksInChampionshipGame;
+    soccerLeagueSettingsDLModel.SM.PSS.WISG =
+      leagueSettings.SeasonModel.PlayoffSeasonSettings.WeeksInSemifinalGame;
+    soccerLeagueSettingsDLModel.SM.RSS =
+      new SoccerSeasonSettingsRegularSeasonDLModel.SeasonSettingsRegularSeasonDLModel();
+    soccerLeagueSettingsDLModel.SM.RSS.HFA =
+      leagueSettings.SeasonModel.RegularSeasonSettings.HomeFieldAdvantage;
+    soccerLeagueSettingsDLModel.SM.RSS.PB =
+      leagueSettings.SeasonModel.RegularSeasonSettings.PointBenefit;
+    soccerLeagueSettingsDLModel.SM.RSS.RSG =
+      leagueSettings.SeasonModel.RegularSeasonSettings.RegularSeasonGames;
+    soccerLeagueSettingsDLModel.SM.RSS.RSS =
+      leagueSettings.SeasonModel.RegularSeasonSettings.RegularSeasonStart;
+    soccerLeagueSettingsDLModel.SM.RSS.WPG =
+      leagueSettings.SeasonModel.RegularSeasonSettings.WeeksPerGame;
+    return soccerLeagueSettingsDLModel;
   }
 }

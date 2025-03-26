@@ -1,7 +1,7 @@
 import { BaseballPositionEnum } from '../../../../shared/enums/position/baseball-position.enum';
 import { BasketballPositionEnum } from '../../../../shared/enums/position/basketball-position.enum';
 import { FootballPositionEnum } from '../../../../shared/enums/position/football-position.enum';
-import { SoccerRosterModel } from '../../../../shared/models/roster/soccer-roster.model';
+import { SoccerPositionEnum } from '../../../../shared/enums/position/soccer-position.enum';
 
 export class DraftPlayerStatsWSModel {
   extra_points: number;
@@ -20,7 +20,7 @@ export class DraftPlayerStatsWSModel {
     | FootballPositionEnum
     | BaseballPositionEnum
     | BasketballPositionEnum
-    | SoccerRosterModel;
+    | SoccerPositionEnum;
   player_team: string;
   player_weight: number;
   player_year: number;

@@ -5,6 +5,7 @@ export class LeagueRosterAthleteModel {
   Athlete: LeagueAthleteModel;
   RosterPosition: RosterPositionEnum;
   RosterBackup: Boolean | undefined;
+  RosterThird: Boolean | undefined;
 
   constructor() {
     this.Athlete = new LeagueAthleteModel();

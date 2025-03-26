@@ -20,11 +20,19 @@ export class AthleteDLService implements OnDestroy {
 
   basketballPlayers: Observable<Array<LeagueAthleteModel>>;
 
+  baseballPlayers: Observable<Array<LeagueAthleteModel>>;
+
+  soccerPlayers: Observable<Array<LeagueAthleteModel>>;
+
   private _players = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
 
   private _basketballPlayers = new BehaviorSubject<Array<LeagueAthleteModel>>(
     []
   );
+
+  private _baseballPlayers = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
+
+  private _soccerPlayers = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
 
   private unsubscribe = new Subject<void>();
 
@@ -34,6 +42,8 @@ export class AthleteDLService implements OnDestroy {
   ) {
     this.players = this._players.asObservable();
     this.basketballPlayers = this._basketballPlayers.asObservable();
+    this.baseballPlayers = this._baseballPlayers.asObservable();
+    this.soccerPlayers = this._soccerPlayers.asObservable();
     // this.initializeAthletes();
     // this.loadAthletes();
   }
@@ -45,7 +55,9 @@ export class AthleteDLService implements OnDestroy {
   initializeAthletes(): void {}
 
   initializeLeagueAthletes(league: LeagueModel): Array<LeagueAthleteModel> {
-    const leagueAthletes: Array<LeagueAthleteModel> = this.getAllAthletes();
+    const leagueAthletes: Array<LeagueAthleteModel> = this.getAllAthletes(
+      league.LeagueType
+    );
     league.Players.forEach((x) => {
       x.DraftTeamPlayerIDs.forEach((y) => {
         const athlete = leagueAthletes.find((z) => z.AthleteID === y);
@@ -57,8 +69,20 @@ export class AthleteDLService implements OnDestroy {
     return leagueAthletes;
   }
 
-  getAllAthletes(): Array<LeagueAthleteModel> {
-    return this._players.value;
+  getAllAthletes(leagueType: SportEnum): Array<LeagueAthleteModel> {
+    switch (leagueType) {
+      case SportEnum.Baseball:
+        return this._baseballPlayers.value;
+      case SportEnum.Basketball:
+        return this._basketballPlayers.value;
+      case SportEnum.Football:
+        return this._players.value;
+      case SportEnum.Soccer:
+        return this._soccerPlayers.value;
+      case SportEnum.None:
+      default:
+        return [];
+    }
   }
 
   getTeam(
@@ -183,6 +207,42 @@ export class AthleteDLService implements OnDestroy {
             players.push(p);
           });
           this._basketballPlayers.next(players);
+        },
+        error: (e) => console.error(e),
+      });
+  }
+
+  loadBaseballAthletes(): void {
+    this.fastApiService
+      .getBaseballPlayers()
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe({
+        next: (playersAPI) => {
+          const players: Array<LeagueAthleteModel> = [];
+          playersAPI?.forEach((a: PlayerFAPIModel) => {
+            const p: LeagueAthleteModel =
+              GeneralService.FastAPILeagueAthleteModelConverter(a);
+            players.push(p);
+          });
+          this._baseballPlayers.next(players);
+        },
+        error: (e) => console.error(e),
+      });
+  }
+
+  loadSoccerAthletes(): void {
+    this.fastApiService
+      .getSoccerPlayers()
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe({
+        next: (playersAPI) => {
+          const players: Array<LeagueAthleteModel> = [];
+          playersAPI?.forEach((a: PlayerFAPIModel) => {
+            const p: LeagueAthleteModel =
+              GeneralService.FastAPILeagueAthleteModelConverter(a);
+            players.push(p);
+          });
+          this._soccerPlayers.next(players);
         },
         error: (e) => console.error(e),
       });

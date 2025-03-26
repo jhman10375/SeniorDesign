@@ -7,14 +7,24 @@
           [view]="isLeagueManager"
         ></football-settings-view-edit>
       }
-      @case (SportEnum.Baseball) {}
+      @case (SportEnum.Baseball) {
+        <baseball-settings-view-edit
+          [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
+          [view]="isLeagueManager"
+        ></baseball-settings-view-edit>
+      }
       @case (SportEnum.Basketball) {
         <basketball-settings-view-edit
           [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
           [view]="isLeagueManager"
         ></basketball-settings-view-edit>
       }
-      @case (SportEnum.Soccer) {}
+      @case (SportEnum.Soccer) {
+        <soccer-settings-view-edit
+          [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
+          [view]="isLeagueManager"
+        ></soccer-settings-view-edit>
+      }
     }
   }
 }

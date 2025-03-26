@@ -10,8 +10,10 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { SportEnum } from '../../shared/enums/sport.enum';
+import { NewBaseballLeagueComponent } from './new-league/baseball/new-baseball-league.component';
 import { NewBasketballLeagueComponent } from './new-league/basketball/new-basketball-league.component';
 import { NewFootballLeagueComponent } from './new-league/football/new-football-league.component';
+import { NewSoccerLeagueComponent } from './new-league/soccer/new-soccer-league.component';
 
 @Component({
   standalone: true,
@@ -20,6 +22,8 @@ import { NewFootballLeagueComponent } from './new-league/football/new-football-l
     NewFootballLeagueComponent,
     NewBasketballLeagueComponent,
     RouterLink,
+    NewBaseballLeagueComponent,
+    NewSoccerLeagueComponent,
   ],
   selector: 'league-add',
   styleUrls: ['league-add.component.scss'],

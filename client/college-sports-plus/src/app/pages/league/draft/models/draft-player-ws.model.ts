@@ -1,7 +1,7 @@
 import { BaseballPositionEnum } from '../../../../shared/enums/position/baseball-position.enum';
 import { BasketballPositionEnum } from '../../../../shared/enums/position/basketball-position.enum';
 import { FootballPositionEnum } from '../../../../shared/enums/position/football-position.enum';
-import { SoccerRosterModel } from '../../../../shared/models/roster/soccer-roster.model';
+import { SoccerPositionEnum } from '../../../../shared/enums/position/soccer-position.enum';
 
 export class DraftPlayerWSModel {
   id: string;
@@ -15,7 +15,7 @@ export class DraftPlayerWSModel {
     | FootballPositionEnum
     | BaseballPositionEnum
     | BasketballPositionEnum
-    | SoccerRosterModel;
+    | SoccerPositionEnum;
   school: string;
   team: string;
   user_id: string | null;
