@@ -1,7 +1,7 @@
 fastapi
 pydantic
 dotenv
-sklearn
+scikit-learn
 pytz
 cbbpy
 numpy<2
