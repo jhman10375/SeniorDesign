@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from api.routes.draft import router as draft_router
-from api.routes.authentication import router as authentication_router
+#from api.routes.authentication import router as authentication_router
 
 import requests
 from datetime import datetime
@@ -2668,7 +2668,7 @@ async def predict_basketball_player_season(player_id : str) -> bkbPreds:
 
 
 @app.get("/predict/bkb/{player_id}/game", tags=["Prediction"])
-async def predict_bkb_player_stats(player_id : str, opponent = "next") -> bkbPreds:
+async def predict_basketball_player_stats(player_id : str, opponent = "next") -> bkbPreds:
     
     with open('model/bkb/opponent_classifier.pkl', 'rb') as fid:
       model_opp = pickle.load(fid)
@@ -2681,18 +2681,26 @@ async def predict_bkb_player_stats(player_id : str, opponent = "next") -> bkbPre
 
     games_played = len(played_df)
 
-    #year_stats = get_season_stats_per_game(fullList, player_id, games_played, fullList.active_season)
-
     if opponent == "next":
-      next_df = played_df.copy()
+      sched_df = s.get_team_schedule(plyr['team'])
+  
+      sched_df["datetime"] = sched_df.apply(bkbPlayers.to_utc, axis=1)
 
-      next_df.sort_values(by='datetime', inplace=True, ascending = False)
+      now = datetime.now()
 
-      next_df.reset_index(drop=True, inplace=True)
+      sched_df = sched_df.query(f'datetime > "{now.strftime("%Y-%m-%d")}"')
 
-      next_game = fbGame(game_id=next_df.iloc[0]['game_id'], 
-                          home_id=next_df.iloc[0]['team_id'], home_team=next_df.iloc[0]['team'], 
-                          away_team=next_df.iloc[0]['opponent'], start_date=next_df.iloc[0]['datetime'])
+      sched_df.sort_values(by='datetime', inplace=True, ascending=True)
+
+      sched_df.reset_index(drop=True, inplace=True)
+
+      game_info = s.get_game_info(sched_df.iloc[0]["game_id"])
+
+      next_game = fbGame(game_id=sched_df.iloc[0]["game_id"],
+                            home_id=int(game_info["home_id"].iloc[0]),
+                            home_team=game_info["home_team"].iloc[0],
+                            away_team=game_info["away_team"].iloc[0],
+                            start_date=sched_df.iloc[0]["datetime"])
 
       if next_game.home_team == plyr['team']:
         opponent = next_game.away_team
@@ -2706,7 +2714,6 @@ async def predict_bkb_player_stats(player_id : str, opponent = "next") -> bkbPre
                   plyr['year'], plyr['position'], opponent.replace("&", "%26")]]
     df_test = pd.DataFrame(test_QB, columns=['team', 'weight', 'height', 'year', 'position', 'opponent'])
 
-    print(opponent)
 
     for column in df_test.columns:
         if df_test[column].dtype == object:
@@ -2744,6 +2751,207 @@ async def predict_bkb_player_stats(player_id : str, opponent = "next") -> bkbPre
     return return_stats
 
 
+#AI PREDICTIONS - BASEBALL
+
+@app.get("/predict/bsb/season/{player_id}", tags=["Prediction"])
+async def predict_baseball_player_season(player_id : str) -> bsbStats:
+    with open('model/bsb/season_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 56
+
+    plyr = bsbList.players.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()
+
+    input_list = [[plyr['team'].replace("&", "%26"), plyr['bat'], plyr['throw'], plyr['height'],
+              plyr['year'], plyr['position']]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'bat_hand', 'throw_hand', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/bsb/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['saves'] = max(round(test_results[0][0], 1), 0)
+    test_dict['innings'] = max(round(test_results[0][1], 1), 0)
+    test_dict['earned_runs_allowed'] = max(round(test_results[0][2], 1), 0)
+    test_dict['singles'] = max(round(test_results[0][3], 1), 0)
+    test_dict['doubles'] = max(round(test_results[0][4], 1), 0)
+    test_dict['triples'] = max(round(test_results[0][5], 1), 0)
+    test_dict['home_runs'] = max(round(test_results[0][6], 1), 0)
+    test_dict['runs'] = max(round(test_results[0][7], 1), 0)
+    test_dict['win'] = max(round(test_results[0][8], 1), 0)
+    test_dict['runs_batted_in'] = max(round(test_results[0][9], 1), 0)
+    test_dict['walks'] = max(round(test_results[0][10], 1), 0)
+    test_dict['hits_by_pitch'] = max(round(test_results[0][11], 1), 0)
+    test_dict['stolen_bases'] = max(round(test_results[0][12], 1), 0)
+    test_dict['caught_stealing'] = max(round(test_results[0][13], 1), 0)
+
+    if plyr['position'] != 'P':
+      test_dict['saves'] = 0
+      test_dict['innings'] = 0
+      test_dict['earned_runs_allowed'] = 0
+
+    if test_dict['win'] > 0.5:
+       test_dict['win'] = 1
+    else:
+       test_dict['win'] = 0
+
+
+    return_stats = bsbStats(player_name=plyr['name'],
+                               player_id=plyr['id'], player_position=plyr['position'],
+                               saves=round(test_dict["saves"]*NUM_GAMES, 1), 
+                               innings=round(test_dict["innings"]*NUM_GAMES, 1),
+                               earned_runs_allowed=round(test_dict["earned_runs_allowed"]*NUM_GAMES, 1), 
+                               singles=round(test_dict["singles"]*NUM_GAMES, 1),
+                               doubles=round(test_dict["doubles"]*NUM_GAMES, 1), 
+                               triples=round(test_dict["triples"]*NUM_GAMES, 1), 
+                               homers=round(test_dict["home_runs"]*NUM_GAMES, 1), 
+                               win=bool(test_dict['win']),
+                               runs=round(test_dict["runs"]*NUM_GAMES, 1),
+                               runs_batted_in=round(test_dict["runs_batted_in"]*NUM_GAMES, 1), 
+                               walks=round(test_dict["walks"]*NUM_GAMES, 1), 
+                               hits_by_pitch=round(test_dict["hits_by_pitch"]*NUM_GAMES, 1), 
+                               stolen_bases=round(test_dict["stolen_bases"]*NUM_GAMES, 1), 
+                               caught_stealing=round(test_dict["caught_stealing"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
+
+@app.get("/predict/bsb/{player_id}/game", tags=["Prediction"])
+async def predict_baseball_player_stats(player_id : str, opponent = "next") -> bsbStats:
+    
+    with open('model/bsb/opponent_classifier.pkl', 'rb') as fid:
+      model_opp = pickle.load(fid)
+
+    plyr = bsbList.players.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()  
+
+    if opponent == "next":
+      game_list = bsb_team_schedule(plyr['team'], datetime.now().year, bsbList)
+
+      games_df = pd.DataFrame(game_list)
+
+      id_list = []
+      h_team_list = []
+      a_team_list = []
+      h_id_list  = []
+      date_list = []
+
+      for tuple in games_df[0].values.tolist():
+          id = tuple[1]
+          id_list.append(id)
+
+      for tuple in games_df[1].values.tolist():
+          id = tuple[1]
+          h_id_list.append(id)
+
+      for tuple in games_df[2].values.tolist():
+          team = tuple[1]
+          h_team_list.append(team)
+
+      for tuple in games_df[3].values.tolist():
+          team = tuple[1]
+          a_team_list.append(team)
+
+      for tuple in games_df[4].values.tolist():
+          date = tuple[1]
+          date_list.append(date)
+
+      games_df[games_df.iloc[0][0][0]] = id_list
+      games_df[games_df.iloc[0][1][0]] = h_id_list
+      games_df[games_df.iloc[0][2][0]] = h_team_list
+      games_df[games_df.iloc[0][3][0]] = a_team_list
+      games_df[games_df.iloc[0][4][0]] = date_list
+      games_df.drop([0,1,2,3,4], axis=1, inplace=True)
+
+      games_df['start_date'] = pd.to_datetime(games_df['start_date'])
+
+      games_df['start_date'] = games_df['start_date'].dt.strftime('%Y-%m-%d')
+
+      games_df = games_df.query(f'start_date > "{datetime.now().strftime("%Y-%m-%d")}"')
+
+      games_df.sort_values(by='start_date', inplace=True, ascending=True)
+
+      games_df.reset_index(drop=True, inplace=True)
+
+      next_game = bbGame(game_id=games_df.iloc[0]['game_id'], 
+                          home_id=games_df.iloc[0]['home_id'], home_team=games_df.iloc[0]['home_team'], 
+                          away_team=games_df.iloc[0]['away_team'], start_date=games_df.iloc[0]['start_date'])
+
+      if next_game.home_team == plyr['team']:
+        opponent = next_game.away_team
+      else:
+        opponent = next_game.home_team
+  
+    input_list = [[plyr['team'].replace("&", "%26"), plyr['bat'], plyr['throw'], plyr['height'],
+              plyr['year'], plyr['position'], opponent]]
+    df_test = pd.DataFrame(input_list, columns=['team', 'bat_hand', 'throw_hand', 'height', 'year', 'position', 'opponent'])
+
+    for column in df_test.columns:
+        if df_test[column].dtype == object:
+          le.classes_ = np.load(f'model/bsb/{column} classes.npy', allow_pickle=True)
+          df_test[column] = le.transform(df_test[column])
+
+    input_list = df_test.values.reshape(1, -1)
+    test_results = model_opp.predict(input_list)
+
+    test_results.tolist()
+
+    test_dict = {}
+
+    test_dict['saves'] = max(round(test_results[0][0], 1), 0)
+    test_dict['innings'] = max(round(test_results[0][1], 1), 0)
+    test_dict['earned_runs_allowed'] = max(round(test_results[0][2], 1), 0)
+    test_dict['singles'] = max(round(test_results[0][3], 1), 0)
+    test_dict['doubles'] = max(round(test_results[0][4], 1), 0)
+    test_dict['triples'] = max(round(test_results[0][5], 1), 0)
+    test_dict['home_runs'] = max(round(test_results[0][6], 1), 0)
+    test_dict['runs'] = max(round(test_results[0][7], 1), 0)
+    test_dict['win'] = max(round(test_results[0][8], 1), 0)
+    test_dict['runs_batted_in'] = max(round(test_results[0][9], 1), 0)
+    test_dict['walks'] = max(round(test_results[0][10], 1), 0)
+    test_dict['hits_by_pitch'] = max(round(test_results[0][11], 1), 0)
+    test_dict['stolen_bases'] = max(round(test_results[0][12], 1), 0)
+    test_dict['caught_stealing'] = max(round(test_results[0][13], 1), 0)
+
+
+
+    if plyr['position'] != 'P':
+      test_dict['saves'] = 0
+      test_dict['innings'] = 0
+      test_dict['earned_runs_allowed'] = 0
+
+
+    return_stats = bsbStats(player_name=plyr['name'],
+                               player_id=plyr['id'], player_position=plyr['position'],
+                               saves=round(test_dict["saves"], 1), 
+                               innings=round(test_dict["innings"], 1),
+                               earned_runs_allowed=round(test_dict["earned_runs_allowed"], 1), 
+                               singles=round(test_dict["singles"], 1),
+                               doubles=round(test_dict["doubles"], 1), 
+                               triples=round(test_dict["triples"], 1), 
+                               homers=round(test_dict["home_runs"], 1), 
+                               win=bool(test_dict['win']),
+                               runs=round(test_dict["runs"], 1),
+                               runs_batted_in=round(test_dict["runs_batted_in"], 1), 
+                               walks=round(test_dict["walks"], 1), 
+                               hits_by_pitch=round(test_dict["hits_by_pitch"], 1), 
+                               stolen_bases=round(test_dict["stolen_bases"], 1), 
+                               caught_stealing=round(test_dict["caught_stealing"], 1))
+    
+    return return_stats
+
+
 #DRAFT ENDPOINTS
 @app.get("/status")
 async def get_status():
@@ -2756,7 +2964,7 @@ async def get_status():
 
 
 app.include_router(draft_router, tags=["Draft"])
-app.include_router(authentication_router, tags=["Authentication"])
+#app.include_router(authentication_router, tags=["Authentication"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="192.168.200.36", port=8000)
