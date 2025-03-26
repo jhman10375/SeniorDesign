@@ -278,7 +278,20 @@ class fbPlayerWithStats(BaseModel):
     team_logos : str
     stats: predictedStats
 
-
+class sccPreds(BaseModel):
+    player_name : str
+    player_id : int
+    player_position : str
+    goals : float
+    assists : float
+    shots_on_goal : float
+    shots_off_goal : float
+    fouls : float
+    yellow_cards : float
+    red_cards : float
+    clean_sheet : float
+    goals_allowed : float
+    saves : float
 
 
 

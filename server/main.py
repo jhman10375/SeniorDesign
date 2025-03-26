@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from api.routes.draft import router as draft_router
-#from api.routes.authentication import router as authentication_router
+from api.routes.authentication import router as authentication_router
 
 import requests
 from datetime import datetime
@@ -2951,6 +2951,186 @@ async def predict_baseball_player_stats(player_id : str, opponent = "next") -> b
     
     return return_stats
 
+#AI PREDICTIONS - SOCCER
+
+@app.get("/predict/scc/season/{player_id}", tags=["Prediction"])
+async def predict_soccer_player_season(player_id : str) -> sccPreds:
+    with open('model/scc/season_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 18
+
+    plyr = sccList.players.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()
+
+    input_list = [[plyr['team'].replace("&", "%26"), plyr['height'], plyr['year'], plyr['position']]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/scc/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['goals'] = max(round(test_results[0][0], 1), 0)
+    test_dict['assists'] = max(round(test_results[0][1], 1), 0)
+    test_dict['shots_on_goal'] = max(round(test_results[0][2], 1), 0)
+    test_dict['shots_off_goal'] = max(round(test_results[0][3], 1), 0)
+    test_dict['fouls'] = max(round(test_results[0][4], 1), 0)
+    test_dict['yellow_cards'] = max(round(test_results[0][5], 1), 0)
+    test_dict['red_cards'] = max(round(test_results[0][6], 1), 0)
+    test_dict['clean_sheet'] = max(round(test_results[0][7], 1), 0)
+    test_dict['goals_allowed'] = max(round(test_results[0][8], 1), 0)
+    test_dict['saves'] = max(round(test_results[0][9], 1), 0)
+
+    if plyr['position'] != 'GK':
+      test_dict['saves'] = 0
+      test_dict['goals_allowed'] = 0
+      test_dict['clean_sheet'] = 0
+
+
+    return_stats = sccPreds(player_name=plyr['name'],
+                               player_id=plyr['id'], player_position=plyr['position'],
+                               goals=round(test_dict["goals"]*NUM_GAMES, 1), 
+                               assists=round(test_dict["assists"]*NUM_GAMES, 1),
+                               shots_on_goal=round(test_dict["shots_on_goal"]*NUM_GAMES, 1), 
+                               shots_off_goal=round(test_dict["shots_off_goal"]*NUM_GAMES, 1),
+                               fouls=round(test_dict["fouls"]*NUM_GAMES, 1), 
+                               yellow_cards=round(test_dict["yellow_cards"]*NUM_GAMES, 1), 
+                               red_cards=round(test_dict["red_cards"]*NUM_GAMES, 1), 
+                               clean_sheet=round(test_dict["clean_sheet"]*NUM_GAMES, 1),
+                               goals_allowed=round(test_dict["goals_allowed"]*NUM_GAMES, 1), 
+                               saves=round(test_dict["saves"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
+
+@app.get("/predict/scc/{player_id}/game", tags=["Prediction"])
+async def predict_soccer_player_stats(player_id : str, opponent = "next") -> sccPreds:
+    
+    with open('model/scc/opponent_classifier.pkl', 'rb') as fid:
+      model_opp = pickle.load(fid)
+
+    plyr = sccList.players.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()  
+
+    if opponent == "next":
+      game_list = scc_team_schedule(plyr['team'], datetime.now().year, sccList)
+
+      games_df = pd.DataFrame(game_list)
+
+      id_list = []
+      h_team_list = []
+      a_team_list = []
+      h_id_list  = []
+      date_list = []
+
+      for tuple in games_df[0].values.tolist():
+          id = tuple[1]
+          id_list.append(id)
+
+      for tuple in games_df[1].values.tolist():
+          id = tuple[1]
+          h_id_list.append(id)
+
+      for tuple in games_df[2].values.tolist():
+          team = tuple[1]
+          h_team_list.append(team)
+
+      for tuple in games_df[3].values.tolist():
+          team = tuple[1]
+          a_team_list.append(team)
+
+      for tuple in games_df[4].values.tolist():
+          date = tuple[1]
+          date_list.append(date)
+
+      games_df[games_df.iloc[0][0][0]] = id_list
+      games_df[games_df.iloc[0][1][0]] = h_id_list
+      games_df[games_df.iloc[0][2][0]] = h_team_list
+      games_df[games_df.iloc[0][3][0]] = a_team_list
+      games_df[games_df.iloc[0][4][0]] = date_list
+      games_df.drop([0,1,2,3,4], axis=1, inplace=True)
+
+      games_df['start_date'] = pd.to_datetime(games_df['start_date'])
+
+      games_df['start_date'] = games_df['start_date'].dt.strftime('%Y-%m-%d')
+
+      games_df = games_df.query(f'start_date >= "{datetime.now().strftime("%Y-%m-%d")}"')
+
+      if games_df.empty:
+          return bbGame(game_id="No Next Game Found", 
+                          home_id=-1, home_team="NaN", 
+                          away_team="NaN", start_date="00/00/00:000000z")
+
+      games_df.sort_values(by='start_date', inplace=True, ascending=False)
+
+      games_df.reset_index(drop=True, inplace=True)
+
+      next_game = bbGame(game_id=games_df.iloc[0]['game_id'], 
+                          home_id=games_df.iloc[0]['home_id'], home_team=games_df.iloc[0]['home_team'], 
+                          away_team=games_df.iloc[0]['away_team'], start_date=games_df.iloc[0]['start_date'])
+
+      if next_game.home_team == plyr['team']:
+        opponent = next_game.away_team
+      else:
+        opponent = next_game.home_team
+  
+    input_list = [[plyr['team'].replace("&", "%26"), plyr['height'],
+              plyr['year'], plyr['position'], opponent]]
+    df_test = pd.DataFrame(input_list, columns=['team', 'height', 'year', 'position', 'opponent'])
+
+    for column in df_test.columns:
+        if df_test[column].dtype == object:
+          le.classes_ = np.load(f'model/scc/{column} classes.npy', allow_pickle=True)
+          df_test[column] = le.transform(df_test[column])
+
+    input_list = df_test.values.reshape(1, -1)
+    test_results = model_opp.predict(input_list)
+
+    test_results.tolist()
+
+    test_dict = {}
+
+    test_dict['goals'] = max(round(test_results[0][0], 1), 0)
+    test_dict['assists'] = max(round(test_results[0][1], 1), 0)
+    test_dict['shots_on_goal'] = max(round(test_results[0][2], 1), 0)
+    test_dict['shots_off_goal'] = max(round(test_results[0][3], 1), 0)
+    test_dict['fouls'] = max(round(test_results[0][4], 1), 0)
+    test_dict['yellow_cards'] = max(round(test_results[0][5], 1), 0)
+    test_dict['red_cards'] = max(round(test_results[0][6], 1), 0)
+    test_dict['clean_sheet'] = max(round(test_results[0][7], 1), 0)
+    test_dict['goals_allowed'] = max(round(test_results[0][8], 1), 0)
+    test_dict['saves'] = max(round(test_results[0][9], 1), 0)
+
+    if plyr['position'] != 'GK':
+      test_dict['saves'] = 0
+      test_dict['goals_allowed'] = 0
+      test_dict['clean_sheet'] = 0
+
+
+    return_stats = sccPreds(player_name=plyr['name'],
+                               player_id=plyr['id'], player_position=plyr['position'],
+                               goals=round(test_dict["goals"], 1), 
+                               assists=round(test_dict["assists"], 1),
+                               shots_on_goal=round(test_dict["shots_on_goal"], 1), 
+                               shots_off_goal=round(test_dict["shots_off_goal"], 1),
+                               fouls=round(test_dict["fouls"], 1), 
+                               yellow_cards=round(test_dict["yellow_cards"], 1), 
+                               red_cards=round(test_dict["red_cards"], 1), 
+                               clean_sheet=round(test_dict["clean_sheet"], 1),
+                               goals_allowed=round(test_dict["goals_allowed"], 1), 
+                               saves=round(test_dict["saves"], 1))
+    
+    return return_stats
 
 #DRAFT ENDPOINTS
 @app.get("/status")
@@ -2964,7 +3144,7 @@ async def get_status():
 
 
 app.include_router(draft_router, tags=["Draft"])
-#app.include_router(authentication_router, tags=["Authentication"])
+app.include_router(authentication_router, tags=["Authentication"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="192.168.200.36", port=8000)
