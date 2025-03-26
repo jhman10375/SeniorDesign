@@ -547,7 +547,7 @@ def get_bkb_played_games(team_name, year):
 
   now = datetime.now()
 
-  return sched_df.query(f'datetime <= "{now.strftime("%Y-%m-%d")}"')
+  return sched_df.query(f'datetime <= "{now.strftime("%Y-%m-%d")}"').copy()
 
 def findnth(haystack, needle, n):
     parts= haystack.split(needle, n+1)

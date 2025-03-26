@@ -174,6 +174,19 @@ class bkbStats(BaseModel):
     steals : int
     turnovers : int
 
+class bkbPreds(BaseModel):
+    player_name: str
+    player_ID : int
+    player_position: str
+    three_pointers: float
+    two_pointers : float
+    free_throws : float
+    rebounds : float
+    assists : float
+    blocked_shots : float
+    steals : float
+    turnovers : float
+
 
 class bbPlayer(BaseModel):
 

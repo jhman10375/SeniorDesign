@@ -2614,6 +2614,134 @@ async def generate_league_schedule(num_teams = 8, num_weeks = 10) -> list[SchedW
    return return_sched
 
 
+#AI PREDICTIONS - BASKETBALL
+
+@app.get("/predict/bkb/season/{player_id}", tags=["Prediction"])
+async def predict_basketball_player_season(player_id : str) -> bkbPreds:
+    with open('model/bkb/season_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 32
+
+    plyr = bkbList.df.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()
+
+    input_list = [[plyr['team'].replace("&", "%26"), plyr['weight'], plyr['height'],
+              plyr['year'], plyr['position']]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'weight', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/bkb/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['three_pointers'] = round(test_results[0][0], 1)
+    test_dict['two_pointers'] = round(test_results[0][1], 1)
+    test_dict['free_throws'] = round(test_results[0][2], 1)
+    test_dict['rebounds'] = round(test_results[0][3], 1)
+    test_dict['assists'] = round(test_results[0][4], 1)
+    test_dict['blocked_shots'] = round(test_results[0][5], 1)
+    test_dict['steals'] = round(test_results[0][6], 1)
+    test_dict['turnovers'] = round(test_results[0][7], 1)
+
+
+    return_stats = bkbPreds(player_name=plyr['name'],
+                               player_ID=plyr['id'], player_position=plyr['position'],
+                               three_pointers=round(test_dict["three_pointers"]*NUM_GAMES, 1), 
+                               two_pointers=round(test_dict["two_pointers"]*NUM_GAMES, 1),
+                               free_throws=round(test_dict["free_throws"]*NUM_GAMES, 1), 
+                               rebounds=round(test_dict["rebounds"]*NUM_GAMES, 1),
+                               assists=round(test_dict["assists"]*NUM_GAMES, 1), 
+                               blocked_shots=round(test_dict["blocked_shots"]*NUM_GAMES, 1),
+                               steals=round(test_dict["steals"]*NUM_GAMES, 1), 
+                               turnovers=round(test_dict["turnovers"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
+
+@app.get("/predict/bkb/{player_id}/game", tags=["Prediction"])
+async def predict_bkb_player_stats(player_id : str, opponent = "next") -> bkbPreds:
+    
+    with open('model/bkb/opponent_classifier.pkl', 'rb') as fid:
+      model_opp = pickle.load(fid)
+
+    plyr = bkbList.df.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()
+
+    played_df = get_bkb_played_games(plyr['team'], datetime.now().year)
+
+    games_played = len(played_df)
+
+    #year_stats = get_season_stats_per_game(fullList, player_id, games_played, fullList.active_season)
+
+    if opponent == "next":
+      next_df = played_df.copy()
+
+      next_df.sort_values(by='datetime', inplace=True, ascending = False)
+
+      next_df.reset_index(drop=True, inplace=True)
+
+      next_game = fbGame(game_id=next_df.iloc[0]['game_id'], 
+                          home_id=next_df.iloc[0]['team_id'], home_team=next_df.iloc[0]['team'], 
+                          away_team=next_df.iloc[0]['opponent'], start_date=next_df.iloc[0]['datetime'])
+
+      if next_game.home_team == plyr['team']:
+        opponent = next_game.away_team
+      else:
+        opponent = next_game.home_team
+    else:
+       opps_df = pd.read_csv(f"{os.getcwd()}/cache/bkb/opponent_names.csv")
+       opponent = opps_df.query(f'Team.str.startswith("{opponent.replace("'", "\'")}")').Team.values[0]
+  
+    test_QB = [[plyr['team'].replace("&", "%26"), plyr['weight'], plyr['height'],
+                  plyr['year'], plyr['position'], opponent.replace("&", "%26")]]
+    df_test = pd.DataFrame(test_QB, columns=['team', 'weight', 'height', 'year', 'position', 'opponent'])
+
+    print(opponent)
+
+    for column in df_test.columns:
+        if df_test[column].dtype == object:
+          le.classes_ = np.load(f'model/bkb/{column} classes.npy', allow_pickle=True)
+          df_test[column] = le.transform(df_test[column])
+
+    test_QB = df_test.values.reshape(1, -1)
+    test_results = model_opp.predict(test_QB)
+
+    test_results.tolist()
+
+    test_dict = {}
+
+    test_dict['three_pointers'] = round(test_results[0][0], 1)
+    test_dict['two_pointers'] = round(test_results[0][1], 1)
+    test_dict['free_throws'] = round(test_results[0][2], 1)
+    test_dict['rebounds'] = round(test_results[0][3], 1)
+    test_dict['assists'] = round(test_results[0][4], 1)
+    test_dict['blocked_shots'] = round(test_results[0][5], 1)
+    test_dict['steals'] = round(test_results[0][6], 1)
+    test_dict['turnovers'] = round(test_results[0][7], 1)
+
+
+    return_stats = bkbPreds(player_name=plyr['name'],
+                               player_ID=plyr['id'], player_position=plyr['position'],
+                               three_pointers=round(test_dict["three_pointers"], 1), 
+                               two_pointers=round(test_dict["two_pointers"], 1),
+                               free_throws=round(test_dict["free_throws"], 1), 
+                               rebounds=round(test_dict["rebounds"], 1),
+                               assists=round(test_dict["assists"], 1), 
+                               blocked_shots=round(test_dict["blocked_shots"], 1),
+                               steals=round(test_dict["steals"], 1), 
+                               turnovers=round(test_dict["turnovers"], 1))
+    
+    return return_stats
 
 
 #DRAFT ENDPOINTS

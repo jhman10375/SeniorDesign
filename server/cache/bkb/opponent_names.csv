@@ -1,0 +1,701 @@
+,Team
+0,Virginia-Lynchburg Dragons
+1,DePaul Blue Demons
+2,Trinity Baptist Eagles
+3,South Alabama Jaguars
+4,South Carolina Gamecocks
+5,Jacksonville Dolphins
+6,Miami (OH) RedHawks
+7,West Georgia Wolves
+8,Stetson Hatters
+9,Chicago State Cougars
+10,Queens University Royals
+11,Winthrop Eagles
+12,Georgia State Panthers
+13,Chattanooga Mocs
+14,VMI Keydets
+15,East Tennessee State Buccaneers
+16,Western Carolina Catamounts
+17,Samford Bulldogs
+18,Wofford Terriers
+19,UNC Greensboro Spartans
+20,Furman Paladins
+21,The Citadel Bulldogs
+22,Toledo Rockets
+23,New Orleans Privateers
+24,Arkansas Razorbacks
+25,Oregon Ducks
+26,UTSA Roadrunners
+27,Merrimack Warriors
+28,Eastern Kentucky Colonels
+29,Houston Cougars
+30,Middle Georgia State Knights
+31,LaGrange Panthers
+32,App State Mountaineers
+33,Marshall Thundering Herd
+34,Texas State Bobcats
+35,Arkansas State Red Wolves
+36,UL Monroe Warhawks
+37,Southern Miss Golden Eagles
+38,Georgia Southern Eagles
+39,James Madison Dukes
+40,Louisiana Ragin' Cajuns
+41,Coastal Carolina Chanticleers
+42,Old Dominion Monarchs
+43,Maryville College (TN) Fighting Scots
+44,Lipscomb Bisons
+45,Air Force Falcons
+46,Oral Roberts Golden Eagles
+47,Loyola Marymount Lions
+48,Tulane Green Wave
+49,Gardner-Webb Runnin' Bulldogs
+50,Illinois State Redbirds
+51,Middle Tennessee Blue Raiders
+52,Richmond Spiders
+53,UC Irvine Anteaters
+54,Drake Bulldogs
+55,Northern Iowa Panthers
+56,UIC Flames
+57,Southern Illinois Salukis
+58,Indiana State Sycamores
+59,Valparaiso Beacons
+60,Evansville Purple Aces
+61,Bradley Braves
+62,Murray State Racers
+63,Missouri State Bears
+64,Texas A&M Aggies
+65,Purdue Fort Wayne Mastodons
+66,Florida Atlantic Owls
+67,Tennessee Tech Golden Eagles
+68,Wisconsin Badgers
+69,LSU Tigers
+70,Milwaukee Panthers
+71,California Baptist Lancers
+72,Tarleton State Texans
+73,Tulsa Golden Hurricane
+74,Texas Tech Red Raiders
+75,Kansas Jayhawks
+76,Colorado Buffaloes
+77,Arizona Wildcats
+78,Arizona State Sun Devils
+79,Iowa State Cyclones
+80,TCU Horned Frogs
+81,BYU Cougars
+82,Cincinnati Bearcats
+83,Baylor Bears
+84,Oklahoma State Cowboys
+85,Utah Utes
+86,Kansas State Wildcats
+87,West Virginia Mountaineers
+88,Ball State Cardinals
+89,Mississippi State Bulldogs
+90,Jacksonville State Gamecocks
+91,Toccoa Falls Eagles
+92,North Carolina Central Eagles
+93,Austin Peay Governors
+94,Kentucky Wildcats
+95,Kennesaw State Owls
+96,Charlotte 49ers
+97,Auburn Tigers
+98,Troy Trojans
+99,Mercer Bears
+100,Buffalo Bulls
+101,Florida Gators
+102,South Carolina State Bulldogs
+103,Virginia Tech Hokies
+104,Siena Saints
+105,Georgia Bulldogs
+106,Florida Tech Panthers
+107,UCF Knights
+108,Bellarmine Knights
+109,North Alabama Lions
+110,Central Arkansas Bears
+111,Florida Gulf Coast Eagles
+112,North Florida Ospreys
+113,New College (FL) Mighty Banyans
+114,Omaha Mavericks
+115,Oklahoma Sooners
+116,East Carolina Pirates
+117,La Salle Explorers
+118,South Florida Bulls
+119,Florida International Panthers
+120,Fort Lauderdale Eagles
+121,Coastal Georgia Mariner
+122,Charleston Cougars
+123,Liberty Flames
+124,Seton Hall Pirates
+125,Michigan State Spartans
+126,Memphis Tigers
+127,UAB Blazers
+128,Rice Owls
+129,North Texas Mean Green
+130,Temple Owls
+131,Wichita State Shockers
+132,Tennessee Volunteers
+133,Pittsburgh Panthers
+134,Elon Phoenix
+135,SE Louisiana Lions
+136,Bethune-Cookman Wildcats
+137,Belmont Bruins
+138,Charleston Southern Buccaneers
+139,Presbyterian Blue Hose
+140,High Point Panthers
+141,Radford Highlanders
+142,South Carolina Upstate Spartans
+143,UNC Asheville Bulldogs
+144,Longwood Lancers
+145,Pfeiffer Falcons
+146,Virginia Cavaliers
+147,St. Francis (PA) Red Flash
+148,Newberry Wolves
+149,Navy Midshipmen
+150,Ohio State Buckeyes
+151,Green Bay Phoenix
+152,Morgan State Bears
+153,North Carolina Tar Heels
+154,Drexel Dragons
+155,UNC Wilmington Seahawks
+156,Hampton Pirates
+157,Monmouth Hawks
+158,Stony Brook Seawolves
+159,Hofstra Pride
+160,William & Mary Tribe
+161,North Carolina A&T Aggies
+162,Northeastern Huskies
+163,Delaware Blue Hens
+164,Towson Tigers
+165,Duquesne Dukes
+166,Western Kentucky Hilltoppers
+167,Jackson State Tigers
+168,Alabama A&M Bulldogs
+169,Southeast Missouri State Redhawks
+170,Truett-McConnell Bears
+171,Asbury Eagles
+172,San Diego Toreros
+173,UCLA Bruins
+174,Dartmouth Big Green
+175,Wagner Seahawks
+176,UMBC Retrievers
+177,Howard Bison
+178,Sacred Heart Pioneers
+179,UAlbany Great Danes
+180,Thomas (ME) Terriers
+181,UMass Lowell River Hawks
+182,Maine Black Bears
+183,Lafayette Leopards
+184,Army Black Knights
+185,American University Eagles
+186,Colgate Raiders
+187,Lehigh Mountain Hawks
+188,Bucknell Bison
+189,Holy Cross Crusaders
+190,Loyola Maryland Greyhounds
+191,Iona Gaels
+192,Fairfield Stags
+193,Plattsburgh St Cardinals
+194,Brown Bears
+195,Yale Bulldogs
+196,Elms College Blazers
+197,New Hampshire Wildcats
+198,Bryant Bulldogs
+199,Binghamton Bearcats
+200,NJIT Highlanders
+201,Penn State Nittany Lions
+202,SUNY-Oneonta Red Dragons
+203,Miami Hurricanes
+204,Fordham Rams
+205,Misericordia Cougars
+206,Central Connecticut Blue Devils
+207,Niagara Purple Eagles
+208,Long Island University Sharks
+209,Le Moyne Dolphins
+210,Lancasater Bible College Chargers
+211,Mercyhurst Lakers
+212,Marist Red Foxes
+213,Vermont Catamounts
+214,Duke Blue Devils
+215,Maine-Fort Kent Bengals
+216,Quinnipiac Bobcats
+217,Pennsylvania Quakers
+218,Maine-Augusta Moose
+219,Canisius Golden Griffins
+220,Boston University Terriers
+221,Princeton Tigers
+222,Harvard Crimson
+223,Cal State Bakersfield Roadrunners
+224,Massachusetts Minutemen
+225,Northwestern Wildcats
+226,Campbell Fighting Camels
+227,Marquette Golden Eagles
+228,Central Michigan Chippewas
+229,George Mason Patriots
+230,Saint Joseph's Long Island Golden Eagles
+231,Columbia Lions
+232,Norfolk State Spartans
+233,Rider Broncs
+234,Penn State-York Nittany Lions
+235,Valley Forge Patriots
+236,Coppin State Eagles
+237,Saint Peter's Peacocks
+238,Georgetown Hoyas
+239,Cairn University Highlanders
+240,Georgia Tech Yellow Jackets
+241,Massachusetts-Boston Beacons
+242,UConn Huskies
+243,Endicott College Gulls
+244,Stonehill Skyhawks
+245,Iowa Hawkeyes
+246,Puerto Rico-Mayaguez Bulldogs
+247,Kansas City Roos
+248,Syracuse Orange
+249,Villanova Wildcats
+250,Texas Longhorns
+251,Delaware State Hornets
+252,Saint Louis Billikens
+253,Loyola Chicago Ramblers
+254,VCU Rams
+255,Davidson Wildcats
+256,Dayton Flyers
+257,George Washington Revolutionaries
+258,St. Bonaventure Bonnies
+259,Rhode Island Rams
+260,Boston College Eagles
+261,Florida State Seminoles
+262,Holy Family University Tigers
+263,Franklin Pierce Ravens
+264,Detroit Mercy Titans
+265,UT Arlington Mavericks
+266,Providence Friars
+267,Saint Joseph's Hawks
+268,Louisiana Tech Bulldogs
+269,St. John's Red Storm
+270,Manhattan Jaspers
+271,Georgian Court Lions
+272,San Francisco Dons
+273,Fairleigh Dickinson Knights
+274,Cal State Northridge Matadors
+275,Mansfield Mountaineers
+276,Utah State Aggies
+277,Texas Southern Tigers
+278,IU Indianapolis Jaguars
+279,Wake Forest Demon Deacons
+280,Michigan Wolverines
+281,Creighton Bluejays
+282,Butler Bulldogs
+283,Capital Crusaders
+284,New Mexico State Aggies
+285,Western Michigan Broncos
+286,UNLV Rebels
+287,Mount Olive Trojans
+288,Cornell Big Red
+289,UC San Diego Tritons
+290,Immaculata Mighty Macs
+291,UVA Wise Cavaliers
+292,South Dakota State Jackrabbits
+293,Cleary University Cougars
+294,Xavier Musketeers
+295,Minnesota Golden Gophers
+296,Clemson Tigers
+297,NC State Wolfpack
+298,Stanford Cardinal
+299,Louisville Cardinals
+300,California Golden Bears
+301,SMU Mustangs
+302,Notre Dame Fighting Irish
+303,Mount St. Mary's Mountaineers
+304,Florida A&M Rattlers
+305,Alcorn State Braves
+306,Purdue Boilermakers
+307,Maryland Eastern Shore Hawks
+308,Washington Huskies
+309,Nebraska Cornhuskers
+310,Illinois Fighting Illini
+311,Indiana Hoosiers
+312,Rutgers Scarlet Knights
+313,USC Trojans
+314,Seattle U Redhawks
+315,Incarnate Word Cardinals
+316,Hawai'i Rainbow Warriors
+317,Alabama Crimson Tide
+318,Boise State Broncos
+319,Northern Kentucky Norse
+320,Oakland Golden Grizzlies
+321,Missouri Tigers
+322,Houston Christian Huskies
+323,Mississippi Valley State Delta Devils
+324,Arkansas-Pine Bluff Golden Lions
+325,Northwestern State Demons
+326,Ole Miss Rebels
+327,Vanderbilt Commodores
+328,Lindenwood Lions
+329,East Texas A&M Lions
+330,Prairie View A&M Panthers
+331,St. Thomas-Minnesota Tommies
+332,Nevada Wolf Pack
+333,Eastern Washington Eagles
+334,Northern Colorado Bears
+335,Cal State Fullerton Titans
+336,Pacific Tigers
+337,Colorado State Rams
+338,Alabama State Hornets
+339,Wyoming Cowboys
+340,Lamar Cardinals
+341,Southern Jaguars
+342,Abilene Christian Wildcats
+343,Gonzaga Bulldogs
+344,Sam Houston Bearkats
+345,Arlington Baptist Patriots
+346,Cleveland State Vikings
+347,UT Rio Grande Valley Vaqueros
+348,Saint Mary's Gaels
+349,South Dakota Coyotes
+350,Oregon State Beavers
+351,Maryland Terrapins
+352,New Mexico Lobos
+353,Youngstown State Penguins
+354,North Dakota Fighting Hawks
+355,Robert Morris Colonials
+356,Northwest Indian RedHawks
+357,Justice College Lions
+358,Bowling Green Falcons
+359,Pepperdine Waves
+360,North Dakota State Bison
+361,Utah Tech Trailblazers
+362,Lincoln University (CA) Oaklanders
+363,Utah Valley Wolverines
+364,Northern Arizona Lumberjacks
+365,Idaho State Bengals
+366,Montana Grizzlies
+367,Montana State Bobcats
+368,Portland State Vikings
+369,Sacramento State Hornets
+370,Idaho Vandals
+371,Cal Poly Mustangs
+372,Washington State Cougars
+373,UC Santa Barbara Gauchos
+374,Eastern Oregon Mountaineers
+375,Weber State Wildcats
+376,Hawai'i Hilo Vulcans
+377,Denver Pioneers
+378,Montana Tech Orediggers
+379,Southern Oregon Raiders
+380,Embry-Riddle (AZ) Eagles
+381,Walla Walla Wolves
+382,Park University Gilbert Buccaneers
+383,Nelson Lions
+384,Eastern Michigan Eagles
+385,Southern Utah Thunderbirds
+386,Benedictine (AZ) Redhawks
+387,Cal Maritime Keelhaulers
+388,Fresno State Bulldogs
+389,UC Davis Aggies
+390,Stanislaus State Warriors
+391,Bethesda University Flames
+392,UC Riverside Highlanders
+393,Evergreen State Geoducks
+394,Piedmont Lions
+395,Little Rock Trojans
+396,Averett Cougars
+397,Bob Jones Bruins
+398,Morris College Hornets
+399,UT Martin Skyhawks
+400,Columbia International Rams
+401,Carolina University Bruins
+402,McNeese Cowboys
+403,Central Penn Knights
+404,St. Andrews Knights
+405,UTEP Miners
+406,Ohio Bobcats
+407,Tennessee State Tigers
+408,Bluefield University Ramblin' Rams
+409,Southern Virginia Knights
+410,Warner University Royals
+411,Washington College (MD) Shoremen
+412,Christendom Crusaders
+413,Regent Royals
+414,Eastern Illinois Panthers
+415,SIU Edwardsville Cougars
+416,Texas A&M-Corpus Christi Islanders
+417,San Francisco State Gators
+418,Portland Pilots
+419,San José State Spartans
+420,Westcliff Warriors
+421,Long Beach State Beach
+422,Chapman Panthers
+423,Kent State Golden Flashes
+424,Westminster (UT) Griffins
+425,San Diego State Aztecs
+426,Menlo Oaks
+427,Grambling Tigers
+428,Northwest University Eagles
+429,Grand Canyon Lopes
+430,La Sierra Golden Eagles
+431,Nobel Knights
+432,Jessup University Warriors
+433,Life Pacific Warriors
+434,Santa Clara Broncos
+435,St. Francis (IL) Fighting Saints
+436,La Verne Leopards
+437,Spartanburg Methodist Pioneers
+438,Elizabeth City State Vikings
+439,Ferrum Panthers
+440,Randolph-Macon Yellow Jackets
+441,Virginia Wesleyan Blue Marlins
+442,Chestnut Hill College Griffins
+443,Mary Baldwin Fighting Squirrels
+444,Midway University Eagles
+445,Dickinson (PA) Red Devils
+446,Old Westbury Panthers
+447,Penn State - Wilkes-Barre Mountain Lions
+448,Nicholls Colonels
+449,Morehead State Eagles
+450,Avila Eagles
+451,William Woods Owls
+452,Southern Indiana Screaming Eagles
+453,Northern Illinois Huskies
+454,Livingstone Blue Bears
+455,Louisiana Christian Wildcats
+456,Dillard Blue Devils
+457,Auburn-Montgomery Senators
+458,Wright State Raiders
+459,Webber International Warriors
+460,Loyola New Orleans Wolfpack
+461,William Carey Crusaders
+462,NC Wesleyan Battling Bishops
+463,Bluffton Beavers
+464,Defiance Yellow Jackets
+465,Champion Christian Tigers
+466,Stephen F. Austin Lumberjacks
+467,Northern New Mexico Eagles
+468,College Of Biblical Studies Ambassadors
+469,Dallas Christian Crusaders
+470,Texas Lutheran Bulldogs
+471,Southwestern Adventist Knights
+472,Schreiner Mountaineers
+473,Lakeland Muskies
+474,Akron Zips
+475,North Central College Cardinals
+476,Saint Mary's (MN) Cardinals
+477,Eureka Red Devils
+478,Bethany (WV) Bison
+479,Penn State-Shenango Nittany Lions
+480,Western Illinois Leathernecks
+481,Michigan Tech Huskies
+482,Ohio Christian Trailblazers
+483,Central State (OH) Marauders
+484,Baldwin Wallace Yellow Jackets
+485,Brescia Bearcats
+486,Johnson & Wales (RI) Griffins
+487,Nazareth College Golden Flyers
+488,Kean Cougars
+489,Emerson Lions
+490,Vermont State - Lyndon Hornets
+491,Colby-Sawyer Chargers
+492,Marywood Pacers
+493,Penn State-Schuylkill Nittany Lions
+494,Bowdoin Polar Bears
+495,Merchant Marine Academy Mariners
+496,Sarah Lawrence Gryphons
+497,Mercy Mavericks
+498,John Jay College Bloodhounds
+499,Houghton Highlanders
+500,Saint Elizabeth Eagles
+501,Concordia-Ann Arbor Cardinals
+502,Calumet College Crimson Wave
+503,IU Columbus Crimson Pride
+504,Goshen Maple Leafs
+505,Trinity Christian (IL) Trolls
+506,Ozark Christian Ambassadors
+507,Haskell Jayhawks
+508,Rogers State Hillcats
+509,Texas A&M-Texarkana Eagles
+510,Hannibal-LaGrange Trojans
+511,Kansas Christian Falcons
+512,Calvary Warriors
+513,Puerto Rico-Rio Piedras Gallitos
+514,Western New Mexico Mustangs
+515,Monmouth (IL) Fighting Scots
+516,St. Ambrose Fighting Bees
+517,East-West University Phantoms
+518,Miami (OH)-Hamilton Harriers
+519,Heidelberg Student Princes
+520,Davis & Elkins Senators
+521,West Virginia Wesleyan Bobcats
+522,Ohio Wesleyan Battling Bishops
+523,SUNY-Brockport Golden Eagles
+524,Muskingum Fighting Muskies
+525,Fredonia State Blue Devils
+526,Pittsburgh-Bradford Panthers
+527,Purdue Northwest Pride
+528,Aquinas Saints
+529,Holy Cross College (IN) Saints
+530,Benedictine University (IL) Eagles
+531,Davenport Panthers
+532,Franklin Grizzlies
+533,Anderson (IN) Ravens
+534,Taylor Trojans
+535,Siena Heights Saints
+536,Voorhees Tigers
+537,Mid-Atlantic Christian Mustangs
+538,Gwynedd-Mercy Griffins
+539,Cheyney (PA) Wolves
+540,Apprentice School Builders
+541,Trinity (FL) Tigers
+542,Washington Adventist Shock
+543,Bowie State Bulldogs
+544,Morehouse Maroon Tigers
+545,Frostburg State Bobcats
+546,District Of Columbia Firebirds
+547,Gallaudet Bison
+548,Bryn Athyn Lions
+549,Missouri S&T Miners
+550,Missouri Southern State Lions
+551,Lincoln (MO) Blue Tigers
+552,Friends University Falcons
+553,Judson University Eagles
+554,Dubuque Spartans
+555,York College Nebraska Panthers
+556,University of Health Sciences & Pharmacy Eutectics
+557,Concordia-St. Paul Golden Bears
+558,Occidental Tigers
+559,Manor College Blue Jays
+560,Springfield Pride
+561,Penn State-Fayette Nittany Lions
+562,Penn State Scranton Nittany Lions
+563,Vermont State - Johnson Badgers
+564,Franciscan University Barons
+565,WPI Engineers
+566,Purchase Panthers
+567,Vermont State - Randolph Knights
+568,Lehman College Bridges
+569,Pratt Cannoneers
+570,York (NY) Cardinals
+571,Chatham University Cougars
+572,Manhattanville Valiants
+573,Notre Dame (Md) Gators
+574,Boyce Bulldogs
+575,Kentucky Christian Knights
+576,Alice Lloyd College Eagles
+577,Union (TN) Bulldogs
+578,Bryan (TN) Lions
+579,Milligan Buffaloes
+580,Fort Valley State Wildcats
+581,Mississippi College Choctaws
+582,Rhodes Lynx
+583,Earlham College Quakers
+584,Blackburn Beavers
+585,Bethel (TN) Wildcats
+586,Montreat Cavaliers
+587,Crowley's Ridge Pioneers
+588,Saint Mary of the Woods College Pomeroys
+589,Westminster (MO) Blue Jays
+590,Campbellsville-Harrodsburg Pioneers
+591,Fisk Bulldogs
+592,Johnson University (TN) Royals
+593,Western Oregon Wolves
+594,Seattle Pacific Falcons
+595,Mitchell College Mariners
+596,Regis Pride
+597,SUNY-Canton Roos
+598,Puerto Rico-Bayamon Pirates
+599,Neumann Knights
+600,Rosemont Ravens
+601,Mount Saint Mary (NY) Knights
+602,SUNY-Maritime Privateers
+603,Tusculum Pioneers
+604,William Peace Pacers
+605,Tennessee Wesleyan Bulldogs
+606,Oglethorpe Stormy Petrels
+607,Erskine Flying Fleet
+608,Augusta Jaguars
+609,North Greenville Crusaders
+610,Trinity (TX) Tigers
+611,St. Thomas (TX) Celts
+612,Dallas Crusaders
+613,LeTourneau Yellow Jackets
+614,Texas Wesleyan Rams
+615,UNT Dallas Trailblazers
+616,Texas College Steers
+617,McMurry War Hawks
+618,Ecclesia Royals
+619,Paul Quinn Tigers
+620,Our Lady Of The Lake Saints
+621,Texas A&M-San Antonio Jaguars
+622,Southern-New Orleans Knights
+623,Mississippi University For Women Owls
+624,Oakwood Ambassadors
+625,Texas A&M-Kingsville Javelinas
+626,Xavier (LA) Gold Nuggets
+627,Arkansas Baptist Buffaloes
+628,Lindsey Wilson College Blue Raiders
+629,Campbellsville Tigers
+630,Kentucky Wesleyan Panthers
+631,Ouachita Baptist Tigers
+632,Lane College Dragons
+633,Florida National Conquistadors
+634,UT Dallas Comets
+635,New Mexico Highlands Cowboys
+636,University of The Southwest Mustangs
+637,Spring Hill Badgers
+638,Mobile Rams
+639,Western Colorado Mountaineers
+640,Colorado Christian Cougars
+641,Colorado-Colorado Springs Mountain Lions
+642,Wayland Baptist Pioneers
+643,MARIAN Sabres
+644,Lewis & Clark Pioneers
+645,Willamette Bearcats
+646,Northeastern State RiverHawks
+647,Southwestern Christian Eagles
+648,Hawai'i Pacific Sea Warriors
+649,LSU Alexandria Bull Terriers
+650,Rust Bearcats
+651,Corban College Warriors
+652,Sul Ross State Lobos
+653,UT Permian Basin Falcons
+654,Colorado College Tigers
+655,Randolph College Wildcats
+656,Brewton-Parker Wildcats
+657,Edward Waters Tigers
+658,Mount Marty College Lancers
+659,Dakota Wesleyan Tigers
+660,Chadron State Eagles
+661,Jamestown Jimmies
+662,Minnesota Crookston Golden Eagles
+663,Wisconsin-Stout Blue Devils
+664,Medgar Evers Cougars
+665,Randall University Saints
+666,Southern Wesleyan Warriors
+667,Brevard Tornados
+668,Carolina Christian College Centurions
+669,Columbia College (SC) Fighting Koalas
+670,Rockford Regents
+671,Dean College Bulldogs
+672,Pacific (OR) Boxers
+673,Dickinson State (ND) Blue Hawks
+674,South Dakota Mines Hardrockers
+675,Waldorf College Warriors
+676,Kentucky State Thorobreds
+677,Cumberland (KY) Patriots
+678,Mid-America Christian Evangels
+679,Rivier Raiders
+680,Fisher College Eagles
+681,Southwestern (TX) Pirates
+682,Howard Payne Yellow Jackets
+683,Hardin-Simmons Cowboys
+684,Point University Skyhawks
+685,Dalton State Roadrunners
+686,Tabor
+687,Whittier Poets
+688,North Central (MN) Rams
+689,St. Norbert Green Knights
+690,Crown College Polars
+691,Lynchburg Hornets
+692,Framingham State Rams
+693,Lesley University Lynx
+694,Shawnee State Bears
+695,Harris-Stowe State Hornets
+696,SUNY Poly Wildcats
+697,SUNY Delhi Broncos
+698,Mount Aloysius Mounties
+699,Penn State-Altoona Nittany Lions
