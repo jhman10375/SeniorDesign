@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, take, takeUntil } from 'rxjs';
 
+import { BaseballPositionEnum } from '../../enums/position/baseball-position.enum';
 import { FootballPositionEnum } from '../../enums/position/football-position.enum';
 import { RosterPositionEnum } from '../../enums/roster-position.enum';
 import { SportEnum } from '../../enums/sport.enum';
@@ -391,6 +392,249 @@ export class LeagueService implements OnDestroy {
     rosterAthlete.RosterPosition = RosterPositionEnum.FirstString;
     switch (leagueType) {
       case SportEnum.Baseball:
+        switch (athlete.Position) {
+          case BaseballPositionEnum.P:
+            const bsbPFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.P &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbPFS) {
+              return rosterAthlete;
+            } else {
+              const bsbPSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.P &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbPSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.C:
+            const bsbCFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.C &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbCFS) {
+              return rosterAthlete;
+            } else {
+              const bsbCSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.C &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbCSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.INF:
+            const bsbINFFS1 = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.INF &&
+                x.RosterBackup == false &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbINFFS1) {
+              rosterAthlete.RosterBackup = false;
+              return rosterAthlete;
+            } else {
+              const bsbINFFS2 = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.INF &&
+                  x.RosterBackup == true &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
+              );
+              if (!bsbINFFS2) {
+                rosterAthlete.RosterBackup = true;
+                return rosterAthlete;
+              } else {
+                const bsbINFSS1 = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == BaseballPositionEnum.INF &&
+                    x.RosterBackup == false &&
+                    x.RosterPosition == RosterPositionEnum.SecondString
+                );
+                if (!bsbINFSS1) {
+                  rosterAthlete.RosterPosition =
+                    RosterPositionEnum.SecondString;
+                  rosterAthlete.RosterBackup = false;
+                  return rosterAthlete;
+                } else {
+                  const bsbINFSS2 = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == BaseballPositionEnum.INF &&
+                      x.RosterBackup == true &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!bsbINFSS2) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = true;
+                    return rosterAthlete;
+                  } else {
+                    return this.setBenchPosition(athlete, teamRoster);
+                  }
+                }
+              }
+            }
+          case BaseballPositionEnum.OF:
+            const bsbOFFS1 = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.OF &&
+                x.RosterBackup == false &&
+                x.RosterThird == false &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbOFFS1) {
+              rosterAthlete.RosterBackup = false;
+              rosterAthlete.RosterThird = false;
+              return rosterAthlete;
+            } else {
+              const bsbOFFS2 = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.OF &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
+              );
+              if (!bsbOFFS2) {
+                rosterAthlete.RosterBackup = true;
+                rosterAthlete.RosterThird = false;
+                return rosterAthlete;
+              } else {
+                const bsbOFFS3 = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == BaseballPositionEnum.OF &&
+                    x.RosterBackup == false &&
+                    x.RosterThird == true &&
+                    x.RosterPosition == RosterPositionEnum.FirstString
+                );
+                if (!bsbOFFS3) {
+                  rosterAthlete.RosterBackup = false;
+                  rosterAthlete.RosterThird = true;
+                  return rosterAthlete;
+                } else {
+                  const bsbOFSS1 = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == BaseballPositionEnum.OF &&
+                      x.RosterBackup == false &&
+                      x.RosterThird == false &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!bsbOFSS1) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = false;
+                    rosterAthlete.RosterThird = false;
+                    return rosterAthlete;
+                  } else {
+                    const bsbOFSS2 = teamRoster.find(
+                      (x) =>
+                        x.Athlete.Position == BaseballPositionEnum.OF &&
+                        x.RosterBackup == true &&
+                        x.RosterThird == false &&
+                        x.RosterPosition == RosterPositionEnum.SecondString
+                    );
+                    if (!bsbOFSS2) {
+                      rosterAthlete.RosterPosition =
+                        RosterPositionEnum.SecondString;
+                      rosterAthlete.RosterBackup = true;
+                      rosterAthlete.RosterThird = false;
+                      return rosterAthlete;
+                    } else {
+                      const bsbOFSS3 = teamRoster.find(
+                        (x) =>
+                          x.Athlete.Position == BaseballPositionEnum.OF &&
+                          x.RosterBackup == false &&
+                          x.RosterThird == true &&
+                          x.RosterPosition == RosterPositionEnum.SecondString
+                      );
+                      if (!bsbOFSS3) {
+                        rosterAthlete.RosterPosition =
+                          RosterPositionEnum.SecondString;
+                        rosterAthlete.RosterBackup = false;
+                        rosterAthlete.RosterThird = true;
+                        return rosterAthlete;
+                      } else {
+                        return this.setBenchPosition(athlete, teamRoster);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          case BaseballPositionEnum.UT:
+            const bsbUTFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.UT &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbUTFS) {
+              return rosterAthlete;
+            } else {
+              const bsbUTSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.UT &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbUTSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.B1:
+            const bsbB1FS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.B1 &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbB1FS) {
+              return rosterAthlete;
+            } else {
+              const bsbB1SS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.B1 &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbB1SS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.B3:
+            const bsbB3FS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.B3 &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbB3FS) {
+              return rosterAthlete;
+            } else {
+              const bsbB3SS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.B3 &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbB3SS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+        }
         break;
       case SportEnum.Basketball:
         break;

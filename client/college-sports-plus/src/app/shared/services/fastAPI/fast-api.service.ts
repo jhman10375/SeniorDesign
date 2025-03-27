@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
-import { DraftCreatePickOrderDataWSModel } from '../../../pages/league/draft/models/draft-create-pick-order-data.model';
+import { DraftCreatePickOrderDataWSModel } from '../../../pages/league/draft-hub/football-draft/models/draft-create-pick-order-data.model';
 import { SportEnum } from '../../enums/sport.enum';
 import { SchoolLocationModel } from '../../models/school-location.model';
 import { SchoolModel } from '../../models/school.model';
@@ -382,8 +382,22 @@ export class FastAPIService {
     );
   }
 
-  createDraft(data: DraftCreatePickOrderDataWSModel): Observable<any> {
-    return this.httpClient.post<string>(this.url + 'create-draft', data);
+  createFootballDraft(data: DraftCreatePickOrderDataWSModel): Observable<any> {
+    return this.httpClient.post<string>(this.url + 'fb/create-draft', data);
+  }
+
+  createSoccerDraft(data: DraftCreatePickOrderDataWSModel): Observable<any> {
+    return this.httpClient.post<string>(this.url + 'scc/create-draft', data);
+  }
+
+  createBasketballDraft(
+    data: DraftCreatePickOrderDataWSModel
+  ): Observable<any> {
+    return this.httpClient.post<string>(this.url + 'bkb/create-draft', data);
+  }
+
+  createBaseballDraft(data: DraftCreatePickOrderDataWSModel): Observable<any> {
+    return this.httpClient.post<string>(this.url + 'bsb/create-draft', data);
   }
 
   // Basketball

@@ -1,0 +1,17 @@
+.h-85 {
+  height: 85% !important;
+  max-height: 85% !important;
+}
+
+@media screen and (orientation: portrait) {
+  .w-30 {
+    width: 25% !important;
+    min-width: 25% !important;
+  }
+}
+@media screen and (orientation: landscape) {
+  .w-30 {
+    width: 15% !important;
+    min-width: 15% !important;
+  }
+}

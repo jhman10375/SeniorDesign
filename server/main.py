@@ -3,7 +3,10 @@ from typing import List
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from api.routes.draft import router as draft_router
+from api.routes.footballDraft import router as football_draft_router
+from api.routes.soccerDraft import router as soccer_draft_router
+from api.routes.baseballDraft import router as baseball_draft_router
+from api.routes.basketballDraft import router as basketball_draft_router
 from api.routes.authentication import router as authentication_router
 
 import requests
@@ -3143,7 +3146,10 @@ async def get_status():
 
 
 
-app.include_router(draft_router, tags=["Draft"])
+app.include_router(football_draft_router, tags=["Football Draft"])
+app.include_router(basketball_draft_router, tags=["Basketball Draft"])
+app.include_router(baseball_draft_router, tags=["Baseball Draft"])
+app.include_router(soccer_draft_router, tags=["Soccer Draft"])
 app.include_router(authentication_router, tags=["Authentication"])
 
 if __name__ == "__main__":

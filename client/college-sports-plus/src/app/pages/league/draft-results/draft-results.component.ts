@@ -8,8 +8,8 @@ import { LeagueModel } from '../../../shared/models/league.model';
 import { AthleteService } from '../../../shared/services/bl/athlete.service';
 import { GeneralService } from '../../../shared/services/bl/general-service.service';
 import { LeagueService } from '../../../shared/services/bl/league.service';
-import { DraftSelectionsComponent } from '../draft/draft-selections/draft-selections.component';
-import { DraftSelectionModel } from '../draft/models/draft-selection.model';
+import { DraftSelectionsComponent } from '../draft-hub/football-draft/draft-selections/draft-selections.component';
+import { DraftSelectionModel } from '../draft-hub/football-draft/models/draft-selection.model';
 
 @Component({
   standalone: true,
