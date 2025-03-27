@@ -174,6 +174,7 @@ class bkbStats(BaseModel):
     steals : int
     turnovers : int
 
+
 class bkbPreds(BaseModel):
     player_name: str
     player_ID : int
@@ -278,6 +279,7 @@ class fbPlayerWithStats(BaseModel):
     team_logos : str
     stats: predictedStats
 
+
 class sccPreds(BaseModel):
     player_name : str
     player_id : int
@@ -293,6 +295,50 @@ class sccPreds(BaseModel):
     goals_allowed : float
     saves : float
 
+
+class bkbPlayerWithStats(BaseModel):
+    player_id : int
+    player_name : str
+    player_position : str
+    player_jersey : int
+    player_height : int
+    player_weight : int
+    player_team : str
+    player_year : int
+    team_color : str
+    team_alt_color : str
+    team_logos : str
+    stats: bkbPreds
+
+
+class bsbPlayerWithStats(BaseModel):
+    player_id : int
+    player_name : str
+    player_position : str
+    player_jersey : int
+    player_height : int
+    player_year : int
+    player_team : str
+    player_batting_hand : str
+    player_throwing_hand : str
+    team_color : str
+    team_alt_color : str
+    team_logos : str
+    stats: bsbStats
+
+
+class sccPlayerWithStats(BaseModel):
+    player_id : int
+    player_name : str
+    player_position : str
+    player_jersey : int
+    player_height : int
+    player_year : int
+    player_team : str
+    team_color : str
+    team_alt_color : str
+    team_logos : str
+    stats: sccPreds
 
 
 
@@ -667,9 +713,15 @@ class bsbPlayers():
         self.players_populated = False
 
         self.players = None
+        
+        nan_values = {"throw": "None Listed", "bat": "None Listed", 
+              'position': "None Listed"}
 
         try:
             self.players = pd.read_csv(f"{os.getcwd()}/cache/bsb/bsb_players.csv")
+            self.players = self.players.fillna(nan_values)
+
+
             self.populated = True 
         except FileNotFoundError:
             self.populate_players()
@@ -680,6 +732,8 @@ class bsbPlayers():
 
         try:
             self.first_string_df = pd.read_csv(f"{os.getcwd()}/cache/bsb/first_string.csv")
+            self.first_string_df = self.first_string_df.fillna(nan_values)
+
             self.first_string_populated = True 
         except FileNotFoundError:
             self.populate_first_string()
@@ -1612,8 +1666,14 @@ class sccPlayers():
 
         self.players = None
 
+        nan_values = {'position': "None Listed", 'height': 0,
+                      'year': 0, 'team': 'None'}
+
         try:
             self.players = pd.read_csv(f"{os.getcwd()}/cache/scc/scc_players.csv")
+            self.players = self.players.fillna(nan_values)
+
+
             self.populated = True 
         except FileNotFoundError:
             self.populate_players()
@@ -1624,6 +1684,9 @@ class sccPlayers():
 
         try:
             self.first_string_df = pd.read_csv(f"{os.getcwd()}/cache/scc/first_string.csv")
+            self.first_string_df = self.first_string_df.fillna(nan_values)
+
+            
             self.first_string_populated = True 
         except FileNotFoundError:
             self.populate_first_string()

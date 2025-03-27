@@ -2338,4 +2338,302 @@ def fb_predict_season(player_id : str, fullList : playerList) -> predictedStats:
     
     return return_stats
 
+def bkb_first_strings(bkbList : bkbPlayers, page = 1, page_size= 100) -> list[playerInfo]:
 
+    start = (int(page) - 1)*int(page_size)
+
+    end =  ((int(page) - 1)*int(page_size))+int(page_size)
+
+    all_players = bkbList.first_string_df.copy()
+
+    all_players = all_players[start:end]
+
+    return [playerInfo(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_team=player.team,
+                           player_height=player.height, player_weight=player.weight,
+                           player_year=player.year, team_color=player.color, 
+                           team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
+
+def bkb_predict_season(player_id : str, bkbList : bkbPlayers) -> bkbPreds:
+    with open('model/bkb/season_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 32
+
+    plyr = bkbList.df.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()
+
+    input_list = [[plyr['team'].replace("&", "%26"), plyr['weight'], plyr['height'],
+              plyr['year'], plyr['position']]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'weight', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/bkb/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['three_pointers'] = round(test_results[0][0], 1)
+    test_dict['two_pointers'] = round(test_results[0][1], 1)
+    test_dict['free_throws'] = round(test_results[0][2], 1)
+    test_dict['rebounds'] = round(test_results[0][3], 1)
+    test_dict['assists'] = round(test_results[0][4], 1)
+    test_dict['blocked_shots'] = round(test_results[0][5], 1)
+    test_dict['steals'] = round(test_results[0][6], 1)
+    test_dict['turnovers'] = round(test_results[0][7], 1)
+
+
+    return_stats = bkbPreds(player_name=plyr['name'],
+                               player_ID=plyr['id'], player_position=plyr['position'],
+                               three_pointers=round(test_dict["three_pointers"]*NUM_GAMES, 1), 
+                               two_pointers=round(test_dict["two_pointers"]*NUM_GAMES, 1),
+                               free_throws=round(test_dict["free_throws"]*NUM_GAMES, 1), 
+                               rebounds=round(test_dict["rebounds"]*NUM_GAMES, 1),
+                               assists=round(test_dict["assists"]*NUM_GAMES, 1), 
+                               blocked_shots=round(test_dict["blocked_shots"]*NUM_GAMES, 1),
+                               steals=round(test_dict["steals"]*NUM_GAMES, 1), 
+                               turnovers=round(test_dict["turnovers"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
+def bkb_first_string_info_with_predictions(bkbList : bkbPlayers, page = 1, page_size= 100) -> list[bkbPlayerWithStats]:
+    players = bkb_first_strings(bkbList, page, page_size)
+
+    stats = []
+
+    for player in players:
+        stats.append(bkb_predict_season(player.player_id, bkbList))
+
+
+    return [bkbPlayerWithStats(
+        player_id = plyr[0].player_id,
+        player_name = plyr[0].player_name,
+        player_position = plyr[0].player_position,
+        player_jersey = plyr[0].player_jersey,
+        player_height = plyr[0].player_height,
+        player_weight = plyr[0].player_weight,
+        player_team = plyr[0].player_team,
+        player_year = plyr[0].player_year,
+        team_color = plyr[0].team_color,
+        team_alt_color = plyr[0].team_alt_color,
+        team_logos = plyr[0].team_logos,
+        stats = plyr[1] )
+    
+    for plyr in zip(players, stats)]
+
+def bsb_first_strings(bsbList : bsbPlayers, page = 1, page_size= 100) -> list[bbPlayer]:
+
+    start = (int(page) - 1)*int(page_size)
+
+    end =  ((int(page) - 1)*int(page_size))+int(page_size)
+
+    all_players = bsbList.first_string_df.copy()
+
+    all_players = all_players[start:end]
+
+    return [bbPlayer(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_team=player.team,
+                           player_height=player.height, player_batting_hand=str(player.bat),
+                           player_throwing_hand=str(player.throw),
+                           player_year=player.year, team_color=player.color, 
+                           team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
+
+def bsb_predict_season(player_id : str, bsbList : bsbPlayers) -> bsbStats:
+    with open('model/bsb/season_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 56
+
+    plyr = bsbList.players.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()
+
+    input_list = [[plyr['team'], plyr['bat'], plyr['throw'], plyr['height'],
+              plyr['year'], plyr['position']]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'bat_hand', 'throw_hand', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/bsb/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['saves'] = max(round(test_results[0][0], 1), 0)
+    test_dict['innings'] = max(round(test_results[0][1], 1), 0)
+    test_dict['earned_runs_allowed'] = max(round(test_results[0][2], 1), 0)
+    test_dict['singles'] = max(round(test_results[0][3], 1), 0)
+    test_dict['doubles'] = max(round(test_results[0][4], 1), 0)
+    test_dict['triples'] = max(round(test_results[0][5], 1), 0)
+    test_dict['home_runs'] = max(round(test_results[0][6], 1), 0)
+    test_dict['runs'] = max(round(test_results[0][7], 1), 0)
+    test_dict['win'] = max(round(test_results[0][8], 1), 0)
+    test_dict['runs_batted_in'] = max(round(test_results[0][9], 1), 0)
+    test_dict['walks'] = max(round(test_results[0][10], 1), 0)
+    test_dict['hits_by_pitch'] = max(round(test_results[0][11], 1), 0)
+    test_dict['stolen_bases'] = max(round(test_results[0][12], 1), 0)
+    test_dict['caught_stealing'] = max(round(test_results[0][13], 1), 0)
+
+    if plyr['position'] != 'P':
+      test_dict['saves'] = 0
+      test_dict['innings'] = 0
+      test_dict['earned_runs_allowed'] = 0
+
+    if test_dict['win'] > 0.5:
+       test_dict['win'] = 1
+    else:
+       test_dict['win'] = 0
+
+
+    return_stats = bsbStats(player_name=plyr['name'],
+                               player_id=plyr['id'], player_position=plyr['position'],
+                               saves=round(test_dict["saves"]*NUM_GAMES, 1), 
+                               innings=round(test_dict["innings"]*NUM_GAMES, 1),
+                               earned_runs_allowed=round(test_dict["earned_runs_allowed"]*NUM_GAMES, 1), 
+                               singles=round(test_dict["singles"]*NUM_GAMES, 1),
+                               doubles=round(test_dict["doubles"]*NUM_GAMES, 1), 
+                               triples=round(test_dict["triples"]*NUM_GAMES, 1), 
+                               homers=round(test_dict["home_runs"]*NUM_GAMES, 1), 
+                               win=bool(test_dict['win']),
+                               runs=round(test_dict["runs"]*NUM_GAMES, 1),
+                               runs_batted_in=round(test_dict["runs_batted_in"]*NUM_GAMES, 1), 
+                               walks=round(test_dict["walks"]*NUM_GAMES, 1), 
+                               hits_by_pitch=round(test_dict["hits_by_pitch"]*NUM_GAMES, 1), 
+                               stolen_bases=round(test_dict["stolen_bases"]*NUM_GAMES, 1), 
+                               caught_stealing=round(test_dict["caught_stealing"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
+def bsb_first_string_info_with_predictions(bsbList : bsbPlayers, page = 1, page_size= 100) -> list[bsbPlayerWithStats]:
+    players = bsb_first_strings(bsbList, page, page_size)
+
+    stats = []
+
+    for player in players:
+        stats.append(bsb_predict_season(player.player_id, bsbList))
+
+
+    return [bsbPlayerWithStats(
+        player_id = plyr[0].player_id,
+        player_name = plyr[0].player_name,
+        player_position = plyr[0].player_position,
+        player_jersey = plyr[0].player_jersey,
+        player_height = plyr[0].player_height,
+        player_batting_hand = plyr[0].player_batting_hand,
+        player_throwing_hand = plyr[0].player_throwing_hand,
+        player_team = plyr[0].player_team,
+        player_year = plyr[0].player_year,
+        team_color = plyr[0].team_color,
+        team_alt_color = plyr[0].team_alt_color,
+        team_logos = plyr[0].team_logos,
+        stats = plyr[1] )
+    
+    for plyr in zip(players, stats)]
+
+def scc_first_strings(sccList : sccPlayers, page = 1, page_size= 100) -> list[sccPlayer]:
+    start = (int(page) - 1)*int(page_size)
+
+    end =  ((int(page) - 1)*int(page_size))+int(page_size)
+
+    all_players = sccList.first_string_df.copy()
+
+    all_players = all_players[start:end]
+
+    return [sccPlayer(player_id=player.id, player_name=player.name, player_jersey=player.jersey, 
+                           player_position=player.position, player_team=player.team,
+                           player_height=player.height, 
+                           player_year=player.year, team_color=player.color, 
+                           team_alt_color=player.alt_color, team_logos=str(player.logos)) for player in all_players.itertuples()]
+
+def scc_predict_season(player_id : str, sccList : sccPlayers) -> sccPreds:
+    with open('model/scc/season_classifier.pkl', 'rb') as fid:
+      model = pickle.load(fid)
+
+    NUM_GAMES = 18
+
+    plyr = sccList.players.copy().query(f'id == {player_id}').reset_index().iloc[0]
+
+    le = LabelEncoder()
+
+    input_list = [[plyr['team'], plyr['height'], plyr['year'], plyr['position']]]
+    
+    df_input = pd.DataFrame(input_list, columns=['team', 'height', 'year', 'position'])
+
+    for column in df_input.columns:
+        if df_input[column].dtype == object:
+          le.classes_ = np.load(f'model/scc/{column} classes.npy', allow_pickle=True)
+          df_input[column] = le.transform(df_input[column])
+
+    input_list = df_input.values.reshape(1, -1)
+    test_results = model.predict(input_list)
+
+    test_dict = {}
+
+    test_dict['goals'] = max(round(test_results[0][0], 1), 0)
+    test_dict['assists'] = max(round(test_results[0][1], 1), 0)
+    test_dict['shots_on_goal'] = max(round(test_results[0][2], 1), 0)
+    test_dict['shots_off_goal'] = max(round(test_results[0][3], 1), 0)
+    test_dict['fouls'] = max(round(test_results[0][4], 1), 0)
+    test_dict['yellow_cards'] = max(round(test_results[0][5], 1), 0)
+    test_dict['red_cards'] = max(round(test_results[0][6], 1), 0)
+    test_dict['clean_sheet'] = max(round(test_results[0][7], 1), 0)
+    test_dict['goals_allowed'] = max(round(test_results[0][8], 1), 0)
+    test_dict['saves'] = max(round(test_results[0][9], 1), 0)
+
+    if plyr['position'] != 'GK':
+      test_dict['saves'] = 0
+      test_dict['goals_allowed'] = 0
+      test_dict['clean_sheet'] = 0
+
+
+    return_stats = sccPreds(player_name=plyr['name'],
+                               player_id=plyr['id'], player_position=plyr['position'],
+                               goals=round(test_dict["goals"]*NUM_GAMES, 1), 
+                               assists=round(test_dict["assists"]*NUM_GAMES, 1),
+                               shots_on_goal=round(test_dict["shots_on_goal"]*NUM_GAMES, 1), 
+                               shots_off_goal=round(test_dict["shots_off_goal"]*NUM_GAMES, 1),
+                               fouls=round(test_dict["fouls"]*NUM_GAMES, 1), 
+                               yellow_cards=round(test_dict["yellow_cards"]*NUM_GAMES, 1), 
+                               red_cards=round(test_dict["red_cards"]*NUM_GAMES, 1), 
+                               clean_sheet=round(test_dict["clean_sheet"]*NUM_GAMES, 1),
+                               goals_allowed=round(test_dict["goals_allowed"]*NUM_GAMES, 1), 
+                               saves=round(test_dict["saves"]*NUM_GAMES, 1))
+
+    
+    return return_stats
+
+def scc_first_string_info_with_predictions(sccList : sccPlayers, page = 1, page_size= 100) -> list[sccPlayerWithStats]:
+    players = scc_first_strings(sccList, page, page_size)
+
+    stats = []
+
+    for player in players:
+        stats.append(scc_predict_season(player.player_id, sccList))
+
+
+    return [sccPlayerWithStats(
+        player_id = plyr[0].player_id,
+        player_name = plyr[0].player_name,
+        player_position = plyr[0].player_position,
+        player_jersey = plyr[0].player_jersey,
+        player_height = plyr[0].player_height,
+        player_team = plyr[0].player_team,
+        player_year = plyr[0].player_year,
+        team_color = plyr[0].team_color,
+        team_alt_color = plyr[0].team_alt_color,
+        team_logos = plyr[0].team_logos,
+        stats = plyr[1] )
+    
+    for plyr in zip(players, stats)]

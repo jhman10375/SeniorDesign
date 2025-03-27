@@ -2627,7 +2627,7 @@ async def predict_basketball_player_season(player_id : str) -> bkbPreds:
 
     le = LabelEncoder()
 
-    input_list = [[plyr['team'].replace("&", "%26"), plyr['weight'], plyr['height'],
+    input_list = [[plyr['team'], plyr['weight'], plyr['height'],
               plyr['year'], plyr['position']]]
     
     df_input = pd.DataFrame(input_list, columns=['team', 'weight', 'height', 'year', 'position'])
@@ -2710,7 +2710,7 @@ async def predict_basketball_player_stats(player_id : str, opponent = "next") ->
        opps_df = pd.read_csv(f"{os.getcwd()}/cache/bkb/opponent_names.csv")
        opponent = opps_df.query(f'Team.str.startswith("{opponent.replace("'", "\'")}")').Team.values[0]
   
-    test_QB = [[plyr['team'].replace("&", "%26"), plyr['weight'], plyr['height'],
+    test_QB = [[plyr['team'], plyr['weight'], plyr['height'],
                   plyr['year'], plyr['position'], opponent.replace("&", "%26")]]
     df_test = pd.DataFrame(test_QB, columns=['team', 'weight', 'height', 'year', 'position', 'opponent'])
 
@@ -2751,6 +2751,11 @@ async def predict_basketball_player_stats(player_id : str, opponent = "next") ->
     return return_stats
 
 
+@app.get("/predict/bkb/full_info", tags=["Prediction", "Basketball - Player Info"])
+async def get_basketball_first_string_info_with_predictions(page = 1, page_size= 100) -> list[bkbPlayerWithStats]:
+   return bkb_first_string_info_with_predictions(bkbList, page, page_size)
+
+
 #AI PREDICTIONS - BASEBALL
 
 @app.get("/predict/bsb/season/{player_id}", tags=["Prediction"])
@@ -2764,7 +2769,7 @@ async def predict_baseball_player_season(player_id : str) -> bsbStats:
 
     le = LabelEncoder()
 
-    input_list = [[plyr['team'].replace("&", "%26"), plyr['bat'], plyr['throw'], plyr['height'],
+    input_list = [[plyr['team'], plyr['bat'], plyr['throw'], plyr['height'],
               plyr['year'], plyr['position']]]
     
     df_input = pd.DataFrame(input_list, columns=['team', 'bat_hand', 'throw_hand', 'height', 'year', 'position'])
@@ -2893,7 +2898,7 @@ async def predict_baseball_player_stats(player_id : str, opponent = "next") -> b
       else:
         opponent = next_game.home_team
   
-    input_list = [[plyr['team'].replace("&", "%26"), plyr['bat'], plyr['throw'], plyr['height'],
+    input_list = [[plyr['team'], plyr['bat'], plyr['throw'], plyr['height'],
               plyr['year'], plyr['position'], opponent]]
     df_test = pd.DataFrame(input_list, columns=['team', 'bat_hand', 'throw_hand', 'height', 'year', 'position', 'opponent'])
 
@@ -2951,6 +2956,12 @@ async def predict_baseball_player_stats(player_id : str, opponent = "next") -> b
     
     return return_stats
 
+
+@app.get("/predict/bsb/full_info", tags=["Prediction", "Baseball - Player Info"])
+async def get_baseball_first_string_info_with_predictions(page = 1, page_size= 100) -> list[bsbPlayerWithStats]:
+   return bsb_first_string_info_with_predictions(bsbList, page, page_size)
+
+
 #AI PREDICTIONS - SOCCER
 
 @app.get("/predict/scc/season/{player_id}", tags=["Prediction"])
@@ -2964,7 +2975,7 @@ async def predict_soccer_player_season(player_id : str) -> sccPreds:
 
     le = LabelEncoder()
 
-    input_list = [[plyr['team'].replace("&", "%26"), plyr['height'], plyr['year'], plyr['position']]]
+    input_list = [[plyr['team'], plyr['height'], plyr['year'], plyr['position']]]
     
     df_input = pd.DataFrame(input_list, columns=['team', 'height', 'year', 'position'])
 
@@ -3084,7 +3095,7 @@ async def predict_soccer_player_stats(player_id : str, opponent = "next") -> scc
       else:
         opponent = next_game.home_team
   
-    input_list = [[plyr['team'].replace("&", "%26"), plyr['height'],
+    input_list = [[plyr['team'], plyr['height'],
               plyr['year'], plyr['position'], opponent]]
     df_test = pd.DataFrame(input_list, columns=['team', 'height', 'year', 'position', 'opponent'])
 
@@ -3131,6 +3142,13 @@ async def predict_soccer_player_stats(player_id : str, opponent = "next") -> scc
                                saves=round(test_dict["saves"], 1))
     
     return return_stats
+
+
+@app.get("/predict/scc/full_info", tags=["Prediction", "Soccer - Player Info"])
+async def get_soccer_first_string_info_with_predictions(page = 1, page_size= 100) -> list[sccPlayerWithStats]:
+   return scc_first_string_info_with_predictions(sccList, page, page_size)
+
+
 
 #DRAFT ENDPOINTS
 @app.get("/status")
