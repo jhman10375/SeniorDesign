@@ -1,0 +1,44 @@
+.custom-otp-input {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  appearance: none;
+  text-align: center;
+  transition: all 0.2s;
+  border: 1px solid var(--surface-300);
+  background: #ffffff;
+  outline-offset: -2px;
+  transition: outline-color 0.3s;
+  color: var(--text-color);
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.custom-otp-input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.custom-otp-input:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.custom-otp-input:nth-child(2),
+.custom-otp-input:nth-child(3),
+.custom-otp-input:nth-child(4),
+.custom-otp-input:nth-child(5) {
+  border-radius: 0;
+}
+
+.custom-otp-input:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-color: var(--surface-300);
+}
