@@ -1,0 +1,24 @@
+<div
+  class="flex align-items-center justify-content-between mt-2 mb-2 border-bottom-1 surface-border"
+>
+  <span
+    (click)="navigateTo(DraftNavEnum.Main)"
+    [ngClass]="isCurrentNav(DraftNavEnum.Main) ? 'text-primary' : ''"
+    >Draft</span
+  >
+  <span
+    (click)="navigateTo(DraftNavEnum.Queue)"
+    [ngClass]="isCurrentNav(DraftNavEnum.Queue) ? 'text-primary' : ''"
+    >Reserved</span
+  >
+  <span
+    (click)="navigateTo(DraftNavEnum.MySelections)"
+    [ngClass]="isCurrentNav(DraftNavEnum.MySelections) ? 'text-primary' : ''"
+    >My Roster</span
+  >
+  <span
+    (click)="navigateTo(DraftNavEnum.Selections)"
+    [ngClass]="isCurrentNav(DraftNavEnum.Selections) ? 'text-primary' : ''"
+    >League Picks</span
+  >
+</div>

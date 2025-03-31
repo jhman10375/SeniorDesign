@@ -6,8 +6,8 @@ import { AccountPageComponent } from './pages/account/account.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LeagueAddComponent } from './pages/league-add/league-add.component';
 import { LeagueSearchComponent } from './pages/league-search/league-search.component';
+import { DraftHubComponent } from './pages/league/draft-hub/draft-hub.component';
 import { DraftResultsComponent } from './pages/league/draft-results/draft-results.component';
-import { DraftComponent } from './pages/league/draft/draft.component';
 import { GameHistoryComponent } from './pages/league/game-history/game-history.component';
 import { GameComponent } from './pages/league/game/game.component';
 import { LeagueComponent } from './pages/league/league.component';
@@ -84,7 +84,7 @@ export const routes: Routes = [
       },
       {
         path: 'draft',
-        component: DraftComponent,
+        component: DraftHubComponent,
         canActivate: [AuthGuard],
       },
       {

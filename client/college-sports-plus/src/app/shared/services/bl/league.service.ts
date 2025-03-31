@@ -1,7 +1,10 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, take, takeUntil } from 'rxjs';
 
+import { BaseballPositionEnum } from '../../enums/position/baseball-position.enum';
+import { BasketballPositionEnum } from '../../enums/position/basketball-position.enum';
 import { FootballPositionEnum } from '../../enums/position/football-position.enum';
+import { SoccerPositionEnum } from '../../enums/position/soccer-position.enum';
 import { RosterPositionEnum } from '../../enums/roster-position.enum';
 import { SportEnum } from '../../enums/sport.enum';
 import { WeekStatusEnum } from '../../enums/week-status.enum';
@@ -391,8 +394,316 @@ export class LeagueService implements OnDestroy {
     rosterAthlete.RosterPosition = RosterPositionEnum.FirstString;
     switch (leagueType) {
       case SportEnum.Baseball:
+        switch (athlete.Position) {
+          case BaseballPositionEnum.P:
+            const bsbPFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.P &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbPFS) {
+              return rosterAthlete;
+            } else {
+              const bsbPSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.P &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbPSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.C:
+            const bsbCFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.C &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbCFS) {
+              return rosterAthlete;
+            } else {
+              const bsbCSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.C &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbCSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.INF:
+            const bsbINFFS1 = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.INF &&
+                x.RosterBackup == false &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbINFFS1) {
+              rosterAthlete.RosterBackup = false;
+              return rosterAthlete;
+            } else {
+              const bsbINFFS2 = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.INF &&
+                  x.RosterBackup == true &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
+              );
+              if (!bsbINFFS2) {
+                rosterAthlete.RosterBackup = true;
+                return rosterAthlete;
+              } else {
+                const bsbINFSS1 = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == BaseballPositionEnum.INF &&
+                    x.RosterBackup == false &&
+                    x.RosterPosition == RosterPositionEnum.SecondString
+                );
+                if (!bsbINFSS1) {
+                  rosterAthlete.RosterPosition =
+                    RosterPositionEnum.SecondString;
+                  rosterAthlete.RosterBackup = false;
+                  return rosterAthlete;
+                } else {
+                  const bsbINFSS2 = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == BaseballPositionEnum.INF &&
+                      x.RosterBackup == true &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!bsbINFSS2) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = true;
+                    return rosterAthlete;
+                  } else {
+                    return this.setBenchPosition(athlete, teamRoster);
+                  }
+                }
+              }
+            }
+          case BaseballPositionEnum.OF:
+            const bsbOFFS1 = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.OF &&
+                x.RosterBackup == false &&
+                x.RosterThird == false &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbOFFS1) {
+              rosterAthlete.RosterBackup = false;
+              rosterAthlete.RosterThird = false;
+              return rosterAthlete;
+            } else {
+              const bsbOFFS2 = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.OF &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
+              );
+              if (!bsbOFFS2) {
+                rosterAthlete.RosterBackup = true;
+                rosterAthlete.RosterThird = false;
+                return rosterAthlete;
+              } else {
+                const bsbOFFS3 = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == BaseballPositionEnum.OF &&
+                    x.RosterBackup == false &&
+                    x.RosterThird == true &&
+                    x.RosterPosition == RosterPositionEnum.FirstString
+                );
+                if (!bsbOFFS3) {
+                  rosterAthlete.RosterBackup = false;
+                  rosterAthlete.RosterThird = true;
+                  return rosterAthlete;
+                } else {
+                  const bsbOFSS1 = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == BaseballPositionEnum.OF &&
+                      x.RosterBackup == false &&
+                      x.RosterThird == false &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!bsbOFSS1) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = false;
+                    rosterAthlete.RosterThird = false;
+                    return rosterAthlete;
+                  } else {
+                    const bsbOFSS2 = teamRoster.find(
+                      (x) =>
+                        x.Athlete.Position == BaseballPositionEnum.OF &&
+                        x.RosterBackup == true &&
+                        x.RosterThird == false &&
+                        x.RosterPosition == RosterPositionEnum.SecondString
+                    );
+                    if (!bsbOFSS2) {
+                      rosterAthlete.RosterPosition =
+                        RosterPositionEnum.SecondString;
+                      rosterAthlete.RosterBackup = true;
+                      rosterAthlete.RosterThird = false;
+                      return rosterAthlete;
+                    } else {
+                      const bsbOFSS3 = teamRoster.find(
+                        (x) =>
+                          x.Athlete.Position == BaseballPositionEnum.OF &&
+                          x.RosterBackup == false &&
+                          x.RosterThird == true &&
+                          x.RosterPosition == RosterPositionEnum.SecondString
+                      );
+                      if (!bsbOFSS3) {
+                        rosterAthlete.RosterPosition =
+                          RosterPositionEnum.SecondString;
+                        rosterAthlete.RosterBackup = false;
+                        rosterAthlete.RosterThird = true;
+                        return rosterAthlete;
+                      } else {
+                        return this.setBenchPosition(athlete, teamRoster);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          case BaseballPositionEnum.UT:
+            const bsbUTFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.UT &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbUTFS) {
+              return rosterAthlete;
+            } else {
+              const bsbUTSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.UT &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbUTSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.B1:
+            const bsbB1FS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.B1 &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbB1FS) {
+              return rosterAthlete;
+            } else {
+              const bsbB1SS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.B1 &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbB1SS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BaseballPositionEnum.B3:
+            const bsbB3FS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BaseballPositionEnum.B3 &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bsbB3FS) {
+              return rosterAthlete;
+            } else {
+              const bsbB3SS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BaseballPositionEnum.B3 &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bsbB3SS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+        }
         break;
       case SportEnum.Basketball:
+        switch (athlete.Position) {
+          case BasketballPositionEnum.Center:
+            const bkbCFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BasketballPositionEnum.Center &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bkbCFS) {
+              return rosterAthlete;
+            } else {
+              const bkbCSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BasketballPositionEnum.Center &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bkbCSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BasketballPositionEnum.Forward:
+            const bkbFFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BasketballPositionEnum.Forward &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bkbFFS) {
+              return rosterAthlete;
+            } else {
+              const bkbFSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BasketballPositionEnum.Forward &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bkbFSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case BasketballPositionEnum.Guard:
+            const bkbGFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == BasketballPositionEnum.Guard &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!bkbGFS) {
+              return rosterAthlete;
+            } else {
+              const bkbGSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == BasketballPositionEnum.Guard &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!bkbGSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+        }
         break;
       case SportEnum.Football:
         switch (athlete.Position) {
@@ -562,6 +873,293 @@ export class LeagueService implements OnDestroy {
         }
         break;
       case SportEnum.Soccer:
+        switch (athlete.Position) {
+          case SoccerPositionEnum.D:
+            const sccD1FS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == SoccerPositionEnum.D &&
+                x.RosterBackup == false &&
+                x.RosterThird == false &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!sccD1FS) {
+              rosterAthlete.RosterBackup = false;
+              rosterAthlete.RosterThird = false;
+              return rosterAthlete;
+            } else {
+              const sccD2FS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == SoccerPositionEnum.D &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
+              );
+              if (!sccD2FS) {
+                rosterAthlete.RosterBackup = true;
+                rosterAthlete.RosterThird = false;
+                return rosterAthlete;
+              } else {
+                const sccD3FS = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == SoccerPositionEnum.D &&
+                    x.RosterBackup == false &&
+                    x.RosterThird == true &&
+                    x.RosterPosition == RosterPositionEnum.FirstString
+                );
+                if (!sccD3FS) {
+                  rosterAthlete.RosterBackup = false;
+                  rosterAthlete.RosterThird = true;
+                  return rosterAthlete;
+                } else {
+                  const sccD1SS = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == SoccerPositionEnum.D &&
+                      x.RosterBackup == false &&
+                      x.RosterThird == false &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!sccD1SS) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = false;
+                    rosterAthlete.RosterThird = false;
+                    return rosterAthlete;
+                  } else {
+                    const sccD2SS = teamRoster.find(
+                      (x) =>
+                        x.Athlete.Position == SoccerPositionEnum.D &&
+                        x.RosterBackup == true &&
+                        x.RosterThird == false &&
+                        x.RosterPosition == RosterPositionEnum.SecondString
+                    );
+                    if (!sccD2SS) {
+                      rosterAthlete.RosterPosition =
+                        RosterPositionEnum.SecondString;
+                      rosterAthlete.RosterBackup = true;
+                      rosterAthlete.RosterThird = false;
+                      return rosterAthlete;
+                    } else {
+                      const sccD3SS = teamRoster.find(
+                        (x) =>
+                          x.Athlete.Position == SoccerPositionEnum.D &&
+                          x.RosterBackup == false &&
+                          x.RosterThird == true &&
+                          x.RosterPosition == RosterPositionEnum.SecondString
+                      );
+                      if (!sccD3SS) {
+                        rosterAthlete.RosterPosition =
+                          RosterPositionEnum.SecondString;
+                        rosterAthlete.RosterBackup = false;
+                        rosterAthlete.RosterThird = true;
+                        return rosterAthlete;
+                      } else {
+                        return this.setBenchPosition(athlete, teamRoster);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          case SoccerPositionEnum.MD:
+            const sccMD1FS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == SoccerPositionEnum.MD &&
+                x.RosterBackup == false &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!sccMD1FS) {
+              rosterAthlete.RosterBackup = false;
+              return rosterAthlete;
+            } else {
+              const sccMD2FS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == SoccerPositionEnum.MD &&
+                  x.RosterBackup == true &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
+              );
+              if (!sccMD2FS) {
+                rosterAthlete.RosterBackup = true;
+                return rosterAthlete;
+              } else {
+                const sccMD1SS = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == SoccerPositionEnum.MD &&
+                    x.RosterBackup == false &&
+                    x.RosterPosition == RosterPositionEnum.SecondString
+                );
+                if (!sccMD1SS) {
+                  rosterAthlete.RosterPosition =
+                    RosterPositionEnum.SecondString;
+                  rosterAthlete.RosterBackup = false;
+                  return rosterAthlete;
+                } else {
+                  const sccMD2SS = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == SoccerPositionEnum.MD &&
+                      x.RosterBackup == true &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!sccMD2SS) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = true;
+                    return rosterAthlete;
+                  } else {
+                    return this.setBenchPosition(athlete, teamRoster);
+                  }
+                }
+              }
+            }
+          case SoccerPositionEnum.F:
+            const sccF1FS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == SoccerPositionEnum.F &&
+                x.RosterBackup == false &&
+                x.RosterThird == false &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!sccF1FS) {
+              rosterAthlete.RosterBackup = false;
+              rosterAthlete.RosterThird = false;
+              return rosterAthlete;
+            } else {
+              const sccF2FS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == SoccerPositionEnum.F &&
+                  x.RosterBackup == true &&
+                  x.RosterThird == false &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
+              );
+              if (!sccF2FS) {
+                rosterAthlete.RosterBackup = true;
+                rosterAthlete.RosterThird = false;
+                return rosterAthlete;
+              } else {
+                const sccF3FS = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == SoccerPositionEnum.F &&
+                    x.RosterBackup == false &&
+                    x.RosterThird == true &&
+                    x.RosterPosition == RosterPositionEnum.FirstString
+                );
+                if (!sccF3FS) {
+                  rosterAthlete.RosterBackup = false;
+                  rosterAthlete.RosterThird = true;
+                  return rosterAthlete;
+                } else {
+                  const sccF1SS = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == SoccerPositionEnum.F &&
+                      x.RosterBackup == false &&
+                      x.RosterThird == false &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!sccF1SS) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = false;
+                    rosterAthlete.RosterThird = false;
+                    return rosterAthlete;
+                  } else {
+                    const sccF2SS = teamRoster.find(
+                      (x) =>
+                        x.Athlete.Position == SoccerPositionEnum.F &&
+                        x.RosterBackup == true &&
+                        x.RosterThird == false &&
+                        x.RosterPosition == RosterPositionEnum.SecondString
+                    );
+                    if (!sccF2SS) {
+                      rosterAthlete.RosterPosition =
+                        RosterPositionEnum.SecondString;
+                      rosterAthlete.RosterBackup = true;
+                      rosterAthlete.RosterThird = false;
+                      return rosterAthlete;
+                    } else {
+                      const sccF3SS = teamRoster.find(
+                        (x) =>
+                          x.Athlete.Position == SoccerPositionEnum.F &&
+                          x.RosterBackup == false &&
+                          x.RosterThird == true &&
+                          x.RosterPosition == RosterPositionEnum.SecondString
+                      );
+                      if (!sccF3SS) {
+                        rosterAthlete.RosterPosition =
+                          RosterPositionEnum.SecondString;
+                        rosterAthlete.RosterBackup = false;
+                        rosterAthlete.RosterThird = true;
+                        return rosterAthlete;
+                      } else {
+                        return this.setBenchPosition(athlete, teamRoster);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          case SoccerPositionEnum.GK:
+            const sccGKFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == SoccerPositionEnum.GK &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!sccGKFS) {
+              return rosterAthlete;
+            } else {
+              const sccGKSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == SoccerPositionEnum.GK &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!sccGKSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case SoccerPositionEnum.FM:
+            const sccFMFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == SoccerPositionEnum.FM &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!sccFMFS) {
+              return rosterAthlete;
+            } else {
+              const sccFMSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == SoccerPositionEnum.FM &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!sccFMSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+          case SoccerPositionEnum.M:
+            const sccMFS = teamRoster.find(
+              (x) =>
+                x.Athlete.Position == SoccerPositionEnum.M &&
+                x.RosterPosition == RosterPositionEnum.FirstString
+            );
+            if (!sccMFS) {
+              return rosterAthlete;
+            } else {
+              const sccMSS = teamRoster.find(
+                (x) =>
+                  x.Athlete.Position == SoccerPositionEnum.M &&
+                  x.RosterPosition == RosterPositionEnum.SecondString
+              );
+              if (!sccMSS) {
+                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+                return rosterAthlete;
+              } else {
+                return this.setBenchPosition(athlete, teamRoster);
+              }
+            }
+        }
         break;
     }
     return rosterAthlete; //Should be able to remove once other sport types are added. Need to work out solution for too many of a player selected

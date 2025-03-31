@@ -5,11 +5,13 @@ export class LeagueRosterAthleteDLModel {
   PlayerID: string;
   RosterPosition: RosterPositionEnum;
   RosterBackup: Boolean | undefined;
+  RosterThird: Boolean | undefined;
 
   constructor() {
     this.AthleteID = '';
     this.PlayerID = '';
     this.RosterPosition = RosterPositionEnum.None;
     this.RosterBackup = undefined;
+    this.RosterThird = undefined;
   }
 }

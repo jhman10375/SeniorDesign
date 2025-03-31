@@ -1,0 +1,136 @@
+<div class="scrollable-container" [style]="{ height: '100%' }">
+  <div class="header">
+    <div
+      class="flex flex-row mb-1 align-items-center justify-content-between border-bottom-1 surface-border"
+    >
+      <span class="header-item" (click)="onSearch()"
+        ><i class="pi pi-search"></i><span class="ml-1">Search</span></span
+      >
+      <div class="header-item">
+        <span class="mr-2">Filters:</span>
+        <player-filter
+          class=""
+          [filterName]="'Position'"
+          [filters]="positionFilters"
+          [currentFilter]="currentPositionFilter()"
+          (setFilterEmitter)="setFilterss('Position', $event)"
+        ></player-filter>
+      </div>
+      <!-- <span class="header-item">Filters:</span>
+      <player-filter
+        class="header-item"
+        [filterName]="'Position'"
+        [filters]="positionFilters"
+        [currentFilter]="currentPositionFilter()"
+        (setFilterEmitter)="setFilterss('Position', $event)"
+      ></player-filter> -->
+      <!-- <player-filter
+        class="header-item"
+        [filterName]="'General'"
+        [filters]="[]"
+        [currentFilter]="null"
+        (setFilterEmitter)="setFilterss('General', $event)"
+      ></player-filter> -->
+    </div>
+    <div
+      class="flex flex-row mb-2 align-items-center justify-content-between border-bottom-1 surface-border"
+    >
+      @if (!endDraft) {
+        <span class="header-item">Select</span>
+      }
+      <player-sort
+        class="header-item"
+        [sortFunction]="'Name'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
+      <player-sort
+        class="header-item"
+        [sortFunction]="'Number'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
+      <player-sort
+        class="header-item"
+        [sortFunction]="'School'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
+      <!-- <span class="header-item text-xxs">Proj. PPG</span> -->
+      <player-sort
+        class="header-item text-xxs"
+        [sortFunction]="'Proj PPG'"
+        [currentSortFunction]="currentSortFunction()"
+        [currentSortType]="currentSortType()"
+        (sortFunctionEmitter)="setSortFunction($event)"
+      ></player-sort>
+    </div>
+  </div>
+
+  <div class="body">
+    @for (athlete of athleteSelection | async; track athlete) {
+      <div
+        class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border"
+      >
+        @if (!endDraft) {
+          <div class="data-cell">
+            @if (currentlyPicking) {
+              <span
+                class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                (click)="addToRoster(athlete)"
+                >Pick</span
+              >
+            } @else {
+              @if (inQueue(athlete)) {
+                <span
+                  class="grid-item text-xs text-primary border-1 p-1 border-primary border-round p-disabled"
+                  >Reserved</span
+                >
+              } @else {
+                <span
+                  class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                  (click)="addToQueue(athlete)"
+                  >Reserve</span
+                >
+              }
+            }
+          </div>
+        }
+
+        <div class="data-cell" (click)="onPlayerSelected(athlete)">{{
+          athlete.Name
+        }}</div>
+        <div class="data-cell">{{ athlete.Jersey }}</div>
+        <div class="data-cell">{{ athlete.School }}</div>
+        <div class="data-cell">{{
+          athlete.PredictedScore | number: "1.1-2"
+        }}</div>
+      </div>
+    }
+  </div>
+</div>
+
+<p-overlayPanel #positionFilterOverlayPanel>
+  <div class="overflow-scroll" style="max-height: 10vh">
+    <div class="flex flex-column">
+      @for (position of positionFilters; track position) {
+        <div
+          (click)="
+            setFilter(position); positionFilterOverlayPanel.toggle($event)
+          "
+        >
+          {{ position }}
+        </div>
+      }
+    </div>
+  </div>
+</p-overlayPanel>
+
+<p-overlayPanel #generalFilterOverlayPanel>
+  <div class="overflow-scroll" style="max-height: 10vh">
+    <div class="flex flex-column"> </div>
+  </div>
+</p-overlayPanel>
