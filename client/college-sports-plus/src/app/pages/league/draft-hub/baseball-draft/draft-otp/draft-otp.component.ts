@@ -1,6 +1,7 @@
 import { Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewChecked,
   AfterViewInit,
   Component,
   EventEmitter,
@@ -20,7 +21,9 @@ import { InputOtpModule } from 'primeng/inputotp';
   styleUrls: ['draft-otp.component.scss'],
   templateUrl: 'draft-otp.component.html',
 })
-export class DraftOTPComponent implements OnInit, AfterViewInit {
+export class DraftOTPComponent
+  implements OnInit, AfterViewInit, AfterViewChecked
+{
   @ViewChild('joinDraftButton', { static: false })
   joinDraftButton!: HTMLButtonElement;
 
@@ -74,6 +77,13 @@ export class DraftOTPComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit(): void {}
+
+  ngAfterViewChecked(): void {
+    const q = window.document.getElementsByTagName('input');
+    for (let i = 0; i < q.length; i++) {
+      q.item(i)?.setAttribute('type', 'number');
+    }
+  }
 
   onCreateDraft(): void {
     this.createDraft.emit();

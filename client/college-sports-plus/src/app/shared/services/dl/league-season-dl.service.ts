@@ -137,34 +137,28 @@ export class LeagueSeasonDLService
       if (!game.AwayTeam) {
         game.AwayTeam = [];
       }
-      switch (leagueType) {
-        case SportEnum.Baseball:
-          break;
-        case SportEnum.Basketball:
-          break;
-        case SportEnum.Football:
-          game.HomeTeam.forEach((rosterAthlete) => {
-            const rosterAthleteDL: LeagueRosterAthleteDLModel =
-              new LeagueRosterAthleteDLModel();
-            rosterAthleteDL.AthleteID = rosterAthlete.Athlete.AthleteID;
-            rosterAthleteDL.PlayerID = rosterAthlete.Athlete.PlayerID ?? '';
-            rosterAthleteDL.RosterBackup = rosterAthlete.RosterBackup;
-            rosterAthleteDL.RosterPosition = rosterAthlete.RosterPosition;
-            gameDL.HomeTeam.push(rosterAthleteDL);
-          });
-          game.AwayTeam.forEach((rosterAthlete) => {
-            const rosterAthleteDL: LeagueRosterAthleteDLModel =
-              new LeagueRosterAthleteDLModel();
-            rosterAthleteDL.AthleteID = rosterAthlete.Athlete.AthleteID;
-            rosterAthleteDL.PlayerID = rosterAthlete.Athlete.PlayerID ?? '';
-            rosterAthleteDL.RosterBackup = rosterAthlete.RosterBackup;
-            rosterAthleteDL.RosterPosition = rosterAthlete.RosterPosition;
-            gameDL.AwayTeam.push(rosterAthleteDL);
-          });
-          break;
-        case SportEnum.Soccer:
-          break;
-      }
+
+      game.HomeTeam.forEach((rosterAthlete) => {
+        const rosterAthleteDL: LeagueRosterAthleteDLModel =
+          new LeagueRosterAthleteDLModel();
+        rosterAthleteDL.AthleteID = rosterAthlete.Athlete.AthleteID;
+        rosterAthleteDL.PlayerID = rosterAthlete.Athlete.PlayerID ?? '';
+        rosterAthleteDL.RosterBackup = rosterAthlete.RosterBackup;
+        rosterAthleteDL.RosterPosition = rosterAthlete.RosterPosition;
+        rosterAthleteDL.RosterThird = rosterAthlete.RosterThird;
+        gameDL.HomeTeam.push(rosterAthleteDL);
+      });
+      game.AwayTeam.forEach((rosterAthlete) => {
+        const rosterAthleteDL: LeagueRosterAthleteDLModel =
+          new LeagueRosterAthleteDLModel();
+        rosterAthleteDL.AthleteID = rosterAthlete.Athlete.AthleteID;
+        rosterAthleteDL.PlayerID = rosterAthlete.Athlete.PlayerID ?? '';
+        rosterAthleteDL.RosterBackup = rosterAthlete.RosterBackup;
+        rosterAthleteDL.RosterPosition = rosterAthlete.RosterPosition;
+        rosterAthleteDL.RosterThird = rosterAthlete.RosterThird;
+        gameDL.AwayTeam.push(rosterAthleteDL);
+      });
+
       weekDL.Games.push(gameDL);
     });
     weeks.push(weekDL);
@@ -238,6 +232,7 @@ export class LeagueSeasonDLService
         new LeagueRosterAthleteModel();
       rosterAthleteModel.RosterBackup = athlete.RosterBackup;
       rosterAthleteModel.RosterPosition = athlete.RosterPosition;
+      rosterAthleteModel.RosterThird = athlete.RosterThird;
       rosterAthleteModel.Athlete =
         athletes.find((x) => x.AthleteID === athlete.AthleteID) ??
         new LeagueAthleteModel();
@@ -256,6 +251,7 @@ export class LeagueSeasonDLService
           new LeagueRosterAthleteDLModel();
         rosterAthleteModel.RosterBackup = athlete.RosterBackup;
         rosterAthleteModel.RosterPosition = athlete.RosterPosition;
+        rosterAthleteModel.RosterThird = athlete.RosterThird;
         rosterAthleteModel.AthleteID = athlete.Athlete.AthleteID;
         new LeagueAthleteModel();
         retRoster.push(rosterAthleteModel);

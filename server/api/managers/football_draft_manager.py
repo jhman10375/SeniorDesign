@@ -12,7 +12,7 @@ from api.models.DraftResultData import DraftResultData
 #from api.models.DraftPlayerData import DraftPlayerData
 from classes import fbPlayerWithStats, firstStringList, playerInfo, playerList
 from functions import fb_first_string_info_with_predictions
-from server.api.models.draft_player_stats.football_player import FootballPlayerStats
+from api.models.draft_player_stats.football_player import FootballPlayerStats
 
 class DraftManager:
     def __init__(self):
@@ -20,6 +20,9 @@ class DraftManager:
         self.client_usernames: Dict[str, str] = {}
         self.draft_keys: Dict[str, str] = {}
         self.draft_users: Dict[str, List[str]] = {}
+        self.draft_userIDs: Dict[str, List[str]] = {}
+        self.draft_type: Dict[str, int] = {}
+        self.draft_num_rounds: Dict[str, int] = {}
         self.allow_draft_entry: Dict[str, bool] = {}
         self.draft_orders: Dict[str, List[DraftOrderData]] = {}
         self.pick_orders: Dict[str, List[DraftOrderData]] = {}
@@ -51,8 +54,11 @@ class DraftManager:
                 #     {"id": "10", "name": "Austin Smith", "number": "10", "player_id": None, "school": {"id": "1", "name": "The Ohio State University", "primary_color": "#ba0c2f", "secondary_color": "grey"}},
                 #     {"id": "11", "name": "Adam Smith", "number": "11", "player_id": None, "school": {"id": "0", "name": "University of Cincinnati", "primary_color": "red", "secondary_color": "black"}},
                 # ]
+                self.draft_num_rounds[draft_key] = data.number_of_rounds
+                self.draft_userIDs[draft_key] = data.user_ids
+                self.draft_type[draft_key] = data.draft_type
                 self.generate_players(draft_key)
-                self.generate_draft_order(draft_key, data)
+                # self.generate_draft_order(draft_key, data)
                 return draft_key
     
     def generate_players(self, draft_key):
@@ -129,6 +135,32 @@ class DraftManager:
         self.pick_orders[draft_key] = [d for d in self.draft_orders[draft_key] if d.round == 0]
         return self.draft_orders[draft_key]
     
+    def generate_draft_order2(self, draft_key) -> Dict[str, int]:
+        match self.draft_type[draft_key]:
+            case 0:
+                random.shuffle(self.draft_userIDs[draft_key])
+                og_list = self.draft_userIDs[draft_key].copy()
+                og_list.reverse()
+                for i in range(0,self.draft_num_rounds[draft_key]):
+                    reverse_order = i % 2 == 1
+                    if (reverse_order):
+                        for index, x in enumerate(self.draft_userIDs[draft_key]):
+                            d: DraftOrderData = DraftOrderData(x, i, index)
+                            self.draft_orders[draft_key].append(d)
+                    else:
+                        for index, x in enumerate(og_list):
+                            d: DraftOrderData = DraftOrderData(x, i, index)
+                            self.draft_orders[draft_key].append(d)
+            case 1:
+                random.shuffle(self.draft_userIDs[draft_key])
+                for i in range(0,self.draft_num_rounds[draft_key]):
+                    for index, x in enumerate(self.draft_userIDs[draft_key]):
+                        d: DraftOrderData = DraftOrderData(x, i, index)
+                        self.draft_orders[draft_key].append(d)
+        
+        self.pick_orders[draft_key] = [d for d in self.draft_orders[draft_key] if d.round == 0]
+        return self.draft_orders[draft_key]
+
     def get_players(self, draft_key) -> Dict[str, any]:
         """Return JSON serialized pick_order"""
         return [obj.GetJSONData() for obj in self.players[draft_key]]
@@ -164,6 +196,7 @@ class DraftManager:
     
     def start_draft(self, draft_key: str) -> bool:
         self.allow_draft_entry[draft_key] = True
+        self.generate_draft_order2(draft_key)
         return True
 
     async def connect(self, websocket: WebSocket, draft_key: str, username: str = None):

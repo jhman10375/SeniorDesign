@@ -1,6 +1,6 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from fastapi.responses import JSONResponse
-from server.api.managers.baseball_draft_manager import DraftManager
+from api.managers.baseball_draft_manager import DraftManager
 from api.models.CreateDraftData import CreateDraftData
 
 router = APIRouter()
@@ -36,8 +36,8 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
         "username": connected_username,
         "connected_users": draft_manager.draft_users[draft_key],
         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
-        "draft_order": draft_manager.get_draft_order(draft_key),
-        "pick_order": draft_manager.get_pick_order(draft_key),
+        # "draft_order": draft_manager.get_draft_order(draft_key),
+        # "pick_order": draft_manager.get_pick_order(draft_key),
         # "connected_users": list(draft_manager.client_usernames.values())
     })
 
@@ -83,6 +83,7 @@ async def websocket_endpoint(websocket: WebSocket, draft_key: str, username: str
                         "type": "start_draft",
                         "allow_draft_entry": draft_manager.allow_draft_entry[draft_key],
                         "connected_users": draft_manager.draft_users[draft_key],
+                        "draft_order": draft_manager.get_draft_order(draft_key),
                         "pick_order": draft_manager.get_pick_order(draft_key),
                         # "connected_users": list(draft_manager.client_usernames.values())
                     })

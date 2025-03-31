@@ -4,58 +4,50 @@ import { FootballPositionEnum } from '../../../../../shared/enums/position/footb
 import { SoccerPositionEnum } from '../../../../../shared/enums/position/soccer-position.enum';
 
 export class DraftPlayerStatsWSModel {
-  extra_points: number;
-  extra_points_missed: number;
-  field_goals: number;
-  field_goals_missed: number;
-  fumbles_lost: number;
-  interceptions: number;
-  pass_TD: number;
-  pass_yds: number;
-  player_height: number;
+  user_id: string;
   player_id: number;
-  player_jersey: number;
   player_name: string;
   player_position:
     | FootballPositionEnum
     | BaseballPositionEnum
     | BasketballPositionEnum
     | SoccerPositionEnum;
-  player_team: string;
-  player_weight: number;
+  player_jersey: number;
+  player_height: number;
   player_year: number;
-  reception_TD: number;
-  reception_yds: number;
-  receptions: number;
-  rush_TD: number;
-  rush_yds: number;
-  team_alt_color: string;
+  player_team: string;
   team_color: string;
+  team_alt_color: string;
   team_logos: string;
-  user_id: string;
+  goals: number;
+  assists: number;
+  shots_on_goal: number;
+  shots_off_goal: number;
+  fouls: number;
+  yellow_cards: number;
+  red_cards: number;
+  clean_sheet: number;
+  goals_allowed: number;
+  saves: number;
 
   constructor() {
-    this.extra_points = 0;
-    this.extra_points_missed = 0;
-    this.field_goals = 0;
-    this.field_goals_missed = 0;
-    this.fumbles_lost = 0;
-    this.interceptions = 0;
-    this.pass_TD = 0;
-    this.pass_yds = 0;
+    this.goals = 0;
+    this.assists = 0;
+    this.shots_on_goal = 0;
+    this.shots_off_goal = 0;
+    this.fouls = 0;
     this.player_height = 0;
     this.player_id = 0;
     this.player_jersey = 0;
     this.player_name = '';
     this.player_position = FootballPositionEnum.None;
     this.player_team = '';
-    this.player_weight = 0;
     this.player_year = 0;
-    this.reception_TD = 0;
-    this.reception_yds = 0;
-    this.receptions = 0;
-    this.rush_TD = 0;
-    this.rush_yds = 0;
+    this.yellow_cards = 0;
+    this.red_cards = 0;
+    this.clean_sheet = 0;
+    this.goals_allowed = 0;
+    this.saves = 0;
     this.team_alt_color = '';
     this.team_color = '';
     this.team_logos = '';

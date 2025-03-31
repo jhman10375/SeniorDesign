@@ -4,45 +4,35 @@ import { FootballPositionEnum } from '../../../../../shared/enums/position/footb
 import { SoccerPositionEnum } from '../../../../../shared/enums/position/soccer-position.enum';
 
 export class DraftPlayerStatsWSModel {
-  extra_points: number;
-  extra_points_missed: number;
-  field_goals: number;
-  field_goals_missed: number;
-  fumbles_lost: number;
-  interceptions: number;
-  pass_TD: number;
-  pass_yds: number;
-  player_height: number;
+  user_id: string;
   player_id: number;
-  player_jersey: number;
   player_name: string;
   player_position:
     | FootballPositionEnum
     | BaseballPositionEnum
     | BasketballPositionEnum
     | SoccerPositionEnum;
-  player_team: string;
+  player_jersey: number;
+  player_height: number;
   player_weight: number;
+  player_team: string;
   player_year: number;
-  reception_TD: number;
-  reception_yds: number;
-  receptions: number;
-  rush_TD: number;
-  rush_yds: number;
-  team_alt_color: string;
   team_color: string;
+  team_alt_color: string;
   team_logos: string;
-  user_id: string;
+  three_pointers: number;
+  two_pointers: number;
+  free_throws: number;
+  rebounds: number;
+  assists: number;
+  blocked_shots: number;
+  steals: number;
+  turnovers: number;
 
   constructor() {
-    this.extra_points = 0;
-    this.extra_points_missed = 0;
-    this.field_goals = 0;
-    this.field_goals_missed = 0;
-    this.fumbles_lost = 0;
-    this.interceptions = 0;
-    this.pass_TD = 0;
-    this.pass_yds = 0;
+    this.three_pointers = 0;
+    this.two_pointers = 0;
+    this.free_throws = 0;
     this.player_height = 0;
     this.player_id = 0;
     this.player_jersey = 0;
@@ -51,11 +41,11 @@ export class DraftPlayerStatsWSModel {
     this.player_team = '';
     this.player_weight = 0;
     this.player_year = 0;
-    this.reception_TD = 0;
-    this.reception_yds = 0;
-    this.receptions = 0;
-    this.rush_TD = 0;
-    this.rush_yds = 0;
+    this.rebounds = 0;
+    this.assists = 0;
+    this.blocked_shots = 0;
+    this.steals = 0;
+    this.turnovers = 0;
     this.team_alt_color = '';
     this.team_color = '';
     this.team_logos = '';

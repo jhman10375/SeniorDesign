@@ -476,25 +476,25 @@ export class FootballDraftComponent implements OnInit {
 
   private clientConnected(message: any): void {
     this.inWaitingRoom.set(true);
-    let draftOrder: Array<DraftOrderPlayerWSModel> = [];
-    message.draft_order.forEach((d: DraftOrderPlayerWSModel) => {
-      const dop: DraftOrderPlayerWSModel = new DraftOrderPlayerWSModel();
-      dop.user_id = d.user_id.toString();
-      dop.index = d.index;
-      dop.round = d.round;
-      draftOrder.push(dop);
-    });
-    this.setDraftOrder(draftOrder);
+    // let draftOrder: Array<DraftOrderPlayerWSModel> = [];
+    // message.draft_order.forEach((d: DraftOrderPlayerWSModel) => {
+    //   const dop: DraftOrderPlayerWSModel = new DraftOrderPlayerWSModel();
+    //   dop.user_id = d.user_id.toString();
+    //   dop.index = d.index;
+    //   dop.round = d.round;
+    //   draftOrder.push(dop);
+    // });
+    // this.setDraftOrder(draftOrder);
 
-    let pickOrder: Array<DraftOrderPlayerWSModel> = [];
-    message.pick_order.forEach((d: DraftOrderPlayerWSModel) => {
-      const dop: DraftOrderPlayerWSModel = new DraftOrderPlayerWSModel();
-      dop.user_id = d.user_id;
-      dop.index = d.index;
-      dop.round = d.round;
-      pickOrder.push(dop);
-    });
-    this.setPickOrder(pickOrder);
+    // let pickOrder: Array<DraftOrderPlayerWSModel> = [];
+    // message.pick_order.forEach((d: DraftOrderPlayerWSModel) => {
+    //   const dop: DraftOrderPlayerWSModel = new DraftOrderPlayerWSModel();
+    //   dop.user_id = d.user_id;
+    //   dop.index = d.index;
+    //   dop.round = d.round;
+    //   pickOrder.push(dop);
+    // });
+    // this.setPickOrder(pickOrder);
 
     if (!this.joinedThroughRefresh) {
       this.draftStarted = message.allow_draft_entry;
@@ -642,7 +642,25 @@ export class FootballDraftComponent implements OnInit {
   }
 
   private startDraft(message: any): void {
-    this.draftStarted = message.allow_draft_entry;
+    let pickOrder: Array<DraftOrderPlayerWSModel> = [];
+    message.pick_order.forEach((d: DraftOrderPlayerWSModel) => {
+      const dop: DraftOrderPlayerWSModel = new DraftOrderPlayerWSModel();
+      dop.user_id = d.user_id;
+      dop.index = d.index;
+      dop.round = d.round;
+      pickOrder.push(dop);
+    });
+    this.setPickOrder(pickOrder);
+
+    let draftOrder: Array<DraftOrderPlayerWSModel> = [];
+    message.draft_order.forEach((d: DraftOrderPlayerWSModel) => {
+      const dop: DraftOrderPlayerWSModel = new DraftOrderPlayerWSModel();
+      dop.user_id = d.user_id.toString();
+      dop.index = d.index;
+      dop.round = d.round;
+      draftOrder.push(dop);
+    });
+    this.setDraftOrder(draftOrder);
 
     const draftResponseUpdated: Array<DraftSelectionModel> = [];
     this.activeLeague?.Players.forEach((player) => {
@@ -653,6 +671,7 @@ export class FootballDraftComponent implements OnInit {
     });
 
     this._draftSelections.next(draftResponseUpdated);
+    this.draftStarted = message.allow_draft_entry;
   }
 
   private playerSelected(message: any): void {

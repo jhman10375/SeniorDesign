@@ -11,14 +11,15 @@ import { PlayerFAPIModel } from '../fastAPI/models/player-fapi.model';
 @Injectable({ providedIn: 'root' })
 export class GeneralService {
   static isMobile(): boolean {
-    console.log(
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    );
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+    // console.log(
+    //   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    //     navigator.userAgent
+    //   )
+    // );
+    // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    //   navigator.userAgent
+    // );
+    return true;
   }
 
   static GetLeagueSettingsModelMap(): Map<

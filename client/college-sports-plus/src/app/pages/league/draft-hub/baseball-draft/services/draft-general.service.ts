@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { LeagueAthleteModel } from '../../../../../shared/models/league-athlete.model';
-import { FootballPlayerStatsModel } from '../../../../../shared/models/stats/football-player-stats.model';
+import { BaseballPlayerStatsModel } from '../../../../../shared/models/stats/baseball-player-stats.model';
 import { DraftPlayerStatsWSModel } from '../models/draft-player-stats-ws.model';
 import { DraftPlayerWSModel } from '../models/draft-player-ws.model';
-import { FootballDraftPlayerModel } from '../models/sport-player/football.model';
+import { BaseballDraftPlayerModel } from '../models/sport-player/baseball.model';
 
 @Injectable({ providedIn: 'root' })
 export class DraftGeneralService {
@@ -32,67 +32,65 @@ export class DraftGeneralService {
 
   static DraftPlayerStatsWSConverter(
     athlete: DraftPlayerStatsWSModel
-  ): FootballDraftPlayerModel {
-    const footballDraftPlayerModel: FootballDraftPlayerModel =
-      new FootballDraftPlayerModel();
-    footballDraftPlayerModel.Athlete = new LeagueAthleteModel();
-    footballDraftPlayerModel.Stats = new FootballPlayerStatsModel();
-    footballDraftPlayerModel.Athlete.AltColor = athlete.team_alt_color;
-    footballDraftPlayerModel.Athlete.AthleteID = athlete.player_id.toString();
-    footballDraftPlayerModel.Athlete.Color = athlete.team_color;
-    footballDraftPlayerModel.Athlete.Height = athlete.player_height;
-    footballDraftPlayerModel.Athlete.Jersey =
+  ): BaseballDraftPlayerModel {
+    const baseballDraftPlayerModel: BaseballDraftPlayerModel =
+      new BaseballDraftPlayerModel();
+    baseballDraftPlayerModel.Athlete = new LeagueAthleteModel();
+    baseballDraftPlayerModel.Stats = new BaseballPlayerStatsModel();
+    baseballDraftPlayerModel.Athlete.AltColor = athlete.team_alt_color;
+    baseballDraftPlayerModel.Athlete.AthleteID = athlete.player_id.toString();
+    baseballDraftPlayerModel.Athlete.Color = athlete.team_color;
+    baseballDraftPlayerModel.Athlete.Height = athlete.player_height;
+    baseballDraftPlayerModel.Athlete.Jersey =
       athlete.player_jersey > 0 ? athlete.player_jersey : 0;
-    footballDraftPlayerModel.Athlete.Name = athlete.player_name;
-    footballDraftPlayerModel.Athlete.PlayerID = athlete.user_id;
-    footballDraftPlayerModel.Athlete.Position = athlete.player_position;
-    footballDraftPlayerModel.Athlete.School = athlete.player_team;
-    footballDraftPlayerModel.Athlete.Team = athlete.player_team;
-    footballDraftPlayerModel.Athlete.Weight = athlete.player_weight;
-    footballDraftPlayerModel.Athlete.Year = athlete.player_year;
-    footballDraftPlayerModel.Stats.ExtraPoints = athlete.extra_points;
-    footballDraftPlayerModel.Stats.ExtraPointsMissed =
-      athlete.extra_points_missed;
-    footballDraftPlayerModel.Stats.FieldGoals = athlete.field_goals;
-    footballDraftPlayerModel.Stats.FieldGoalsMissed =
-      athlete.field_goals_missed;
-    footballDraftPlayerModel.Stats.FumblesLost = athlete.fumbles_lost;
-    footballDraftPlayerModel.Stats.Interceptions = athlete.interceptions;
-    footballDraftPlayerModel.Stats.PassTD = athlete.pass_TD;
-    footballDraftPlayerModel.Stats.PassYds = athlete.pass_yds;
-    footballDraftPlayerModel.Stats.ReceptionTD = athlete.reception_TD;
-    footballDraftPlayerModel.Stats.ReceptionYds = athlete.reception_yds;
-    footballDraftPlayerModel.Stats.Receptions = athlete.receptions;
-    footballDraftPlayerModel.Stats.RushTD = athlete.rush_TD;
-    footballDraftPlayerModel.Stats.RushYds = athlete.rush_yds;
+    baseballDraftPlayerModel.Athlete.Name = athlete.player_name;
+    baseballDraftPlayerModel.Athlete.PlayerID = athlete.user_id;
+    baseballDraftPlayerModel.Athlete.Position = athlete.player_position;
+    baseballDraftPlayerModel.Athlete.School = athlete.player_team;
+    baseballDraftPlayerModel.Athlete.Team = athlete.player_team;
+    baseballDraftPlayerModel.Athlete.Year = athlete.player_year;
+    baseballDraftPlayerModel.Stats.CaughtStealing = athlete.caught_stealing;
+    baseballDraftPlayerModel.Stats.Doubles = athlete.doubles;
+    baseballDraftPlayerModel.Stats.EarnedRunsAllowed =
+      athlete.earned_runs_allowed;
+    baseballDraftPlayerModel.Stats.HitsByPitch = athlete.hits_by_pitch;
+    baseballDraftPlayerModel.Stats.Homers = athlete.homers;
+    baseballDraftPlayerModel.Stats.Innings = athlete.innings;
+    baseballDraftPlayerModel.Stats.Runs = athlete.runs;
+    baseballDraftPlayerModel.Stats.RunsBattedIn = athlete.runs_batted_in;
+    baseballDraftPlayerModel.Stats.Saves = athlete.saves;
+    baseballDraftPlayerModel.Stats.Singles = athlete.singles;
+    baseballDraftPlayerModel.Stats.StolenBases = athlete.stolen_bases;
+    baseballDraftPlayerModel.Stats.Triples = athlete.triples;
+    baseballDraftPlayerModel.Stats.Walks = athlete.walks;
+    baseballDraftPlayerModel.Stats.Win = athlete.win;
 
-    footballDraftPlayerModel.Athlete.PredictedScore =
+    baseballDraftPlayerModel.Athlete.PredictedScore =
       DraftGeneralService.calculateProjectedPointsPerGame(
-        footballDraftPlayerModel
+        baseballDraftPlayerModel
       );
 
-    return footballDraftPlayerModel;
+    return baseballDraftPlayerModel;
   }
 
   static calculateProjectedPointsPerGame(
-    footballDraftPlayerModel: FootballDraftPlayerModel
+    baseballDraftPlayerModel: BaseballDraftPlayerModel
   ): number {
     let score: number = 0;
 
-    score = score + footballDraftPlayerModel.Stats.ExtraPoints * 1;
-    score = score + footballDraftPlayerModel.Stats.ExtraPointsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FieldGoals * 1;
-    score = score + footballDraftPlayerModel.Stats.FieldGoalsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FumblesLost * -1;
-    score = score + footballDraftPlayerModel.Stats.Interceptions * -1;
-    score = score + footballDraftPlayerModel.Stats.PassTD * 1;
-    score = score + footballDraftPlayerModel.Stats.PassYds * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionTD * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionYds * 1;
-    score = score + footballDraftPlayerModel.Stats.Receptions * 1;
-    score = score + footballDraftPlayerModel.Stats.RushTD * 1;
-    score = score + footballDraftPlayerModel.Stats.RushYds * 1;
-
+    score = score + baseballDraftPlayerModel.Stats.CaughtStealing * 1;
+    score = score + baseballDraftPlayerModel.Stats.Doubles * -1;
+    score = score + baseballDraftPlayerModel.Stats.EarnedRunsAllowed * 1;
+    score = score + baseballDraftPlayerModel.Stats.HitsByPitch * -1;
+    score = score + baseballDraftPlayerModel.Stats.Homers * -1;
+    score = score + baseballDraftPlayerModel.Stats.Innings * -1;
+    score = score + baseballDraftPlayerModel.Stats.Runs * 1;
+    score = score + baseballDraftPlayerModel.Stats.RunsBattedIn * 1;
+    score = score + baseballDraftPlayerModel.Stats.Saves * 1;
+    score = score + baseballDraftPlayerModel.Stats.Singles * 1;
+    score = score + baseballDraftPlayerModel.Stats.StolenBases * 1;
+    score = score + baseballDraftPlayerModel.Stats.Triples * 1;
+    score = score + baseballDraftPlayerModel.Stats.Walks * 1;
     return score / 12;
   }
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { LeagueAthleteModel } from '../../../../../shared/models/league-athlete.model';
-import { FootballPlayerStatsModel } from '../../../../../shared/models/stats/football-player-stats.model';
+import { SoccerPlayerStatsModel } from '../../../../../shared/models/stats/soccer-player-stats.model';
 import { DraftPlayerStatsWSModel } from '../models/draft-player-stats-ws.model';
 import { DraftPlayerWSModel } from '../models/draft-player-ws.model';
-import { FootballDraftPlayerModel } from '../models/sport-player/football.model';
+import { SoccerDraftPlayerModel } from '../models/sport-player/soccer.model';
 
 @Injectable({ providedIn: 'root' })
 export class DraftGeneralService {
@@ -32,66 +32,57 @@ export class DraftGeneralService {
 
   static DraftPlayerStatsWSConverter(
     athlete: DraftPlayerStatsWSModel
-  ): FootballDraftPlayerModel {
-    const footballDraftPlayerModel: FootballDraftPlayerModel =
-      new FootballDraftPlayerModel();
-    footballDraftPlayerModel.Athlete = new LeagueAthleteModel();
-    footballDraftPlayerModel.Stats = new FootballPlayerStatsModel();
-    footballDraftPlayerModel.Athlete.AltColor = athlete.team_alt_color;
-    footballDraftPlayerModel.Athlete.AthleteID = athlete.player_id.toString();
-    footballDraftPlayerModel.Athlete.Color = athlete.team_color;
-    footballDraftPlayerModel.Athlete.Height = athlete.player_height;
-    footballDraftPlayerModel.Athlete.Jersey =
+  ): SoccerDraftPlayerModel {
+    const soccerDraftPlayerModel: SoccerDraftPlayerModel =
+      new SoccerDraftPlayerModel();
+    soccerDraftPlayerModel.Athlete = new LeagueAthleteModel();
+    soccerDraftPlayerModel.Stats = new SoccerPlayerStatsModel();
+    soccerDraftPlayerModel.Athlete.AltColor = athlete.team_alt_color;
+    soccerDraftPlayerModel.Athlete.AthleteID = athlete.player_id.toString();
+    soccerDraftPlayerModel.Athlete.Color = athlete.team_color;
+    soccerDraftPlayerModel.Athlete.Height = athlete.player_height;
+    soccerDraftPlayerModel.Athlete.Jersey =
       athlete.player_jersey > 0 ? athlete.player_jersey : 0;
-    footballDraftPlayerModel.Athlete.Name = athlete.player_name;
-    footballDraftPlayerModel.Athlete.PlayerID = athlete.user_id;
-    footballDraftPlayerModel.Athlete.Position = athlete.player_position;
-    footballDraftPlayerModel.Athlete.School = athlete.player_team;
-    footballDraftPlayerModel.Athlete.Team = athlete.player_team;
-    footballDraftPlayerModel.Athlete.Weight = athlete.player_weight;
-    footballDraftPlayerModel.Athlete.Year = athlete.player_year;
-    footballDraftPlayerModel.Stats.ExtraPoints = athlete.extra_points;
-    footballDraftPlayerModel.Stats.ExtraPointsMissed =
-      athlete.extra_points_missed;
-    footballDraftPlayerModel.Stats.FieldGoals = athlete.field_goals;
-    footballDraftPlayerModel.Stats.FieldGoalsMissed =
-      athlete.field_goals_missed;
-    footballDraftPlayerModel.Stats.FumblesLost = athlete.fumbles_lost;
-    footballDraftPlayerModel.Stats.Interceptions = athlete.interceptions;
-    footballDraftPlayerModel.Stats.PassTD = athlete.pass_TD;
-    footballDraftPlayerModel.Stats.PassYds = athlete.pass_yds;
-    footballDraftPlayerModel.Stats.ReceptionTD = athlete.reception_TD;
-    footballDraftPlayerModel.Stats.ReceptionYds = athlete.reception_yds;
-    footballDraftPlayerModel.Stats.Receptions = athlete.receptions;
-    footballDraftPlayerModel.Stats.RushTD = athlete.rush_TD;
-    footballDraftPlayerModel.Stats.RushYds = athlete.rush_yds;
+    soccerDraftPlayerModel.Athlete.Name = athlete.player_name;
+    soccerDraftPlayerModel.Athlete.PlayerID = athlete.user_id;
+    soccerDraftPlayerModel.Athlete.Position = athlete.player_position;
+    soccerDraftPlayerModel.Athlete.School = athlete.player_team;
+    soccerDraftPlayerModel.Athlete.Team = athlete.player_team;
+    soccerDraftPlayerModel.Athlete.Year = athlete.player_year;
+    soccerDraftPlayerModel.Stats.Assists = athlete.assists;
+    soccerDraftPlayerModel.Stats.CleanSheet = athlete.clean_sheet;
+    soccerDraftPlayerModel.Stats.Fouls = athlete.fouls;
+    soccerDraftPlayerModel.Stats.Goals = athlete.goals;
+    soccerDraftPlayerModel.Stats.GoalsAllowed = athlete.goals_allowed;
+    soccerDraftPlayerModel.Stats.RedCards = athlete.red_cards;
+    soccerDraftPlayerModel.Stats.Saves = athlete.saves;
+    soccerDraftPlayerModel.Stats.ShotsOffGoal = athlete.shots_off_goal;
+    soccerDraftPlayerModel.Stats.ShotsOnGoal = athlete.shots_on_goal;
+    soccerDraftPlayerModel.Stats.YellowCards = athlete.yellow_cards;
 
-    footballDraftPlayerModel.Athlete.PredictedScore =
+    soccerDraftPlayerModel.Athlete.PredictedScore =
       DraftGeneralService.calculateProjectedPointsPerGame(
-        footballDraftPlayerModel
+        soccerDraftPlayerModel
       );
 
-    return footballDraftPlayerModel;
+    return soccerDraftPlayerModel;
   }
 
   static calculateProjectedPointsPerGame(
-    footballDraftPlayerModel: FootballDraftPlayerModel
+    soccerDraftPlayerModel: SoccerDraftPlayerModel
   ): number {
     let score: number = 0;
 
-    score = score + footballDraftPlayerModel.Stats.ExtraPoints * 1;
-    score = score + footballDraftPlayerModel.Stats.ExtraPointsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FieldGoals * 1;
-    score = score + footballDraftPlayerModel.Stats.FieldGoalsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FumblesLost * -1;
-    score = score + footballDraftPlayerModel.Stats.Interceptions * -1;
-    score = score + footballDraftPlayerModel.Stats.PassTD * 1;
-    score = score + footballDraftPlayerModel.Stats.PassYds * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionTD * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionYds * 1;
-    score = score + footballDraftPlayerModel.Stats.Receptions * 1;
-    score = score + footballDraftPlayerModel.Stats.RushTD * 1;
-    score = score + footballDraftPlayerModel.Stats.RushYds * 1;
+    score = score + soccerDraftPlayerModel.Stats.Assists * 1;
+    score = score + soccerDraftPlayerModel.Stats.CleanSheet * 1;
+    score = score + soccerDraftPlayerModel.Stats.Fouls * -1;
+    score = score + soccerDraftPlayerModel.Stats.Goals * 1;
+    score = score + soccerDraftPlayerModel.Stats.GoalsAllowed * -1;
+    score = score + soccerDraftPlayerModel.Stats.RedCards * -1;
+    score = score + soccerDraftPlayerModel.Stats.Saves * 1;
+    score = score + soccerDraftPlayerModel.Stats.ShotsOffGoal * -1;
+    score = score + soccerDraftPlayerModel.Stats.ShotsOnGoal * 1;
+    score = score + soccerDraftPlayerModel.Stats.YellowCards * -1;
 
     return score / 12;
   }

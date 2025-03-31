@@ -4,58 +4,58 @@ import { FootballPositionEnum } from '../../../../../shared/enums/position/footb
 import { SoccerPositionEnum } from '../../../../../shared/enums/position/soccer-position.enum';
 
 export class DraftPlayerStatsWSModel {
-  extra_points: number;
-  extra_points_missed: number;
-  field_goals: number;
-  field_goals_missed: number;
-  fumbles_lost: number;
-  interceptions: number;
-  pass_TD: number;
-  pass_yds: number;
-  player_height: number;
+  user_id: string;
   player_id: number;
-  player_jersey: number;
   player_name: string;
   player_position:
     | FootballPositionEnum
     | BaseballPositionEnum
     | BasketballPositionEnum
     | SoccerPositionEnum;
+  player_jersey: number;
+  player_height: number;
   player_team: string;
-  player_weight: number;
   player_year: number;
-  reception_TD: number;
-  reception_yds: number;
-  receptions: number;
-  rush_TD: number;
-  rush_yds: number;
-  team_alt_color: string;
   team_color: string;
+  team_alt_color: string;
   team_logos: string;
-  user_id: string;
+  win: boolean;
+  saves: number;
+  innings: number;
+  earned_runs_allowed: number;
+  singles: number;
+  doubles: number;
+  triples: number;
+  homers: number;
+  runs: number;
+  runs_batted_in: number;
+  walks: number;
+  hits_by_pitch: number;
+  stolen_bases: number;
+  caught_stealing: number;
 
   constructor() {
-    this.extra_points = 0;
-    this.extra_points_missed = 0;
-    this.field_goals = 0;
-    this.field_goals_missed = 0;
-    this.fumbles_lost = 0;
-    this.interceptions = 0;
-    this.pass_TD = 0;
-    this.pass_yds = 0;
+    this.win = false;
+    this.saves = 0;
+    this.innings = 0;
+    this.earned_runs_allowed = 0;
+    this.singles = 0;
+    this.doubles = 0;
+    this.triples = 0;
     this.player_height = 0;
     this.player_id = 0;
     this.player_jersey = 0;
     this.player_name = '';
     this.player_position = FootballPositionEnum.None;
     this.player_team = '';
-    this.player_weight = 0;
+    this.homers = 0;
     this.player_year = 0;
-    this.reception_TD = 0;
-    this.reception_yds = 0;
-    this.receptions = 0;
-    this.rush_TD = 0;
-    this.rush_yds = 0;
+    this.runs_batted_in = 0;
+    this.walks = 0;
+    this.runs = 0;
+    this.hits_by_pitch = 0;
+    this.stolen_bases = 0;
+    this.caught_stealing = 0;
     this.team_alt_color = '';
     this.team_color = '';
     this.team_logos = '';

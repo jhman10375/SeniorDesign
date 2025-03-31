@@ -417,7 +417,7 @@ export class FastAPIService {
   // Soccer
   getSoccerPlayers(): Observable<Array<PlayerFAPIModel>> {
     return this.httpClient.get<Array<PlayerFAPIModel>>(
-      this.url + 'bsb/players/get_first_string?page=1&page_size=999999'
+      this.url + 'scc/players/get_first_string?page=1&page_size=999999'
     );
   }
 

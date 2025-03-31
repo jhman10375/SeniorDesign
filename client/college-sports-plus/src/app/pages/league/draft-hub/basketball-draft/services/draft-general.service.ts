@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { LeagueAthleteModel } from '../../../../../shared/models/league-athlete.model';
-import { FootballPlayerStatsModel } from '../../../../../shared/models/stats/football-player-stats.model';
+import { BasketballPlayerStatsModel } from '../../../../../shared/models/stats/basketball-player-stats.model';
 import { DraftPlayerStatsWSModel } from '../models/draft-player-stats-ws.model';
 import { DraftPlayerWSModel } from '../models/draft-player-ws.model';
-import { FootballDraftPlayerModel } from '../models/sport-player/football.model';
+import { BasketballDraftPlayerModel } from '../models/sport-player/basketball.model';
 
 @Injectable({ providedIn: 'root' })
 export class DraftGeneralService {
@@ -32,66 +32,54 @@ export class DraftGeneralService {
 
   static DraftPlayerStatsWSConverter(
     athlete: DraftPlayerStatsWSModel
-  ): FootballDraftPlayerModel {
-    const footballDraftPlayerModel: FootballDraftPlayerModel =
-      new FootballDraftPlayerModel();
-    footballDraftPlayerModel.Athlete = new LeagueAthleteModel();
-    footballDraftPlayerModel.Stats = new FootballPlayerStatsModel();
-    footballDraftPlayerModel.Athlete.AltColor = athlete.team_alt_color;
-    footballDraftPlayerModel.Athlete.AthleteID = athlete.player_id.toString();
-    footballDraftPlayerModel.Athlete.Color = athlete.team_color;
-    footballDraftPlayerModel.Athlete.Height = athlete.player_height;
-    footballDraftPlayerModel.Athlete.Jersey =
+  ): BasketballDraftPlayerModel {
+    const basketballDraftPlayerModel: BasketballDraftPlayerModel =
+      new BasketballDraftPlayerModel();
+    basketballDraftPlayerModel.Athlete = new LeagueAthleteModel();
+    basketballDraftPlayerModel.Stats = new BasketballPlayerStatsModel();
+    basketballDraftPlayerModel.Athlete.AltColor = athlete.team_alt_color;
+    basketballDraftPlayerModel.Athlete.AthleteID = athlete.player_id.toString();
+    basketballDraftPlayerModel.Athlete.Color = athlete.team_color;
+    basketballDraftPlayerModel.Athlete.Height = athlete.player_height;
+    basketballDraftPlayerModel.Athlete.Jersey =
       athlete.player_jersey > 0 ? athlete.player_jersey : 0;
-    footballDraftPlayerModel.Athlete.Name = athlete.player_name;
-    footballDraftPlayerModel.Athlete.PlayerID = athlete.user_id;
-    footballDraftPlayerModel.Athlete.Position = athlete.player_position;
-    footballDraftPlayerModel.Athlete.School = athlete.player_team;
-    footballDraftPlayerModel.Athlete.Team = athlete.player_team;
-    footballDraftPlayerModel.Athlete.Weight = athlete.player_weight;
-    footballDraftPlayerModel.Athlete.Year = athlete.player_year;
-    footballDraftPlayerModel.Stats.ExtraPoints = athlete.extra_points;
-    footballDraftPlayerModel.Stats.ExtraPointsMissed =
-      athlete.extra_points_missed;
-    footballDraftPlayerModel.Stats.FieldGoals = athlete.field_goals;
-    footballDraftPlayerModel.Stats.FieldGoalsMissed =
-      athlete.field_goals_missed;
-    footballDraftPlayerModel.Stats.FumblesLost = athlete.fumbles_lost;
-    footballDraftPlayerModel.Stats.Interceptions = athlete.interceptions;
-    footballDraftPlayerModel.Stats.PassTD = athlete.pass_TD;
-    footballDraftPlayerModel.Stats.PassYds = athlete.pass_yds;
-    footballDraftPlayerModel.Stats.ReceptionTD = athlete.reception_TD;
-    footballDraftPlayerModel.Stats.ReceptionYds = athlete.reception_yds;
-    footballDraftPlayerModel.Stats.Receptions = athlete.receptions;
-    footballDraftPlayerModel.Stats.RushTD = athlete.rush_TD;
-    footballDraftPlayerModel.Stats.RushYds = athlete.rush_yds;
+    basketballDraftPlayerModel.Athlete.Name = athlete.player_name;
+    basketballDraftPlayerModel.Athlete.PlayerID = athlete.user_id;
+    basketballDraftPlayerModel.Athlete.Position = athlete.player_position;
+    basketballDraftPlayerModel.Athlete.School = athlete.player_team;
+    basketballDraftPlayerModel.Athlete.Team = athlete.player_team;
+    basketballDraftPlayerModel.Athlete.Weight = athlete.player_weight;
+    basketballDraftPlayerModel.Athlete.Year = athlete.player_year;
+    basketballDraftPlayerModel.Stats.Assists = athlete.assists;
+    basketballDraftPlayerModel.Stats.BlockedShots = athlete.blocked_shots;
+    basketballDraftPlayerModel.Stats.FreeThrows = athlete.free_throws;
+    basketballDraftPlayerModel.Stats.Rebounds = athlete.rebounds;
+    basketballDraftPlayerModel.Stats.Steals = athlete.steals;
+    basketballDraftPlayerModel.Stats.ThreePointers = athlete.three_pointers;
+    basketballDraftPlayerModel.Stats.Turnovers = athlete.turnovers;
+    basketballDraftPlayerModel.Stats.TwoPointers = athlete.two_pointers;
 
-    footballDraftPlayerModel.Athlete.PredictedScore =
+    basketballDraftPlayerModel.Athlete.PredictedScore =
       DraftGeneralService.calculateProjectedPointsPerGame(
-        footballDraftPlayerModel
+        basketballDraftPlayerModel
       );
 
-    return footballDraftPlayerModel;
+    return basketballDraftPlayerModel;
   }
 
   static calculateProjectedPointsPerGame(
-    footballDraftPlayerModel: FootballDraftPlayerModel
+    basketballDraftPlayerModel: BasketballDraftPlayerModel
   ): number {
     let score: number = 0;
 
-    score = score + footballDraftPlayerModel.Stats.ExtraPoints * 1;
-    score = score + footballDraftPlayerModel.Stats.ExtraPointsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FieldGoals * 1;
-    score = score + footballDraftPlayerModel.Stats.FieldGoalsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FumblesLost * -1;
-    score = score + footballDraftPlayerModel.Stats.Interceptions * -1;
-    score = score + footballDraftPlayerModel.Stats.PassTD * 1;
-    score = score + footballDraftPlayerModel.Stats.PassYds * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionTD * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionYds * 1;
-    score = score + footballDraftPlayerModel.Stats.Receptions * 1;
-    score = score + footballDraftPlayerModel.Stats.RushTD * 1;
-    score = score + footballDraftPlayerModel.Stats.RushYds * 1;
+    score = score + basketballDraftPlayerModel.Stats.Assists * 1;
+    score = score + basketballDraftPlayerModel.Stats.BlockedShots * -1;
+    score = score + basketballDraftPlayerModel.Stats.FreeThrows * 1;
+    score = score + basketballDraftPlayerModel.Stats.Rebounds * -1;
+    score = score + basketballDraftPlayerModel.Stats.Steals * -1;
+    score = score + basketballDraftPlayerModel.Stats.ThreePointers * -1;
+    score = score + basketballDraftPlayerModel.Stats.Turnovers * 1;
+    score = score + basketballDraftPlayerModel.Stats.TwoPointers * 1;
 
     return score / 12;
   }
