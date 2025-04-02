@@ -434,8 +434,8 @@ def get_season_stats_per_game(fullList, player_id, games_played, year):
     else:
         xp_miss = 0
 
-    return predictedStats(player_name=stats_df.iloc[0]['player'], 
-                       player_ID=stats_df.iloc[0]['playerId'], 
+    return predictedStats(player_name=player.player_name, 
+                       player_ID=player.player_id, 
                        pass_TD=round(pass_TD/games_played,1), 
                        pass_yds=round(pass_yds/games_played,1), 
                        interceptions=round(ints/games_played,1), 
