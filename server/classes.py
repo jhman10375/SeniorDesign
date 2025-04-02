@@ -1227,7 +1227,8 @@ class bsbPlayers():
                 home_team = team_name
                 away_team = games[index]['opponent']
             else:
-                opp_q = teams_df.query(f'name == "{games[index]['opponent']}"')
+                curr_op = games[index]['opponent']
+                opp_q = teams_df.query(f'name == "{curr_op}"')
 
                 if (opp_q.empty):
                     opp_id = -1
@@ -2140,7 +2141,8 @@ class sccPlayers():
                 home_team = team_name
                 away_team = games[index]['opponent']
             else:
-                opp_q = teams_df.query(f'name == "{games[index]['opponent']}"')
+                curr_op = games[index]['opponent']
+                opp_q = teams_df.query(f'name == "{curr_op}"')
 
                 if (opp_q.empty):
                     opp_id = -1
