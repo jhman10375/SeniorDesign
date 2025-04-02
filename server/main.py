@@ -7,7 +7,7 @@ from api.routes.footballDraft import router as football_draft_router
 from api.routes.soccerDraft import router as soccer_draft_router
 from api.routes.baseballDraft import router as baseball_draft_router
 from api.routes.basketballDraft import router as basketball_draft_router
-from api.routes.authentication import router as authentication_router
+#from api.routes.authentication import router as authentication_router
 
 import requests
 from datetime import datetime
@@ -1227,6 +1227,8 @@ async def get_basketball_players(team_name : str, player_type = "None") -> list[
                           +int(raw_height[raw_height.find("'")+1:raw_height.find("'")+4].replace('"', '').replace("--", "-1").replace("-", "-1")))
               weight = cols[4].text.strip().replace(" lbs", "").replace("--", "-1")
               pl_class = cols[5].text.strip()
+
+              
               match pl_class:
                   case 'FR':
                       year = 1
@@ -2201,8 +2203,9 @@ async def get_soccer_schedule(team_name: str, season : Season) -> list[bbGame]:
           home_id = team_id
           home_team = team_name
           away_team = games[index]['opponent']
+          col = 'opponent'
       else:
-          opp_q = teams_df.query(f'name == "{games[index]['opponent']}"')
+          opp_q = teams_df.query(f'name == "{games[index][col]}"')
 
           if (opp_q.empty):
              opp_id = -1
@@ -3168,7 +3171,7 @@ app.include_router(football_draft_router, tags=["Football Draft"])
 app.include_router(basketball_draft_router, tags=["Basketball Draft"])
 app.include_router(baseball_draft_router, tags=["Baseball Draft"])
 app.include_router(soccer_draft_router, tags=["Soccer Draft"])
-app.include_router(authentication_router, tags=["Authentication"])
+#app.include_router(authentication_router, tags=["Authentication"])
 
 if __name__ == "__main__":
     uvicorn.run(app, host="192.168.200.36", port=8000)
