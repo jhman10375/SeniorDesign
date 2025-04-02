@@ -18,9 +18,10 @@ load_dotenv()
 token = os.getenv("CFBD_TOKEN")
 
 def team_schedule(team, year):
-    url = f"https://api.collegefootballdata.com/games?year={year}&team={team.replace("&", "%26")}"
+    formatted_team = team.replace("&", "%26")
+    url = f"https://api.collegefootballdata.com/games?year={year}&team={formatted_team}"
 
-    post_url = f"https://api.collegefootballdata.com/games?year={year}&seasonType=postseason&team={team.replace("&", "%26")}"
+    post_url = f"https://api.collegefootballdata.com/games?year={year}&seasonType=postseason&team={formatted_team}"
 
     headers = {"Authorization": f"Bearer {token}"}
 
@@ -336,7 +337,8 @@ def get_season_stats_per_game(fullList, player_id, games_played, year):
 
     team = player.player_team
 
-    url = f"https://api.collegefootballdata.com/stats/player/season?year={year}&team={team.replace("&", "%26")}"
+    formatted_team = team.replace("&", "%26")
+    url = f"https://api.collegefootballdata.com/stats/player/season?year={year}&team={formatted_team}"
 
     headers = {"Authorization": f"Bearer {token}"}
 
