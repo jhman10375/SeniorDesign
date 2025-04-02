@@ -2714,7 +2714,8 @@ async def predict_basketball_player_stats(player_id : str, opponent = "next") ->
         opponent = next_game.home_team
     else:
        opps_df = pd.read_csv(f"{os.getcwd()}/cache/bkb/opponent_names.csv")
-       opponent = opps_df.query(f'Team.str.startswith("{opponent.replace("'", "\'")}")').Team.values[0]
+       replace_char = "\'"
+       opponent = opps_df.query(f'Team.str.startswith("{opponent.replace("'", replace_char)}")').Team.values[0]
   
     test_QB = [[plyr['team'], plyr['weight'], plyr['height'],
                   plyr['year'], plyr['position'], opponent.replace("&", "%26")]]
