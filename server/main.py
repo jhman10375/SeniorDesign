@@ -24,6 +24,11 @@ from sklearn.preprocessing import LabelEncoder
 import cbbpy.mens_scraper as s
 from utils.cbbpy_utils import _get_id_from_team
 
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from fake_useragent import UserAgent
+
 fullList = playerList()
 
 firstStrings = firstStringList(fullList)
@@ -1429,7 +1434,14 @@ async def get_baseball_schedule(team_name: str, season : Season) -> list[bbGame]
   try:
       
       
-          driver = webdriver.Chrome()
+          options = Options()
+          options.add_argument('--headless')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          ua = UserAgent()
+          userAgent = ua.random
+          options.add_argument(f'user-agent={userAgent}')
+          driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
       
           # Open the NCAA rankings page
           driver.get(f"https://stats.ncaa.org/teams/{team_id}")
@@ -1747,7 +1759,14 @@ async def get_baseball_players(team_name : str, player_type = "None") -> list[bb
 
   try:
       
-      driver = webdriver.Chrome()
+      options = Options()
+      options.add_argument('--headless')
+      options.add_argument('--no-sandbox')
+      options.add_argument('--disable-dev-shm-usage')
+      ua = UserAgent()
+      userAgent = ua.random
+      options.add_argument(f'user-agent={userAgent}')
+      driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
       
           # Open the NCAA roster page
       driver.get(f"https://stats.ncaa.org/teams/{team_id}/roster")
@@ -2076,7 +2095,14 @@ async def get_soccer_schedule(team_name: str, season : Season) -> list[bbGame]:
   try:
       
       
-          driver = webdriver.Chrome()
+          options = Options()
+          options.add_argument('--headless')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          ua = UserAgent()
+          userAgent = ua.random
+          options.add_argument(f'user-agent={userAgent}')
+          driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
       
           # Open the NCAA rankings page
           driver.get(f"https://stats.ncaa.org/teams/{team_id}")
@@ -2313,7 +2339,14 @@ async def get_soccer_players(team_name : str, player_type = "None") -> list[sccP
             
             try:
                 
-                driver = webdriver.Chrome()
+                options = Options()
+                options.add_argument('--headless')
+                options.add_argument('--no-sandbox')
+                options.add_argument('--disable-dev-shm-usage')
+                ua = UserAgent()
+                userAgent = ua.random
+                options.add_argument(f'user-agent={userAgent}')
+                driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
                 
                     # Open the NCAA roster page
                 driver.get(f"https://stats.ncaa.org/teams/{team_id}/roster")

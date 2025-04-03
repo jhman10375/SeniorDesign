@@ -5,3 +5,5 @@ scikit-learn
 pytz
 cbbpy
 numpy<2
+fake_useragent
+webdriver_manager

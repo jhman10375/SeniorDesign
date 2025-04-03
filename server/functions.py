@@ -255,8 +255,8 @@ def team_logos():
     teams_df = pd.json_normalize(teams_json)
     teams_df['city'] = teams_df['location.city'].apply(lambda x: x)
     teams_df['state'] = teams_df['location.state'].apply(lambda x: x)
-    print(teams_df)
-    print(teams_df.itertuples())
+    #print(teams_df)
+    #print(teams_df.itertuples())
 
     teams_list = [teamLogo(id=str(team.id), school=team.school, abbreviation=team.abbreviation, alt_name_1=team.alt_name1, 
                            alt_name_2=team.alt_name2, alt_name_3=team.alt_name3, city=team.city, state=team.state, logos=team.logos) for team in teams_df.itertuples()]
@@ -565,8 +565,14 @@ def bsb_team_schedule(team_name, year, bsbList : bsbPlayers):
   
   try:
       
-      
-          driver = webdriver.Chrome()
+          options = Options()
+          options.add_argument('--headless')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          ua = UserAgent()
+          userAgent = ua.random
+          options.add_argument(f'user-agent={userAgent}')
+          driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
       
           # Open the NCAA rankings page
           driver.get(f"https://stats.ncaa.org/teams/{team_id}")
@@ -825,7 +831,14 @@ def bsb_last_game(team_name, bsbList : bsbPlayers):
 def get_bsb_game_info(player_id, game_date, opp, position, name):
     
     try:
-            driver = webdriver.Chrome()
+            options = Options()
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            ua = UserAgent()
+            userAgent = ua.random
+            options.add_argument(f'user-agent={userAgent}')
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             
                 # Open the NCAA roster page
             driver.get(f"https://stats.ncaa.org/players/{player_id}")
@@ -1225,7 +1238,14 @@ def get_bsb_game_info(player_id, game_date, opp, position, name):
 
 def get_bsb_season_info(player_id, year, position, name):
     try:
-            driver = webdriver.Chrome()
+            options = Options()
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            ua = UserAgent()
+            userAgent = ua.random
+            options.add_argument(f'user-agent={userAgent}')
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             
                 # Open the NCAA roster page
             driver.get(f"https://stats.ncaa.org/players/{player_id}")
@@ -1412,7 +1432,14 @@ def scc_team_schedule(team_name, year, sccList : sccPlayers):
   try:
       
       
-          driver = webdriver.Chrome()
+          options = Options()
+          options.add_argument('--headless')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          ua = UserAgent()
+          userAgent = ua.random
+          options.add_argument(f'user-agent={userAgent}')
+          driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
       
           # Open the NCAA rankings page
           driver.get(f"https://stats.ncaa.org/teams/{team_id}")
@@ -1681,7 +1708,14 @@ def elongate_name(old_name : str) -> str:
 def get_scc_game_info(player_id, game_date, opp, position, name, resend = False):
     
     try:
-            driver = webdriver.Chrome()
+            options = Options()
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            ua = UserAgent()
+            userAgent = ua.random
+            options.add_argument(f'user-agent={userAgent}')
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             
                 # Open the NCAA roster page
             driver.get(f"https://stats.ncaa.org/players/{player_id}")
@@ -2033,7 +2067,14 @@ def get_scc_game_info(player_id, game_date, opp, position, name, resend = False)
 
 def get_scc_season_info(player_id, year, position, name):
     try:
-            driver = webdriver.Chrome()
+            options = Options()
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            ua = UserAgent()
+            userAgent = ua.random
+            options.add_argument(f'user-agent={userAgent}')
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             
                 # Open the NCAA roster page
             driver.get(f"https://stats.ncaa.org/players/{player_id}")
