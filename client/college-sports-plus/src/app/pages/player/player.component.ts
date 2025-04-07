@@ -39,6 +39,7 @@ import { SoccerPlayerStatsComponent } from './stats/soccer-player/soccer-player.
   providers: [],
   selector: 'player',
   templateUrl: 'player.component.html',
+  styleUrls: ['player.component.scss'],
 })
 export class PlayerComponent implements OnInit {
   isMobile: boolean = false;

@@ -11,6 +11,7 @@ import { LeagueService } from '../../../shared/services/bl/league.service';
   imports: [MobileScoreBoardComponent],
   selector: 'standings',
   templateUrl: 'standings.component.html',
+  styleUrls: ['standings.component.scss'],
 })
 export class StandingsComponent implements OnInit {
   isMobile: boolean = false;

@@ -21,9 +21,13 @@
       </div>
     </div>
 
-    <span class="ml-1" (click)="overlayPanel.toggle($event)">Pick Order</span>
+    <span
+      class="ml-1 underline cursor-pointer"
+      (click)="overlayPanel.toggle($event)"
+      >Pick Order</span
+    >
     <p-overlayPanel #overlayPanel>
-      <div class="h-full w-full p-2 m-2">
+      <div class="h-full w-full p-2 m-2 cursor-none">
         <div class="flex flex-column">
           @for (p of pickOrder; track p) {
             <div

@@ -1,9 +1,10 @@
 @if (isMobile) {
   <div class="scrollable-container" [style]="{ height: '100%' }">
-    <div class="head mb-2">
+    <div class="head mb-2 cursor-none">
       <div class="flex justify-content-between align-items-center">
         <h1 class="text-center">College Sports +</h1>
         <p-avatar
+          class="cursor-pointer"
           [label]="userInitials()"
           size="xlarge"
           (click)="op.toggle($event)"
@@ -38,7 +39,7 @@
         </div>
       </mobile-scoreboard>
     </div>
-    <div class="body">
+    <div class="body cursor-none">
       <div class="flex flex-row justify-content-between">
         <div class="flex flex-row"
           ><span class="material-icons" style="width: 24px; color: brown"
@@ -48,14 +49,14 @@
         </div>
         <div class="flex flex-row">
           <i
-            class="pi pi-plus"
+            class="pi pi-plus cursor-pointer"
             style="width: 24px; color: brown"
             [routerLink]="['/create-league']"
             [queryParams]="{ lt: SportEnum.Football }"
             queryParamsHandling="merge"
           ></i>
           <i
-            class="pi pi-search"
+            class="pi pi-search cursor-pointer"
             style="width: 24px; color: brown"
             [routerLink]="['/league-search']"
             [queryParams]="{ lt: SportEnum.Football }"
@@ -63,17 +64,23 @@
           ></i>
         </div>
       </div>
-      @for (league of leagueList | async; track league) {
-        @if (league.Sport == SportEnum.Football) {
-          <div class="m-2">
-            <mobile-scoreboard
-              [routerLink]="['/league', league.ID]"
-              [leagueInformationScoreboard]="true"
-              [league]="league"
-            ></mobile-scoreboard>
-          </div>
+      <div [ngClass]="!isMobileForExpo ? 'flex flex-row flex-wrap' : ''">
+        @for (league of leagueList | async; track league) {
+          @if (league.Sport == SportEnum.Football) {
+            <div
+              class="m-2 cursor-pointer"
+              [ngClass]="!isMobileForExpo ? 'scoreboard-width' : ''"
+            >
+              <mobile-scoreboard
+                [routerLink]="['/league', league.ID]"
+                [leagueInformationScoreboard]="true"
+                [league]="league"
+                class="w-full"
+              ></mobile-scoreboard>
+            </div>
+          }
         }
-      }
+      </div>
       <div class="flex flex-row justify-content-between">
         <div class="flex flex-row"
           ><span class="material-icons" style="width: 24px; color: #f88158"
@@ -83,14 +90,14 @@
         >
         <div class="flex flex-row">
           <i
-            class="pi pi-plus"
+            class="pi pi-plus cursor-pointer"
             style="width: 24px; color: #f88158"
             [routerLink]="['/create-league']"
             [queryParams]="{ lt: SportEnum.Basketball }"
             queryParamsHandling="merge"
           ></i>
           <i
-            class="pi pi-search"
+            class="pi pi-search cursor-pointer"
             style="width: 24px; color: #f88158"
             [routerLink]="['/league-search']"
             [queryParams]="{ lt: SportEnum.Basketball }"
@@ -98,17 +105,23 @@
           ></i>
         </div>
       </div>
-      @for (league of leagueList | async; track league) {
-        @if (league.Sport == SportEnum.Basketball) {
-          <div class="m-2">
-            <mobile-scoreboard
-              [routerLink]="['/league', league.ID]"
-              [leagueInformationScoreboard]="true"
-              [league]="league"
-            ></mobile-scoreboard>
-          </div>
+      <div [ngClass]="!isMobileForExpo ? 'flex flex-row flex-wrap' : ''">
+        @for (league of leagueList | async; track league) {
+          @if (league.Sport == SportEnum.Basketball) {
+            <div
+              class="m-2 cursor-pointer"
+              [ngClass]="!isMobileForExpo ? 'scoreboard-width' : ''"
+            >
+              <mobile-scoreboard
+                [routerLink]="['/league', league.ID]"
+                [leagueInformationScoreboard]="true"
+                [league]="league"
+                class="w-full"
+              ></mobile-scoreboard>
+            </div>
+          }
         }
-      }
+      </div>
       <div class="flex flex-row justify-content-between">
         <div class="flex flex-row"
           ><span class="material-icons" style="width: 24px"
@@ -118,14 +131,14 @@
         >
         <div class="flex flex-row">
           <i
-            class="pi pi-plus"
+            class="pi pi-plus cursor-pointer"
             style="width: 24px"
             [routerLink]="['/create-league']"
             [queryParams]="{ lt: SportEnum.Baseball }"
             queryParamsHandling="merge"
           ></i>
           <i
-            class="pi pi-search"
+            class="pi pi-search cursor-pointer"
             style="width: 24px"
             [routerLink]="['/league-search']"
             [queryParams]="{ lt: SportEnum.Baseball }"
@@ -133,17 +146,23 @@
           ></i>
         </div>
       </div>
-      @for (league of leagueList | async; track league) {
-        @if (league.Sport == SportEnum.Baseball) {
-          <div class="m-2">
-            <mobile-scoreboard
-              [routerLink]="['/league', league.ID]"
-              [leagueInformationScoreboard]="true"
-              [league]="league"
-            ></mobile-scoreboard>
-          </div>
+      <div [ngClass]="!isMobileForExpo ? 'flex flex-row flex-wrap' : ''">
+        @for (league of leagueList | async; track league) {
+          @if (league.Sport == SportEnum.Baseball) {
+            <div
+              class="m-2 cursor-pointer"
+              [ngClass]="!isMobileForExpo ? 'scoreboard-width' : ''"
+            >
+              <mobile-scoreboard
+                [routerLink]="['/league', league.ID]"
+                [leagueInformationScoreboard]="true"
+                [league]="league"
+                class="w-full"
+              ></mobile-scoreboard>
+            </div>
+          }
         }
-      }
+      </div>
       <div class="flex flex-row justify-content-between">
         <div class="flex flex-row"
           ><span class="material-icons text-primary" style="width: 24px"
@@ -153,14 +172,14 @@
         >
         <div class="flex flex-row">
           <i
-            class="pi pi-plus text-primary"
+            class="pi pi-plus text-primary cursor-pointer"
             style="width: 24px"
             [routerLink]="['/create-league']"
             [queryParams]="{ lt: SportEnum.Soccer }"
             queryParamsHandling="merge"
           ></i>
           <i
-            class="pi pi-search text-primary"
+            class="pi pi-search text-primary cursor-pointer"
             style="width: 24px"
             [routerLink]="['/league-search']"
             [queryParams]="{ lt: SportEnum.Soccer }"
@@ -168,17 +187,23 @@
           ></i>
         </div>
       </div>
-      @for (league of leagueList | async; track league) {
-        @if (league.Sport == SportEnum.Soccer) {
-          <div class="m-2">
-            <mobile-scoreboard
-              [routerLink]="['/league', league.ID]"
-              [leagueInformationScoreboard]="true"
-              [league]="league"
-            ></mobile-scoreboard>
-          </div>
+      <div [ngClass]="!isMobileForExpo ? 'flex flex-row flex-wrap' : ''">
+        @for (league of leagueList | async; track league) {
+          @if (league.Sport == SportEnum.Soccer) {
+            <div
+              class="m-2 cursor-pointer"
+              [ngClass]="!isMobileForExpo ? 'scoreboard-width' : ''"
+            >
+              <mobile-scoreboard
+                [routerLink]="['/league', league.ID]"
+                [leagueInformationScoreboard]="true"
+                [league]="league"
+                class="w-full"
+              ></mobile-scoreboard>
+            </div>
+          }
         }
-      }
+      </div>
     </div>
   </div>
 }
@@ -186,11 +211,13 @@
 <p-overlayPanel #op>
   <div class="flex flex-column">
     <div
-      class="p-2 text-l border-bottom-1 surface-border"
+      class="p-2 text-l border-bottom-1 surface-border cursor-pointer"
       [routerLink]="['/account']"
       >Account</div
     >
-    <div class="p-2 text-l border-bottom-1 surface-border" (click)="logout()"
+    <div
+      class="p-2 text-l border-bottom-1 surface-border cursor-pointer"
+      (click)="logout()"
       >Logout</div
     >
   </div>

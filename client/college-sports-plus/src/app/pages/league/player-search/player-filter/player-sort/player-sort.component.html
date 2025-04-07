@@ -1,10 +1,12 @@
-<span class="header-item" (click)="setSortFunction(sortFunction)"
-  >{{ sortFunction }}
+<span class="header-item"
+  ><span class="cursor-pointer" (click)="setSortFunction(sortFunction)">{{
+    sortFunction
+  }}</span>
   @if (currentSortFunction == sortFunction && currentSortType == "Up") {
-    <i class="pi pi-arrow-up"></i>
+    <i class="pi pi-arrow-up" (click)="setSortFunction(sortFunction)"></i>
   } @else if (
     currentSortFunction == sortFunction && currentSortType == "Down"
   ) {
-    <i class="pi pi-arrow-down"></i>
+    <i class="pi pi-arrow-down" (click)="setSortFunction(sortFunction)"></i>
   }
 </span>

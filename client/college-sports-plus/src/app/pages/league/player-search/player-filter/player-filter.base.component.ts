@@ -311,7 +311,9 @@ export class PlayerFilterBase implements OnInit {
     return arr.filter((obj) => {
       if (
         !seenIds.has(obj.AthleteID) &&
-        !(this.hideTakenPlayers && obj.PlayerID!.length > 0)
+        !(this.hideTakenPlayers && obj.PlayerID!.length > 0) &&
+        obj.AthleteID &&
+        obj.AthleteID.toString().length > 0
       ) {
         seenIds.add(obj.AthleteID);
         return true;

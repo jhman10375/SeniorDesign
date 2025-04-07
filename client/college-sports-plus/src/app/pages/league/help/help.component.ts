@@ -7,6 +7,7 @@ import { filter } from 'rxjs';
   imports: [],
   selector: 'help',
   templateUrl: 'help.component.html',
+  styleUrls: ['help.component.scss'],
 })
 export class HelpComponent implements OnInit {
   constructor(

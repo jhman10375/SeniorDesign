@@ -24,7 +24,12 @@
           @if (LeaguePlayer) {
             <p-tag>{{ LeaguePlayer.TeamName }}</p-tag>
           } @else {
-            <p-tag severity="success" (click)="addToTeam()">Add to Team</p-tag>
+            <p-tag
+              severity="success"
+              (click)="addToTeam()"
+              class="cursor-pointer"
+              >Add to Team</p-tag
+            >
             <!-- <p-button
               size="small"
               label="Add to Team"

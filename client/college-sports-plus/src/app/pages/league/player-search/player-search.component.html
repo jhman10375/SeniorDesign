@@ -19,7 +19,7 @@
             <input
               #mySearchBox
               type="text"
-              class="w-full"
+              class="w-full cursor-text"
               pInputText
               [ngModel]="searchText()"
               (ngModelChange)="searchPlayers($event, undefined, draftMode)"
@@ -30,7 +30,7 @@
         @if (searchText() && searchText().length > 0) {
           <p-button
             [severity]="'danger'"
-            class="ml-2"
+            class="ml-2 cursor-pointer"
             icon="pi pi-times"
             (onClick)="onClearFilter()"
           ></p-button>
@@ -41,7 +41,7 @@
       >
         <span class="header-item">Filters:</span>
         <player-filter
-          class="header-item"
+          class="cursor-pointer"
           [filterName]="'Position'"
           [filters]="positionFilters"
           [currentFilter]="currentPositionFilter()"
@@ -49,7 +49,7 @@
         ></player-filter>
         @if (!draftMode) {
           <player-filter
-            class="header-item"
+            class="cursor-pointer"
             [filterName]="'General'"
             [filters]="['None', 'Available', 'Drafted']"
             [currentFilter]="currentGeneralFilter()"

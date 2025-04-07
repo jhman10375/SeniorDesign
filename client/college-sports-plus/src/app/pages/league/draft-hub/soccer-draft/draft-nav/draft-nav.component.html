@@ -4,21 +4,25 @@
   <span
     (click)="navigateTo(DraftNavEnum.Main)"
     [ngClass]="isCurrentNav(DraftNavEnum.Main) ? 'text-primary' : ''"
+    class="cursor-pointer"
     >Draft</span
   >
   <span
     (click)="navigateTo(DraftNavEnum.Queue)"
     [ngClass]="isCurrentNav(DraftNavEnum.Queue) ? 'text-primary' : ''"
+    class="cursor-pointer"
     >Reserved</span
   >
   <span
     (click)="navigateTo(DraftNavEnum.MySelections)"
     [ngClass]="isCurrentNav(DraftNavEnum.MySelections) ? 'text-primary' : ''"
+    class="cursor-pointer"
     >My Roster</span
   >
   <span
     (click)="navigateTo(DraftNavEnum.Selections)"
     [ngClass]="isCurrentNav(DraftNavEnum.Selections) ? 'text-primary' : ''"
+    class="cursor-pointer"
     >League Picks</span
   >
 </div>

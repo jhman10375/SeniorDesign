@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly SportEnum = SportEnum;
 
   isMobile: boolean = false;
+  isMobileForExpo: boolean = false;
 
   userInitials: WritableSignal<string> = signal('');
 
@@ -59,6 +60,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private loadingService: LoadingService
   ) {
     this.isMobile = GeneralService.isMobile();
+    this.isMobileForExpo = GeneralService.isMobileForExpo();
 
     this.leagueList = this.leagueService.leagueScoreboard;
 

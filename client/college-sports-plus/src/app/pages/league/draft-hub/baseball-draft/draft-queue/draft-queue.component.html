@@ -5,7 +5,7 @@
     >
       <span class="mr-2">Filters:</span>
       <player-filter
-        class=""
+        class="cursor-pointer"
         [filterName]="'Position'"
         [filters]="positionFilters"
         [currentFilter]="currentPositionFilter()"
@@ -66,7 +66,7 @@
           <div class="data-cell">
             @if (currentlyPicking) {
               <span
-                class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                class="grid-item text-xs text-primary border-1 p-1 border-primary border-round cursor-pointer"
                 (click)="addToRoster(athlete)"
                 >Pick</span
               >
@@ -78,14 +78,16 @@
             }
           </div>
           <span
-            class="data-cell grid-item text-xs text-red-400 border-1 p-1 border-red-400 border-round"
+            class="data-cell grid-item text-xs text-red-400 border-1 p-1 border-red-400 border-round cursor-pointer"
             (click)="removeFromQueue(athlete)"
             >Remove</span
           >
         }
-        <div class="data-cell" (click)="onPlayerSelected(athlete)">{{
-          athlete.Name
-        }}</div>
+        <div class="data-cell"
+          ><span class="cursor-pointer" (click)="onPlayerSelected(athlete)">{{
+            athlete.Name
+          }}</span></div
+        >
         <div class="data-cell">{{ athlete.Jersey }}</div>
         <div class="data-cell">{{ athlete.School }}</div>
         <div class="data-cell">{{
