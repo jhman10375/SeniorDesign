@@ -24,7 +24,12 @@
           @if (LeaguePlayer) {
             <p-tag>{{ LeaguePlayer.TeamName }}</p-tag>
           } @else {
-            <p-tag severity="danger">Not Drafted</p-tag>
+            <p-tag severity="success" (click)="addToTeam()">Add to Team</p-tag>
+            <!-- <p-button
+              size="small"
+              label="Add to Team"
+              (onClick)="addToTeam()"
+            ></p-button> -->
           }
           <p-avatar [image]="player.Logos[0]" shape="circle" />
           <span class="text-4xl" style="text-wrap: wrap; text-align: right">{{

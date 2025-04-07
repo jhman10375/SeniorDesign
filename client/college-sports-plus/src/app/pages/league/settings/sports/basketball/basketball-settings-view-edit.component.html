@@ -1,15 +1,39 @@
 <div class="flex flex-column">
   <div class="mb-2">
-    <p-card header="General League Settings">
+    <p-card>
+      <div class="flex flex-row justify-content-between align-items-center">
+        <div class="p-card-title cursor-none"> General League Settings </div>
+        @if (view) {
+          <span
+            class="pi pi-cog cursor-pointer"
+            (click)="onEditChange(true)"
+          ></span>
+        } @else {
+          <div class="flex flex-row justify-content-between">
+            <p-button
+              class="mr-2"
+              label="Cancel"
+              severity="danger"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+            <p-button
+              label="Save"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+          </div>
+        }
+      </div>
       @if (view) {
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>League Name</span>
           <span>{{ leagueSettings.GeneralSettingsModel.Name }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>League Manager</span>
           <span>{{
@@ -17,13 +41,13 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Number of Teams</span>
           <span>{{ leagueSettings.GeneralSettingsModel.NumberOfTeams }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Primary Color</span>
           <span
@@ -34,7 +58,7 @@
           ></span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Secondary Color</span>
           <span
@@ -45,7 +69,7 @@
           ></span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Public League</span>
           <span>{{
@@ -54,7 +78,7 @@
         </div>
         @if (!leagueSettings.GeneralSettingsModel.PublicLeague) {
           <div
-            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
           >
             <span>Passcode</span>
             <span>{{ leagueSettings.GeneralSettingsModel.Passcode }}</span>
@@ -62,14 +86,39 @@
         }
       } @else {
         <!-- Add edit view form functions -->
+        <div>Edit features coming soon!</div>
       }
     </p-card>
   </div>
   <div class="mb-2">
-    <p-card header="Draft Settings">
+    <p-card>
+      <div class="flex flex-row justify-content-between align-items-center">
+        <div class="p-card-title cursor-none"> Draft Settings </div>
+        @if (view) {
+          <span
+            class="pi pi-cog cursor-pointer"
+            (click)="onEditChange(true)"
+          ></span>
+        } @else {
+          <div class="flex flex-row justify-content-between">
+            <p-button
+              class="mr-2"
+              label="Cancel"
+              severity="danger"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+            <p-button
+              label="Save"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+          </div>
+        }
+      </div>
       @if (view) {
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Draft Date</span>
           <span>{{
@@ -77,13 +126,13 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Selection Time</span>
           <span>{{ leagueSettings.DraftSettingsModel.SelectionTime }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Include Bench in Draft</span>
           <span>{{
@@ -91,7 +140,7 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Draft Order Type</span>
           <span>{{
@@ -100,11 +149,36 @@
         </div>
       } @else {
         <!-- Add edit view form functions -->
+        <div>Edit features coming soon!</div>
       }
     </p-card>
   </div>
   <div class="mb-2">
-    <p-card header="Position Settings">
+    <p-card>
+      <div class="flex flex-row justify-content-between align-items-center">
+        <div class="p-card-title cursor-none"> Position Settings </div>
+        @if (view) {
+          <span
+            class="pi pi-cog cursor-pointer"
+            (click)="onEditChange(true)"
+          ></span>
+        } @else {
+          <div class="flex flex-row justify-content-between">
+            <p-button
+              class="mr-2"
+              label="Cancel"
+              severity="danger"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+            <p-button
+              label="Save"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+          </div>
+        }
+      </div>
       @if (view) {
         <div
           class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
@@ -126,15 +200,40 @@
         </div>
       } @else {
         <!-- Add edit view form functions -->
+        <div>Edit features coming soon!</div>
       }
     </p-card>
   </div>
   <div class="mb-2">
-    <p-card header="Season Settings" class="">
+    <p-card>
+      <div class="flex flex-row justify-content-between align-items-center">
+        <div class="p-card-title cursor-none"> Season Settings </div>
+        @if (view) {
+          <span
+            class="pi pi-cog cursor-pointer"
+            (click)="onEditChange(true)"
+          ></span>
+        } @else {
+          <div class="flex flex-row justify-content-between">
+            <p-button
+              class="mr-2"
+              label="Cancel"
+              severity="danger"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+            <p-button
+              label="Save"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+          </div>
+        }
+      </div>
       <span class="text-xl">Regular Season</span>
       @if (view) {
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Regular Season Start</span>
           <span>{{
@@ -142,7 +241,7 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Regular Season Games</span>
           <span>{{
@@ -150,7 +249,7 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Weeks per Game</span>
           <span>{{
@@ -158,7 +257,7 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Home Field Advantage</span>
           <span>{{
@@ -171,7 +270,7 @@
           leagueSettings.SeasonModel.RegularSeasonSettings.HomeFieldAdvantage
         ) {
           <div
-            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
           >
             <span>Point Benefit</span>
             <span>{{
@@ -181,12 +280,13 @@
         }
       } @else {
         <!-- Add edit view form functions -->
+        <div>Edit features coming soon!</div>
       }
       <p-divider />
       <span class="text-xl">College Football Playoffs</span>
       @if (view) {
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Playoff Teams</span>
           <span>{{
@@ -194,7 +294,7 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Weeks in Semifinals</span>
           <span>{{
@@ -203,7 +303,7 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Weeks in Championship</span>
           <span>{{
@@ -212,7 +312,7 @@
           }}</span>
         </div>
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Seeding Type</span>
           <span>{{
@@ -227,7 +327,7 @@
             SeedingTypeEnum.BestOverall
         ) {
           <div
-            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
           >
             <span>Seeding Type</span>
             <span>{{
@@ -238,14 +338,39 @@
         }
       } @else {
         <!-- Add edit view form functions -->
+        <div>Edit features coming soon!</div>
       }
     </p-card>
   </div>
   <div class="mb-2">
-    <p-card header="Other League Settings">
+    <p-card>
+      <div class="flex flex-row justify-content-between align-items-center">
+        <div class="p-card-title cursor-none"> Other League Settings </div>
+        @if (view) {
+          <span
+            class="pi pi-cog cursor-pointer"
+            (click)="onEditChange(true)"
+          ></span>
+        } @else {
+          <div class="flex flex-row justify-content-between">
+            <p-button
+              class="mr-2"
+              label="Cancel"
+              severity="danger"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+            <p-button
+              label="Save"
+              size="small"
+              (onClick)="onEditChange(false)"
+            ></p-button>
+          </div>
+        }
+      </div>
       @if (view) {
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Number of Conferences</span>
           <span>
@@ -258,14 +383,14 @@
           let id = $index
         ) {
           <div
-            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+            class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
           >
             <span>Conference {{ id + 1 }}</span>
             <span>{{ conference.ConferenceName }}</span>
           </div>
         }
         <div
-          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2"
+          class="field p-fluid flex flex-row justify-content-between border-bottom-1 surface-border p-2 cursor-none"
         >
           <span>Transfer Portal Deadline</span>
           <span>
@@ -277,6 +402,7 @@
         </div>
       } @else {
         <!-- Add edit view form functions -->
+        <div>Edit features coming soon!</div>
       }
     </p-card>
   </div>

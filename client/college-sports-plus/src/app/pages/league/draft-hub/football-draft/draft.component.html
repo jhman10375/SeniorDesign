@@ -43,8 +43,8 @@
             <div class="pb-2 pl-2 pr-2">
               <draft-main
                 [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
-                [athletes]="(athletes$ | async) ?? []"
-                [queue]="(queue$ | async) ?? []"
+                [athletes]="(athletes | async) ?? []"
+                [queue]="(queue | async) ?? []"
                 [currentlyPicking]="
                   (currentPick | async)?.Player?.PlayerID
                     ? (currentPick | async)?.Player?.PlayerID == activeUser?.ID
@@ -67,7 +67,7 @@
             <div class="pb-2 pl-2 pr-2">
               <draft-queue
                 [leagueType]="activeLeague?.LeagueType ?? SportEnum.None"
-                [athletes]="(queue$ | async) ?? []"
+                [athletes]="(queue | async) ?? []"
                 [currentlyPicking]="
                   (currentPick | async)?.Player?.PlayerID
                     ? (currentPick | async)?.Player?.PlayerID == activeUser?.ID
@@ -176,6 +176,12 @@
           <span>{{ playerDialogPlayer().Athlete.School }}</span>
         </div>
         <div
+          class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2"
+        >
+          <span>Position:</span>
+          <span>{{ playerDialogPlayer().Athlete.Position }}</span>
+        </div>
+        <div
           class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
         >
           <span>Height:</span>
@@ -183,12 +189,14 @@
             playerDialogPlayer().Athlete.Height | heightPipe: "feet"
           }}</span>
         </div>
-        <div
-          class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
-        >
-          <span>Weight:</span>
-          <span>{{ playerDialogPlayer().Athlete.Weight }} lbs</span>
-        </div>
+        @if (playerDialogPlayer().Athlete.Weight) {
+          <div
+            class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
+          >
+            <span>Weight:</span>
+            <span>{{ playerDialogPlayer().Athlete.Weight }} lbs</span>
+          </div>
+        }
         <div
           class="flex flex-row justify-content-between align-items-center surface-border border-bottom-1 pb-2 pt-2"
         >
@@ -276,7 +284,8 @@
         : false
     "
     [endDraft]="(endDraft | async) ?? false"
-    [queue]="(queue$ | async) ?? []"
+    [queue]="(queue | async) ?? []"
+    [hideTakenPlayers]="true"
     (dialogPlayerEmitter)="showDialog($event)"
     (addToQueueFromSearchEmitter)="onAddToFromSearch(true, $event)"
     (addToRosterFromSearchEmitter)="onAddToFromSearch(false, $event)"

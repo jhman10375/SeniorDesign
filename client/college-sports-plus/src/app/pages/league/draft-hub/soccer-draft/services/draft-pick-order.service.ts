@@ -57,4 +57,12 @@ export class DraftPickOrderService {
     this._draftOrder.next(draftOrder);
     this._pickUpdated.next(true);
   }
+
+  isFinalPick(): boolean {
+    if (this._draftOrder.value.length > 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

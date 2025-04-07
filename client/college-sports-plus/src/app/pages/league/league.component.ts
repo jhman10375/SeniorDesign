@@ -73,15 +73,16 @@ export class LeagueComponent implements OnInit, OnDestroy {
           );
         }
 
-        if (
-          this.activeLeague?.Players.find(
-            (x) => x.DraftTeamPlayerIDs && x.DraftTeamPlayerIDs.length > 0 // need to find a way to update this for if draft complete (how to mark complete?)
-          )
-        ) {
-          this.hasDraftOccurred = true;
-        } else {
-          this.hasDraftOccurred = false;
-        }
+        this.hasDraftOccurred = this.activeLeague?.DraftComplete ?? false;
+        // if (
+        //   this.activeLeague?.Players.find(
+        //     (x) => x.DraftTeamPlayerIDs && x.DraftTeamPlayerIDs.length > 0 // need to find a way to update this for if draft complete (how to mark complete?)
+        //   )
+        // ) {
+        //   this.hasDraftOccurred = true;
+        // } else {
+        //   this.hasDraftOccurred = false;
+        // }
         // this.hasDraftOccurred =
         //   (this.activeLeague?.DraftDate.getTime() ?? 0) < new Date().getTime();
 

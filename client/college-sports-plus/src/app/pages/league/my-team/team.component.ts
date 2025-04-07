@@ -37,6 +37,8 @@ import { TransferDialogComponent } from './transfer-dialog/transfer-dialog.compo
 export class TeamComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
 
+  isMobileForExpo: boolean = false;
+
   readonly SportEnum = SportEnum;
 
   readonly FootballRosterModel = FootballRosterModel;
@@ -65,6 +67,7 @@ export class TeamComponent implements OnInit, OnDestroy {
     private schoolService: SchoolService
   ) {
     this.isMobile = GeneralService.isMobile();
+    this.isMobileForExpo = GeneralService.isMobileForExpo();
 
     const teamID: string = this.activatedRoute.snapshot.params['teamID'];
     const leagueID: string =
@@ -122,7 +125,7 @@ export class TeamComponent implements OnInit, OnDestroy {
   onOpenMyTeamSettingsDialog(): void {
     const leagueJoinComponent = this.dialogService.open(TeamSettingsComponent, {
       header: 'Edit Team',
-      width: this.isMobile ? '100vw' : '33vw',
+      width: this.isMobileForExpo ? '100vw' : '33vw',
       data: {
         team: this.currentPlayer,
       },
@@ -189,7 +192,8 @@ export class TeamComponent implements OnInit, OnDestroy {
     const b1Player = this.getPlayer('B1');
     if (
       pos.includes(b1Player.Athlete.Position.toString()) ||
-      pos.includes('FLEX')
+      pos.includes('FLEX') ||
+      b1Player.Athlete.AthleteID == ''
     ) {
       positions.push('B1');
     }
@@ -197,7 +201,8 @@ export class TeamComponent implements OnInit, OnDestroy {
     const b2Player = this.getPlayer('B2');
     if (
       pos.includes(b2Player.Athlete.Position.toString()) ||
-      pos.includes('FLEX')
+      pos.includes('FLEX') ||
+      b2Player.Athlete.AthleteID == ''
     ) {
       positions.push('B2');
     }
@@ -205,7 +210,8 @@ export class TeamComponent implements OnInit, OnDestroy {
     const b3Player = this.getPlayer('B3');
     if (
       pos.includes(b3Player.Athlete.Position.toString()) ||
-      pos.includes('FLEX')
+      pos.includes('FLEX') ||
+      b3Player.Athlete.AthleteID == ''
     ) {
       positions.push('B3');
     }
@@ -213,7 +219,8 @@ export class TeamComponent implements OnInit, OnDestroy {
     const b4Player = this.getPlayer('B4');
     if (
       pos.includes(b4Player.Athlete.Position.toString()) ||
-      pos.includes('FLEX')
+      pos.includes('FLEX') ||
+      b4Player.Athlete.AthleteID == ''
     ) {
       positions.push('B4');
     }
@@ -221,7 +228,8 @@ export class TeamComponent implements OnInit, OnDestroy {
     const b5Player = this.getPlayer('B5');
     if (
       pos.includes(b5Player.Athlete.Position.toString()) ||
-      pos.includes('FLEX')
+      pos.includes('FLEX') ||
+      b5Player.Athlete.AthleteID == ''
     ) {
       positions.push('B5');
     }
@@ -229,7 +237,8 @@ export class TeamComponent implements OnInit, OnDestroy {
     const b6Player = this.getPlayer('B6');
     if (
       pos.includes(b6Player.Athlete.Position.toString()) ||
-      pos.includes('FLEX')
+      pos.includes('FLEX') ||
+      b6Player.Athlete.AthleteID == ''
     ) {
       positions.push('B6');
     }
@@ -242,7 +251,7 @@ export class TeamComponent implements OnInit, OnDestroy {
       TransferDialogComponent,
       {
         header: `Edit ${positionPlayers[0]?.Athlete.Position} Lineup`,
-        width: this.isMobile ? '100vw' : '33vw',
+        width: this.isMobileForExpo ? '100vw' : '33vw',
         data: {
           team: positionPlayers,
           originalTeam: positionPlayers,

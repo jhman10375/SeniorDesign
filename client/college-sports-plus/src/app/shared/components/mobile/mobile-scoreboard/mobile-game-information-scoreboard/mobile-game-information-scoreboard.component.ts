@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AvatarModule } from 'primeng/avatar';
@@ -14,7 +15,7 @@ import { UserService } from '../../../../services/bl/user.service';
 
 @Component({
   standalone: true,
-  imports: [AvatarModule],
+  imports: [CommonModule, AvatarModule],
   selector: 'mobile-game-information-scoreboard',
   styleUrls: ['mobile-game-information-scoreboard.component.scss'],
   templateUrl: 'mobile-game-information-scoreboard.component.html',
@@ -43,7 +44,11 @@ export class MobileGameInformationScoreboardComponent implements OnInit {
 
   awayTeam: LeaguePlayerModel | undefined;
 
+  awayTeamScore: number = 0;
+
   homeTeam: LeaguePlayerModel | undefined;
+
+  homeTeamScore: number = 0;
 
   private myTeam: LeaguePlayerModel;
 
@@ -112,6 +117,14 @@ export class MobileGameInformationScoreboardComponent implements OnInit {
           }
         },
       });
+
+    this.currentGame.AwayTeam?.forEach((player) => {
+      this.awayTeamScore += player.Athlete.PredictedScore;
+    });
+
+    this.currentGame.HomeTeam?.forEach((player) => {
+      this.homeTeamScore += player.Athlete.PredictedScore;
+    });
   }
 
   switchGame(direction: 'Left' | 'Right', currentGame: LeagueGameModel) {

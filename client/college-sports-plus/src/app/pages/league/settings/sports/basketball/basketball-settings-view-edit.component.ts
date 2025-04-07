@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 
@@ -9,7 +10,7 @@ import { PipesModule } from '../../../../../shared/pipes/pipes.module';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, CardModule, DividerModule, PipesModule],
+  imports: [CommonModule, CardModule, DividerModule, PipesModule, ButtonModule],
   selector: 'basketball-settings-view-edit',
   templateUrl: 'basketball-settings-view-edit.component.html',
 })
@@ -22,9 +23,19 @@ export class BasketballSettingsViewEditComponent implements OnInit {
 
   @Input() view: boolean = true;
 
+  @Input() canEdit: boolean = false;
+
+  @Output() onEdit = new EventEmitter<boolean>();
+
   readonly SeedingTypeEnum = SeedingTypeEnum;
 
   constructor() {}
 
   ngOnInit() {}
+
+  onEditChange(val: boolean): void {
+    if (this.canEdit) {
+      this.onEdit.emit(val);
+    }
+  }
 }
