@@ -7,6 +7,7 @@ import { PlayerHeaderComponent } from '../../shared/components/shared/player-hea
 import { SportEnum } from '../../shared/enums/sport.enum';
 import { LeagueAthleteModel } from '../../shared/models/league-athlete.model';
 import { LeaguePlayerModel } from '../../shared/models/league-player.model';
+import { LeagueModel } from '../../shared/models/league.model';
 import { SchoolModel } from '../../shared/models/school.model';
 import { BaseballPlayerStatsModel } from '../../shared/models/stats/baseball-player-stats.model';
 import { BasketballPlayerStatsModel } from '../../shared/models/stats/basketball-player-stats.model';
@@ -18,6 +19,7 @@ import { GeneralService } from '../../shared/services/bl/general-service.service
 import { LeagueService } from '../../shared/services/bl/league.service';
 import { LoadingService } from '../../shared/services/bl/loading.service';
 import { SchoolService } from '../../shared/services/bl/school.service';
+import { UserService } from '../../shared/services/bl/user.service';
 import { BaseballPlayerStatsComponent } from './stats/baseball-player/baseball-player.component';
 import { BasketballPlayerStatsComponent } from './stats/basketball-player/basketball-player.component';
 import { FootballPlayerStatsComponent } from './stats/football-player/football-player.component';
@@ -59,12 +61,17 @@ export class PlayerComponent implements OnInit {
 
   soccerPlayerStats: SoccerPlayerStatsModel;
 
+  leagueID: string;
+
+  league: LeagueModel | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private athleteService: AthleteService,
     private leagueService: LeagueService,
     private schoolService: SchoolService,
     private loadingService: LoadingService,
+    private currentUserService: UserService,
     private router: Router
   ) {
     this.isMobile = GeneralService.isMobile();
@@ -75,10 +82,18 @@ export class PlayerComponent implements OnInit {
 
     const urlTree = this.router.parseUrl(this.router.url);
     const segments = urlTree.root.children['primary']?.segments;
-    const leagueID = segments[1].toString();
+    this.leagueID = segments[1].toString();
     this.leagueType =
-      this.leagueService.getLeagueType(leagueID) ?? SportEnum.None;
+      this.leagueService.getLeagueType(this.leagueID) ?? SportEnum.None;
 
+    this.league = this.leagueService.getLeague(this.leagueID);
+    this.getAthletes(currentID);
+    // console.log(this.player);
+  }
+
+  ngOnInit() {}
+
+  getAthletes(currentID: string): void {
     if (currentID !== '-1') {
       switch (this.leagueType) {
         case SportEnum.Football:
@@ -102,7 +117,7 @@ export class PlayerComponent implements OnInit {
                         }
                         this.leaguePlayer =
                           this.leagueService.CheckAthleteOnTeam(
-                            leagueID,
+                            this.leagueID,
                             currentID
                           );
                         if (this.leaguePlayer && p) {
@@ -142,7 +157,7 @@ export class PlayerComponent implements OnInit {
                         }
                         this.leaguePlayer =
                           this.leagueService.CheckAthleteOnTeam(
-                            leagueID,
+                            this.leagueID,
                             currentID
                           );
                         if (this.leaguePlayer && p) {
@@ -182,7 +197,7 @@ export class PlayerComponent implements OnInit {
                         }
                         this.leaguePlayer =
                           this.leagueService.CheckAthleteOnTeam(
-                            leagueID,
+                            this.leagueID,
                             currentID
                           );
                         if (this.leaguePlayer && p) {
@@ -222,7 +237,7 @@ export class PlayerComponent implements OnInit {
                         }
                         this.leaguePlayer =
                           this.leagueService.CheckAthleteOnTeam(
-                            leagueID,
+                            this.leagueID,
                             currentID
                           );
                         if (this.leaguePlayer && p) {
@@ -243,8 +258,19 @@ export class PlayerComponent implements OnInit {
           break;
       }
     }
-    // console.log(this.player);
   }
 
-  ngOnInit() {}
+  onAddNewPlayer(newPlayer: LeagueAthleteModel): void {
+    console.log(newPlayer);
+    const userID = this.currentUserService.getCurrentUser().ID;
+    if (userID) {
+      this.leagueService.addAthleteToTeamFromTransferPortal(
+        this.leagueID,
+        userID,
+        newPlayer
+      );
+      const currentID = this.activatedRoute.snapshot.params['playerID'];
+      this.getAthletes(currentID);
+    }
+  }
 }

@@ -19,7 +19,9 @@
         @if (homeTeam) {
           <p-avatar [image]="homeTeam.Logos[0]" shape="square" />
         }
-        <span class="width-half text-xl font-bold"> 147.82</span>
+        <span class="width-half ml-2 text-xl font-bold">{{
+          homeTeamScore | number: "1.1-2"
+        }}</span>
       </div>
     </div>
   </div>
@@ -33,7 +35,9 @@
       <div
         class="flex flex-row align-items-center justify-content-between mb-1"
       >
-        <span class="width-half text-xl font-bold"> 134.97</span>
+        <span class="width-half mr-2 text-xl font-bold">{{
+          awayTeamScore | number: "1.1-2"
+        }}</span>
         @if (awayTeam) {
           <p-avatar [image]="awayTeam.Logos[0]" shape="square" />
         }

@@ -10,18 +10,36 @@
           (newGameToViewEmitter)="updateGameView($event)"
         >
         </mobile-scoreboard>
-        <div
+        <!-- <div
           class="flex flex-row align-items-center justify-content-between mt-1 mb-2 pb-2 border-bottom-1 surface-border text-xs"
         >
           <span class="header-item">Pos</span>
           <span class="header-item">Name</span>
           <span class="header-item">Number</span>
-          <span class="header-item">School</span>
+          <span class="header-item">Points</span>
           <span>|</span>
-          <span class="header-item">School</span>
+          <span class="header-item">Points</span>
           <span class="header-item">Number</span>
           <span class="header-item">Name</span>
           <span class="header-item">Pos</span>
+        </div> -->
+
+        <div
+          class="flex flex-row align-items-center justify-content-between pt-2 pb-2 border-bottom-1 surface-border text-xs"
+        >
+          <div class="flex flex-row w-6 border-right-1 surface-border pr-1">
+            <span class="data-cell-left">Pos</span>
+            <span class="data-cell-left">Name</span>
+            <span class="data-cell-left text-right">Number</span>
+            <span class="data-cell-left">Points</span>
+          </div>
+          <!-- <span>|</span> -->
+          <div class="flex flex-row w-6 border-left-1 surface-border pl-1">
+            <span class="data-cell-right">Points</span>
+            <span class="data-cell-right text-left">Number</span>
+            <span class="data-cell-right">Name</span>
+            <span class="data-cell-right">Pos</span></div
+          >
         </div>
       </div>
       <div class="body">
@@ -29,6 +47,7 @@
           <roster
             [team]="currentGame.HomeTeam"
             [leagueType]="leagueType"
+            [game]="true"
             (navigateToEmitter)="navigateTo($event)"
             class="w-full border-right-1 surface-border pr-1"
           ></roster>
@@ -36,6 +55,7 @@
             [team]="currentGame.AwayTeam"
             [reverse]="true"
             [leagueType]="leagueType"
+            [game]="true"
             (navigateToEmitter)="navigateTo($event)"
             class="w-full border-left-1 surface-border pl-1"
           ></roster>

@@ -13,6 +13,7 @@ export class LeagueModel implements HasID {
   Manager: LeaguePlayerModel;
   Name: string;
   DraftDate: Date;
+  DraftComplete: boolean;
   Settings:
     | FootballLeagueSettingsModel
     | SoccerLeagueSettingsModel

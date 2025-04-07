@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 
@@ -36,6 +36,8 @@ export class SettingsComponent implements OnInit {
 
   isLeagueManager: boolean = false;
 
+  view: WritableSignal<boolean> = signal(true);
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private leagueService: LeagueService,
@@ -58,4 +60,8 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  onEdit(change: boolean): void {
+    this.view.set(!change);
+  }
 }

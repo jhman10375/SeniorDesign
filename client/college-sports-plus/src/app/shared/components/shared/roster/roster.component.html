@@ -18,18 +18,35 @@
                 : 'bench-background'
           "
         >
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
-          <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
+          @if (game) {
+            <span
+              class="data-cell-right score pl-1"
+              (click)="navigateTo(pos)"
+              >{{
+                (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                  .PredictedScore | number: "1.1-2"
+              }}</span
+            >
+          } @else {
+            <span class="data-cell-right pl-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
+          <span class="data-cell-right no-flex" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
-          <span class="data-cell-left no-flex pl-1" (click)="navigateTo(pos)">{{
-            pos | rosterPositionPipe: leagueType : team ?? []
-          }}</span>
+          <span
+            class="data-cell-right text-right pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
+          <span
+            class="data-cell-right no-flex pr-1"
+            (click)="navigateTo(pos)"
+            >{{ pos | rosterPositionPipe: leagueType : team ?? [] }}</span
+          >
         </div>
       }
     }
@@ -47,18 +64,35 @@
                 : 'bench-background'
           "
         >
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
-          <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
+          @if (game) {
+            <span
+              class="data-cell-right score pl-1"
+              (click)="navigateTo(pos)"
+              >{{
+                (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                  .PredictedScore | number: "1.1-2"
+              }}</span
+            >
+          } @else {
+            <span class="data-cell-right pl-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
+          <span class="data-cell-right no-flex" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
-          <span class="data-cell-left no-flex pl-1" (click)="navigateTo(pos)">{{
-            pos | rosterPositionPipe: leagueType : team ?? []
-          }}</span>
+          <span
+            class="data-cell-right text-right pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
+          <span
+            class="data-cell-right no-flex pr-1"
+            (click)="navigateTo(pos)"
+            >{{ pos | rosterPositionPipe: leagueType : team ?? [] }}</span
+          >
         </div>
       }
     }
@@ -76,15 +110,30 @@
                 : 'bench-background'
           "
         >
-          <span class="data-cell-right" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
+          @if (game) {
+            <span
+              class="data-cell-right score pl-1"
+              (click)="navigateTo(pos)"
+              >{{
+                (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                  .PredictedScore | number: "1.1-2"
+              }}</span
+            >
+          } @else {
+            <span class="data-cell-right pl-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
           <span class="data-cell-right" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-right" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
+          <span
+            class="data-cell-right text-right pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
           @if (pos == "FTFLEX" || pos == "STFLEX") {
             <span class="data-cell-right pr-1" (click)="navigateTo(pos)"
               >FLEX</span
@@ -115,18 +164,35 @@
                 : 'bench-background'
           "
         >
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
-          <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
+          @if (game) {
+            <span
+              class="data-cell-right score pl-1"
+              (click)="navigateTo(pos)"
+              >{{
+                (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                  .PredictedScore | number: "1.1-2"
+              }}</span
+            >
+          } @else {
+            <span class="data-cell-right pl-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
+          <span class="data-cell-right no-flex" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
-          <span class="data-cell-left no-flex pl-1" (click)="navigateTo(pos)">{{
-            pos | rosterPositionPipe: leagueType : team ?? []
-          }}</span>
+          <span
+            class="data-cell-right text-right pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
+          <span
+            class="data-cell-right no-flex pr-1"
+            (click)="navigateTo(pos)"
+            >{{ pos | rosterPositionPipe: leagueType : team ?? [] }}</span
+          >
         </div>
       }
     }
@@ -165,15 +231,26 @@
           <span class="data-cell-left no-flex pl-1" (click)="navigateTo(pos)">{{
             pos | rosterPositionPipe: leagueType : team ?? []
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
+          <span
+            class="data-cell-left text-left pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
           <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
+          @if (game) {
+            <span class="data-cell-left score pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                .PredictedScore | number: "1.1-2"
+            }}</span>
+          } @else {
+            <span class="data-cell-left pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
         </div>
       }
     }
@@ -202,15 +279,26 @@
           <span class="data-cell-left no-flex pl-1" (click)="navigateTo(pos)">{{
             pos | rosterPositionPipe: leagueType : team ?? []
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
+          <span
+            class="data-cell-left text-left pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
           <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
+          @if (game) {
+            <span class="data-cell-left score pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                .PredictedScore | number: "1.1-2"
+            }}</span>
+          } @else {
+            <span class="data-cell-left pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
         </div>
       }
     }
@@ -251,15 +339,26 @@
               >{{ pos | rosterPositionPipe: leagueType : team ?? [] }}</span
             >
           }
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
+          <span
+            class="data-cell-left text-left pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
           <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
+          @if (game) {
+            <span class="data-cell-left score pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                .PredictedScore | number: "1.1-2"
+            }}</span>
+          } @else {
+            <span class="data-cell-left pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
         </div>
       }
     }
@@ -292,15 +391,26 @@
           <span class="data-cell-left no-flex pl-1" (click)="navigateTo(pos)">{{
             pos | rosterPositionPipe: leagueType : team ?? []
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
-          }}</span>
+          <span
+            class="data-cell-left text-left pl-2"
+            (click)="navigateTo(pos)"
+            >{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Name
+            }}</span
+          >
           <span class="data-cell-left no-flex" (click)="navigateTo(pos)">{{
             (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.Jersey
           }}</span>
-          <span class="data-cell-left" (click)="navigateTo(pos)">{{
-            (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
-          }}</span>
+          @if (game) {
+            <span class="data-cell-left score pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete
+                .PredictedScore | number: "1.1-2"
+            }}</span>
+          } @else {
+            <span class="data-cell-left pr-1" (click)="navigateTo(pos)">{{
+              (pos | rosterPlayerPipe: leagueType : team ?? []).Athlete.School
+            }}</span>
+          }
         </div>
       }
     }

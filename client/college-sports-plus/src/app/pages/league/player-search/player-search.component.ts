@@ -117,11 +117,18 @@ export class PlayerSearchComponent
       if (activeLeague) {
         this.leagueType = activeLeague.LeagueType;
         if (activeLeague.Athletes && activeLeague.Athletes.length > 0) {
-          this.athletes = activeLeague.Athletes;
-        } else {
-          this.athletes = this.athleteService.getAllAthletes(
-            activeLeague.LeagueType
+          let a = this.updatePlayerIDs(
+            activeLeague.Athletes,
+            this.leagueService.getLeague(this.leagueID) ?? new LeagueModel()
           );
+          this.athletes = a;
+        } else {
+          let a = this.athleteService.getAllAthletes(activeLeague.LeagueType);
+          a = this.updatePlayerIDs(
+            activeLeague.Athletes,
+            this.leagueService.getLeague(this.leagueID) ?? new LeagueModel()
+          );
+          this.athletes = a;
         }
       }
     }
@@ -168,14 +175,17 @@ export class PlayerSearchComponent
     const retVal: Array<LeagueAthleteModel> = [];
     const leagueAthletes: Array<LeagueAthleteModel> = [];
     if (league.Season && league.Season.length > 0) {
-      league?.Season[0]?.Games.forEach((game) => {
-        game?.AwayTeam.forEach((player) => {
-          player.Athlete.PlayerID = game.AwayTeamPlayerID;
-          leagueAthletes.push(player.Athlete);
-        });
-        game?.HomeTeam.forEach((player) => {
-          player.Athlete.PlayerID = game.HomeTeamPlayerID;
-          leagueAthletes.push(player.Athlete);
+      league.Season.forEach((week) => {
+        week.Games.forEach((game) => {
+          game?.AwayTeam.forEach((player) => {
+            player.Athlete.PlayerID = game.AwayTeamPlayerID;
+            player.Athlete.PlayerID = game.AwayTeamPlayerID;
+            leagueAthletes.push(player.Athlete);
+          });
+          game?.HomeTeam.forEach((player) => {
+            player.Athlete.PlayerID = game.HomeTeamPlayerID;
+            leagueAthletes.push(player.Athlete);
+          });
         });
       });
     }

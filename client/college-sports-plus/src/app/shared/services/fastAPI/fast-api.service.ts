@@ -76,7 +76,7 @@ export class FastAPIService {
 
   getAllSchools(): Observable<Array<SchoolModel>> {
     return this.httpClient
-      .get<Array<SchoolFAPIModel>>(this.url + 'schools/get_all/')
+      .get<Array<SchoolFAPIModel>>(this.url + 'schools/get_all')
       .pipe(
         map((x) => {
           const retArr: Array<SchoolModel> = [];

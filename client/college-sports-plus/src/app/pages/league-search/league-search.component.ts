@@ -52,6 +52,8 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
 
   isMobile: boolean = false;
 
+  isMobileForExpo: boolean = false;
+
   myLeagues: Array<string> = [];
 
   leagues: Observable<Array<LeagueSearchModel>>;
@@ -74,6 +76,7 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
     private userService: UserService
   ) {
     this.isMobile = GeneralService.isMobile();
+    this.isMobileForExpo = GeneralService.isMobileForExpo();
 
     this.leagues = this._leagues.asObservable();
     let lt: SportEnum = SportEnum.None;
@@ -131,7 +134,7 @@ export class LeagueSearchComponent implements OnInit, OnDestroy {
     if (leagueSearch) {
       const leagueJoinComponent = this.dialogService.open(LeagueJoinComponent, {
         header: 'Join League',
-        width: this.isMobile ? '100vw' : '33vw',
+        width: this.isMobileForExpo ? '100vw' : '33vw',
         data: {
           passcodeRequired: !leagueSearch.Settings.GSM.PL,
         },

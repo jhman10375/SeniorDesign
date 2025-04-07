@@ -47,13 +47,15 @@
           [currentFilter]="currentPositionFilter()"
           (setFilterEmitter)="setFilterss('Position', $event)"
         ></player-filter>
-        <!-- <player-filter
-          class="header-item"
-          [filterName]="'General'"
-          [filters]="[]"
-          [currentFilter]="null"
-          (setFilterEmitter)="setFilterss('General', $event)"
-        ></player-filter> -->
+        @if (!draftMode) {
+          <player-filter
+            class="header-item"
+            [filterName]="'General'"
+            [filters]="['None', 'Available', 'Drafted']"
+            [currentFilter]="currentGeneralFilter()"
+            (setFilterEmitter)="setFilterss('General', $event)"
+          ></player-filter>
+        }
       </div>
       <div
         class="flex flex-row align-items-center justify-content-between surface-border"

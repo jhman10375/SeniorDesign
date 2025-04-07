@@ -10,6 +10,7 @@ export class LeagueDLModel implements HasID {
   ManagerID: string;
   Name: string;
   DraftDate: Date;
+  DraftComplete: boolean;
   Settings:
     | FootballLeagueSettingsDLModel
     | SoccerLeagueSettingsDLModel
@@ -24,6 +25,7 @@ export class LeagueDLModel implements HasID {
     this.Name = '';
     this.ManagerID = '';
     this.DraftDate = new Date();
+    this.DraftComplete = false;
     this.PlayerIDs = [];
     this.LeagueType = SportEnum.None;
     this.Season = [];

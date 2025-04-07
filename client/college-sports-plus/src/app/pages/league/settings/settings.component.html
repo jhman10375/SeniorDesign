@@ -4,25 +4,33 @@
       @case (SportEnum.Football) {
         <football-settings-view-edit
           [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
-          [view]="isLeagueManager"
+          [view]="view()"
+          [canEdit]="true"
+          (onEdit)="onEdit($event)"
         ></football-settings-view-edit>
       }
       @case (SportEnum.Baseball) {
         <baseball-settings-view-edit
           [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
-          [view]="isLeagueManager"
+          [view]="view()"
+          [canEdit]="true"
+          (onEdit)="onEdit($event)"
         ></baseball-settings-view-edit>
       }
       @case (SportEnum.Basketball) {
         <basketball-settings-view-edit
           [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
-          [view]="isLeagueManager"
+          [view]="view()"
+          [canEdit]="true"
+          (onEdit)="onEdit($event)"
         ></basketball-settings-view-edit>
       }
       @case (SportEnum.Soccer) {
         <soccer-settings-view-edit
           [leagueSettings]="league.Settings | leagueTypePipe: league.LeagueType"
-          [view]="isLeagueManager"
+          [view]="view()"
+          [canEdit]="true"
+          (onEdit)="onEdit($event)"
         ></soccer-settings-view-edit>
       }
     }
