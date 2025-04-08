@@ -35,6 +35,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'help',
+    component: HelpComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'create-league',
     component: LeagueAddComponent,
     canActivate: [AuthGuard],

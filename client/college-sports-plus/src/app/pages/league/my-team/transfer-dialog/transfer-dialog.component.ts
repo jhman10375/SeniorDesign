@@ -57,9 +57,15 @@ export class TransferDialogComponent implements OnInit, OnDestroy {
 
   onTransfer(athlete: LeagueRosterAthleteModel): void {
     console.log(athlete);
-    this.ref.close({
-      CloseType: TransferDialogCloseTypeEnum.Transfer,
-      Athlete: athlete,
-    });
+    if (athlete.Athlete && athlete.Athlete.AthleteID.length > 0) {
+      this.ref.close({
+        CloseType: TransferDialogCloseTypeEnum.Transfer,
+        Athlete: athlete,
+      });
+    } else {
+      this.ref.close({
+        CloseType: TransferDialogCloseTypeEnum.NoChange,
+      });
+    }
   }
 }

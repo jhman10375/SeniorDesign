@@ -260,6 +260,7 @@ export class LeagueService implements OnDestroy {
         player.DraftRoster.push(
           this.updateNewRoster(league.LeagueType, player.DraftRoster, athlete)
         );
+        this.playerService.updatePlayer(player);
 
         league.Season.forEach((week) => {
           if (week) {
@@ -348,8 +349,15 @@ export class LeagueService implements OnDestroy {
     }
   }
 
-  setDraftComplete(leagueID: string, complete: boolean): void {
+  setDraftComplete(
+    leagueID: string,
+    complete: boolean,
+    league: LeagueModel
+  ): void {
     this.leagueDLService.setDraftComplete(leagueID, complete);
+    league.Season.forEach((week) => {
+      this.updateSeason(league.LeagueType, week);
+    });
   }
 
   updateSeason(leagueType: SportEnum, week: LeagueWeekModel): void {
@@ -370,6 +378,10 @@ export class LeagueService implements OnDestroy {
     leaguesFiltered.push(league);
     this.leagueDLService._league.next(leaguesFiltered);
     this.getLeaguesForSearch(league.LeagueType);
+  }
+
+  updatePlayer(player: LeaguePlayerModel): void {
+    this.playerService.updatePlayer(player);
   }
 
   addLeague(league: LeagueModel): void {
@@ -427,8 +439,37 @@ export class LeagueService implements OnDestroy {
   //   return retVal.concat(athletes);
   // }
 
+  updateNewRosterFromID(
+    leagueType: SportEnum,
+    teamRoster: Array<LeagueRosterAthleteModel>,
+    athleteID: string
+  ): LeagueRosterAthleteModel {
+    let athletes: Array<LeagueAthleteModel> = [];
+
+    switch (leagueType) {
+      case SportEnum.Baseball:
+        athletes = this.athleteService.getBaseballPlayers();
+        break;
+      case SportEnum.Basketball:
+        athletes = this.athleteService.getBasketballPlayers();
+        break;
+      case SportEnum.Football:
+        athletes = this.athleteService.getFootballPlayers();
+        break;
+      case SportEnum.Soccer:
+        athletes = this.athleteService.getSoccerPlayers();
+        break;
+    }
+    const athlete = athletes.find((x) => x.AthleteID === athleteID);
+    if (athlete) {
+      return this.updateNewRoster(leagueType, teamRoster, athlete);
+    } else {
+      return new LeagueRosterAthleteModel();
+    }
+  }
+
   //#region test roster
-  private updateNewRoster(
+  updateNewRoster(
     leagueType: SportEnum,
     teamRoster: Array<LeagueRosterAthleteModel>,
     athlete: LeagueAthleteModel

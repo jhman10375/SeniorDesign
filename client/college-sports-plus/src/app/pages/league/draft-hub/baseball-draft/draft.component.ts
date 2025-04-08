@@ -18,6 +18,7 @@ import { DraftOrderModel } from '../../../../shared/models/draft-order.model';
 import { DraftSortOrderModel } from '../../../../shared/models/draft-sort-order.model';
 import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.model';
 import { LeaguePlayerModel } from '../../../../shared/models/league-player.model';
+import { LeagueRosterAthleteModel } from '../../../../shared/models/league-roster-athlete.model';
 import { LeagueModel } from '../../../../shared/models/league.model';
 import { PipesModule } from '../../../../shared/pipes/pipes.module';
 import { GeneralService } from '../../../../shared/services/bl/general-service.service';
@@ -107,6 +108,8 @@ export class BaseballDraftComponent implements OnInit {
   leagueAthlete: Observable<Array<DraftSelectionModel>>; // May be able to remove
 
   draftSelections: Observable<Array<DraftSelectionModel>>;
+
+  draftResults: Array<DraftResultPlayerWSModel> = [];
 
   webSocketError: WritableSignal<string | null> = signal(null);
 
@@ -285,9 +288,7 @@ export class BaseballDraftComponent implements OnInit {
     }
     this._myTeam.next(mt);
     this._pickMade.next(athlete);
-    if (this.draftPickOrderService.isFinalPick()) {
-      this.leagueService.setDraftComplete(this.activeLeague?.ID ?? '-1', true);
-    }
+
     this.onUpdateCurrentPick();
     this.updateAthletes(athlete);
     this.leagueService.addAthleteToTeamFromDraft(
@@ -300,6 +301,85 @@ export class BaseballDraftComponent implements OnInit {
       athlete_id: athlete.AthleteID,
       player_id: this.activeUser?.ID ?? -1,
     });
+    if (this.draftPickOrderService.isFinalPick()) {
+      this.draftResults.push({
+        player_id: athlete.AthleteID,
+        user_id: this.activeUser?.ID ?? '-1',
+        round: 999,
+        index: 999,
+      });
+      if (this.activeLeague) {
+        const seasonTeam: Array<{
+          playerID: string;
+          players: Array<LeagueRosterAthleteModel>;
+        }> = [];
+        this.activeLeague.Players.forEach((player) =>
+          seasonTeam.push({ playerID: player.PlayerID, players: [] })
+        );
+        this.draftResults.forEach((x) => {
+          const team = seasonTeam.find((y) => y.playerID == x.user_id);
+          if (team) {
+            team.players.push(
+              this.leagueService.updateNewRosterFromID(
+                this.activeLeague?.LeagueType ?? SportEnum.None,
+                team.players,
+                x.player_id
+              )
+            );
+          }
+        });
+
+        seasonTeam.forEach((x) => {
+          const p = this.activeLeague?.Players.find(
+            (y) => y.PlayerID == x.playerID
+          );
+          if (p) {
+            x.playerID = p.ID;
+          }
+        });
+
+        this.activeLeague.Season.forEach((week) => {
+          week.Games.forEach((game) => {
+            const awayTeam = seasonTeam.find(
+              (x) => x.playerID === game.AwayTeamPlayerID
+            );
+            if (awayTeam) {
+              game.AwayTeam = awayTeam.players;
+            }
+            const homeTeam = seasonTeam.find(
+              (x) => x.playerID === game.HomeTeamPlayerID
+            );
+            if (homeTeam) {
+              game.HomeTeam = homeTeam.players;
+            }
+          });
+        });
+
+        this.leagueService.setDraftComplete(
+          this.activeLeague.ID,
+          true,
+          this.activeLeague
+        );
+
+        this.pickOrder.pipe(take(1)).subscribe({
+          next: (x) => {
+            x.forEach((y) => {
+              const player = this.activeLeague?.Players.find(
+                (z) => z.ID === y.Player.ID
+              );
+              if (player) {
+                player.DraftPickSortOrder = y.SortOrder.SortOrder;
+                player.DraftTeamPlayerIDs =
+                  seasonTeam
+                    .find((x) => x.playerID == player.ID)
+                    ?.players.map((y) => y.Athlete.AthleteID) ?? [];
+                this.leagueService.updatePlayer(player);
+              }
+            });
+          },
+        });
+      }
+    }
   }
 
   onAddToQueue(athlete: LeagueAthleteModel): void {
@@ -550,6 +630,7 @@ export class BaseballDraftComponent implements OnInit {
     let athletes: Array<LeagueAthleteModel> = [];
     athletes = draftPlayers.map((x) => x.Athlete);
 
+    this.draftResults = message.draft_results;
     const draftResponseUpdated: Array<DraftSelectionModel> = [];
     this.activeLeague?.Players.forEach((player) => {
       const d: DraftSelectionModel = new DraftSelectionModel();

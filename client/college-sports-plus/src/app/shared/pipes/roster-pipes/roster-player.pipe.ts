@@ -35,7 +35,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == false &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -46,7 +45,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == true &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -135,7 +133,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == false &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -146,7 +143,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == true &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == BaseballPositionEnum.INF
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -653,7 +649,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == false &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == SoccerPositionEnum.MD
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -664,7 +659,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.FirstString &&
                   x.RosterBackup == true &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == SoccerPositionEnum.MD
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -768,7 +762,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == false &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == SoccerPositionEnum.MD
               ) ?? new LeagueRosterAthleteModel();
             break;
@@ -779,7 +772,6 @@ export class RosterPlayerPipe implements PipeTransform {
                 (x) =>
                   x.RosterPosition == RosterPositionEnum.SecondString &&
                   x.RosterBackup == true &&
-                  x.RosterThird == false &&
                   x.Athlete.Position == SoccerPositionEnum.MD
               ) ?? new LeagueRosterAthleteModel();
             break;

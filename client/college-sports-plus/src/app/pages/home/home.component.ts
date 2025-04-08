@@ -101,4 +101,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   logout(): void {
     this.authService.logout();
   }
+
+  navigateTohelp() {
+    window.open('/help', '_blank');
+  }
 }

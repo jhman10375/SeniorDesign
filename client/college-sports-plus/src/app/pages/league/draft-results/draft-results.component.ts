@@ -47,16 +47,20 @@ export class DraftResultsComponent implements OnInit {
 
     switch (this.league.LeagueType) {
       case SportEnum.Football:
-        this.numberOfRounds = 24;
+        this.numberOfRounds = 7;
+        // this.numberOfRounds = 24;
         break;
       case SportEnum.Baseball:
-        this.numberOfRounds = 26;
+        this.numberOfRounds = 10;
+        // this.numberOfRounds = 26;
         break;
       case SportEnum.Basketball:
-        this.numberOfRounds = 16;
+        this.numberOfRounds = 5;
+        // this.numberOfRounds = 16;
         break;
       case SportEnum.Soccer:
-        this.numberOfRounds = 28;
+        this.numberOfRounds = 11;
+        // this.numberOfRounds = 28;
         break;
       default:
         break;
