@@ -78,18 +78,18 @@ export class DraftGeneralService {
   ): number {
     let score: number = 0;
 
-    score = score + baseballDraftPlayerModel.Stats.CaughtStealing * 1;
-    score = score + baseballDraftPlayerModel.Stats.Doubles * -1;
-    score = score + baseballDraftPlayerModel.Stats.EarnedRunsAllowed * 1;
-    score = score + baseballDraftPlayerModel.Stats.HitsByPitch * -1;
-    score = score + baseballDraftPlayerModel.Stats.Homers * -1;
-    score = score + baseballDraftPlayerModel.Stats.Innings * -1;
+    score = score + baseballDraftPlayerModel.Stats.CaughtStealing * -1;
+    score = score + baseballDraftPlayerModel.Stats.Doubles * 2;
+    score = score + baseballDraftPlayerModel.Stats.EarnedRunsAllowed * -1;
+    score = score + baseballDraftPlayerModel.Stats.HitsByPitch * 1;
+    score = score + baseballDraftPlayerModel.Stats.Homers * 4;
+    score = score + baseballDraftPlayerModel.Stats.Innings * 1;
     score = score + baseballDraftPlayerModel.Stats.Runs * 1;
     score = score + baseballDraftPlayerModel.Stats.RunsBattedIn * 1;
-    score = score + baseballDraftPlayerModel.Stats.Saves * 1;
+    score = score + baseballDraftPlayerModel.Stats.Saves * 2;
     score = score + baseballDraftPlayerModel.Stats.Singles * 1;
-    score = score + baseballDraftPlayerModel.Stats.StolenBases * 1;
-    score = score + baseballDraftPlayerModel.Stats.Triples * 1;
+    score = score + baseballDraftPlayerModel.Stats.StolenBases * 2;
+    score = score + baseballDraftPlayerModel.Stats.Triples * 3;
     score = score + baseballDraftPlayerModel.Stats.Walks * 1;
     return score / 12;
   }

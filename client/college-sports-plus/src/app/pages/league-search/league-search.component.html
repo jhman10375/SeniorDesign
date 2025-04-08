@@ -52,7 +52,7 @@
           <p-button
             label="Join"
             (onClick)="joinLeague(league)"
-            [disabled]="!(league.ID | canJoinLeague: myLeagues)"
+            [disabled]="!(league.ID | canJoinLeague: myLeagues : league)"
           ></p-button>
         </div>
       }
