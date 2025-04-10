@@ -15,8 +15,14 @@
 - PrimeNG
 - Firebase
 - FastAPI
+- Nginx
+- AWS EC2 (Elastic Compute Cloud)
+- BeautifulSoup
+- Selenium
+- SciKit-Learn
 - SportsRadar
 - College Footbal Data
+- NCAA Statistics (stats.ncaa.org)
 
 ## Quick Links
 
