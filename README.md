@@ -26,9 +26,10 @@ This is a project repository for a college fantasy-like sports application
 6. [Project Dictionary](/HW_Submissions/Project_Dictionary.md)
 7. [Self-Assesment Essay (Right column of Team Member Table)](#team-members)
 8. [Spring Final PPT Presentation](/HW_Submissions/Spring%20Final%20PPT%20Presentation.pdf)
-9. [Budget](/HW_Submissions/budget.md)
-10. [Test Plan & Results](/HW_Submissions/test_plan.md)
-11. [Appendix](/HW_Submissions/Appendix.md)
+9. [Final Expo Poster](/HW_Submissions/final_poster.pdf)
+10. [Budget](/HW_Submissions/budget.md)
+11. [Test Plan & Results](/HW_Submissions/test_plan.md)
+12. [Appendix](/HW_Submissions/Appendix.md)
 
 ## Contract
 
