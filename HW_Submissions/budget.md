@@ -1,6 +1,5 @@
-# Budget
-CSP has not incured any expenses and does not expect any service related expenses.
-(CSP may be purchasing a prepaid android device for testing/demo purposes)
+# Summary of Expenses (Budget)
+AWS EC2 Instance Cost for Expo Demo and Live-Server testing - $2.71
 
 ## Quick Links
 
