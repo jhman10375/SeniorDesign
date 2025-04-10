@@ -22,7 +22,7 @@
 - SciKit-Learn
 - SportsRadar
 - College Footbal Data
-- NCAA Statistics ([stats.ncaa.org])
+- NCAA Statistics (https://stats.ncaa.org)
 
 ## Quick Links
 
