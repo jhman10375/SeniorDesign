@@ -30,7 +30,7 @@ The project consists of creating a Fantasy-like game within a web-application, b
 10. [Self-Assesment Essays (Right column of Team Member Table)](#team-members)
 11. [Spring Final PPT Presentation](/HW_Submissions/Spring%20Final%20PPT%20Presentation.pdf)
 12. [Final Expo Poster](/HW_Submissions/final_poster.pdf)
-13. [Budget](/HW_Submissions/budget.md)
+13. [Summary of Expenses](/HW_Submissions/budget.md)
 14. [Test Plan & Results](/HW_Submissions/test_plan.md)
 15. [Appendix](/HW_Submissions/Appendix.md)
 
