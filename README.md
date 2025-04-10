@@ -25,7 +25,7 @@ This is a project repository for a college fantasy-like sports application
 5. [Constraint Paper](/HW_Submissions/Constraint_Essay.md)
 6. [Project Dictionary](/HW_Submissions/Project_Dictionary.md)
 7. [Self-Assesment Essay (Right column of Team Member Table)](#team-members)
-8. [Fall Desgin Presentation](/HW_Submissions/Fall_Design_Presentation.pdf)
+8. [Spring Final PPT Presentation](/HW_Submissions/Spring_Final_PPT_Presentation.pdf)
 9. [Budget](/HW_Submissions/budget.md)
 10. [Test Plan & Results](/HW_Submissions/test_plan.md)
 11. [Appendix](/HW_Submissions/Appendix.md)
