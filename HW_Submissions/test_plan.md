@@ -181,6 +181,26 @@ The purpose of this document is to outline our test plan of both the client and 
 | [14](#test-id-14) | [API2](#test-id-14) | Abnormal  | Whitebox       | Functional    | Unit        |
 | [15](#test-id-15) | [API3](#test-id-15) | Boundary  | Whitebox       | Functional    | Unit        |
 
+## Test Case Results
+
+| Test #            | Test ID             | Results   | 
+| ----------------- | ------------------- | --------- | 
+| [1](#test-id-1)   | [CUL1](#test-id-1)  | Passed    | 
+| [2](#test-id-2)   | [CUL2](#test-id-2)  | Passed    | 
+| [3](#test-id-3)   | [CUR1](#test-id-3)  | Passed    | 
+| [4](#test-id-4)   | [CLS1](#test-id-4)  | Passed    | 
+| [5](#test-id-5)   | [CLS2](#test-id-5)  | Passed    | 
+| [6](#test-id-6)   | [CLS3](#test-id-6)  | Passed    | 
+| [7](#test-id-7)   | [CLS4](#test-id-7)  | Passed    | 
+| [8](#test-id-8)   | [CLS5](#test-id-8)  | Passed    | 
+| [9](#test-id-9)   | [CLC1](#test-id-9)  | Passed    | 
+| [10](#test-id-10) | [CLC2](#test-id-10) | Passed    | 
+| [11](#test-id-11) | [SLT1](#test-id-11) | Passed    | 
+| [12](#test-id-12) | [AIM1](#test-id-12) | Passed    | 
+| [13](#test-id-13) | [API1](#test-id-13) | Passed    | 
+| [14](#test-id-14) | [API2](#test-id-14) | Passed    | 
+| [15](#test-id-15) | [API3](#test-id-15) | Passed    | 
+
 ## Quick Links
 
 [Back To Top](#test-plan-and-results) \
