@@ -2,7 +2,7 @@
 
 ## Worklog
 - Team members did not specifically log work/tie spent
-- Progress can be shown through analysis of client and server status included in the client and server folders respectively
+- Progress can be shown through analysis of client and server status included in the client and server folders respectively, as well as github commits
 
 ## Meeting Notes
 - Notes were not taken due to brevifty and quality of meetings
