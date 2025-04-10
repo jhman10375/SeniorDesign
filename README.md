@@ -1,6 +1,6 @@
 # College Sports+ (CSP)
 
-This is a project repository for a college fantasy-like sports application
+The project consists of creating a Fantasy-like game within a web-application, built in Angular, that utilizes NCAA (college) athletes. This application would be geared towards the intersection of college football fans who also play NFL Fantasy Football (mostly college-educated males between 18-34). The application uses a Mulit-Layer Perceptron AI model to take into account a specific player's height, weight, position, current team, and current opponent, and output an expected number of ‘Points’ (based on statistics like yards gained, points scored, etc.) that the player will accrue for any given game, given historical data from past games. Scoring will depend on whether a specific player exceeds the expected points for a player of the same approximate build, playing the same position, against the same team.
 
 ## Table of Contents
 
@@ -18,18 +18,19 @@ This is a project repository for a college fantasy-like sports application
 
 ## Project Documents
 
-1. [Design Diagrams](/HW_Submissions/Design%20Diagrams.docx)
-2. [Milestones, Timelines, Effort Matrixes](/HW_Submissions/milestone_list.md)
-3. [User Stories](/HW_Submissions/User_Stories.md)
-4. [Task List](/HW_Submissions/Tasklist.md)
-5. [Constraint Paper](/HW_Submissions/Constraint_Essay.md)
-6. [Project Dictionary](/HW_Submissions/Project_Dictionary.md)
-7. [Self-Assesment Essays (Right column of Team Member Table)](#team-members)
-8. [Spring Final PPT Presentation](/HW_Submissions/Spring%20Final%20PPT%20Presentation.pdf)
-9. [Final Expo Poster](/HW_Submissions/final_poster.pdf)
-10. [Budget](/HW_Submissions/budget.md)
-11. [Test Plan & Results](/HW_Submissions/test_plan.md)
-12. [Appendix](/HW_Submissions/Appendix.md)
+1. [Project Description](#College-Sports+-(CSP))
+2. [Design Diagrams](/HW_Submissions/Design%20Diagrams.docx)
+3. [Milestones, Timelines, Effort Matrixes](/HW_Submissions/milestone_list.md)
+4. [User Stories](/HW_Submissions/User_Stories.md)
+5. [Task List](/HW_Submissions/Tasklist.md)
+6. [Constraint Paper](/HW_Submissions/Constraint_Essay.md)
+7. [Project Dictionary](/HW_Submissions/Project_Dictionary.md)
+8. [Self-Assesment Essays (Right column of Team Member Table)](#team-members)
+9. [Spring Final PPT Presentation](/HW_Submissions/Spring%20Final%20PPT%20Presentation.pdf)
+10. [Final Expo Poster](/HW_Submissions/final_poster.pdf)
+11. [Budget](/HW_Submissions/budget.md)
+12. [Test Plan & Results](/HW_Submissions/test_plan.md)
+13. [Appendix](/HW_Submissions/Appendix.md)
 
 ## Contract
 
