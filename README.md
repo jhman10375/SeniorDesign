@@ -12,8 +12,8 @@ The project consists of creating a Fantasy-like game within a web-application, b
 
 | Name                 | Email                | Biography                                                     | Initial/Final Self-Assesment Essay                            |        
 | -------------------- | -------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| Juan Alvarado        | Alvaraji@mail.uc.edu | [Bio](/HW_Submissions/Prof_Bio_Juan_Alvarado.md)              | [Initial](/HW_Submissions/Individual_Capstone_Assesment_JIA.md) [Final](/HW_Submissions/Individual_Capstone_Assesment_JIA.md) |
-| Jordan Herman        | Hermanjg@mail.uc.edu | [Bio](/HW_Submissions/jordan-herman-professional-biograhy.md) | [Initial](/HW_Submissions/Individual_Capstone_Assesment_JH.md) [Final](/HW_Submissions/Individual_Capstone_Assesment_JH.md)  |
+| Juan Alvarado        | Alvaraji@mail.uc.edu | [Bio](/HW_Submissions/Prof_Bio_Juan_Alvarado.md)              | [Initial](/HW_Submissions/Individual_Capstone_Assesment_JIA.md) / [Final](/HW_Submissions/Individual_Capstone_Assesment_JIA.md) |
+| Jordan Herman        | Hermanjg@mail.uc.edu | [Bio](/HW_Submissions/jordan-herman-professional-biograhy.md) | [Initial](/HW_Submissions/Individual_Capstone_Assesment_JH.md) / [Final](/HW_Submissions/Individual_Capstone_Assesment_JH.md)  |
 | Advisor Will Hawkins | Hawkinwh@mail.uc.edu | [Bio](https://researchdirectory.uc.edu/p/hawkinwh)            | NA                                                            |
 
 ## Project Documents
