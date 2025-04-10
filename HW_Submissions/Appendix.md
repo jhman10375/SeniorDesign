@@ -25,10 +25,10 @@
 - NCAA Statistics (https://stats.ncaa.org)
 
 ## References
-Dodd, D. (2024, March 11). College football attendance sees increase in consecutive seasons for first time since 2008. CBS Sports. 
-Fantasy Sports & Gaming Association. (2024). Industry Demographics. thefsga. 
-Gardner, S. (2023, December 15). Money. Power. Women. The driving forces behind fantasy football's skyrocketing popularity. USA Today. 
-Lewis, J. (2025, March 25). College Football TV Ratings. SportsMediaWatch. 
+- Dodd, D. (2024, March 11). College football attendance sees increase in consecutive seasons for first time since 2008. CBS Sports. 
+- Fantasy Sports & Gaming Association. (2024). Industry Demographics. thefsga. 
+- Gardner, S. (2023, December 15). Money. Power. Women. The driving forces behind fantasy football's skyrocketing popularity. USA Today. 
+- Lewis, J. (2025, March 25). College Football TV Ratings. SportsMediaWatch. 
 
 ## Quick Links
 
