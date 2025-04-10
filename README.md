@@ -18,7 +18,7 @@ The project consists of creating a Fantasy-like game within a web-application, b
 
 ## Project Documents
 
-1. [Project Description](#College-Sports+-(CSP))
+1. [Project Description](#college-sports-csp)
 2. [Design Diagrams](/HW_Submissions/Design%20Diagrams.docx)
 3. [Milestones, Timelines, Effort Matrixes](/HW_Submissions/milestone_list.md)
 4. [User Stories](/HW_Submissions/User_Stories.md)
