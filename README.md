@@ -32,7 +32,8 @@ The project consists of creating a Fantasy-like game within a web-application, b
 12. [Final Expo Poster](/HW_Submissions/final_poster.pdf)
 13. [Summary of Expenses](/HW_Submissions/budget.md)
 14. [Test Plan & Results](/HW_Submissions/test_plan.md)
-15. [Appendix](/HW_Submissions/Appendix.md)
+15. [Summary of Hours and Justification](/HW_Submissions/Appendix.md)
+16. [Appendix](/HW_Submissions/Appendix.md)
 
 ## Contract
 
