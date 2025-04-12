@@ -235,7 +235,7 @@ class DraftManager:
     async def select_player(self, draft_key: str, athlete_id: str, player_id: str):
         """Mark a player as selected by a user and notify others."""
         for player in self.get_players(draft_key):
-            print(player)
+            #print(player)
             if player["player_id"] == athlete_id and player["user_id"] is None:
                 player["user_id"] = player_id
                 return True  # Successfully selected player
