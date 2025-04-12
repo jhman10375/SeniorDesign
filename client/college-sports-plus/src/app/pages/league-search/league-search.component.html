@@ -2,7 +2,7 @@
 <div class="scrollable-container" [style]="{ height: '100%' }">
   <div class="header w-full pb-2 mb-2 border-bottom-1 surface-border">
     <div
-      class="flex align-items-center justify-content-start text-primary mb-1"
+      class="flex align-items-center justify-content-start text-primary mb-1 cursor-pointer"
       [routerLink]="['/home']"
     >
       <i class="pi pi-angle-left"></i>
@@ -45,14 +45,14 @@
     <div class="flex flex-column">
       @for (league of leagues | async; track league) {
         <div
-          class="flex flex-row justify-content-between align-items-center mb-2 pb-2 surface-border border-bottom-1"
+          class="flex flex-row justify-content-between align-items-center mb-2 pb-2 surface-border border-bottom-1 cursor-none"
         >
           <span>{{ league.Name }}</span>
           <span>{{ league | currentLeaguePlayers }}</span>
           <p-button
             label="Join"
             (onClick)="joinLeague(league)"
-            [disabled]="!(league.ID | canJoinLeague: myLeagues)"
+            [disabled]="!(league.ID | canJoinLeague: myLeagues : league)"
           ></p-button>
         </div>
       }

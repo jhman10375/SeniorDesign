@@ -27,9 +27,9 @@
           }
         </div>
       }
-      <div class="data-cell" (click)="onPlayerSelected(player)">{{
-        player.Name
-      }}</div>
+      <div class="data-cell" (click)="onPlayerSelected(player)">
+        <span class="cursor-pointer">{{ player.Name }}</span></div
+      >
       <div class="data-cell">{{ player.Jersey }}</div>
       <div class="data-cell">{{ player.School }}</div>
       @if (!endDraft && draftMode) {

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "college-sports-plus"
+    "default": "college-sports-plus",
+    "prod": "csplus"
   }
 }

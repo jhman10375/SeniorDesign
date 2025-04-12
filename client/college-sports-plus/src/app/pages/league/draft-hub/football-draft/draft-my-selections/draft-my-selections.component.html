@@ -39,9 +39,11 @@
       <div
         class="flex flex-row align-items-center justify-content-between mb-2 pb-2 border-bottom-1 surface-border"
       >
-        <div class="data-cell" (click)="onPlayerSelected(athlete)">{{
-          athlete.Name
-        }}</div>
+        <div class="data-cell"
+          ><span class="cursor-pointer" (click)="onPlayerSelected(athlete)">{{
+            athlete.Name
+          }}</span></div
+        >
         <div class="data-cell">{{ athlete.Jersey }}</div>
         <div class="data-cell">{{ athlete.School }}</div>
         <div class="data-cell">{{

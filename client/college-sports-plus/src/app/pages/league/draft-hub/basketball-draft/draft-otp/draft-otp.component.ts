@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputOtpModule } from 'primeng/inputotp';
 
+import { GeneralService } from '../../../../../shared/services/bl/general-service.service';
+
 @Component({
   standalone: true,
   imports: [CommonModule, FormsModule, ButtonModule, InputOtpModule],
@@ -82,6 +84,9 @@ export class DraftOTPComponent
     const q = window.document.getElementsByTagName('input');
     for (let i = 0; i < q.length; i++) {
       q.item(i)?.setAttribute('type', 'number');
+      if (!GeneralService.isMobileForExpo()) {
+        q.item(i)!.style.width = '5em';
+      }
     }
   }
 

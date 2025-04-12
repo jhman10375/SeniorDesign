@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AvatarModule } from 'primeng/avatar';
+import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 
 import { LeagueAthleteModel } from '../../../models/league-athlete.model';
@@ -9,7 +11,13 @@ import { NumberLogoComponent } from '../number-logo/number-logo.component';
 
 @Component({
   standalone: true,
-  imports: [NumberLogoComponent, AvatarModule, TagModule],
+  imports: [
+    CommonModule,
+    NumberLogoComponent,
+    AvatarModule,
+    TagModule,
+    ButtonModule,
+  ],
   selector: 'player-header',
   templateUrl: 'player-header.component.html',
 })
@@ -22,7 +30,13 @@ export class PlayerHeaderComponent implements OnInit {
 
   @Input() LeaguePlayer: LeaguePlayerModel;
 
+  @Output() newPlayer = new EventEmitter<LeagueAthleteModel>();
+
   constructor() {}
 
   ngOnInit() {}
+
+  addToTeam(): void {
+    this.newPlayer.emit(this.player);
+  }
 }

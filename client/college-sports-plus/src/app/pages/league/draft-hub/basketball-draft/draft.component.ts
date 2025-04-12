@@ -11,12 +11,14 @@ import { BehaviorSubject, Observable, take } from 'rxjs';
 
 import { PlayerHeaderComponent } from '../../../../shared/components/shared/player-header/player-header.component';
 import { DraftPickOrderTypeEnum } from '../../../../shared/enums/draft-pick-order-type.enum';
+import { BasketballPositionEnum } from '../../../../shared/enums/position/basketball-position.enum';
 import { SportEnum } from '../../../../shared/enums/sport.enum';
 import { CurrentUserModel } from '../../../../shared/models/current-user.model';
 import { DraftOrderModel } from '../../../../shared/models/draft-order.model';
 import { DraftSortOrderModel } from '../../../../shared/models/draft-sort-order.model';
 import { LeagueAthleteModel } from '../../../../shared/models/league-athlete.model';
 import { LeaguePlayerModel } from '../../../../shared/models/league-player.model';
+import { LeagueRosterAthleteModel } from '../../../../shared/models/league-roster-athlete.model';
 import { LeagueModel } from '../../../../shared/models/league.model';
 import { PipesModule } from '../../../../shared/pipes/pipes.module';
 import { GeneralService } from '../../../../shared/services/bl/general-service.service';
@@ -95,17 +97,19 @@ export class BasketballDraftComponent implements OnInit {
 
   pickUpdated: Observable<boolean>;
 
-  athletes$: Observable<Array<LeagueAthleteModel>>;
+  athletes: Observable<Array<LeagueAthleteModel>>;
 
-  queue$: Observable<Array<LeagueAthleteModel>>;
+  queue: Observable<Array<LeagueAthleteModel>>;
 
   pickMade: Observable<LeagueAthleteModel>;
 
   myTeam: Observable<Array<LeagueAthleteModel>>;
 
-  leagueAthlete$: Observable<Array<DraftSelectionModel>>; // May be able to remove
+  leagueAthlete: Observable<Array<DraftSelectionModel>>; // May be able to remove
 
   draftSelections: Observable<Array<DraftSelectionModel>>;
+
+  draftResults: Array<DraftResultPlayerWSModel> = [];
 
   webSocketError: WritableSignal<string | null> = signal(null);
 
@@ -124,12 +128,20 @@ export class BasketballDraftComponent implements OnInit {
   numberOfRounds: number = 0; // TODO: Update this to calculate by league settings based on number of players per team
 
   numberOfRoundsMap: Map<SportEnum, number> = new Map<SportEnum, number>([
-    [SportEnum.Baseball, 26],
-    [SportEnum.Basketball, 16],
-    [SportEnum.Football, 24],
-    [SportEnum.Soccer, 28],
+    [SportEnum.Baseball, 10],
+    [SportEnum.Basketball, 5],
+    [SportEnum.Football, 7],
+    [SportEnum.Soccer, 11],
     [SportEnum.None, 0],
   ]);
+
+  // numberOfRoundsMap: Map<SportEnum, number> = new Map<SportEnum, number>([
+  //   [SportEnum.Baseball, 26],
+  //   [SportEnum.Basketball, 16],
+  //   [SportEnum.Football, 24],
+  //   [SportEnum.Soccer, 28],
+  //   [SportEnum.None, 0],
+  // ]);
 
   draftStarted: boolean = false;
 
@@ -153,11 +165,11 @@ export class BasketballDraftComponent implements OnInit {
     new LeagueAthleteModel()
   );
 
-  private _athletes$ = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
+  private _athletes = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
 
-  private _leagueAthlete$ = new BehaviorSubject<Array<DraftSelectionModel>>([]);
+  private _leagueAthlete = new BehaviorSubject<Array<DraftSelectionModel>>([]);
 
-  private _queue$ = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
+  private _queue = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
 
   private _myTeam = new BehaviorSubject<Array<LeagueAthleteModel>>([]);
 
@@ -183,9 +195,9 @@ export class BasketballDraftComponent implements OnInit {
     this.viewablePage = this._viewablePage.asObservable();
     this.pickMade = this._pickMade.asObservable();
     this.myTeam = this._myTeam.asObservable();
-    this.athletes$ = this._athletes$.asObservable();
-    this.queue$ = this._queue$.asObservable();
-    this.leagueAthlete$ = this._leagueAthlete$.asObservable();
+    this.athletes = this._athletes.asObservable();
+    this.queue = this._queue.asObservable();
+    this.leagueAthlete = this._leagueAthlete.asObservable();
     this.draftSelections = this._draftSelections.asObservable();
     this.currentPick = this.draftPickOrderService.currentPick;
     this.draftOrder = this.draftPickOrderService.draftOrder;
@@ -212,6 +224,7 @@ export class BasketballDraftComponent implements OnInit {
     if (draftKey && dk && dk == this.activeLeague?.ID) {
       this.joinedThroughRefresh = true;
       this.onJoinDraft(draftKey.substring(0, 6));
+      this.draftKey = draftKey.substring(0, 6);
     }
     this.numberOfRounds =
       this.numberOfRoundsMap.get(
@@ -248,13 +261,13 @@ export class BasketballDraftComponent implements OnInit {
   }
 
   onSearch(): void {
-    const a: Array<LeagueAthleteModel> = this._athletes$.value;
+    const a: Array<LeagueAthleteModel> = this._athletes.value;
     this.searchAthletes.set(a);
     this.searchDialogVisible = true;
   }
 
   onAddToFromSearch(queue: boolean, player: LeagueAthleteModel): void {
-    const p: LeagueAthleteModel | undefined = this._athletes$.value.find(
+    const p: LeagueAthleteModel | undefined = this._athletes.value.find(
       (x) => x.AthleteID === player.AthleteID
     );
     if (p) {
@@ -275,6 +288,7 @@ export class BasketballDraftComponent implements OnInit {
     }
     this._myTeam.next(mt);
     this._pickMade.next(athlete);
+
     this.onUpdateCurrentPick();
     this.updateAthletes(athlete);
     this.leagueService.addAthleteToTeamFromDraft(
@@ -287,10 +301,89 @@ export class BasketballDraftComponent implements OnInit {
       athlete_id: athlete.AthleteID,
       player_id: this.activeUser?.ID ?? -1,
     });
+    if (this.draftPickOrderService.isFinalPick()) {
+      this.draftResults.push({
+        player_id: athlete.AthleteID,
+        user_id: this.activeUser?.ID ?? '-1',
+        round: 999,
+        index: 999,
+      });
+      if (this.activeLeague) {
+        const seasonTeam: Array<{
+          playerID: string;
+          players: Array<LeagueRosterAthleteModel>;
+        }> = [];
+        this.activeLeague.Players.forEach((player) =>
+          seasonTeam.push({ playerID: player.PlayerID, players: [] })
+        );
+        this.draftResults.forEach((x) => {
+          const team = seasonTeam.find((y) => y.playerID == x.user_id);
+          if (team) {
+            team.players.push(
+              this.leagueService.updateNewRosterFromID(
+                this.activeLeague?.LeagueType ?? SportEnum.None,
+                team.players,
+                x.player_id
+              )
+            );
+          }
+        });
+
+        seasonTeam.forEach((x) => {
+          const p = this.activeLeague?.Players.find(
+            (y) => y.PlayerID == x.playerID
+          );
+          if (p) {
+            x.playerID = p.ID;
+          }
+        });
+
+        this.activeLeague.Season.forEach((week) => {
+          week.Games.forEach((game) => {
+            const awayTeam = seasonTeam.find(
+              (x) => x.playerID === game.AwayTeamPlayerID
+            );
+            if (awayTeam) {
+              game.AwayTeam = awayTeam.players;
+            }
+            const homeTeam = seasonTeam.find(
+              (x) => x.playerID === game.HomeTeamPlayerID
+            );
+            if (homeTeam) {
+              game.HomeTeam = homeTeam.players;
+            }
+          });
+        });
+
+        this.leagueService.setDraftComplete(
+          this.activeLeague.ID,
+          true,
+          this.activeLeague
+        );
+
+        this.pickOrder.pipe(take(1)).subscribe({
+          next: (x) => {
+            x.forEach((y) => {
+              const player = this.activeLeague?.Players.find(
+                (z) => z.ID === y.Player.ID
+              );
+              if (player) {
+                player.DraftPickSortOrder = y.SortOrder.SortOrder;
+                player.DraftTeamPlayerIDs =
+                  seasonTeam
+                    .find((x) => x.playerID == player.ID)
+                    ?.players.map((y) => y.Athlete.AthleteID) ?? [];
+                this.leagueService.updatePlayer(player);
+              }
+            });
+          },
+        });
+      }
+    }
   }
 
   onAddToQueue(athlete: LeagueAthleteModel): void {
-    const q = this._queue$.value;
+    const q = this._queue.value;
     if (q.length > 0) {
       if (!q.find((a) => a.AthleteID === athlete.AthleteID)) {
         q.push(athlete);
@@ -299,14 +392,12 @@ export class BasketballDraftComponent implements OnInit {
       q.push(athlete);
     }
 
-    this._queue$.next(q);
+    this._queue.next(q);
   }
 
   onRemoveFromQueue(athlete: LeagueAthleteModel): void {
-    const q = this._queue$.value.filter(
-      (x) => x.AthleteID != athlete.AthleteID
-    );
-    this._queue$.next(q);
+    const q = this._queue.value.filter((x) => x.AthleteID != athlete.AthleteID);
+    this._queue.next(q);
   }
 
   onUpdateCurrentPick(): void {
@@ -363,6 +454,9 @@ export class BasketballDraftComponent implements OnInit {
         },
         error: (err) => {
           console.error(err);
+          this.webSocketError.set(
+            'Error Entering Waiting room. Are you sure your code is correct?' // used to give ios Error for OTP
+          );
           localStorage.removeItem('bkbdk');
         },
       });
@@ -374,7 +468,7 @@ export class BasketballDraftComponent implements OnInit {
 
   private updateAthletes(athlete: LeagueAthleteModel): void {
     let r: Array<LeagueAthleteModel> = [];
-    this.athletes$.pipe(take(1)).subscribe({ next: (a) => (r = a) });
+    this.athletes.pipe(take(1)).subscribe({ next: (a) => (r = a) });
     r = r.filter((x) => x.AthleteID != athlete.AthleteID);
     this.onRemoveFromQueue(athlete);
   }
@@ -533,6 +627,7 @@ export class BasketballDraftComponent implements OnInit {
     });
     this.draftPlayers = draftPlayers;
 
+    this.draftResults = message.draft_results;
     let athletes: Array<LeagueAthleteModel> = [];
     athletes = draftPlayers.map((x) => x.Athlete);
 
@@ -603,8 +698,68 @@ export class BasketballDraftComponent implements OnInit {
       );
       this._myTeam.next(filteredAthletes);
     }
+    let q: Array<LeagueAthleteModel> = [];
+    this._myTeam.value.forEach((myPlayer) => {
+      athletes = athletes?.filter((athlete) => {
+        if (
+          athlete.Position == BasketballPositionEnum.Forward ||
+          athlete.Position == BasketballPositionEnum.Guard
+        ) {
+          return true;
+        } else {
+          if (athlete.Position !== myPlayer.Position) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+      q = this._queue.value?.filter((athlete) => {
+        if (
+          athlete.Position == BasketballPositionEnum.Forward ||
+          athlete.Position == BasketballPositionEnum.Guard
+        ) {
+          return true;
+        } else {
+          if (athlete.Position !== myPlayer.Position) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+    });
 
-    this._athletes$.next(athletes);
+    let Gcount = 2;
+    let Fcount = 2;
+    this._myTeam.value.forEach((athlete) => {
+      if (athlete.Position == BasketballPositionEnum.Forward) {
+        Gcount--;
+      }
+      if (athlete.Position == BasketballPositionEnum.Guard) {
+        Fcount--;
+      }
+    });
+    if (Fcount <= 0) {
+      athletes = athletes?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Guard
+      );
+      q = this._queue.value?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Guard
+      );
+    }
+    if (Gcount <= 0) {
+      athletes = athletes?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Forward
+      );
+      q = this._queue.value?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Forward
+      );
+    }
+
+    this._queue.next(q);
+    this._athletes.next(athletes);
+    this._athletes.next(athletes);
 
     this._draftSelections.next(draftResponseUpdated);
 
@@ -626,11 +781,71 @@ export class BasketballDraftComponent implements OnInit {
     });
     this.draftPlayers = draftPlayers;
 
+    let q: Array<LeagueAthleteModel> = [];
     let players: Array<LeagueAthleteModel> = [];
     players = draftPlayers.map((x) => x.Athlete);
 
     players = players.filter((x) => x.PlayerID == null || x.PlayerID == '');
-    this._athletes$.next(players);
+    this._myTeam.value.forEach((myPlayer) => {
+      players = players?.filter((athlete) => {
+        if (
+          athlete.Position == BasketballPositionEnum.Forward ||
+          athlete.Position == BasketballPositionEnum.Guard
+        ) {
+          return true;
+        } else {
+          if (athlete.Position !== myPlayer.Position) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+      q = this._queue.value?.filter((athlete) => {
+        if (
+          athlete.Position == BasketballPositionEnum.Forward ||
+          athlete.Position == BasketballPositionEnum.Guard
+        ) {
+          return true;
+        } else {
+          if (athlete.Position !== myPlayer.Position) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+    });
+
+    let Gcount = 2;
+    let Fcount = 2;
+    this._myTeam.value.forEach((athlete) => {
+      if (athlete.Position == BasketballPositionEnum.Forward) {
+        Fcount--;
+      }
+      if (athlete.Position == BasketballPositionEnum.Guard) {
+        Gcount--;
+      }
+    });
+    if (Gcount <= 0) {
+      players = players?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Guard
+      );
+      q = this._queue.value?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Guard
+      );
+    }
+    if (Fcount <= 0) {
+      players = players?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Forward
+      );
+      q = this._queue.value?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Forward
+      );
+    }
+
+    this._queue.next(q);
+    this._athletes.next(players);
     if (this.searchDialogVisible) {
       this.onSearch();
     }
@@ -686,11 +901,71 @@ export class BasketballDraftComponent implements OnInit {
     });
     this.draftPlayers = draftPlayers;
 
+    let q: Array<LeagueAthleteModel> = [];
     let players: Array<LeagueAthleteModel> = [];
     players = draftPlayers.map((x) => x.Athlete);
 
     players = players.filter((x) => x.PlayerID == null || x.PlayerID == '');
-    this._athletes$.next(players);
+    this._myTeam.value.forEach((myPlayer) => {
+      players = players?.filter((athlete) => {
+        if (
+          athlete.Position == BasketballPositionEnum.Forward ||
+          athlete.Position == BasketballPositionEnum.Guard
+        ) {
+          return true;
+        } else {
+          if (athlete.Position !== myPlayer.Position) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+      q = this._queue.value?.filter((athlete) => {
+        if (
+          athlete.Position == BasketballPositionEnum.Guard ||
+          athlete.Position == BasketballPositionEnum.Forward
+        ) {
+          return true;
+        } else {
+          if (athlete.Position !== myPlayer.Position) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+    });
+
+    let Gcount = 2;
+    let Fcount = 2;
+    this._myTeam.value.forEach((athlete) => {
+      if (athlete.Position == BasketballPositionEnum.Forward) {
+        Fcount--;
+      }
+      if (athlete.Position == BasketballPositionEnum.Guard) {
+        Gcount--;
+      }
+    });
+    if (Gcount <= 0) {
+      players = players?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Guard
+      );
+      q = this._queue.value?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Guard
+      );
+    }
+    if (Fcount <= 0) {
+      players = players?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Forward
+      );
+      q = this._queue.value?.filter(
+        (athlete) => athlete.Position !== BasketballPositionEnum.Forward
+      );
+    }
+
+    this._queue.next(q);
+    this._athletes.next(players);
 
     if (this.searchDialogVisible) {
       this.onSearch();

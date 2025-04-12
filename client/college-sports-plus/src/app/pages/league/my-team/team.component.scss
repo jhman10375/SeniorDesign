@@ -13,15 +13,10 @@
   flex: 1;
   text-align: center;
 
-  &.no-flex {
-    flex: none; // Remove flex grow from the first column
-    text-align: left;
-  }
-
   &:first-child {
     flex: none; // Remove flex grow from the first column
     text-align: left;
-    width: 4rem;
+    width: 2rem;
   }
 
   &:last-child {

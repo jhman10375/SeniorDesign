@@ -1,7 +1,7 @@
 @if (isMobile) {
   @if (checkIfAtParentRoute()) {
     <div class="scrollable-container" [style]="{ height: '100%' }">
-      <div class="header">
+      <div class="header cursor-none">
         <mobile-scoreboard
           [teamScoreboard]="true"
           [player]="currentPlayer"
@@ -11,11 +11,11 @@
         <div
           class="flex flex-row align-items-center justify-content-between mt-1 pb-2 border-bottom-1 surface-border text-xs"
         >
-          <span class="header-item mr-2">Edit</span>
-          <span class="header-item no-flex">Pos</span>
-          <span class="header-item">Name</span>
-          <span class="header-item no-flex">Number</span>
-          <span class="header-item">School</span>
+          <span class="header-item mr-2 cursor-none">Edit</span>
+          <span class="header-item cursor-none">Pos</span>
+          <span class="header-item text-left pl-2 cursor-none">Name</span>
+          <span class="header-item cursor-none">Number</span>
+          <span class="header-item cursor-none">School</span>
         </div>
       </div>
       <div class="body">

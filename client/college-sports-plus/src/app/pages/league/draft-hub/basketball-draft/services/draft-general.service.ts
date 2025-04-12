@@ -72,14 +72,14 @@ export class DraftGeneralService {
   ): number {
     let score: number = 0;
 
-    score = score + basketballDraftPlayerModel.Stats.Assists * 1;
-    score = score + basketballDraftPlayerModel.Stats.BlockedShots * -1;
+    score = score + basketballDraftPlayerModel.Stats.Assists * 1.5;
+    score = score + basketballDraftPlayerModel.Stats.BlockedShots * 2;
     score = score + basketballDraftPlayerModel.Stats.FreeThrows * 1;
-    score = score + basketballDraftPlayerModel.Stats.Rebounds * -1;
-    score = score + basketballDraftPlayerModel.Stats.Steals * -1;
-    score = score + basketballDraftPlayerModel.Stats.ThreePointers * -1;
-    score = score + basketballDraftPlayerModel.Stats.Turnovers * 1;
-    score = score + basketballDraftPlayerModel.Stats.TwoPointers * 1;
+    score = score + basketballDraftPlayerModel.Stats.Rebounds * 1.2;
+    score = score + basketballDraftPlayerModel.Stats.Steals * 2;
+    score = score + basketballDraftPlayerModel.Stats.ThreePointers * 3;
+    score = score + basketballDraftPlayerModel.Stats.Turnovers * -1;
+    score = score + basketballDraftPlayerModel.Stats.TwoPointers * 2;
 
     return score / 12;
   }

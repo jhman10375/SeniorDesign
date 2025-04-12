@@ -25,6 +25,8 @@ export class RosterComponent implements OnInit {
 
   @Input() canEditTeam: boolean = false;
 
+  @Input() game: boolean = false;
+
   @Output() navigateToEmitter = new EventEmitter<string>();
 
   @Output() editTeamEmitter = new EventEmitter<string>();
@@ -77,11 +79,15 @@ export class RosterComponent implements OnInit {
       SportEnum.Basketball,
       [
         'FTC',
+        'FTF1',
+        'FTF2',
+        'FTG1',
+        'FTG2',
         'STC',
-        'FTF',
-        'STF',
-        'FTG',
-        'STG',
+        'STF1',
+        'STF2',
+        'STG1',
+        'STG2',
         'B1',
         'B2',
         'B3',

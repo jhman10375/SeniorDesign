@@ -168,12 +168,16 @@ export class RosterPositionPipe implements PipeTransform {
           case 'STC':
             retPosition = 'C';
             break;
-          case 'FTF':
-          case 'STF':
+          case 'FTF1':
+          case 'FTF2':
+          case 'STF1':
+          case 'STF2':
             retPosition = 'F';
             break;
-          case 'FTG':
-          case 'STG':
+          case 'FTG1':
+          case 'FTG2':
+          case 'STG1':
+          case 'STG2':
             retPosition = 'G';
             break;
           case 'B1':

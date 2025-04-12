@@ -3,7 +3,10 @@
     <div
       class="flex flex-row align-items-center justify-content-between mb-1 h-full"
     >
-      <div class="flex flex-column" style="height: 100%; width: 100%">
+      <div
+        class="flex flex-column"
+        style="height: 100%; width: 100%; max-width: 150px"
+      >
         <div
           style="height: 50%"
           class="border-round-top"
@@ -25,7 +28,9 @@
     <!-- <div class="flex flex-row"> -->
     <span class="width-75 text-right text-xl"> {{ player?.TeamName }}</span>
     <div class="flex flex-column flex-grow-1 justify-content-end">
-      <span class="material-icons align-self-end" (click)="openMyTeamSettings()"
+      <span
+        class="material-icons align-self-end cursor-pointer"
+        (click)="openMyTeamSettings()"
         >settings</span
       >
     </div>

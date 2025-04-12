@@ -25,6 +25,7 @@ export class PlayerFilterBase implements OnInit {
       }
       if (
         this.currentPositionFilter() != null ||
+        this.currentGeneralFilter() != null ||
         this.currentSortFunction() != 'None'
       ) {
         this.updateAthletes(v);
@@ -88,9 +89,13 @@ export class PlayerFilterBase implements OnInit {
     }
   }
 
+  @Input() hideTakenPlayers: boolean = false;
+
   athleteSelection: Observable<Array<LeagueAthleteModel>>;
 
   currentPositionFilter: WritableSignal<string | null> = signal(null);
+
+  currentGeneralFilter: WritableSignal<string | null> = signal(null);
 
   currentSortType: WritableSignal<'Up' | 'Down' | 'None'> = signal('None');
 
@@ -127,12 +132,18 @@ export class PlayerFilterBase implements OnInit {
     this.updateAthletes();
   }
 
-  setFilterss(filterType: string, position: string): void {
+  setFilterss(filterType: string, value: string): void {
     if (filterType === 'Position') {
-      if (position === 'None') {
+      if (value === 'None') {
         this.currentPositionFilter.set(null);
       } else {
-        this.currentPositionFilter.set(position);
+        this.currentPositionFilter.set(value);
+      }
+    } else if (filterType === 'General') {
+      if (value === 'None') {
+        this.currentGeneralFilter.set(null);
+      } else {
+        this.currentGeneralFilter.set(value);
       }
     }
     this.updateAthletes();
@@ -201,6 +212,22 @@ export class PlayerFilterBase implements OnInit {
       arr = athletes ? athletes : this.athletes;
     }
 
+    if (
+      this.currentGeneralFilter() != null &&
+      this.currentGeneralFilter() == 'Available'
+    ) {
+      arr = arr.filter((x) => !(x.PlayerID && x.PlayerID.length > 0));
+    } else if (
+      this.currentGeneralFilter() != null &&
+      this.currentGeneralFilter() == 'Drafted'
+    ) {
+      arr = arr.filter((x) => x.PlayerID && x.PlayerID.length > 0);
+    } else {
+      if (!this.searchFilter) {
+        arr = athletes ? athletes : [...this.athletes];
+      }
+    }
+
     if (this.currentPositionFilter() != null) {
       arr = arr.filter((x) => x.Position === this.currentPositionFilter());
     } else {
@@ -255,7 +282,7 @@ export class PlayerFilterBase implements OnInit {
       //     ? [...this.playersReadonly]
       //     : [...this.athletes];
     }
-
+    arr = this.getDistinctById(arr);
     this._athleteSelection.next(arr);
   }
 
@@ -275,5 +302,23 @@ export class PlayerFilterBase implements OnInit {
         this.updateAthletes();
         break;
     }
+  }
+
+  private getDistinctById(
+    arr: Array<LeagueAthleteModel>
+  ): LeagueAthleteModel[] {
+    const seenIds = new Set<number | string>();
+    return arr.filter((obj) => {
+      if (
+        !seenIds.has(obj.AthleteID) &&
+        !(this.hideTakenPlayers && obj.PlayerID!.length > 0) &&
+        obj.AthleteID &&
+        obj.AthleteID.toString().length > 0
+      ) {
+        seenIds.add(obj.AthleteID);
+        return true;
+      }
+      return false;
+    });
   }
 }

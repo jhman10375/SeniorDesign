@@ -1,9 +1,9 @@
 @if (isMobile) {
   @if (checkIfAtParentRoute()) {
-    <div class="flex flex-column">
+    <div class="flex flex-column cursor-none">
       @for (week of season; track week) {
         <div
-          class="flex flex-row justify-content-between border-bottom-1 surface-border pb-1"
+          class="flex flex-row justify-content-between border-bottom-1 surface-border pb-1 cursor-pointer"
           [routerLink]="['past-game', week.Week]"
         >
           <span>Week {{ week.Week }}</span>

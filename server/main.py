@@ -210,7 +210,7 @@ async def search_for_players_by_id(player_id : int) -> playerInfo:
 
 @app.get("/players/search/by_ids", tags=["Player Info"])
 async def search_for_players_by_ids(player_ids = ['']) -> List[playerInfo]:
-    print(player_ids)
+    # print(player_ids)
     ids = ast.literal_eval(player_ids)
     players = []
     for id in ids:

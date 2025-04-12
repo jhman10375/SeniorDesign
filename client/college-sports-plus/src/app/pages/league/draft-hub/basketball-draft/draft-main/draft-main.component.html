@@ -3,13 +3,16 @@
     <div
       class="flex flex-row mb-1 align-items-center justify-content-between border-bottom-1 surface-border"
     >
-      <span class="header-item" (click)="onSearch()"
-        ><i class="pi pi-search"></i><span class="ml-1">Search</span></span
+      <span class="header-item"
+        ><i class="pi pi-search cursor-pointer" (click)="onSearch()"></i
+        ><span class="ml-1 cursor-pointer" (click)="onSearch()"
+          >Search</span
+        ></span
       >
       <div class="header-item">
         <span class="mr-2">Filters:</span>
         <player-filter
-          class=""
+          class="cursor-pointer"
           [filterName]="'Position'"
           [filters]="positionFilters"
           [currentFilter]="currentPositionFilter()"
@@ -79,7 +82,7 @@
           <div class="data-cell">
             @if (currentlyPicking) {
               <span
-                class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                class="grid-item text-xs text-primary border-1 p-1 border-primary border-round cursor-pointer"
                 (click)="addToRoster(athlete)"
                 >Pick</span
               >
@@ -91,7 +94,7 @@
                 >
               } @else {
                 <span
-                  class="grid-item text-xs text-primary border-1 p-1 border-primary border-round"
+                  class="grid-item text-xs text-primary border-1 p-1 border-primary border-round cursor-pointer"
                   (click)="addToQueue(athlete)"
                   >Reserve</span
                 >
@@ -100,9 +103,11 @@
           </div>
         }
 
-        <div class="data-cell" (click)="onPlayerSelected(athlete)">{{
-          athlete.Name
-        }}</div>
+        <div class="data-cell"
+          ><span class="cursor-pointer" (click)="onPlayerSelected(athlete)">{{
+            athlete.Name
+          }}</span></div
+        >
         <div class="data-cell">{{ athlete.Jersey }}</div>
         <div class="data-cell">{{ athlete.School }}</div>
         <div class="data-cell">{{
@@ -115,7 +120,7 @@
 
 <p-overlayPanel #positionFilterOverlayPanel>
   <div class="overflow-scroll" style="max-height: 10vh">
-    <div class="flex flex-column">
+    <div class="flex flex-column cursor-pointer">
       @for (position of positionFilters; track position) {
         <div
           (click)="
@@ -130,7 +135,7 @@
 </p-overlayPanel>
 
 <p-overlayPanel #generalFilterOverlayPanel>
-  <div class="overflow-scroll" style="max-height: 10vh">
+  <div class="overflow-scroll cursor-pointer" style="max-height: 10vh">
     <div class="flex flex-column"> </div>
   </div>
 </p-overlayPanel>

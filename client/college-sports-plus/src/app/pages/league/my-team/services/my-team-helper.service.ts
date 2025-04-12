@@ -18,18 +18,24 @@ export class MyTeamHelperService {
       case pos.includes('RB'):
         retVal.push('FTRB1');
         retVal.push('FTRB2');
+        retVal.push('FTFLEX');
         retVal.push('STRB1');
         retVal.push('STRB2');
+        retVal.push('STFLEX');
         break;
       case pos.includes('WR'):
         retVal.push('FTWR1');
         retVal.push('FTWR2');
+        retVal.push('FTFLEX');
         retVal.push('STWR1');
         retVal.push('STWR2');
+        retVal.push('STFLEX');
         break;
       case pos.includes('TE'):
         retVal.push('FTTE');
+        retVal.push('FTFLEX');
         retVal.push('STTE');
+        retVal.push('STFLEX');
         break;
       case pos.includes('FLEX'):
         retVal.push('FTFLEX');
@@ -56,12 +62,16 @@ export class MyTeamHelperService {
         retVal.push('STC');
         break;
       case pos.includes('F'):
-        retVal.push('FTF');
-        retVal.push('STF');
+        retVal.push('FTF1');
+        retVal.push('FTF2');
+        retVal.push('STF1');
+        retVal.push('STF2');
         break;
       case pos.includes('G'):
-        retVal.push('FTG');
-        retVal.push('STG');
+        retVal.push('FTG1');
+        retVal.push('FTG2');
+        retVal.push('STG1');
+        retVal.push('STG2');
         break;
     }
 

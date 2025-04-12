@@ -10,6 +10,7 @@ import { DraftHubComponent } from './pages/league/draft-hub/draft-hub.component'
 import { DraftResultsComponent } from './pages/league/draft-results/draft-results.component';
 import { GameHistoryComponent } from './pages/league/game-history/game-history.component';
 import { GameComponent } from './pages/league/game/game.component';
+import { HelpComponent } from './pages/league/help/help.component';
 import { LeagueComponent } from './pages/league/league.component';
 import { TeamComponent } from './pages/league/my-team/team.component';
 import { PlayerSearchComponent } from './pages/league/player-search/player-search.component';
@@ -31,6 +32,11 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'help',
+    component: HelpComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -64,6 +70,11 @@ export const routes: Routes = [
             canActivate: [AuthGuard],
           },
         ],
+      },
+      {
+        path: 'help',
+        component: HelpComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'standings',

@@ -40,4 +40,8 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.username, this.password);
   }
+
+  getExpoUser(id: number): void {
+    this.authService.login(`expouser${id}@csplus.com`, `EXPO-user${id}!`);
+  }
 }

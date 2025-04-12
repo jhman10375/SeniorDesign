@@ -247,4 +247,20 @@ export class AthleteDLService implements OnDestroy {
         error: (e) => console.error(e),
       });
   }
+
+  getBaseballPlayers(): Array<LeagueAthleteModel> {
+    return this._baseballPlayers.value;
+  }
+
+  getBasketballPlayers(): Array<LeagueAthleteModel> {
+    return this._basketballPlayers.value;
+  }
+
+  getFootballPlayers(): Array<LeagueAthleteModel> {
+    return this._players.value;
+  }
+
+  getSoccerPlayers(): Array<LeagueAthleteModel> {
+    return this._soccerPlayers.value;
+  }
 }

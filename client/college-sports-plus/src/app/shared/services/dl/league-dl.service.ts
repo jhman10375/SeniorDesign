@@ -183,6 +183,51 @@ export class LeagueDLService
     });
   }
 
+  setDraftComplete(leagueID: string, complete: boolean): void {
+    this.queryGroupSingleWhereConditionNoLimit(
+      CollectionsEnum.League,
+      'ID',
+      '==',
+      leagueID
+    ).then((league) => {
+      const l: LeagueDLModel = league.docs[0].data();
+      l.DraftComplete = complete;
+      this.updateNestedOBJ(l, CollectionsEnum.League).then(() => {
+        this.schoolsService.schools.pipe(take(1)).subscribe({
+          next: (schools) => {
+            combineLatest([
+              this.currentUserService.CurrentUser,
+              this.athleteService.players,
+              this.athleteService.basketballPlayers,
+              this.athleteService.baseballPlayers,
+              this.athleteService.soccerPlayers,
+            ])
+              .pipe(take(1))
+              .subscribe({
+                next: ([
+                  user,
+                  fbPlayers,
+                  bkballPlayers,
+                  bsballPlayers,
+                  sccPlayers,
+                ]) => {
+                  // console.log([user, fbPlayers, bkballPlayers]);
+                  this.convertLeagues2(
+                    [...user.LeagueIDs],
+                    fbPlayers,
+                    bkballPlayers,
+                    bsballPlayers,
+                    sccPlayers,
+                    schools
+                  );
+                },
+              });
+          },
+        });
+      });
+    });
+  }
+
   addPlayerToSeason(leagueID: string, playerID: string): void {
     let scheduleID: string | null = null;
     this.leagueSeasonDLService.getSeason(leagueID).then((seasonDL) => {
@@ -301,6 +346,7 @@ export class LeagueDLService
                     const l: LeagueModel = new LeagueModel();
                     l.ID = leagueDL.ID;
                     l.DraftDate = new Date(leagueDL.DraftDate);
+                    l.DraftComplete = leagueDL.DraftComplete;
                     l.Name = leagueDL.Name;
                     l.LeagueType = leagueDL.LeagueType;
                     // l.Settings = this.leagueSettingsDLService.getSettingsModel(
@@ -322,6 +368,7 @@ export class LeagueDLService
                     );
                     if (manager) {
                       l.Manager = manager;
+                      l.Settings.GeneralSettingsModel.LeagueManager = manager;
                     }
                     // l.Season = fullSeason;
                     switch (l.LeagueType) {
@@ -431,6 +478,7 @@ export class LeagueDLService
     const leagueDL: LeagueDLModel = new LeagueDLModel();
     leagueDL.ID = league.ID;
     leagueDL.DraftDate = league.DraftDate;
+    leagueDL.DraftComplete = false;
     leagueDL.LeagueType = league.LeagueType;
     leagueDL.ManagerID = league.Manager.ID;
     leagueDL.Name = league.Name;

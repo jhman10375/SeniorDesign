@@ -5,9 +5,14 @@
         [player]="player"
         [LeaguePlayer]="leaguePlayer"
         [school]="school"
+        (newPlayer)="onAddNewPlayer($event)"
       ></player-header>
     } @else {
-      <player-header [player]="player" [school]="school"></player-header>
+      <player-header
+        [player]="player"
+        [school]="school"
+        (newPlayer)="onAddNewPlayer($event)"
+      ></player-header>
     }
     <div style="overflow-y: auto">
       <div
@@ -42,13 +47,19 @@
           <span>{{ player.School }}</span>
         </div>
         <div class="flex flex-row justify-content-between align-items-center">
+          <span>Position:</span>
+          <span>{{ player.Position }}</span>
+        </div>
+        <div class="flex flex-row justify-content-between align-items-center">
           <span>Height:</span>
           <span>{{ player.Height | heightPipe: "feet" }}</span>
         </div>
-        <div class="flex flex-row justify-content-between align-items-center">
-          <span>Weight:</span>
-          <span>{{ player.Weight }} lbs</span>
-        </div>
+        @if (player.Weight) {
+          <div class="flex flex-row justify-content-between align-items-center">
+            <span>Weight:</span>
+            <span>{{ player.Weight }} lbs</span>
+          </div>
+        }
         <div class="flex flex-row justify-content-between align-items-center">
           <span>Year:</span>
           @switch (player.Year) {

@@ -81,17 +81,17 @@ export class DraftGeneralService {
 
     score = score + footballDraftPlayerModel.Stats.ExtraPoints * 1;
     score = score + footballDraftPlayerModel.Stats.ExtraPointsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FieldGoals * 1;
+    score = score + footballDraftPlayerModel.Stats.FieldGoals * 3;
     score = score + footballDraftPlayerModel.Stats.FieldGoalsMissed * -1;
-    score = score + footballDraftPlayerModel.Stats.FumblesLost * -1;
-    score = score + footballDraftPlayerModel.Stats.Interceptions * -1;
-    score = score + footballDraftPlayerModel.Stats.PassTD * 1;
-    score = score + footballDraftPlayerModel.Stats.PassYds * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionTD * 1;
-    score = score + footballDraftPlayerModel.Stats.ReceptionYds * 1;
+    score = score + footballDraftPlayerModel.Stats.FumblesLost * -2;
+    score = score + footballDraftPlayerModel.Stats.Interceptions * -2;
+    score = score + footballDraftPlayerModel.Stats.PassTD * 6;
+    score = score + footballDraftPlayerModel.Stats.PassYds * 0.4;
+    score = score + footballDraftPlayerModel.Stats.ReceptionTD * 6;
+    score = score + footballDraftPlayerModel.Stats.ReceptionYds * 0.1;
     score = score + footballDraftPlayerModel.Stats.Receptions * 1;
-    score = score + footballDraftPlayerModel.Stats.RushTD * 1;
-    score = score + footballDraftPlayerModel.Stats.RushYds * 1;
+    score = score + footballDraftPlayerModel.Stats.RushTD * 6;
+    score = score + footballDraftPlayerModel.Stats.RushYds * 0.1;
 
     return score / 12;
   }

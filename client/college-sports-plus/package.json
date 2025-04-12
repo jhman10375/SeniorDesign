@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "pubCollegeSportsPlus": "ng b && firebase deploy --only hosting:college-sports-plus",
+    "pubCSPlus": "ng b && firebase deploy --only hosting:csplus",
+    "PubAll": "ng b && firebase deploy --only hosting:csplus && firebase deploy --only hosting:college-sports-plus"
   },
   "private": true,
   "dependencies": {

@@ -120,10 +120,11 @@ export class LeagueService implements OnDestroy {
             const newScoreboard: LeagueScorboardModel =
               new LeagueScorboardModel();
 
-            (newScoreboard.CurrentRanking = 2),
-              (newScoreboard.ID = league.ID),
-              (newScoreboard.Leader = 'John Smith'),
-              (newScoreboard.Manager = 'John Smith'),
+            // (newScoreboard.CurrentRanking = 2),
+            (newScoreboard.ID = league.ID),
+              // (newScoreboard.Leader = 'John Smith'),
+              (newScoreboard.Manager =
+                league.Settings.GeneralSettingsModel.LeagueManager.Name),
               (newScoreboard.Name = league.Name),
               (newScoreboard.PrimaryColor = (
                 league.Settings as FootballLeagueSettingsModel
@@ -259,56 +260,104 @@ export class LeagueService implements OnDestroy {
         player.DraftRoster.push(
           this.updateNewRoster(league.LeagueType, player.DraftRoster, athlete)
         );
-        // player.DraftRoster = this.updateRoster(
-        //   league.LeagueType,
-        //   player.DraftRoster,
-        //   athlete
-        // );
+        this.playerService.updatePlayer(player);
 
-        const week = league.Season.find((week) => week.Week == 1);
-        if (week) {
-          const game = week.Games.find(
-            (g) => g.AwayTeamPlayerID == teamID || g.HomeTeamPlayerID == teamID
-          );
-          if (game && game.AwayTeamPlayerID == teamID) {
-            if (!game.AwayTeam) {
-              game.AwayTeam = [];
-            }
-            const newPlayer: LeagueRosterAthleteModel = this.updateNewRoster(
-              league.LeagueType,
-              game.AwayTeam,
-              athlete
+        league.Season.forEach((week) => {
+          if (week) {
+            const game = week.Games.find(
+              (g) =>
+                g.AwayTeamPlayerID == teamID || g.HomeTeamPlayerID == teamID
             );
-            game.AwayTeam.push(newPlayer);
-            // game.AwayTeam = this.updateRoster(
-            //   league.LeagueType,
-            //   game.AwayTeam,
-            //   athlete
-            // );
-          } else if (game && game.HomeTeamPlayerID == teamID) {
-            // game.HomeTeam = this.updateRoster(
-            //   league.LeagueType,
-            //   game.HomeTeam,
-            //   athlete
-            // );
-
-            if (!game.HomeTeam) {
-              game.HomeTeam = [];
+            if (game && game.AwayTeamPlayerID == teamID) {
+              if (!game.AwayTeam) {
+                game.AwayTeam = [];
+              }
+              const newPlayer: LeagueRosterAthleteModel = this.updateNewRoster(
+                league.LeagueType,
+                game.AwayTeam,
+                athlete
+              );
+              game.AwayTeam.push(newPlayer);
+            } else if (game && game.HomeTeamPlayerID == teamID) {
+              if (!game.HomeTeam) {
+                game.HomeTeam = [];
+              }
+              const newPlayer: LeagueRosterAthleteModel = this.updateNewRoster(
+                league.LeagueType,
+                game.HomeTeam,
+                athlete
+              );
+              game.HomeTeam.push(newPlayer);
             }
-            const newPlayer: LeagueRosterAthleteModel = this.updateNewRoster(
-              league.LeagueType,
-              game.HomeTeam,
-              athlete
-            );
-            game.HomeTeam.push(newPlayer);
+            if (game) {
+              this.updateSeason(league.LeagueType, week);
+            }
           }
-          if (game) {
-            this.updateSeason(league.LeagueType, week);
-          }
-        }
+        });
       }
       this.updateLeague(league);
     }
+  }
+
+  addAthleteToTeamFromTransferPortal(
+    leagueID: string,
+    playerID: string,
+    athlete: LeagueAthleteModel
+  ): void {
+    const league: LeagueModel | undefined = this.getLeague(leagueID);
+    if (league) {
+      const player = league.Players.find((x) => x.PlayerID === playerID);
+      const teamID = player?.ID ?? '';
+      if (player) {
+        league.Season.forEach((week) => {
+          if (
+            week.Status == WeekStatusEnum.Current ||
+            week.Status == WeekStatusEnum.Future
+          ) {
+            const game = week.Games.find(
+              (g) =>
+                g.AwayTeamPlayerID == teamID || g.HomeTeamPlayerID == teamID
+            );
+            if (game && game.AwayTeamPlayerID == teamID) {
+              if (!game.AwayTeam) {
+                game.AwayTeam = [];
+              }
+              const newPlayer: LeagueRosterAthleteModel = this.updateNewRoster(
+                league.LeagueType,
+                game.AwayTeam,
+                athlete
+              );
+              game.AwayTeam.push(newPlayer);
+            } else if (game && game.HomeTeamPlayerID == teamID) {
+              if (!game.HomeTeam) {
+                game.HomeTeam = [];
+              }
+              const newPlayer: LeagueRosterAthleteModel = this.updateNewRoster(
+                league.LeagueType,
+                game.HomeTeam,
+                athlete
+              );
+              game.HomeTeam.push(newPlayer);
+            }
+            if (game) {
+              this.updateSeason(league.LeagueType, week);
+            }
+          }
+        });
+      }
+      this.updateLeague(league);
+    }
+  }
+
+  setDraftComplete(
+    leagueID: string,
+    complete: boolean,
+    league: LeagueModel
+  ): void {
+    this.leagueDLService.setDraftComplete(leagueID, complete);
+    league.Season.forEach((week) => {
+      this.updateSeason(league.LeagueType, week);
+    });
   }
 
   updateSeason(leagueType: SportEnum, week: LeagueWeekModel): void {
@@ -331,6 +380,10 @@ export class LeagueService implements OnDestroy {
     this.getLeaguesForSearch(league.LeagueType);
   }
 
+  updatePlayer(player: LeaguePlayerModel): void {
+    this.playerService.updatePlayer(player);
+  }
+
   addLeague(league: LeagueModel): void {
     const leagues: Array<LeagueModel> = this.leagueDLService._league.value;
     leagues.push(league);
@@ -349,16 +402,20 @@ export class LeagueService implements OnDestroy {
       this.leagueDLService._league.value.find((x) => x.ID == leagueID) ??
       new LeagueModel();
     let retVal: LeaguePlayerModel = new LeaguePlayerModel();
-    league.Season[0]?.Games.forEach((game) => {
-      if (game.AwayTeam.find((x) => x.Athlete.AthleteID == athleteID)) {
-        retVal =
-          league.Players.find((x) => x.ID == game.AwayTeamPlayerID) ??
-          new LeaguePlayerModel();
-      } else if (game.HomeTeam.find((x) => x.Athlete.AthleteID == athleteID)) {
-        retVal =
-          league.Players.find((x) => x.ID == game.HomeTeamPlayerID) ??
-          new LeaguePlayerModel();
-      }
+    league.Season.forEach((week) => {
+      week.Games.forEach((game) => {
+        if (game.AwayTeam.find((x) => x.Athlete.AthleteID == athleteID)) {
+          retVal =
+            league.Players.find((x) => x.ID == game.AwayTeamPlayerID) ??
+            new LeaguePlayerModel();
+        } else if (
+          game.HomeTeam.find((x) => x.Athlete.AthleteID == athleteID)
+        ) {
+          retVal =
+            league.Players.find((x) => x.ID == game.HomeTeamPlayerID) ??
+            new LeaguePlayerModel();
+        }
+      });
     });
 
     if (retVal.ID.length > 0) {
@@ -382,8 +439,37 @@ export class LeagueService implements OnDestroy {
   //   return retVal.concat(athletes);
   // }
 
+  updateNewRosterFromID(
+    leagueType: SportEnum,
+    teamRoster: Array<LeagueRosterAthleteModel>,
+    athleteID: string
+  ): LeagueRosterAthleteModel {
+    let athletes: Array<LeagueAthleteModel> = [];
+
+    switch (leagueType) {
+      case SportEnum.Baseball:
+        athletes = this.athleteService.getBaseballPlayers();
+        break;
+      case SportEnum.Basketball:
+        athletes = this.athleteService.getBasketballPlayers();
+        break;
+      case SportEnum.Football:
+        athletes = this.athleteService.getFootballPlayers();
+        break;
+      case SportEnum.Soccer:
+        athletes = this.athleteService.getSoccerPlayers();
+        break;
+    }
+    const athlete = athletes.find((x) => x.AthleteID === athleteID);
+    if (athlete) {
+      return this.updateNewRoster(leagueType, teamRoster, athlete);
+    } else {
+      return new LeagueRosterAthleteModel();
+    }
+  }
+
   //#region test roster
-  private updateNewRoster(
+  updateNewRoster(
     leagueType: SportEnum,
     teamRoster: Array<LeagueRosterAthleteModel>,
     athlete: LeagueAthleteModel
@@ -662,45 +748,103 @@ export class LeagueService implements OnDestroy {
               }
             }
           case BasketballPositionEnum.Forward:
-            const bkbFFS = teamRoster.find(
+            const bkbF1FS = teamRoster.find(
               (x) =>
                 x.Athlete.Position == BasketballPositionEnum.Forward &&
+                x.RosterBackup == false &&
                 x.RosterPosition == RosterPositionEnum.FirstString
             );
-            if (!bkbFFS) {
+            if (!bkbF1FS) {
+              rosterAthlete.RosterBackup = false;
               return rosterAthlete;
             } else {
-              const bkbFSS = teamRoster.find(
+              const bkbF2FS = teamRoster.find(
                 (x) =>
                   x.Athlete.Position == BasketballPositionEnum.Forward &&
-                  x.RosterPosition == RosterPositionEnum.SecondString
+                  x.RosterBackup == true &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
               );
-              if (!bkbFSS) {
-                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+              if (!bkbF2FS) {
+                rosterAthlete.RosterBackup = true;
                 return rosterAthlete;
               } else {
-                return this.setBenchPosition(athlete, teamRoster);
+                const bkbF1SS = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == BasketballPositionEnum.Forward &&
+                    x.RosterBackup == false &&
+                    x.RosterPosition == RosterPositionEnum.SecondString
+                );
+                if (!bkbF1SS) {
+                  rosterAthlete.RosterPosition =
+                    RosterPositionEnum.SecondString;
+                  rosterAthlete.RosterBackup = false;
+                  return rosterAthlete;
+                } else {
+                  const bkbF2SS = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == BasketballPositionEnum.Forward &&
+                      x.RosterBackup == true &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!bkbF2SS) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = true;
+                    return rosterAthlete;
+                  } else {
+                    return this.setBenchPosition(athlete, teamRoster);
+                  }
+                }
               }
             }
           case BasketballPositionEnum.Guard:
-            const bkbGFS = teamRoster.find(
+            const bkbG1FS = teamRoster.find(
               (x) =>
                 x.Athlete.Position == BasketballPositionEnum.Guard &&
+                x.RosterBackup == false &&
                 x.RosterPosition == RosterPositionEnum.FirstString
             );
-            if (!bkbGFS) {
+            if (!bkbG1FS) {
+              rosterAthlete.RosterBackup = false;
               return rosterAthlete;
             } else {
-              const bkbGSS = teamRoster.find(
+              const bkbG2FS = teamRoster.find(
                 (x) =>
                   x.Athlete.Position == BasketballPositionEnum.Guard &&
-                  x.RosterPosition == RosterPositionEnum.SecondString
+                  x.RosterBackup == true &&
+                  x.RosterPosition == RosterPositionEnum.FirstString
               );
-              if (!bkbGSS) {
-                rosterAthlete.RosterPosition = RosterPositionEnum.SecondString;
+              if (!bkbG2FS) {
+                rosterAthlete.RosterBackup = true;
                 return rosterAthlete;
               } else {
-                return this.setBenchPosition(athlete, teamRoster);
+                const bkbG1SS = teamRoster.find(
+                  (x) =>
+                    x.Athlete.Position == BasketballPositionEnum.Guard &&
+                    x.RosterBackup == false &&
+                    x.RosterPosition == RosterPositionEnum.SecondString
+                );
+                if (!bkbG1SS) {
+                  rosterAthlete.RosterPosition =
+                    RosterPositionEnum.SecondString;
+                  rosterAthlete.RosterBackup = false;
+                  return rosterAthlete;
+                } else {
+                  const bkbG2SS = teamRoster.find(
+                    (x) =>
+                      x.Athlete.Position == BasketballPositionEnum.Guard &&
+                      x.RosterBackup == true &&
+                      x.RosterPosition == RosterPositionEnum.SecondString
+                  );
+                  if (!bkbG2SS) {
+                    rosterAthlete.RosterPosition =
+                      RosterPositionEnum.SecondString;
+                    rosterAthlete.RosterBackup = true;
+                    return rosterAthlete;
+                  } else {
+                    return this.setBenchPosition(athlete, teamRoster);
+                  }
+                }
               }
             }
         }

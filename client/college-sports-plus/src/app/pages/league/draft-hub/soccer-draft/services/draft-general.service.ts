@@ -73,15 +73,15 @@ export class DraftGeneralService {
   ): number {
     let score: number = 0;
 
-    score = score + soccerDraftPlayerModel.Stats.Assists * 1;
-    score = score + soccerDraftPlayerModel.Stats.CleanSheet * 1;
+    score = score + soccerDraftPlayerModel.Stats.Assists * 5;
+    score = score + soccerDraftPlayerModel.Stats.CleanSheet * 10;
     score = score + soccerDraftPlayerModel.Stats.Fouls * -1;
-    score = score + soccerDraftPlayerModel.Stats.Goals * 1;
+    score = score + soccerDraftPlayerModel.Stats.Goals * 10;
     score = score + soccerDraftPlayerModel.Stats.GoalsAllowed * -1;
-    score = score + soccerDraftPlayerModel.Stats.RedCards * -1;
-    score = score + soccerDraftPlayerModel.Stats.Saves * 1;
-    score = score + soccerDraftPlayerModel.Stats.ShotsOffGoal * -1;
-    score = score + soccerDraftPlayerModel.Stats.ShotsOnGoal * 1;
+    score = score + soccerDraftPlayerModel.Stats.RedCards * -5;
+    score = score + soccerDraftPlayerModel.Stats.Saves * 3;
+    score = score + soccerDraftPlayerModel.Stats.ShotsOffGoal * 1;
+    score = score + soccerDraftPlayerModel.Stats.ShotsOnGoal * 2;
     score = score + soccerDraftPlayerModel.Stats.YellowCards * -1;
 
     return score / 12;
